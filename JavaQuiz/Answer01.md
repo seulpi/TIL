@@ -24,7 +24,7 @@
 <br>
 
 # 5. JDK란? / 다운로드 경로 / OS별 버전이 다른이유를 설명하시오
-- JDK : Java Development Kit 
+- JDK : Java Development tool Kit 
 - 다운로드는 오라클 사이트에서 가능
 - 운영체제가 다른 사양 어디에서도 사용 가능(범용성이 넓음)
 
