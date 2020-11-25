@@ -36,7 +36,7 @@ public static boolean isPrimeNumber  (int num) {          // boolean 타입이 �
   if(num == 1) {
     return false;
   }
-  for(int j = 2, 2< numl; j++) {
+  for(int j = 2, 2 < num; j++) {
     if (num % j == 0) {
       return false;
     }
