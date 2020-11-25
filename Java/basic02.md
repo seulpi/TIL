@@ -17,7 +17,7 @@
     * blank , 기호 , 숫자 모두 문자에 속한다
     * 문자  → 숫자 : 인코딩 <br> 숫자 → 문자 : 디코딩 
 * 데이터 타입 '형' : Primitive Type + 참조형 <br>
-boolean (1byt) : 참 & 거짓 <br>
+boolean (1byte) : 참 & 거짓 <br>
 char (2byte) : 문자 <br>
 byte(1byte), short(2byte), int(4byte), long(8byte) : 정수 <br>
 float(4byte), double(8byte) : 실수  <br>
