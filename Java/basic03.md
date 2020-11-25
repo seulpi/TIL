@@ -32,8 +32,7 @@ public static void main(String[] args){
       System.out.println(i);
   }
 }
-public static boolean isPrimeNumber // boolean 타입이 오면 함수명 is 붙이고 시작
- (int num) {
+public static boolean isPrimeNumber  (int num) {          // boolean 타입이 오면 함수명 is 붙이고 시작
   if(num == 1) {
     return false;
   }
