@@ -19,7 +19,7 @@
 * 데이터 타입 '형' : Primitive Type + 참조형 <br>
 boolean (1byt) : 참 & 거짓 <br>
 char (2byte) : 문자 <br>
-byte(1vyte), short(2byte), int(4byte), long(8byte) : 정수 <br>
+byte(1byte), short(2byte), int(4byte), long(8byte) : 정수 <br>
 float(4byte), double(8byte) : 실수  <br>
 참조형(4byte) : 메모리 주소를 참조
 
