@@ -84,7 +84,7 @@
     short num1 = 7;
     short num2 = (short)(+num1); /* 형변환을 해줘야하는이유: 우리 눈에는 안보이지만 얘도 연산을 하고 있음 정확히는 1*num1 
                                                            따라서 int형으로 바뀌니 형변환을 해줘야한다*/
-    short num3 = (short)(-num1);// (-1) * num2
+    short num3 = (short)(-num2);// (-1) * num2
 ```
 ## 4. 증감연산자
 : num = num + 1 → '++n / n++' 같은 말 ; 1을 증가시키고 변수에 값을 대입한다 <br>
