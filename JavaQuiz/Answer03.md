@@ -159,5 +159,17 @@ A는 문자이기 때문에 char라는 타입에 방을 만든다  <br>
 char는 int 보다 작은 범위 따라서 정수형으로 인식한것 (참조.형변환 표) <br> 
 ★자동으로 형이 변환됨 char → int <br> 
 int 'A' + int 'A' ; 65 + 65가되면서 값을 뿌리게 된다 <br> 
-아스키코드에서 대입해보면 문자 A는 값 65
+아스키코드에서 대입해보면 문자 A는 값 6
+ * B에 대한 값을 뿌리시오
+ ```java
+ // 방법1.
+ char ch = 'B';
+ System.out.println((int)ch);
+ 
+ //방법2. 
+ char ch = 'B';
+ System.out.println(0+ch);
+```
+
+
 
