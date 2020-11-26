@@ -105,7 +105,7 @@ num에 값을 대입해줘서 수정 <br>
     result = (++num) -5; // num값 8 → 8-5를 result에 대입 (1이 바로 증가)
     System.out.println(result); // 3 출력
 		
-    result = (num++) -5; // num값 8 → 8-5 '3'result에 3 대입 후 num값 8+1 ; 9 (대입이 먼저 일어나고 증가) 
+    result = (num++) -5; // num값 7 → 7-5 '2'를 연산 후 +1 (연산이 먼저 일어나고 증가) 
     System.out.println(result);  // 3 출력
 ```
 <br>
