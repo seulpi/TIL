@@ -83,7 +83,7 @@ false
  System.out.println(3.000007 + 3.000008); 
  System.out.println(3.000007D + 3.000008D); // 명시하고 싶으면 'D' 또는 'd' 삽입
 ```
-# 이스케이스 시퀀스
+# 이스케이 시퀀스
  '\b' '\t' '\n' '\r' : 특수문자 
  ```java
 System.out.println("AB" + '\b' + 'C' ); 
