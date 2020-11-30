@@ -1,5 +1,5 @@
 # 1. 반복문 3가지의 무한루프 만드는 방법은
-## if(;;) { } / while(true) { } / do while(true) { }
+## (;;) { } / while(true) { } / do while(true) { }
 
 <br>
 
