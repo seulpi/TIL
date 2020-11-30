@@ -10,7 +10,7 @@
 * String[] args ; 매개변수 = 파라미터 = 인자 (여러개여도 상관없고 ★ 매개변수 자리에는 변수선언/초기화X★)
 * 함수 안에 함수 존재(X) , class안에 존재 , 파라미터 안에 바로 변수 선언하면서 값 할당(X)
 ```java
-public static void main(String[] args) { 
+public static void main(String[] args) {  // main메소드는 프로그램의 시작이자 끝
 	System.out.println("프로그램의 시작");
 	hiEveryone(12); // 함수 호출 , 함수 실행 , '12'라는 값(value)할당
 	hiEveryone(13);
@@ -33,6 +33,24 @@ public static void hiEveryone(int age) {  // 매개변수 자리에 int age 변�
 제 나이는 13세 입니다
 프로그램의 끝
 ```
+* 메소드는 입력만 있을수도 있고 없을수도 있음
+```java
+pubilc static void byEveryone( ) {
+	System.out.println("다음에 뵙겠습니다.");
+}	// 이게 입력 비워두는것! ( ) 안에 비워두면 입력이 없는것 
+```
+* return : 값의 반환(메소드 호출문을 그 결과로 대체한다)과 동시에 종료
+```java
+public static void main(String[] args) {
+	square(2.5, 3.5);	
+}
+	
+public static double square(double width, double height) {
+		
+	double squareArea = width*height;
+	System.out.println(squareArea);
+	return squareArea; // return값은 함수의 데이터타입과 일치해야함
+```
 		
 
 ## 함수를 써야하는 이유와 언제 쓰는지에 대한 궁금증
@@ -44,7 +62,7 @@ public static void hiEveryone(int age) {  // 매개변수 자리에 int age 변�
 <br>
 
 
-#  CLASS
+#  CLASS : 데이터 + 메소드 
 * class 이름의 첫 글자 '대문자' 사용
 * 함수명의 첫 글자는 '소문자' / 합성어의 첫 글자는 '대문자' ; ex) powerOfTwo
 * class와 인스턴스의 차이 ; class = 변수와 상수 함수를 모아놓은 것
@@ -77,14 +95,13 @@ public static boolean isPrimeNumber  (int num) {          // boolean 타입이 �
 # 객체
 ## null / String / 생성자 / Scanner
 
-* 기본 8개의 데이터 타입(형) = 프리미티브 타입(primitive type) : boolean~double
-9개의 데이터 타입 = 
-프리미티브 타입 + 참조형(클래스명)
+* 기본 8개의 데이터 타입(형) = 프리미티브 타입(primitive type) : boolean~double / 9개의 데이터 타입 = 프리미티브 타입 + 참조형(클래스명)
 * 참조형 ; 클래스명을 데이터타입으로 하고 주소를 담는 형 
 * new ; 객체 생성 키워드 
 * 객체생성(=인스턴스 생성) ; .clss를 메모리로 올리는 행위
 * null은 인스턴스의 관계를 끊어버림
 * ref = null 만 선언해주면 오류남 ** 꼭 null을 체크하는 조건문을 줘야하고 null 은 참조형에서만 가능
+* String :문자열이 String 인스턴스 클래스를 참조하는것 (따라서 우리가 보기에는 문자열을 나타내지만 함수를 보면 값으로 구성되어있다)
 
 ```java
 if (ref == null) { return;}  //오류를 피하기 위한 조건문
