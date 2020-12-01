@@ -111,7 +111,8 @@ public static void main(String[] args) {
 ```
 
 ▶ 위 코드 실행원리 
-![객체원리 그림01](https://user-images.githubusercontent.com/74290204/100716744-76a17500-33fc-11eb-8119-aac24adadc84.png)
+![객체원리 그림01](https://user-images.githubusercontent.com/74290204/100729220-d6ebe300-340b-11eb-8c2a-2d6dbcc8cf61.png)
+
  ### 위 과정을 객체라 한다 
  : 객체생성(=인스턴스 생성) ; .clss를 메모리로 올리는 행위
  * 함수는 기본 크기를 4byte로 잡기 때문에 위의 사진에서 4byte로 잡혀있는 것
@@ -168,7 +169,7 @@ public static void main(String[] args) {
 잔액 : 4300		
 ```
 ▶ 위 코드 실행원리 
-![객체원리 그림02](https://user-images.githubusercontent.com/74290204/100718974-59ba7100-33ff-11eb-81db-0be4c3b5dadd.png)
+![객체원리 그림02](https://user-images.githubusercontent.com/74290204/100729396-10245300-340c-11eb-8d51-b6c2def1aeb8.png)
 
 // 실행되고나면 ref2는 방이 사라짐(OS에서 메모리 관리) 
 위에서 보듯이 주소를 같은 주소를 참고하기 때문에 결과값에 영향을 미친다 
