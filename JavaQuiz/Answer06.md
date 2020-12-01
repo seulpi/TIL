@@ -295,43 +295,51 @@ public static void starPrint(int num) {
 ```java
 
 public static void main(String[] args) {
-		
-	getGrade(87.3);	
-}
 	
-public static double getGrade(double num) {
-		
-	if(num >= 90) {
-		System.out.println('수');
-	}else if(num >= 80) {
-		System.out.println('우');
-	}else if(num >= 70) {
-		System.out.println('미');
-	}else if(num >= 60) {
-		System.out.println('양');
+	int kor = 70;
+	int math = 60;
+	int eng = 90;
+	 
+	int total = math + kor + eng;
+	double avg = total / 3.0;
+	
+	System.out.println(getGrade(avg))
+}
+public static char getGrade(double avg) {
+
+	char a;   // '수우미양가' 를 담을 변수 선언
+	 
+	if(avg >= 90) {
+		a = '수';
+	}else if(avg >= 80) {
+		a = '우';
+	}else if(avg >=70) {
+		a = '미';
+	}else if(avg >= 60) {
+		a = '양';
 	}else {
-		System.out.println('가');
+		a = '가';
 	}
 		
-	return num;
-		
-}
+	return a;
 ======================================================
-▶ 우 
+▶ 미
 ```
 	
 <br>
 
 # 11. 매개변수 하나를 받아 원의 넓이를 리턴하는 함수를 작성하시오
 ```java
+
+// 1번 (me)
 public static void main(String[] args) {
 		
 	circle(3.5);	
 }
 	
-public static double circle(double num) {
+public static double circle(double r) {
 		
-	double circleRadius = num*2*Math.PI;
+	double circleRadius = r*r*Math.PI;
 
 	System.out.println(circleRadius);
     
@@ -339,6 +347,20 @@ public static double circle(double num) {
 }
 =========================================
 ▶  21.991148575128552
+
+// 2번 (teacher)
+public static void main(String[] args) {
+
+	double area = getCircleArea(10.0);
+	System.out.println("원의 넓이는 " + area);
+		
+}
+public static double getCircleArea(double r) {
+
+	double area = r*r*Math.PI; // 아님 어차피 상수니까 final double PI = 3.14; 로 변수초기화 해줘도 가능
+	return area;
+=========================================
+▶ 원의 넓이는 314.1592653589793
 ``` 
 <br>
 
