@@ -252,4 +252,4 @@ BankAccount ref2 = ref1;
 * ref2는 ref1이 참조하는 주소를 그래도 참조한다 <br>
  단 ref2는 출력이 되면 방이 사라지고 ref1이 참조하는 주소를 참조하기 때문에 출력결과값에 영향을 미친다
  
- ▶ 구체적인 사항 java basic06 
+ **▶ 구체적인 사항 java basic06** 
