@@ -55,12 +55,10 @@ public static double square(double width, double height) {
 
 ## 함수를 써야하는 이유와 언제 쓰는지에 대한 궁금증
 
-* 똑같은 소스 코드 2번 이상 들어갈때 함수 사용(;똑같은 기능이 2번 이상 중복될때)
+* 소스의 길이가 엄청 길어짐 (같은 코드를 반복) → 똑같은 소스 코드 2번 이상 들어갈때 함수 사용(;똑같은 기능이 2번 이상 중복될때)
 * 하나의 함수는 한개의 기능을 수행해야함  
 
-
 <br>
-
 
 #  CLASS : 데이터 + 메소드 
 * class 이름의 첫 글자 '대문자' 사용
@@ -89,7 +87,6 @@ public static boolean isPrimeNumber  (int num) {          // boolean 타입이 �
   
 }
 ```
-
 <br>
 
 # 객체
