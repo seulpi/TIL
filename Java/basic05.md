@@ -241,7 +241,7 @@ public class Main02 {
 ```java
 public static int factorial(int n) {
 	if(n ==1)
-		return 1;   //조건 없으면 무한루프 돎
+		return 1;   //반드시 종료조건 있어야함! 조건 없으면 무한루프 돎
 	else
 		return n * factorial(n-1);
 ```
