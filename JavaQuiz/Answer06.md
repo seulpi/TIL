@@ -321,7 +321,8 @@ public static char getGrade(double avg) {
 		a = '가';
 	}
 		
-	return a; // a말고 return을 써도 되지만 return문을 너무 남발하는건 좋은코드가 아님 ; 변수선언을 하고 마지막에 return을 주는게 더 좋음
+	return a; /* a말고 return을 써도 되지만 (종료를위한)return문을 너무 남발하는건 좋은코드가 아님 
+		    변수선언을 하고 마지막에 return을 주는게 더 좋음 */
 ======================================================
 ▶ 미
 ```
