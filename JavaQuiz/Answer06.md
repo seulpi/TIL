@@ -357,7 +357,7 @@ public static void main(String[] args) {
 }
 public static double getCircleArea(double r) {
 
-	double area = r*r*Math.PI; // 아님 어차피 상수니까 final double PI = 3.14; 로 변수초기화 해줘도 가능
+	double area = r*r*Math.PI; // 아님 어차피 상수(남들이 수정하면 안되는 고정 값)니까 final double PI = 3.14; 로 변수초기화 해줘도 가능
 	return area;
 =========================================
 ▶ 원의 넓이는 314.1592653589793
