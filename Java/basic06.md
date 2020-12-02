@@ -104,7 +104,7 @@ public static void main(String[] args) {
 
     Circle circle = new Circle();
 
-    circle.setRadius(7);
+    circle.setRadius(7); // 객체의 함수접근은 .으로 접근한다 
 		
 	System.out.println("원의 넓이는: " +circle.getCirclaArea());
 }
@@ -115,7 +115,7 @@ public static void main(String[] args) {
 
  ### 위 과정을 객체라 한다 
  : 객체생성(=인스턴스 생성) ; .clss를 메모리로 올리는 행위
- * 함수는 기본 크기를 4byte로 잡기 때문에 위의 사진에서 4byte로 잡혀있는 것
+ * 함수는 기본 크기를 4byte로 잡기 때문에 위의 사진에서 4byte로 잡혀있는 것 <br>
  
  ```java
  Circle circle1 = new Circle();
