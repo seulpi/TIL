@@ -251,12 +251,12 @@ int n;
 ```
 # 13. 아래의 BankAccount 객체에 대하여 그림을 그리시오
 ```java
-BankAccount ref1 = new BankAccount();
+BankAccount ref1 = new BankAccount(); 
 BankAccount ref2 = ref1;
 ```
 ![객체원리 그림04](https://user-images.githubusercontent.com/74290204/100728507-fafaf480-340a-11eb-9fc9-35c2e36116ad.png)
 
-* ref2는 ref1이 참조하는 주소를 그래도 참조한다 <br>
+* ref2는 ref1이 참조하는 주소를 그대로 참조한다 (B.A의 첫번째 주소 참조) <br>
  단 ref2는 출력이 되면 방이 사라지고 ref1이 참조하는 주소를 참조하기 때문에 출력결과값에 영향을 미친다
  -------------------------------------
  # ▶  java basic06 정리 참고
