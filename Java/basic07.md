@@ -56,8 +56,12 @@ set은 값을 변경시킬때
 
 ```java
 Scanner scanner = new Scanner(System.in); // (System.in) 키보드
-int num = scanner.nextInt(); //실행 멈춤 콘솔창에 입력해주길 기다리는 상태
+int num = scanner.nextInt(); //실행 멈춤 콘솔창에서 키도르로 입력해주길 기다리는 상태
+
 System.out.println("입력한 숫자는" + num); // 콘솔에 값을 입력해주고 나서 출력
+
+scanner.close(); //스캐너 종료
+
 ```
 * scanner 받을때 데이터 타입 맞춰줘야함
 ```java
