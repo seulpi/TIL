@@ -1,59 +1,123 @@
-
-### EX
+# null / String 
+## @ null
+- null은 인스턴스와의 관계를 끊는다(주소를 없애고 null값을 넣는다) <br>
+☞ 참조변수의 초기화
 ```java
-// 1~100까지 소수 구하기
-public static void main(String[] args){
-  for(int i = 0, i <= 100, i++>){
-    if(isPrimeNumber(i)) // 
-      System.out.println(i);
-  }
-}
-public static boolean isPrimeNumber  (int num) {          // boolean 타입이 오면 함수명 is 붙이고 시작
-  if(num == 1) {
-    return false;
-  }
-  for(int j = 2, 2 < num; j++) {
-    if (num % j == 0) {
-      return false;
-    }
-    return true;  // return 종료의 의미
-  }
-  
+Circle circle = null;
+
+```
+▶ 위 글 예시 그림<br>
+
+![null01](https://user-images.githubusercontent.com/74290204/100847085-a9ae3c00-34c2-11eb-9321-784848ad097f.png)
+
+- null은 참조형만 가능
+```java
+int a = null; // error
+```
+
+- null check (오류를 피하기위한 조건)
+```java
+if (num = null) // num이 참조하는 인스턴스가 없다면(; "null check") → 실무에선 체크 꼭 해줘야한다 (체크없다면 오류로 이어지기 떄문)
+
+Rectangle rec = null;
+rec.getHeight(); // 객체가 없는 상태에서 함수호출 화면상으로는 error 일어나지 않지만 실행하면 → NullPointerException (오류) 발생\
+
+▼  위와 같은 오류피하는 방법
+if(rec != null) { // 이게 바로 null check
+	rec.getHeight();
 }
 ```
+**★ 함수내에서 오는 매개변수는 무조건 null check ★**
 <br>
 
-# null / String / 생성자 / Scanner
+## @ String class
 
-* null은 인스턴스의 관계를 끊어버림
-* ref = null 만 선언해주면 오류남 ** 꼭 null을 체크하는 조건문을 줘야하고 null 은 참조형에서만 가능
-* String :문자열이 String 인스턴스 클래스를 참조하는것 (따라서 우리가 보기에는 문자열을 나타내지만 함수를 보면 값으로 구성되어있다)
+: 문자열을 다루는 class
 
 ```java
-if (ref == null) { return;}  //오류를 피하기 위한 조건문
+String str1 = "Happy"; // String이라는 참조형에 str1에 Happy를 가리키는 주소를 담는다
 
-int a = null // 이렇게 사용할 수 없음
+String str1 = "Happy";
+String str2 = "Birthday";
+	
+System.out.println(str1 + " " + str2);
+============================================== 
+▶ Happy Birthday
+
 ```
-* String ; 문자열을 다루는 class
+# 생성자
+## - 정의 
+생성자(=생성자함수) : 초기화를 대신할 수 있는 메소드이며 class이름과 똑같은 함수
+- 특징 
+1. 리턴타입(반환형) X 
+   - 함수에는 기본적으로 리턴타입이 존재하는데 생성자함수는 리턴타입이 없다는 것은 생성자 함수의 용도가 초기화의 용도이기 때문에 용도의 제한을 설정해두었기 때문에 리턴타입이 없다 (리턴타입이 없기때문에 리터값도 없다)
+2. 생성자함수명이 class와 이름이 같음
+3. 용도는 초기화 + 객체생성 (객체생성할때 반드시 호출하게 되어있음)
+
+
 ```java
-String name = "kim" ;
+BankAccount = new BankAccount( ); 
+				// ↑ 생성자 함수
 ```
 
-* 생성자 : class와 이름이 같은 함수 / 리턴값 (X) 
-  * 리턴값이 없기 때문에 리턴타입 표시 X
+## - 디폴트 생성자
+
+- 인자가 1개도 없고 로직(함수)를 하나도 만들지 않은상태 [껍데기인상태]에서 생성자함수를 호출하게되면 컴파일러가 자동으로 함수를 생성하게 되는 걸 **디폴트 생성자** 라 한다 
+
+- 디폴트 생성자는 개발자가 생성자를 한개라도 만들어놓으면 디폴트를 넣지 않기 때문에 오류 발생! 그래서 개발자가 디폴트 생성자를 따로 만들어줘야함 
+
 ```java
-BankAccount = new BankAccount( ); // new 뒤에 붙는 걸 생성자라 부름
+>> 메인 메소드
+
+public class TestMain {
+	
+	public static void main(String[] args) {
+
+		Person kim = new Person("김철수", 27);
+		kim.printPerson(); 
+	
+	}
+}
+=========================================================
+
+>> Preson 클래스 
+
+public class Person {
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	String name;
+	int age;
+	
+	public Person(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+	
+	public void printPerson() {
+		System.out.println("이름: " + name + '\n' + "나이: " + age);	
+	} //이렇게 쓸수도 있지만 get&set함수가 있으니까 밑에도 가능
+	 public void printPerson() {
+		System.out.println("이름: " + getName() + '\n' + "나이: " + getAge())	
+
+}
 ```
-
-* ( ) 안에 함수인데 인자가 1개도 없고 함수를 따로 만들지 않았는데 호출하면 컴파일러에서 자동으로 넣어줌 '디폴트 생성자'
-  * 디폴트 생성자는 개발자가 생성자를 한개라도 만들어놓으면 디폴트를 넣지 않기 때문에 오류 발생! 그래서 개발자가 디폴트 생성자를 따로 만들어줘야함 
-
-* 생성자의 용도 
-  * 값들의 초기화
-
-* 생성자는 처음 값을 넣을때 
-set은 값을 변경시킬때
-
+# Scanner
+## - 문법
 ```java
 Scanner scanner = new Scanner(System.in); // (System.in) 키보드
 int num = scanner.nextInt(); //실행 멈춤 콘솔창에서 키도르로 입력해주길 기다리는 상태
@@ -61,7 +125,6 @@ int num = scanner.nextInt(); //실행 멈춤 콘솔창에서 키도르로 입력
 System.out.println("입력한 숫자는" + num); // 콘솔에 값을 입력해주고 나서 출력
 
 scanner.close(); //스캐너 종료
-
 ```
 * scanner 받을때 데이터 타입 맞춰줘야함
 ```java
@@ -71,32 +134,73 @@ int age = scanner.nextInt(); // int로 변수선언 하니까 scanner 뒤도 int
 ```
 * scanner를 통한 반복문 활용 (yes / no)
 ```java
-public static void main(String[] args{
-  Scanner scanner;
+>> 점수 클래스를 만들고 스캐너를 통해 값을 입력하고 평균을 내시오(단, 계속할지 반복문사용)
 
-  while(true) {
-    scanner = new sacnner(System.in);
-    System.out.print("이름: ");
-    String name = sanner.next();
+public static void main(String[] args) {
+		
+	Scanner scanner = null;
+		
+	while(true) {
+		scanner = new Scanner(System.in);
+		int math, sien, eng;
+			
+		System.out.println("국어 과학 영어를 입력하세요");
+			
+		math = scanner.nextInt();
+		sien = scanner.nextInt();
+		eng = scanner.nextInt();
+			
+		Grade me = new Grade(math, sien, eng);
+		System.out.println("평균은: " + me.average());
+		
+		System.out.println("계속하시겠습니까? (Y/N)");
+			
+// 방법 1
+		String yesOrNo = scanner.next();
+			  
+		 if(yesOrNo == "Y" || yesOrNo == "Y") { /* 이거 안돌아감 why? String은 주소를 참조하는데 문자열이 들어가는게 말이안됨 
+따라서 함수 사용해야함 if(yesOrNo.equals("Y") || yesOrNo.equals("y")) 이렇게함수로 비교를 해줘야함 */
+			continue; 
+		   } else { 
+			 break;
+		   }
+		    	
+// 방법 2
+		char c = scanner.next().charAt(0); // 문자 하나만 받을거니까 char를 사용한것 charAt(0)는 내가 Yes라고 쓰면 첫번째 Y를 넘겨주는거고 charAt(1)하면 e를 넘겨주는것
+		    
+		if(c == 'y' || c == 'Y') {
+		    continue;
+		} else {
+		    break;
+		}
+	}
 
-    System.out.print("나이: ");
-    int age = scanner.nexyInt();
+=========================================================
 
-    Info info = new info (name, age); //
-    info.show();
+>>위 스캐너 호출 사용한 Grade 클래스
+public class Grade {
+	
+	int math;
+	int sien;
+	int eng;
+	
+	public Grade(int math, int sien, int eng) {
+		this.math = math;
+		this.sien = sien;
+		this.eng = eng;	
+	}
+	
+	public Grade() {
+		
+	}
 
-    System.out.println("계속하시겠습니까? (y/n)");
-
-    char c = scanner.next().chaeAt(0);
-
-    if(c == 'y' || c == 'Y') {
-      continue;
-    }
-    else {
-      break;
-    }
-    scanner close();
-  
+	public double average( ) {
+		
+		int total = math + sien + eng;
+		double avg = total / 3.0;
+	
+		return avg;			
+	}	
 }
 ```
 
@@ -167,4 +271,27 @@ public class Main02 {
 		scanner.close();
 		
 		}
+```
+
+### EX
+```java
+// 1~100까지 소수 구하기
+public static void main(String[] args){
+  for(int i = 0, i <= 100, i++>){
+    if(isPrimeNumber(i)) // 
+      System.out.println(i);
+  }
+}
+public static boolean isPrimeNumber  (int num) {          // boolean 타입이 오면 함수명 is 붙이고 시작
+  if(num == 1) {
+    return false;
+  }
+  for(int j = 2, 2 < num; j++) {
+    if (num % j == 0) {
+      return false;
+    }
+    return true;  // return 종료의 의미
+  }
+  
+}
 ```
