@@ -198,10 +198,10 @@ public class Money {
 		m50 = num/5000; 
 		num = num - (m50*5000); 
 		
-		m10 = m50/1000;
+		m10 = num/1000;
 		num = num - (m10*1000);
 		
-		m5 = m10/500;
+		m5 = num/500;
 		num = num - (m5*500);
 		
 		m1 = num/100;
