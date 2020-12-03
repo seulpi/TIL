@@ -250,10 +250,10 @@ public class Money {
 ☞ 합성어일 경우 합성어의 첫글자는 대문자로 표기한다
 ```java
 class PersonName
-int personName;
+int personName; //camel case표기법 
 ```
 - 상수
-  - 상수는 '모든 글자'를 **대문자**로 표기하되 합성어일 경우 스네이크("_" : camel)로 작성한다
+  - 상수는 '모든 글자'를 **대문자**로 표기하되 합성어일 경우 스네이크("_")로 작성한다
 ```java
 final int PERSON;
 final int PERSON_NAME;
