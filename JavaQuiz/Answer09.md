@@ -1,7 +1,7 @@
 # 1. set classpath 에 대하여 설명하시오
 
-set classpath란 class의 경로를 설정해주는 것을 말한다 
-
+set classpath란 class의 경로를 설정해주는 것을 말한다 <br>
+(claspath는 자바가상머신의 경로탐색)
 <br>
 
 # 2. 절대경로와 상대경로에 대하여 설명하시오
@@ -10,7 +10,7 @@ set classpath란 class의 경로를 설정해주는 것을 말한다
 ```java
 C : \PackacgeStudy>set classpath=.;C:\PackageStudy\Myclass
 ```
-- 상대경로란 JVM이 컴파일을 할 때 경로를 현재 디렉토리를 기준으로 찾아 실행하는 것
+- 상대경로란 JVM이 컴파일을 할 때 경로를 현재 디렉토리(자기자신)를 기준으로 찾아 실행하는 것
 ```java
 C : \PackacgeStusy>set classpath=.;\Myclass
                                 //↑ .이 현재디렉토리를 의미 한다
@@ -21,6 +21,14 @@ C : \PackacgeStusy>set classpath=.;\Myclass
 
 **.**  은 **'현재'** 디렉토리를 의미 <br>
 **..** 은 **'이전'** 디렉토리를 의미 (상위폴더로 거슬러 올라가서 경로를 찾아줘 라고 이해하면 됨) 
+```java
+
+>cd. // 현재 디렉토리로 이동
+>cd.. // 이전 디렉토리로 이동
+>cd java_area // java_area로 이동
+
+* cd = change directory
+```
 
 <br>
 
@@ -28,6 +36,23 @@ C : \PackacgeStusy>set classpath=.;\Myclass
 package는 하나의 폴더라고 생각하면 되는데 package안에는 여러개의 클래스를 둘 수 있지만 같은 이름의 클래스파일을 두는 것은 물리적으로 불가능하다 <br>
 따라서 package를 만듦으로써 그런 물리적인 충돌을 막을 수 있다 <br>
 (package의 이름을 따로 만들어주지 않으면 package는 default 패키지로 자동 생성된다)
+```java 
+// 다른 패키지의 클래스 파일을 사용하는 방법
+
+1. import한 후에 사용 (scanner같은거 import할때 주의)
+	**import com.bat.Circle;**           //이상한 주소에서 import하면 안된다.
+	//import com.wxfx.smart.*;       //*은 이 패키지에 있는 전체를 가져오는 것을 의미
+	**Circle circle = new Circle();**    //import했기 때문에 경로를 작성할 필요가 없다.
+ 
+	/*
+	하지만 두 경로의 Circle을 모두 이용할 경우 두 클래스를 모두 import하면 객체 생성시에 
+	문제가 생기기 때문에 꼭 필요한 파일만 import해야한다. 
+	*/
+
+2. 경로를 모두 작성 
+	**com.bat.Circle circle = new com.bat.Circle();**
+```
+
 
 <br>
 
