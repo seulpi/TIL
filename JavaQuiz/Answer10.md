@@ -11,7 +11,7 @@
 3. default : **같은 패키지**에서 접근 가능
 4. private : **클래스 내부**에서만 변수나 함수의 접근이 가능 
 
-    ☞ public과 default만 클래스에 키워드 사용이 가능하고 함수나 변수에는 접근제한자 4가지 모두 사용 가능하다
+    ☞ public과 default만 클래스 키워드 사용이 가능하고 함수나 변수에는 접근제한자 4가지 모두 사용 가능하다
     ```java
     pubilc class Helloworld() {  
         private int num = 0;
