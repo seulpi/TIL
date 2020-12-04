@@ -39,7 +39,7 @@ package는 하나의 폴더라고 생각하면 되는데 package안에는 여러
 ```java 
 // 다른 패키지의 클래스 파일을 사용하는 방법
 
-1. import한 후에 사용 (scanner같은거 import할때 주의)
+"1. import한 후에 사용 (scanner같은거 import할때 주의)"
 	**import com.bat.Circle;**           //이상한 주소에서 import하면 안된다.
 	//import com.wxfx.smart.*;       //*은 이 패키지에 있는 전체를 가져오는 것을 의미
 	**Circle circle = new Circle();**    //import했기 때문에 경로를 작성할 필요가 없다.
@@ -49,7 +49,7 @@ package는 하나의 폴더라고 생각하면 되는데 package안에는 여러
 	문제가 생기기 때문에 꼭 필요한 파일만 import해야한다. 
 	*/
 
-2. 경로를 모두 작성 
+"2. 경로를 모두 작성"
 	**com.bat.Circle circle = new com.bat.Circle();**
 ```
 
