@@ -90,7 +90,7 @@ www.bit.com / 팀명: Management Team
 <br>
 
 # 9. 가위, 바위, 보 게임 작성하시오
-## 가위바위보로 작성해야하는데 숫자를 넣어서 나옴..
+## 가위바위보로 작성해야하는데 숫자를 넣어서 나옴..(코드수정필요)
 ```java
 >> main class
 
@@ -188,7 +188,7 @@ public class Random {
 ```
 
 ```java
-// Answer
+// Answer (me)
 import java.util.Scanner;
 
 public class NumMain {
@@ -227,6 +227,178 @@ public class NumMain {
 
 }
 ```
+```java
+//Answer(teacher)  tip) while문 돌리는 기능까지는 함수에 넣을 필요가 없다; 
+		  	고객이 있는걸 가지고쓰는거기 때문에 함수는 가져와쓸수있는 기능까지만 있으면된다
+
+import java.util.Scanner;
+
+public class NumMain2 {
+
+	public static void main(String[] args) {
+		
+		while(true) {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("숫자를 입력하세요");
+			
+			int num1 = sc.nextInt();
+			char ch = sc.next().charAt(0); //연산기호에 대해서는 한개니까 char로 해도 상관없음
+			int num2 = sc.nextInt();
+			int result = 0;
+		
+			switch(ch) {
+				case '+': {
+					result = num1 + num2;
+					break;
+				}
+				case '-': {
+					result = num1 - num2;
+					break;
+				}
+				case '*': {
+					result = num1 * num2;
+					break;
+				}
+				case '/': {
+					result = num1 / num2;
+					break;
+				}
+			}
+			
+			System.out.println(num1 + " " + ch + " " + num2 + " = " + result);
+			
+			System.out.println("계속하시겠습니까?(Y/N)");
+			
+			char c = sc.next().charAt(0);
+			if(c == 'Y' || c == 'y')
+				continue;
+			else
+				break;
+		}
+
+	}
+
+}
+```
+```java
+//Answer(teacher) - 위 코드 class활용 
+
+>> main class
+
+import java.util.Scanner;
+
+public class NumMain2 {
+
+	public static void main(String[] args) {
+		
+		Calculator calculator = new Calculator();
+		
+		while(true) {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("숫자를 입력하세요");
+			
+			int num1 = sc.nextInt();
+			char ch = sc.next().charAt(0); //연산기호에 대해서는 한개니까 char로 해도 상관없음
+			int num2 = sc.nextInt();
+			
+			calculator.setNum1(num1); // Calculator 클래스의 set함수 호출 
+			calculator.setCh(ch);
+			calculator.setNum2(num2);
+			
+			/* Calculator calculator = new Calculator(num1, ch, num2); 처음할때 위에 디폴트 생성자 없고 이 함수 이용했음 
+			위 방법은 set함수이용하는거고 이거는 생성자의 값을 넣어서 사용
+			뭐가 더 좋은방법인가? 
+			☞ 이 방법은 한번 실행하고 나며 객체를 또 생성 생성 생성 반복하는것(객체여러개로 메모리가 계속 쌓임)
+			set함수는 하나의 객체에서 실행을 반복하는것의 차이
+			따라서 set함수를 사용하는것이 메모리적인 부분에서 사용하는게 좋다
+			(단, c언어에서는 메모리를 개발자가 관리했는데 자바에서는 JVM이 관리하기 때문에
+			 필요없다 판단될때 알아서 정리한다 따라서 객체생성에 대해서 신경을 쓰지않아도되지만
+			관리는 못하는 케이스도 있기 때문에 set함수를 이용하는게 GOOD!) */
+			calculator.run();
+			
+			System.out.println("계속하시겠습니까?(Y/N)");
+			
+			char c = sc.next().charAt(0);
+			if(c == 'Y' || c == 'y')
+				continue;
+			else
+				break;
+		}
+
+	}
+
+}
+===========================================================================
+>> calculator class
+
+public class Calculator {
+	
+	private int num1;
+	private char ch;
+	private int num2;
+	
+	public int getNum1() {
+		return num1;
+	}
+
+	public void setNum1(int num1) {
+		this.num1 = num1;
+	}
+
+	public char getCh() {
+		return ch;
+	}
+
+	public void setCh(char ch) {
+		this.ch = ch;
+	}
+
+	public int getNum2() {
+		return num2;
+	}
+
+	public void setNum2(int num2) {
+		this.num2 = num2;
+	}
+
+	Calculator(int num1, char ch, int num2) {
+		this.num1 = num1;
+		this.ch = ch;
+		this.num2 = num2;
+	}
+	
+	public Calculator() {
+		// 디폴트 생성자 만들어줌 "생성자가 하나라도 있으면 자동으로 만들어주지않기 때문에 만들어야함"
+	}
+
+	public void run() {
+		int result = 0;
+
+		switch(ch) {
+			case '+': {
+				result = num1 + num2;
+				break;
+			}
+			case '-': {
+				result = num1 - num2;
+				break;
+			}
+			case '*': {
+				result = num1 * num2;
+				break;
+			}
+			case '/': {
+				result = num1 / num2;
+				break;
+			}
+		}
+		
+		System.out.println(num1 + " " + ch + " " + num2 + " = " + result);
+	}
+
+}
+
+
 
 ---
 # ▶  java basic08 정리 참고
