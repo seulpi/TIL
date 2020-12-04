@@ -2,9 +2,9 @@
 
 ```java
 - private
-    - protected
-    - default
-    - public
+- protected
+- default
+- public
 ```
 1. public : **다른 패키지**에서의 클래스 접근 가능 (어디서나 접근 ok)
 2. protected : **같은 패키지**와 **상속관계**에서 접근 가능
