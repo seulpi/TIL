@@ -128,9 +128,9 @@ public class GameMain {
 <br>
 
 # 6. 자바의 메모리 영역을 3가지로 나누고, 해당 영역에 들어가는 정보를 말하여 보시오
-JAVA의 메모리 공간은 크게 Method Area / Calltack / Heap 이 있다 <br>
+JAVA의 메모리 공간은 크게 Method Area / Callstack / Heap 이 있다 <br>
 Method Area : JVM이 class를 메모리에 올릴 때 class 내부에 main함수를 먼저 스캔하고 static으로 선언된 변수나 함수를 **먼저** 올린다 
-Calltack : main함수가 여기에서 호출되어서 쌓이고 인스턴스 변수의 공간이 여기 생성된다
+Callstack : main함수가 여기에서 호출되어서 쌓이고 인스턴스 변수의 공간이 여기 생성된다
 Heap : 객체와 변수&함수들이 여기에 저장된다
 
 **▶ 단, Method Area에 올라간 static으로 선언된 변수나 함수는 두번 다시 메모리에 올리지 않는다(메모리에 한번만 올린다)** <br>
