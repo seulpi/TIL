@@ -188,7 +188,7 @@ t는 r을 포함합니다.
 ```
 
 ```java
-// Answer 이거 답 아닌것같음ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ....
+// Answer 
 
 public class Rectangle {
 	
@@ -211,7 +211,10 @@ public class Rectangle {
 	}
 
 	public boolean contains(Rectangle r) {
-		return true;
+		if(r.x + r.width <= x + width && r.y + r.height <= y + height)
+			return true;
+		else
+			return false;
 	}
 }
 ```
