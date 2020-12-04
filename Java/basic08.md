@@ -143,7 +143,8 @@ default: '같은' 패키지내에서 객체생성이 가능하다
 - pubilc / protected /default /private : 클래스 변스 함수 (즉 클래스 내부에 있는건 다 붙일수있음)
 - 클래스에서만 붙이기 가능 pubilc default(아무것도 안붙인상태)
 - 인스턴스변수와 함수 : pubilc / protected /default /private
-  - (지역변수는 어차피 지역을 벗어나면 의미가 없어지기 때문에 public 붙여봤자 의미가 없음)
+  - (지역변수는 어차피 지역을 벗어나면 의미가 없어지기 때문에 public 붙여봤자 의미가 없음) <br>
+  - ★ 인스턴스 변수에서는 반드시 **'private'** 붙여줘야한다
 
 
 <br>
