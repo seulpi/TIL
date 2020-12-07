@@ -199,7 +199,7 @@ public class Rectangle {
 	
 	private int x,y,width,height;
 	
-	Rectangle(int x, int y, int width, int height) {
+	Rectangle(int x, int y, int width, int height) { 
 		this.x = x;
 		this.y = y;
 		this.width = width;
@@ -223,6 +223,25 @@ public class Rectangle {
 	}
 }
 ```
+```java 
 
+참조>>
+public class Rectangle {
+	
+	private int x,y,width,height;
+	String name = "정사각형";
+	Rectangle rectangle = new Rectangle(); // 클래스 Rectangle 이랑 다른것! 그냥 참조형인것 다른거니까 헷갈리지 말기
+	
+	Rectangle() {
+		
+	}
+	
+	Rectangle(int x, int y, int width, int height) {
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+	}
+```
 ---
 # ▶  java basic08 정리 참고
