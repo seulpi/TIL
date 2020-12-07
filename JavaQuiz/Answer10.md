@@ -135,6 +135,9 @@ Heap : 객체와 변수&함수들이 여기에 저장된다
 
 **▶ 단, Method Area에 올라간 static으로 선언된 변수나 함수는 두번 다시 메모리에 올리지 않는다(메모리에 한번만 올린다)** <br>
 
+<br>
+★ .class를 메모리에 **어떻게 올리는가**에 대한 구조 (밑 그림 참조) 
+
 ![static 메모리에 올리는 구조](https://user-images.githubusercontent.com/74290204/101135246-e60ea300-364e-11eb-81c2-8da53070a81e.PNG)
 
 <br>
