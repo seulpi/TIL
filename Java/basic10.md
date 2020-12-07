@@ -27,7 +27,7 @@ char에 형변환의 범위를 보면 int나 double 둘 다 가능하다 ▶ 삐
 **혹여나 꼭 써야한다면 강제형변을 해줌으로써 어떤 타입인지 명시해줘야한다 */
 ```
 - 활용 : 어떨 때 메소드 오버로딩을 사용하는가? <br>
-어떠한 데이터타입이 와도 같은 기능을 실행할 때 (사용자가 쉽고 편하게 사용하게 할떼 = 캡슐화)
+어떠한 데이터타입이 와도 같은 기능을 실행할 때 (사용자가 쉽고 편하게 사용하게 할 때 = 캡슐화)
 
 ## # 오버로딩과 오버라이딩의 차이점 알기
 
@@ -91,15 +91,17 @@ public static void main(String[] args) {
 	String str1 = "Simple String"; // String은 new를 사용안해도 주소 참조 바로 하게끔 허용 
 	String str2 = "Simple String";
 		/* " " → 문자열 상수 
-		 문자열 " "오는거는 컴파일러가 쭉 스캔해서 대소문자를 구분해서 똑같으면 메모리 아끼려고 한개만 메모리 3가지 영역 이외의 인스턴스 풀(Instance Pool)에 넣음
+		 문자열 " "오는거는 컴파일러가 쭉 스캔해서 대소문자를 구분해서 똑같으면 메모리 아끼려고 한개만 인스턴스 풀(Instance Pool:메모리 3가지 영역 이외의 하나)에 넣음
 		 한개만 올리고 같은 주소를 참조하는 형태 
          !단, 문자중에 하나라도 소문자가 되거나 똑같지 않으면 다른거라고 인식해서 주소가 달라짐 
 		 (대소문자 아스키코드값이 다르기때문에) 
 		  */
 		
-	String str3 = new String("Simple String"); // 문자열은 문자가 모여져있는것 따라서 문자 하나당 char 2byte(유니코드이기 때문에) 따라서 Simple String은 메모리에 총 13*2 = 64byte
+	String str3 = new String("Simple String"); /* 문자열은 문자가 여러게 모여져있는것 
+	따라서 문자 하나당 char 2byte(유니코드이기 때문에) 
+	따라서 Simple String은 메모리에 총 13*2 = 64byte */
 	String str4 = new String("Simple String");
-	// char배열의 첫번째 주소를 가리키고 있는 상태
+	// char배열의 첫번째 주소를 가리키고 있는 상태 (String은 char의 배열로 이루어져있다)
 	if(str1 == str2)
 		System.out.println("str1과 str2는 동일 주소 참조");
 	else
@@ -110,7 +112,9 @@ public static void main(String[] args) {
 	else
 		System.out.println("str3과 str4는 다른 주소 참조");
 
-	if(str1 == str3) // 같아보이지만 주소가 완전 다름 근데 주소비교말고 문자열 안에 문자내용이 같은지 확인하고 싶다면 equals라는 함수를 이용하면된다
+	if(str1 == str3) /* 같아보이지만 주소가 완전 다름 근데 
+	주소 비교 말고 문자열 안에 문자내용이 같은지 확인하고 싶다면 
+	equals라는 함수를 이용하면된다 */
 		System.out.println("str1과 str2는 동일 주소 참조");
 	else
 		System.out.println("str1과 str2는 다른 주소 참조");
@@ -146,8 +150,7 @@ else
 - Immutable(불변의) ↔ mutable <br>
 - String인스턴스는 Immutable인스턴스
 - Immutable 인스턴스는 인스턴스의 값을 한번 정해주면 어떻게든 값이 변하지않는다 <br>
-(값을 변경하려면 기존 인스턴스를 없애고 새로 만들어야하는 것을 가리켜 말함
-)
+(값을 변경하려면 기존 인스턴스를 없애고 새로 만들어야함)
 ```java
 //1
 String str1 = "Simple String";
@@ -158,8 +161,8 @@ String str1 = "Simple String";
 String str2 = new String("Simple String");
 		
 /* 2개의 코드가 사실상 같은 코드이지만 2번보다 1번이 더 좋은코드이다
-*why? 2번은 하나의 인스턴스를 참조해서 주소를 복사하는 케이스이지만
-	1번 같은 경우는 인스턴스를 여러개 만들어내기때문에 예를들어 100개 1000개를 만들어낸다치면 인스턴스 100개 1000개 만드는것
+*why? 1번은 하나의 인스턴스를 참조해서 주소를 복사하는 케이스이지만
+	2번 같은 경우는 인스턴스를 여러개 만들어내기때문에 예를들어 100개 1000개를 만들어낸다치면 인스턴스 100개 1000개 만드는것
 	따라서 메모리나 속도면에서 떨어지기 때문이다 */
 
 >> Immutable인스턴스는 주소값이 변하지 않는다는게 아니라 heap안에 있는 값 자체가 변하지 않는다는 것
@@ -195,6 +198,3 @@ default:
 str에 들어가건 주소가 들어간다 주소는 4byte 정수 
 따라서 주소가 들어갈수있기때문에 String이 가능해진것이다 */
 ```
-
-
-
