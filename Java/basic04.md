@@ -31,7 +31,7 @@ else {
 ---
 # 삼항연산자 : 항이 세 개
 - (조건문) ? 값1 : 값2 <br>
- (true? false?) ? true일때값 : false일때값
+ (true인가 false인가하는 조건문) ? true일때값 : false일때값
  ```java
  big = (n1 > n2) ? 5 : 4
  ===========================
