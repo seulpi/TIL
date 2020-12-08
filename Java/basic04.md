@@ -86,7 +86,7 @@ if(num == 6)
 
 - break : 실행 종료
  - default : 값을 주지 않거나 걸리는 실행문이 없을 때 출력되는 기본값 <br> 
-(if elde구문에서 else와 비슷한 기능)
+(if else구문에서 else와 비슷한 기능)
 
 ```java
 int n = 1;
