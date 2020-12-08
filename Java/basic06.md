@@ -19,11 +19,11 @@ public class Rectangle { /
 	int height;
 	int width;
 	
-	public int getHeight() { // getter함수: get변수명 값을 가져오는것 
+	public int getHeight() { // getter함수(get변수명): 값을 가져오는것 
     	return height;
 	}
 	
-	public void setHeight(int height) { // setter함수: get변수명 파라미터를 통해 함수의 값을 전해주는것
+	public void setHeight(int height) { // setter함수(set변수명): 파라미터를 통해 함수의 값을 전해주는것
 		this.height = height; // this는 자기자신을 가리킨다
 	}
 	
