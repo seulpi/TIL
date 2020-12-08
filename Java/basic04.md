@@ -71,7 +71,7 @@ if(num == 6)
 ---
 # Switch / Break "switch에서 break까지
 - switch(n) : n값은 기본적으로 '정수' / 실수로 들어오면 이 문법 쓸 수 X 
-  - 단, 문자열을 담는 String은 가능(사실 String자체가 인스턴스이기 때문에 값으로 이루어진 함수라서 가능) 
+  - 단, 문자열을 담는 String은 가능(사실 String자체가 인스턴스이고 주소를 참조하기 때문에 주소값은 정수이기때문에 가능하다) 
 
     ```java
      switch(a) {
