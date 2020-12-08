@@ -50,7 +50,7 @@ public class RecMain {
 
 	public static void main(String[] args) {
 		Rectangle rec = new Rectangle();
-		rec.setHeight(10); // rec이 참조하고 있는 클래스 찾아서 set함수를 실행시켜라
+		rec.setHeight(10); // rec이 참조하고 있는 Rectangle 클래스에서 set함수를 실행시켜라
 		rec.setWidth(10);
 		
 		System.out.println("사각형 넓이는: " + rec.getArea());
