@@ -7,8 +7,7 @@
 <br>
 
 # 2. 메소드 오버로딩이란?
-- 메소드 오버로딩이란 매개변수의 정보(1.갯수 2.데이터타입)가 다르다면 같은 
-함수명 사용이 가능한 것이다 <br>
+- 메소드 오버로딩이란 같은 함수명으로 매개변수의 정보(1.갯수 2.데이터타입)를 달리해서 함수를 만드는 것 <br>
   - c언어에서는 같은 함수명은 **절대 불가능**하지만 java에서는 허용된다 <br>
 ```java
 >> 메소드 오버로딩 EX)
@@ -32,7 +31,7 @@ double myRoom() {}
 <br>
 
 # 4. this 함수에 대하여 설명하시오
-this 함수는 클래수 안에서 또 다른 생성자를 호출할때 사용하는 함수 
+this 함수는 클래스 안에서 또 다른 생성자를 호출할때 사용하는 함수 
 ```java
 public class Person {
     private int regiNum;
@@ -53,7 +52,7 @@ public class Person {
 
 # 5. this란 무엇인가?
 this의 종류는 2가지이다 <br>
-1. 객체 this(자기자신을 가리킬때)
+1. 객체 this(자기자신을 가리킬때) 인스턴스변스와 파리미터 변수명이 같을 때 구분짓기위해 사용
 2. this 함수(또 다른 생성자 호출할때)
 ```java
 
@@ -83,7 +82,18 @@ public class Person {
 <br>
 
 # 6. 스트링 객체를 생성하는 2가지 방법은?
-아래의 결과를 예측하고 이유를 설명하시오
+```java
+//일반적인 객체 생성 방법
+String str1 = new String("Simple String");
+
+//String만 허용되는 "따옴표"를 사용해 직접 대입하는 방법
+String str2 = "The Best String";
+```
+둘 다 String 인스턴스의 생성으로 이어지고 그 결과 인스턴스의 참조 값이 반환된다 <br>
+(스트링을 많이 써서 허용해 줬기 때문에 두가지 방법이 있는 것이다) <br>
+그러나 두가지 방법은 차이가 있다 (설명은 7번에서) <br>
+
+# 7. 아래의 결과를 예측하고 이유를 설명하시오
 ```java
 String str1 = "Simple String";
 String str2 = "Simple String";
@@ -108,11 +118,13 @@ str1과 str2는 동일 인스턴스 참조
 str3과 str4는 다른 인스턴스 참조
 
 //str1과 str2는 동일 인스턴스 참조
-str1 과 str2는 초기화를 할 때 문자열안에 있는 대소문자를 다 구분해 동일하면 하나를 지우고 하나만 메모리에 올린다 → 그리고 같은 주소를 참조하게 되는 형태
+str1 과 str2는 초기화를 할 때 문자열안에 있는 대소문자를 다 구분해 동일하면 하나를 지우고 하나만 메모리(인스턴스풀)에 올린다 
+→ 그리고 같은 주소를 참조하게 되는 형태
 따라서 동일한 인스턴스의 주소를 참조한다는 결과가 나오는 것
 
 //str3과 str4는 다른 인스턴스 참조
-str3 과 str4는 각각 객체를 생성하고 각자 다른 주소를 참고하는 있는 형태기 때문에 다른 인스턴스 참조한다는 문자열이 출력되는것이다
+str3 과 str4는 각각 객체를 생성하고 각자 다른 주소를 참고하는 있는 형태기 때문에 
+다른 인스턴스 참조한다는 문자열이 출력되는것이다
 ```
 ![Sting클래스01](https://user-images.githubusercontent.com/74290204/101322422-56653080-38aa-11eb-870d-475de3c93725.png)
 
@@ -120,7 +132,7 @@ str3 과 str4는 각각 객체를 생성하고 각자 다른 주소를 참고하
 
 <br>
 
-# 7. imutable 에 대하여 설명하시오
+# 8. imutable 에 대하여 설명하시오
 immutable은 값이 변하지 않는 것을 말한다 <br>
 immutable은 Method Area에 있는 주소값이 변경되지 않는다는 것을 의미하는게 아니라 heap공간에 있는 값이 변하지 않음을 의미한다 <br>
 String 클래스가 대표적인 immutable의 예이다 
@@ -134,7 +146,7 @@ System.out.println(s);
 
 <br>
 
-# 8. 사용자로부터 받은 문자열(영문으로)에서 자음과 모음 개수를 계산하는 프로그램을 작성하라
+# 9. 사용자로부터 받은 문자열(영문으로)에서 자음과 모음 개수를 계산하는 프로그램을 작성하라
 ```java
 public static void main(String[] args) {
 	
@@ -160,7 +172,7 @@ public static void main(String[] args) {
 ```
 <br>
 
-# 9. 표준체중에 대한 몸무게 판단 프로그램을 작성하라
+# 10. 표준체중에 대한 몸무게 판단 프로그램을 작성하라
 ```java
 // Main class
 public static void main(String[] args) {
@@ -193,7 +205,7 @@ void resultShow() {
 }
 ```
 
-# 10. 2와 100 사이에 있는 모든 소수(prime number)를 찾는 프로그램을 작성하라 (다시 check)
+# 11. 2와 100 사이에 있는 모든 소수(prime number)를 찾는 프로그램을 작성하라 (다시 check)
 ## 주어진 정수 k를 2부터 k-1까지의 숫자로 나누어서 나머지가 0인 것이 하나라도 있으면 소수가 아니다
 ```java
 
@@ -215,20 +227,54 @@ private static boolean isPrimeNum(int k) {
 System.out.println("2에서 100까지의 소수의 갯수는: " + count);
 ```
 
-# 11. 사용자에게 받은 문자열을 역순으로 화면에 출력하는 프로그램을 작성하시오
+# 12. 사용자에게 받은 문자열을 역순으로 화면에 출력하는 프로그램을 작성하시오
 ## 입력:abcde <br> 출력:edcba
 ```java
-//Answer
+//Answer(main에서 다이렉트로 실행)
 public static void main(String[] args) {
 
     System.out.println("문자열을 입력하세요: ");
-	Scanner input = new Scanner(System.in);
-	String str = input.next();
+	Scanner sc = new Scanner(System.in);
+	String words = sc.next(); // next는 한 단어, nextLine은 한 줄 자체를 입려받는다(next를 더 선호)
 		
-	for(int i = str.length()-1; i>= 0; i--)
+	for(int i = words.length()-1; i>= 0; i--) // 0부터 시작하기 때문에 -1
 		System.out.print(str.charAt(i));
 }
-```
+============================================================================================================
+//Answer(class생성해서 실행)
+class ReverseWord {
+    private String words;
+    
+    public ReverseWord() {
+    }
+    
+    public ReverseWord(String words) {
+    	this.words = words;  
+    }
+    public void getWords() {
+    	return words;
+    }
+    public void setWords(String words) {
+    	this.words = words;
+    }
+    public void input() {
+    	Scanner sc = new Scanner(System.in);
+	System.out.println("단어를 입력하세요");
+	String words = sc.next(); 
+	sc.close();
+	
+    public void reversePrint() {
+    	if(words = null)
+		System.out.print("단어입력이 안되었습니다");
+	for(int i = str.length()-1; i>= 0; i--) 
+		System.out.print(str.charAt(i));
+    } // 두개의 함수 사용했는데 이게 훨씬 좋음 하나의 함수당 하나의 기능을 만들어서 고객님께서 알아서 쓰시게끔	
+}
 
+// main
+ReverseWord reverseWord = new ReverseWord();
+reverseWord.input();
+reverseWord.reversePrint();
+```
 ---
 # ▶  java basic09-10 정리 참고
