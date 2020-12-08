@@ -209,22 +209,24 @@ void resultShow() {
 ## 주어진 정수 k를 2부터 k-1까지의 숫자로 나누어서 나머지가 0인 것이 하나라도 있으면 소수가 아니다
 ```java
 
+// *주의* 메인 함수에 함수를 포함시켜서 에러났음 please 잘보자ㅠㅠㅠ
 public static void main(String[] args) {
-		
 	int count = 0;
-		
-	for(int k = 2; k <= 100; k++)
-		if(isPrimeNum(k)) 
+	for(int i = 2; i <= 100; i++) {
+		if(isPrimeNum(i)) {
 			count++;
+		}
+	} System.out.println(count);
+}
+		
 		
 private static boolean isPrimeNum(int k) {
-	if(k == 1)
-		return false;
-	for(int i = 2; i <= k; i++)
+	for(int i = 2; i < k; i++) {
 		if(k % i == 0)
 			return false;
-}	
-System.out.println("2에서 100까지의 소수의 갯수는: " + count);
+	}	
+	return true;
+}
 ```
 
 # 12. 사용자에게 받은 문자열을 역순으로 화면에 출력하는 프로그램을 작성하시오
