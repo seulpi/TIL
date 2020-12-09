@@ -297,7 +297,7 @@ public static void main(String[] args) {
 
 // Main에 다이렉트로 한 코드
 
-public static void main(String[] args) { // while문은 고객님이 돌리게
+public static void main(String[] args) { 
 	Scanner sc = new Scanner(System.in);
 	System.out.println(">> 단어 개수 확인하기 <<");
 		
