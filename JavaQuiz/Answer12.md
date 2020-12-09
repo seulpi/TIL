@@ -11,7 +11,7 @@ System.out.println(str1.concat(str2));
 <br>
 
 # 2. str.substring(2, 4); substring 사용법에 대하여 설명하시오
-substring은 String이 가지고 있는 여러개의 함수 중의 하나로 (값)이 호출하는 방에 있는 문자들만 문자열로 호출하라는 함수이다
+substring은 String이 가지고 있는 여러개의 함수 중의 하나로 (인덱스범위 start, end) 호출하는 방에 있는 문자들만 문자열로 호출하라는 함수이다
 ```java
 String str = "abcde";
 String output = str.substring(2,4); // 단, 전산적으로 방은 0부터 잡기때문에 01234가 방 넘버이다
