@@ -46,7 +46,7 @@ if(result == 0) {
 ```
 <br>
 
-# 4. String.valueOf 에 대하여 설명하시오
+# ★ 4. String.valueOf 에 대하여 설명하시오 
 String.valueOf()는 어떤 타입이 와도 **"문자열"**로 바꾸어주는 함수 
 ```java
 double e = 3.75;
@@ -58,8 +58,8 @@ System.out.println(str); // 3.75 → "3.75"
 ```
 ## ＊여기서 잠깐! 그렇다면 String.valueOf()와 toString의 차이는? <br>
  ☞ 함수의 용도 자체가 아예 다른 용도 <br>
- String.valueOf(값or변수)는 함수의 값을 받아서 String으로 바꿔주는것 <br>
- toString은 () String을 정의해주는 함수 / String.valueOf(값or변수)를 할때도 사실상 toString의 과정을 거친다 / 일반적인 자료형을 가진 값이나 변수들에 대해서 사용X 객체에서 자유롭게 사용 가능 <br>
+ String.valueOf(값or변수)는 함수의 값을 받아서 String으로 바꿔주는것 / valueOf는 데이터타입을 바꿔준다 <br>
+ toString은 () String을 정의해주는 함수 / String.valueOf(값or변수)를 할때도 사실상 toString의 과정을 거친다 / 일반적인 자료형을 가진 값이나 변수들에 대해서 사용X 객체에서 자유롭게 사용 가능 <br> 
  >> 가장 큰 차이는 객체가 null일때) <br> 
  -toString(): 대상 값이 null이면 NPE(Null PointerException)를 발생 -> Object에 담긴 값이 String이 아니여도 출력 <br>
  -String.valueOf(): "null" 문자열 출력
@@ -84,7 +84,8 @@ String은 연산할때 기존의 값에 값을 더해서 붙이는게 아니기 
 <br>
 그런데 StringBuilder는 기존의 값에 값을 더할 수 있기 때문에 중간에 객체 생성을 하지않고 방 만드는걸 반복하지 않는다 <br>
 같은 주소를 가진 방에 이어서 값들을 연산 가능하게한다 
-따라서 String보다 메모리공간↓ 속도 ↑ 
+따라서 String보다 메모리공간↓ 속도 ↑ <br>
+>> **append, delete, replace등과 같은 함수들을 많이 사용해야할때는 StringBuilder를 사용하는게 좋다**
 
 ```java
 String: immutable
@@ -170,7 +171,8 @@ public class Name {
 	}
 
 	public void nameOutput() {
-		int index = name.indexOf(" ");
+		int index = name.indexOf(" "); /* indexOf( "찾을 특정 문자" , "시작할 위치" ) 이런식으로 사용해 주면된다
+						"시작할 위치" 같은경우는 생략이 가능하며 생략할 경우 0번째 즉 처음부터 찾기 시작*/
 		
 		if(index < 0) // indexOf는 발견하지 못하면 -1을 값으로 반환
 			System.out.println("공백이 없군요. 다시 입력해주세요.");
@@ -249,6 +251,7 @@ Scanner 클래스를 이용해서 한 줄 읽고, 공백으로 분리된 "단어
 입력 : 그만 > 출력 : 프로그램 종료
 ```
 ```java
+>> me
 
 // JavaCount class
 import java.util.Scanner;
@@ -262,9 +265,8 @@ public class JavaCount {
 		Scanner sc = new Scanner(System.in);
 	
 		while(true) {
-		
 			System.out.println("문장을 입력하세요: ");
-			name = sc.nextLine();
+			name = sc.nextLine(); // next로 하게되면 공백에서 끊김 따라서 문장전체를 받아야해서 nextLine
 			String[] array = name.split(" ");
 			
 			if(name.equals("그만")) {
@@ -276,9 +278,8 @@ public class JavaCount {
 				for(int i = 0; i < array.length; i++) {
 					count++;
 				}
-				System.out.println("단어의 개수는 " + count);
+				System.out.println("단어의 갯수는 " + count);
 			}
-
 		}	
 	}
 }
@@ -291,7 +292,86 @@ public static void main(String[] args) {
 	javaCount.nameInput();
 }
 ```
+```java
+>> teacher
 
+// Main에 다이렉트로 한 코드
+
+public static void main(String[] args) { // while문은 고객님이 돌리게
+	Scanner sc = new Scanner(System.in);
+	System.out.println(">> 단어 개수 확인하기 <<");
+		
+	while(true) {
+		System.out.println("입력: ");
+			
+		String sentence = sc.nextLine();
+			
+		if(sentence.compareToIgnoreCase("stop") == 0) {
+			System.out.println("프로그램 종료");
+			break;
+		}
+		String[] words = sentence.split(" ");
+		System.out.println("단어의 갯수는: " + words.length);
+			
+		for(int i = 0; i < words.length; i++) {
+			System.out.println("단어는 " + words[i].length());
+		}
+	}
+}
+
+// 클래스 메인 기능 달리해서 만드 코드
+
+// WordCount class
+public class WordCount {
+	private String sentence;
+	private String[] words;
+	
+	WordCount(String sentence) {
+		this.sentence = sentence;
+	}
+
+	public void wordSplit() {
+		if(sentence == null) {
+			System.out.println("입력값이 없습니다"); // break주면 뒤에 안나오니까 죽지말라고 하나 넣어준것
+			return;
+		}
+		this.words = sentence.split(" "); // 먼저 잘라놔야지 밑에 함수들이 실행되겠지
+	}
+	
+	public void wordPrint() {
+		if(words == null) {
+			System.out.println("입력값이 없습니다"); 
+			return;
+		}
+		System.out.println("단어의 갯수는: " + words.length);
+		for(int i = 0; i < words.length; i++) {
+			System.out.println("단어는 " + words[i].length());
+		}
+	}
+	
+	public void gerResult() {
+		wordSplit();
+		wordPrint();
+	}
+
+}	
+
+// Main class
+
+public static void main(String[] args) { // while문은 고객님이 돌리게
+	Scanner sc = new Scanner(System.in);
+	System.out.println(">> 단어 개수 확인하기 <<");
+		
+	while(true) {
+		System.out.println("입력: ");
+			
+		WordCount wordCount = new WordCount(sc.nextLine());
+		wordCount.gerResult();	
+	}
+}
+```
+---
+# ▶  java basic11 정리 참고
 
 
 
