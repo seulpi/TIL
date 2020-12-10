@@ -419,7 +419,7 @@ public class SecondArray {
 	
 	public void secondRandom() {
 		for(int i = 0; i < ar.length; i++) {
-			for(int j = 0; j < ar.length; j++) {
+			for(int j = 0; ~j < ar.length;~ j++) { // for(int j = 0; j < ar[i].length; j++) 이게 맞음ㅎㅎ..
 				ar[i][j] = (int)(Math.random()*10 +1);
 			}
 			
@@ -428,7 +428,7 @@ public class SecondArray {
 	
 	public void secondPrint() {
 		for(int i = 0; i < ar.length; i++) {
-			for(int j = 0; j < ar.length; j++) {
+			for(int j = 0; ~j < ar.length;~ j++) { //for(int j = 0; ~j < ar[i].length;~ j++) 이게 맞음ㅎㅎ..
 				System.out.print(ar[i][j]+ " ");
 			}System.out.println();
 		}
