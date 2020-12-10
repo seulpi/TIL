@@ -221,12 +221,13 @@ public class Num {
 	
 	public void maxNum() {
 		int[] ar = new int[5];
-		int max = 0;
 		
 		for(int i = 0; i <ar.length; i++) {
 			ar[i] = (int)(Math.random()*100 +1);
 				 
 		}
+		
+		int max = 0; // int max = ar[0]; 으로 시작해도됨 그럼 밑에 for문 int = 1부터 시작 
 	
 		for(int i = 0; i < ar.length; i++) {
 			if(max < ar[i]) {
