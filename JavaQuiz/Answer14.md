@@ -1,5 +1,5 @@
 # 1. 상속을 UML로 표기해 보세요
- - UML : 그림으로  된 표기법  ex) 다이어그램 
+ ## UML : 그림으로  된 표기법  ex) 다이어그램 
 ![Untitled Diagram](https://user-images.githubusercontent.com/74290204/101778982-fd123100-3b37-11eb-99af-0a58fbb017f3.png)
 
  <br>
