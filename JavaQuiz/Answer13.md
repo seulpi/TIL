@@ -36,7 +36,7 @@ int[] arr2 = new int[5];
 
 Arrays.fill(ar1, 7);
 
-		//---------------|여기까지  
+		//---------------|여기까지 index 시작위치
 System.arraycopy(arr1, 0, arr2, 3, 1); // arr1배열의 0의 값을 arr2의 3번째부터 1개 넣어라
 
 for(int i = 0; i<arr1.length; i++) {
