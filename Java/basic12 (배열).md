@@ -362,7 +362,8 @@ int[][] arr = { {1, 2, 3}, {4, 5, 6}, {7, 8, 9};
 for(int i = 0; i < arr.length; i++) //arr.length;행을 먼저
 	for(int j = 0; j < arr[i].length; j++) // arr[i].length 행 안에 있는 열의 길이만큼
 ```
-
+----
+# ▶ 배열문제에서  <br>  1.최댓값&최소값 구하기 <br> 2.오름차순&내림차순 정렬  반드시 할 줄 알아야함
 
 
 
