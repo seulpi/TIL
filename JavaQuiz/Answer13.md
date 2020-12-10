@@ -414,12 +414,13 @@ public static void main(String[] args) {
 //SecondArray class 
 public class SecondArray {
 	
-	private int[][] ar = new int[4][4]; 
+	private int[][] ar = new int[4][4];  // 클래스로 만들때 이렇게 잘 사용 안함 밑에 teacher 참고! 
 	
 	
 	public void secondRandom() {
 		for(int i = 0; i < ar.length; i++) {
-			for(int j = 0; ~j < ar.length;~ j++) { // for(int j = 0; j < ar[i].length; j++) 이게 맞음ㅎㅎ..
+					↓--------------틀림
+			for(int j = 0; j < ar.length; j++) { // for(int j = 0; j < ar[i].length; j++) 이게 맞음ㅎㅎ..
 				ar[i][j] = (int)(Math.random()*10 +1);
 			}
 			
@@ -428,7 +429,8 @@ public class SecondArray {
 	
 	public void secondPrint() {
 		for(int i = 0; i < ar.length; i++) {
-			for(int j = 0; ~j < ar.length;~ j++) { //for(int j = 0; ~j < ar[i].length;~ j++) 이게 맞음ㅎㅎ..
+					↓--------------틀림
+			for(int j = 0; j < ar.length; j++) { //for(int j = 0; j < ar[i].length; j++) 이게 맞음ㅎㅎ..
 				System.out.print(ar[i][j]+ " ");
 			}System.out.println();
 		}
@@ -441,6 +443,20 @@ public static void main(String[] args) {
 	array.secondRandom();
 	array.secondPrint();
 }
+```
+▶ teacher참고(배열을 클래스에서 구현할때 사용법)
+```java
+>> 상수와 배열의 초기화값을 함수로 나눠서 선언
+final int ROWS = 4; 
+final int COLS = 4; // 배열의 행열을 상수로 선언
+	 
+int[][] ar; // 배열의 선언
+	 
+Static { // 인스턴스 함수 배열의 초기화 (위에서 선언한 상수값)
+	ar = new int[ROWS][COLS];
+}
+
+밑 프로그래밍 코드는 위와 동일
 ```
 <br>
 
