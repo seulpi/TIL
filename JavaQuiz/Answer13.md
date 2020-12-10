@@ -369,7 +369,7 @@ public static void main(String[] args) {
 public class ImportanrNum {
 	
 	private int[] arr = new int[10];
-	private int sum;
+	private double sum;
 	
 	ImportanrNum() {	
 	}
@@ -389,7 +389,7 @@ public class ImportanrNum {
 		sum += arr[i]; 
 		}
 		System.out.println();
-		System.out.println("평균은: " + sum/10.0);
+		System.out.println("평균은: " + sum/10.0); sum/10.0 → sum/arr.length 이게 정석(왜냐면 다이렉트로 값 넣으면 배열 바뀔때마다 여기를 계속 바꿔줘야하니까)
 	}
 }
 
