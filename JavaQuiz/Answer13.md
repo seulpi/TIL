@@ -243,7 +243,44 @@ public static void main(String[] args) {
 		Num num = new Num();
 		num.maxNum();
 }
-```	
+```
+▶teacher solution
+```java
+>> 나와 다른 포인트는 static 함수 사용!
+
+public class Static {
+ public static void main(String[] args) {
+	 int[] ar = new int[5];
+	 for(int i = 0; i <ar.length; i++) {
+		ar[i] = (int)(Math.random()*100 +1);
+		System.out.println(ar[i] + " ");
+	 }
+	 System.out.println();
+	 int max = ArrUtil.maxArr(ar);
+	 System.out.println(max);	
+ 	}
+}
+
+class ArrUtil {
+	public static int maxArr(int[]ar) { //static 포인트 배열 바뀌어도 맥스값만 뽑아내면되니까
+		if(ar == null) {
+			System.out.println("배열이 없습니다");
+			return 0; // 리턴값이 정수니까 일단 0으로 리턴 
+		}
+		
+		int max = ar[0];
+
+		for(int i = 1; i < ar.length; i++) {
+			if(max < ar[i]) {
+				max = ar[i];
+			}
+		}
+		
+		return max;
+	}
+}
+```
+
 # 9. 아래의 프로그램을 짜시오
 ## -5개의 숫자를 랜덤으로 받아 배열로 저장 <br> -5개의 숫자를 내림차순으로 정렬하여 출력
 ```java
