@@ -127,16 +127,16 @@ public class Static {
 	void setMyNumber(int n) {
 		myNum = n;
 	}
-	void showMyNumber() { // 1.클래스명으로 접근
+	void showMyNumber() { 
 		showInt(myNum);
 	}
 	
-	public static void main(String[] args) { // 2.객체로 접근
-		Static.showInt(20);
+	public static void main(String[] args) { 
+		Static.showInt(20); // 1.클래스명으로 접근
 		Static np = new Static();
 		np.showDouble(3.15);
 		np.setMyNumber(75);
-		np.showMyNumber();	
+		np.showMyNumber(); // 2.객체로 접근
 	}
 }
 // 클래스메소드나 클래스변수는 클래스명으로 접근하는게 좋다(직관적)
