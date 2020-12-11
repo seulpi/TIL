@@ -14,6 +14,8 @@ B has A : B가 A를 가지고 있다 (포함관계)
 
 # 3. 아래가 되지 않는 이유에 대하여 메모리 그림으로 설명하시오
 ## MobilePhone(부모) SmartPhone(자식) <br> SmartPhone s = new MobilePhone();
+![상속(다형성)](https://user-images.githubusercontent.com/74290204/101921567-7e3cf700-3c10-11eb-9c4f-9e9354cc8381.png)
+
 
 # 4. 메소드 오버라이딩 이란?
 - 오버라이딩이란 상속관계에서 부모와 자식의 함수리턴타입, 함수명, 파라미터값까지 같으나 { 구현하는 부분 } 만 다른 것
