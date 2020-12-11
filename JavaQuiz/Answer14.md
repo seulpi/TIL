@@ -355,3 +355,45 @@ class Point3D extends Point {
 --------------------
 0 0 1 0 0 0 0 0 0 0
 ```
+
+```Answer
+public static void main(String[] args) {
+	int[] seatNum = new int[10];
+	int[] seatNum2 = new int[10];
+	int selectNum;
+		
+	System.out.println("--------------------");
+		
+	for(int i = 0; i <seatNum.length; i++) {
+		seatNum[i] = i;
+		System.out.print(seatNum[i] + " ");
+	}System.out.println();
+	
+	for(int i = 0; i < seatNum2.length; i++) {
+		seatNum2[i] = 0;
+		System.out.print(seatNum2[i] + " ");
+	}System.out.println();
+	System.out.println("--------------------");	
+		
+	System.out.println("몇 번 째 좌석을 예약하시겠습니까?");
+	Scanner sc = new Scanner(System.in);
+	selectNum = sc.nextInt();
+		
+	for(int i = 0; i <seatNum.length; i++) {
+		if(selectNum == seatNum[i]) {
+			seatNum2[i] = 1;
+		} else {
+			seatNum2[i] = 0;
+		}
+	}
+
+	for(int i = 0; i <seatNum.length; i++) {
+		seatNum[i] = i;
+		System.out.print(seatNum[i] + " ");
+		}System.out.println();
+		
+	for(int i = 0; i < seatNum2.length; i++) {
+		System.out.print(seatNum2[i] + " ");
+	}System.out.println();
+	System.out.println("--------------------");	
+}
