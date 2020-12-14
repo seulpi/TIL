@@ -120,7 +120,7 @@ public class Main {
 		name = sc.next();
 		Person person2 = new Person(name);
 		
-		String buffer = sc.nextLine(); // enter 치는거
+		String buffer = sc.nextLine(); // enter 치는거 ( enter를 이용하기 위해 선언한것 string이 아닌 다른게 와도되고 next가 와도됨 )
 		
 		while(true) { // while문 (무한반복으로 직접 입력하는경우)는 메인에서 고객님이 처리하게 하는게 좋음!
 			System.out.println("["+ person1.name + "]: <Enter>");
