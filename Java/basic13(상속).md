@@ -44,6 +44,16 @@ class SubCLS extends SuperC { // SuperC: 부모클래스 SubCLS: 자식클래스
 2. this. :자기자신을 의미 
 3. super() : 부모클래스 멤버들 호출 
 4. super. : 부모클래스 함수 호출
+
+(헷갈린 this)
+class Friend {
+	protected String name;
+	protected String phone;
+
+	public Friend(String na, String ph) {
+		name = na; 
+		phone = ph; // this는 생략이 가능하고 this는 생성자에서 na가 name이다를 가르킬때 사용(훨씬 직관적이겠지)
+	}
 ```
 - 자바는 only **단일상속(1개만 상속)만** 가능 
   - C언어는 다중 상속도 가능(2개 이상 상속)
