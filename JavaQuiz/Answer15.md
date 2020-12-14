@@ -232,6 +232,7 @@ class Regular extends Employee {
 	}
 	
 	public void printInfo() {
+		super.printInfo();
 		System.out.println("정규직 월급: " + setter);
 	}
 }
