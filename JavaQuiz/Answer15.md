@@ -237,3 +237,108 @@ class Regular extends Employee {
 	}
 }
 ```
+# 9. 
+```java
+
+public class TranningMain {
+	public static void main(String[] args) {
+		Buyer b = new Buyer();
+		b.buy(new Tv());
+		b.buy(new Computer());
+		b.buy(new Tv());
+		b.buy(new Audio());
+		b.buy(new Computer());
+		b.buy(new Computer());
+		b.buy(new Computer());
+		
+		b.summary();	
+	}
+}
+class Buyer {
+	int money = 10000;
+	Product[] cart = new  Product[3];
+	
+	int i = 0; // 
+	
+	void buy(Product p) {
+		// 1. 가진돈과 물건의 가격비교 : 가진 돈 적으면 메서드 종료
+		if(money < p.price) {
+			System.out.println("잔액이 부족하여" + p + "을/를 살 수 없습니다");
+			return;
+		}
+		//2. 가진 돈 충분하면 
+		money = money - p.price;
+
+		//3. 장바구니에 물건을 담는다
+		add(p);
+	}
+	void add(Product p) {
+		//1. i의 값이 장바구니의 크기보가 같거나 크면 
+		if(i >= cart.length) {
+			//1-1 기존의 장바구니보다 2배 더 큰 배열 생성
+			Product[] temp = new Product[cart.length*2]; // 배열 2배 생성
+			//1-2 기존에 있는 내용을 복사
+			System.arraycopy(cart, 0, temp, 0, cart.length);
+			
+			cart = temp; // 기존에 있던 주소에 대입 why? temp의 범위는 사라지고 cart는 범위가 더 넓기 때문에
+		}
+		cart[i++] = p; //or cart[i] = p; i++; 해도됨
+	}
+		
+	void summary() {
+		String itemList = " ";
+		int sum = 0 ;
+		
+		for(int i = 0; i<cart.length; i++) {
+			if(cart[i] == null)
+				break;
+			itemList += cart[i] + ","; // 목록 담기
+			sum = sum + cart[i].price; // 총 가격
+		}
+		System.out.println("총 구입한 물건" + itemList);
+		System.out.println("사용한 금액: " + sum);
+		System.out.println("남은 금액: " + money);
+	}
+}
+
+class Product {
+	int price;
+	
+	Product(int price) {
+		this.price = price;
+	}
+}
+
+class Tv extends Product {
+	Tv() {
+		super(100); //Tv의 가격 100 (직접 가격세팅한것)
+	}
+	
+	@Override
+	public String toString() {
+		return "Tv"; 
+	}
+}
+
+class Computer extends Product {
+	Computer() {
+		super(200); //Computer의 가격 200(직접 가격세팅한것)
+	}
+	
+	@Override
+	public String toString() {
+		return "Computer"; 
+	}
+}
+
+class Audio extends Product {
+	Audio() {
+		super(300); //Audio의 가격 200(직접 가격세팅한것)
+	}
+	
+	@Override
+	public String toString() {
+		return "Audio"; 
+	}
+}
+```
