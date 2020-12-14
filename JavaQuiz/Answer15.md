@@ -46,7 +46,104 @@ B has A : B가 A를 가지고 있다 (포함관계)
 	3  3  3  수희님이 이겼습니다!
 ================================================================================
 ```
+```java
+//Person class[배열이용] - 이거 사용하려다 값 못냈음 ㅠㅠ 중간에 비교하는거에서 막혀서
+public class Person {
+	
+	String name;
+	int[] ar ;
+	int num = 3;
+	
+	Person(String name) {
+		this.name = name;
+		ar = new int[num];
+	}
+	
+	public boolean game() {
+		
+		boolean isDuplicate = true;
+		
+		for(int i =0; i <ar.length; i++) {
+			ar[i] = (int)(Math.random()*3 +1);
+		}
+	
+		for(int i =0; i <ar.length; i++) { // 숫자 같은지 비교 하는거에서 막히는구만
+			if(ar[0] != ar[i]) { 
+				isDuplicate = false;
+				break;
+			}
+		}
+		
+		for(int i = 0; i < ar.length; i++) { // 출력
+			System.out.print("\t" + ar[i] + " ");
+		}
+		return isDuplicate; 
+	}	
+}
 
+//Person class[boolean타입만 이용]
+class Person {
+	private int num1, num2, num3;
+	public String name;
+
+	public Person(String name) {
+		this.name = name;
+	}
+
+	public boolean game() {
+		num1 = (int) ((Math.random() * 3) + 1);
+		num2 = (int) ((Math.random() * 3) + 1);
+		num3 = (int) ((Math.random() * 3) + 1);
+		
+		System.out.print("\t" + num1 + "  " + num2 + "  " + num3 + "  ");
+
+		if (num1 == num2 && num2 == num3)
+			return true;
+		else
+			return false;
+	}
+}
+
+
+// Main class 
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("1번째 선수 이름 >> ");
+		String name = sc.next();
+		Person person1 = new Person(name);
+		
+		System.out.println("1번째 선수 이름 >> ");
+		name = sc.next();
+		Person person2 = new Person(name);
+		
+		String buffer = sc.nextLine(); // enter 치는거
+		
+		while(true) { // while문 (무한반복으로 직접 입력하는경우)는 메인에서 고객님이 처리하게 하는게 좋음!
+			System.out.println("["+ person1.name + "]: <Enter>");
+			buffer = sc.nextLine(); // enter 치는거
+			
+			if(person1.game()) {
+				System.out.println(person1.name + "님이 이겼습니다!");
+				break;
+			}
+			System.out.println("아쉽군요!");
+			System.out.println("[" +person2.name + "]: <Enter>");
+			buffer = sc.nextLine(); // enter 치는거
+			
+			if(person2.game()) {
+				System.out.println(person2.name + "님이 이겼습니다!");
+				break;
+			}
+			System.out.println("아쉽군요!");
+		}
+		sc.close();
+	}
+}
+```
 # 6. 문제 10의 갬블링 게임을 n명이 하도록 수정하라
 ```java
 행 예시와 같이 게임에 참여하는 선수의 수를 입력받고 각 선수의 이름을 입력받도록 수정하라.
