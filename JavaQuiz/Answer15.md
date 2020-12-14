@@ -237,7 +237,11 @@ class Regular extends Employee {
 	}
 }
 ```
-# 9. 
+# 9. 아래를 프로그래밍하시오(남궁성자바 연습문제)
+![캡처111](https://user-images.githubusercontent.com/74290204/102044395-1659fc80-3e1a-11eb-9a86-7d37516ed4b8.PNG)
+![캡처222](https://user-images.githubusercontent.com/74290204/102044453-2d98ea00-3e1a-11eb-87d9-403638e52ab1.PNG)
+![캡처333](https://user-images.githubusercontent.com/74290204/102044471-35588e80-3e1a-11eb-9c5c-bafe65ea36ee.PNG)
+
 ```java
 
 public class TranningMain {
