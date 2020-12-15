@@ -54,6 +54,7 @@ why? interface에서 static 과 default 가 지원이 되면서 함수 구현도
 
 # 7. 사칙연산 계산기를 아래의 조건으로 짜시오
 ## -interface 를 활용할것 <br> -예외처리 메커니즘을 적용할것
+### * 이 문제 스캐너 입력하는 거 추가해서 풀어볼것 * (9번과같은문제)
 ```java
 
 public class TranningMain {
@@ -106,7 +107,7 @@ class Calculator implements ICalculator {
 ```
 <br>
 
-# 8. 다음 Stack 인터페이스를 상속받아 실수를 저장하는 <br>StringStack 클래스를 구현하라<br> (구현할수 있도록 할것)   * 수정중 *
+# 8. 다음 Stack 인터페이스를 상속받아 실수를 저장하는 <br>StringStack 클래스를 구현하라<br> (구현할수 있도록 할 것)   * 수정중 *
 ```java
 interface Stack {
    int length(); // 현재 스택에 저장된 개수 리턴
@@ -211,6 +212,288 @@ class StackApp implements Stack {
 				System.out.print(arr[i] + " ");
 			}
 		}return true;
+	}
+}
+```
+<br>
+
+# 9. 철수 학생은 다음 3개의 필드와 메소드를 가진 4개의 클래스 Add, Sub, Mul, Div를 작성하려고 한다 
+### * 문제 이해가 처음에 잘안됐음 →  모르는 용어 : 피연산자, 필드  <br> 문제 7번과 같은 문제 같음 문제내는 방식만 다르다
+```java
+- int 타입의 a, b 필드: 2개의 피연산자
+- void setValue(int a, int b): 피연산자 값을 객체 내에 저장한다.
+- int calculate(): 클래스의 목적에 맞는 연산을 실행하고 결과를 리턴한다.
+곰곰 생각해보니, Add, Sub, Mul, Div 클래스에 공통된 필드와 메소드가 존재하므로 
+새로운 추상 클래스 Calc를 작성하고 Calc를 상속받아 만들면 되겠다고 생각했다. 
+그리고 main() 메소드에서 다음 실행 사례와 같이 2개의 정수와 연산자를 입력받은 후,
+ Add, Sub, Mul, Div 중에서 이 연산을 처리할 수 있는 객체를 생성하고 
+ setValue() 와 calculate()를 호출하여 그 결과 값을 화면에 출력하면 된다고 생각하였다.
+  철수처럼 프로그램을 작성하라.
+
+두 정수와 연산자를 입력하시오 >> 5 7 +
+12
+```
+```java
+// Answer
+import java.util.Scanner;
+public class ExMain {
+	public static void main(String[] args) {
+	
+		Scanner sc = new Scanner(System.in);
+		System.out.println("두 정수와 연산자를 입력하시오 >> ");
+		
+		int a, b;
+		char cal;
+		a = sc.nextInt();
+		b = sc.nextInt();
+		cal = sc.next().charAt(0);
+		
+		Add add = new Add();
+		
+		if(cal == '+') {
+			add.setValue(a, b);
+			System.out.println(add.calculate());
+		} 
+	}
+}
+--------------------------------------------------------------
+abstract class Calc  {
+	int a, b;
+	public void setValue(int a, int b) {
+		this.a = a;
+		this.b = b;
+	}
+	
+	public int getA() {
+		return a;
+	}
+	
+	public int getB() {
+		return b;
+	}
+	
+	abstract int calculate();
+}	
+
+class Add extends Calc {
+	
+	public int calculate() {
+		return getA() + getB();
+	}
+	
+}
+
+class Sub extends Calc {
+	
+	public int calculate() {
+		return getA() - getB();
+	}
+}
+
+class Mul extends Calc {
+	
+	public int calculate() {
+		return getA() * getB();
+	}
+}
+
+class Div extends Calc {
+	
+	public int calculate() {
+		return getA() / getB();
+	}
+}
+```
+# 10. 연습문제 7-22 번을 푸시오(JavaQuiz16] 4번문제)
+### Point 클래스는 어디에 어떻게 활용??????
+```java
+
+public class ExMain {
+
+	public static void main(String[] args) {
+		Circle circle = new Circle(3.5, 3);
+		System.out.println("원 넓이의 면적: " + circle.calcArea());
+		
+		Rectangle rectangle = new Rectangle(4.5, 2.5, 4);
+		System.out.println("사각형 넓이의 면적: " + rectangle.calcArea());
+		System.out.println(rectangle.isSquare());
+	}
+}
+
+abstract class Shape {
+	Point p;
+	
+	Shape() {
+		this(new Point(0,0));
+	}
+	
+	Shape(Point p) {
+		this.p = p;
+	}
+	
+	abstract double calcArea();
+	
+	Point getPosition() {
+		return p;
+	}
+	
+	void setPosition(Point p) {
+		this.p = p;
+	}
+}
+
+class Point {
+	int x;
+	int y;
+	
+	Point() {
+		this(0,0);
+	}
+	
+	Point(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	public String toString() {
+		return "[" + x + "," + y + "]";
+	}
+}
+
+class Circle extends Shape {
+	private double radius;
+	
+	Circle(double radius , int p) {
+		super.getPosition();
+		this.radius = radius;	
+	}
+	
+	public Circle() {
+	
+	}
+
+	@Override
+	public double calcArea() {
+		return radius*radius*Math.PI;
+	}
+}
+
+class Rectangle extends Shape {
+	private double weight;
+	private double height;
+	
+	Rectangle(double weight, double height, int p) {
+		super.getPosition();
+		this.weight = weight;
+		this.height = height;
+	}
+	
+	@Override
+	public double calcArea() {
+		return weight*height;
+	}
+	
+	public boolean isSquare() {
+		return (weight == height) ? true : false;
+	}
+}
+```
+<br>
+
+# 11. 연습문제 7-23 번을 푸시오(JavaQuiz16] 5번문제)
+### Point 클래스는 어디에 어떻게 활용??????
+
+```java
+public class Main {
+
+	public static void main(String[] args) {
+		Shape[] arr = { new Circle(5.0), new Rectangle(3, 4), new Circle(1) };
+		System.out.println("면적의 합: "+ sumArea(arr));
+	}
+	
+	public static double sumArea(Shape[]arr) {
+		double sum = 0.0;
+		
+		for (int i = 0; i < arr.length; i++) {
+			sum = sum + arr[i].calcArea();
+		}
+		return sum;
+	}
+}
+
+abstract class Shape {
+	Point p;
+	
+	Shape() {
+		this(new Point(0,0));
+	}
+	
+	Shape(Point p) {
+		this.p = p;
+	}
+	
+	abstract double calcArea();
+	
+	Point getPosition() {
+		return p;
+	}
+	
+	void setPosition(Point p) {
+		this.p = p;
+	}
+}
+
+class Point {
+	int x;
+	int y;
+	
+	Point() {
+		this(0,0);
+	}
+	
+	Point(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+	
+	public String toString() {
+		return "[" + x + "," + y + "]";
+	}
+}
+
+class Circle extends Shape {
+	private double radius;
+	
+	Circle(double radius) {
+		this.radius = radius;	
+	}
+	
+	public Circle() {
+	
+	}
+
+	@Override
+	public double calcArea() {
+		return radius*radius*Math.PI;
+	}
+}
+
+class Rectangle extends Shape {
+	private double weight;
+	private double height;
+	
+	Rectangle(double weight, double height) {
+		this.weight = weight;
+		this.height = height;
+	}
+	
+	@Override
+	public double calcArea() {
+		return weight*height;
+	}
+	
+	public boolean isSquare() {
+		return (weight == height) ? true : false;
 	}
 }
 ```
