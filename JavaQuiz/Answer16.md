@@ -2,7 +2,7 @@
 - 정의: Object클래스란 자바에서 기본으로 제공하는 최상위 클래스(최고조상님) <br> 상속관계가 없는 **모든 클래스는 Object 클래스를 상속한다**
 - 단, 상속은 2개 이상 할 수 없기 때문에 간접적으로 상속하게 됨
 - Object 클래스에는 총 11개의 함수가 정의되어있고 그 함수는 아래 링크 확인 <br>
-▶ [Object 클래스 함수 링크] https://hyeonstorage.tistory.com/178 <br
+▶ [Object 클래스 함수 링크] https://hyeonstorage.tistory.com/178 <br>
 ★ int hashCode / Strind toString / boolean equals 는 꼭꼭 암기 ★
 
 <br>
