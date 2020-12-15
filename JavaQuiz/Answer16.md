@@ -418,5 +418,5 @@ class SmartPhone extends MobilePhone {
     	SmartPhone s = (SmartPhone)phone;    	
     	s.playApp();
 ```
-![메모리 구조](https://user-images.githubusercontent.com/74290204/102158056-f121c880-3ec3-11eb-9f19-e24f24e3ae8f.png)
+![메모리 구조](https://user-images.githubusercontent.com/74290204/102188956-4deba600-3ef9-11eb-85d9-396e1cb69b09.png)
 
