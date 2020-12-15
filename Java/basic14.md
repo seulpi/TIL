@@ -164,6 +164,9 @@ why? 관습적으로 public은 하나의 파일안에서 진입점 역할을 하
  ```java
 class Robot extends Machine implements Movable, Runnable { }
 ```
+<br>
+
+7. interface는 interface 상속이 가능하고 static함수는 @Override로 재정의 X
 
 7. instanceof 연산자 사용 가능
 ## @ 사용 (활용)
@@ -200,6 +203,9 @@ class SimplePrinter implements Printable { // extends랑 비슷한 기능의 키
 >> 예를들어, 프린트의 제조사가 1-2개가 아닌 200개 이상이다<br> 
 200개의 제조사를 추가하려면 200개의 클래스를 추가해줘야함 <br>
 이런 문제를 해결하기 위해 1.7ver부터 제공되는게 인터페이스의 '디폴트메소드'
+
+- 디폴트 메소드도 @Override로 재정의 가능 
+
 ```java
 interface Printable {
 	void print(String doc);
@@ -233,5 +239,110 @@ interface Printable {
 	 default void print2(String doc) {
 		printLine(doc); // default는 printLine으로
 	 }
+}
+```
+<br>
+
+## @ Marker 인터페이스
+1. **정의** 
+- 마킹을 한다해서 Marker 인터페이스
+- Marker 인터페이스는 인터페이스의 한 종류이며 사실상 아무 메소드도 선언하지 않은 인터페이스 <br>
+(비어있는 빈 깡통같은 interface) 
+- 단지 자신을 구현하는 클래스가 특정속성을 가짐을 표시해주는 것 
+2. **목적 :** 클래스 분류를 위해 사용
+
+3. **대표적인 EX :** Serializable, Cloneable
+```java
+interface Upper { }
+interface Lower { }
+
+/* interface Upper 는 toUpperCase( ) 호출 : 다 대문자로 바꾸는 함수 
+   interface Lower 는 toLowerCase( ) 호출 : 다 소문자로 바꾸는 함수
+```
+```java
+public class Main {
+	
+	public static void main(String[] args) {
+		Printer prn = new Printer();
+		Report doc = new Report("Simple Funny News~");
+		prn.printContents(doc);
+	}
+}
+interface Upper {
+	
+}
+interface Lower {
+	
+}
+
+interface Printable {
+	String getContents();
+}
+
+class Report implements Printable, Upper { // Printable과 Upper를 동시에 상속
+	String cons;
+
+	Report(String cons) { // interface안에 있는게 아니니까 객체생성가능 interface가 객체생성이 X 
+		this.cons = cons;
+	}
+	
+	public String getContents() {
+		return cons;
+	}
+}
+
+class Printer {
+	public void printContents(Printable doc) {
+		
+		if(doc instanceof Upper) {
+			System.out.println(doc.getContents().toUpperCase());
+		}
+		else if(doc instanceof Lower) {
+			System.out.println(doc.getContents().toLowerCase());
+		}
+		else {
+			System.out.println(doc.getContents());
+		}
+	}
+}
+```
+# 추상클래스 
+## abstract class : 얘도 추상메소드와 마찬가지로 자손이 구현해라
+- 정의 : 클래스안에 추상메소드가 한개라도 존재하면 클래스에 **abstract** <br> (= 추상메소드가 있기 때문에 추상클래스가 존재하는 것) 
+	- abstract 붙은 함수가 있는데 클래스에 abstract 없으면 error
+- 인터페이스처럼 구현부분이 없기 때문에 객체생성X , 참조변수 선언O
+### Q. interface와 추상클래스의 차이점은?
+>>> interface에 **default 나 static**이 지원이 안됐을때는 명확했으나 <br> 지금은 **default 나 static**를 interface에 사용할 수 있게 되면서 차이가 애매모호해짐 
+: 무튼, 차이는 함수를 구현할 수 있느냐 없느냐의 차이
+```java
+public class Main {
+	
+	public static void main(String[] args) {
+		// Car car = new Car(); 안됨! 구현할게 없으니까 객체생성X
+		Car car = new Genesis();
+		car.run(); // 자손이 구현한 함수 호출됨
+	}
+}
+abstract class Car {
+	public abstract void start();
+	public abstract void stop();
+	
+	final public void run() { // final은 상속하지말라고~
+		start(); // 아직 구현되지 않은 함수를 호출가능(문법적으로 허용)
+		stop();
+	}
+}// 차이! 인터페이스는 추상메소드만 가능했는데 추상클래스는 함수구현까지 가능 (근데 실무에서는 추상클래스 잘 안씀)
+
+class Genesis extends Car { // 얘는 implement아님 인터페이스 관계가 아니니까 상속받아서 써먹어야해서 extends
+	
+	@Override
+	public void start() {
+		System.out.println("시동걸기");
+	}
+	
+	@Override
+	public void stop() {
+		System.out.println("제동걸기");
+	}
 }
 ```
