@@ -36,9 +36,13 @@ public static String valueOf(Object obj) {
         return (obj == null) ? "null" : obj.toString();
     } // 고슬링 아저씨가 toString 정의해놓은 함수
 
-▶ 이게 바로 toString의 정의인데 여기서 만약 객체가 null이면 "null"을 반환 
-toString함수안에 return "문자열"로 정의되어있으면 return 값을 출력한다 
-따라서 위 예시는 이러한 일련의 과정들이 적용된 케이스!
+▶ 이게 바로println의 정의인데 여기서 만약 객체가 null이면 "null"을 반환 
+null이 아니면 toString함수 호출 함수안에 오버라이딩 안되어있다면 부모안에 함수 호출
+문자열이 정의되어있지않다면 주소값은 '@~~~'라고 출력하게 정의되어있기 때문
+→ 자손안에 toSting으로 오버라이딩해서 문자열 출력결과 넣어줘야한다(아님 주소값 뿌림)
+따라서 위 예시는 이러한 일련의 과정들이 적용된 케이스
+
+println자체가 toString을 호출하는 함수로 정의되어있기때문이다 
 ```
 
 <br>
@@ -314,7 +318,7 @@ class LPrinterDriver implements Printable {
 # 9. interface 에 대하여 설명하시오
 : interface는 클래스와 거의 동일하지만 클래스와 다르게 구현부분이 존재하지않는다 
 >> interface 특징
-1. 상수만 가능하고 {구현부분}이 X → 구현부분은 자손이 실행
+1. 상수, 추상메소드만 가능하고 {구현부분}이 X → 구현부분은 자손이 실행
    - 상속에서 오버라이딩은 자손꺼
 2. 구현부분이 존재하지 않는 함수는 abstract를 입력해야하는데 interface는 생략이 가능하고 <br>
 interface의 제한자는 public만 가능 
@@ -339,7 +343,7 @@ Printable p; // 이런 선언은 가능!
 <br>
 
 # 11. abstract 키워드에 대하여 설명하시오
-- abstract : '추상의'란 뜻 → 자바에서 abstract키워드는 추상클래스를 의미
+- abstract : '추상의'란 뜻 → 자손이 구현해라! 
 - 정의 : 추상클래스란 하나 이상의 추상 메서드를 포함하고 있는 클래스 <br> 추상 클래스는 인터페이스와 마찬가지로 선언만 있고 구현부분이 존재하지X 
 - abstract 함수가 포함되어있다면 클래스도 abstract키워드를 붙여줘여함
 -용도 : 실체 클래스들의 공통된 필드와 메소드의 이름을 통일할 목적
@@ -358,7 +362,8 @@ System.out.println(obj);
 // Answer
 
 /*  나는 Object클래스를 만들려고함 만들지 않아도되는데 
-Object클래스는 이미 자바에서 제공하고 있고 최상위 클래스임!!(모든 클래스가 상속하는)*/ 
+Object클래스는 이미 자바에서 제공하고 있고 최상위 클래스임!!(모든 클래스가 상속하는)
+따라서 만들지않아도 이미 상속*/ 
 class Circle {
 	double radius;
 	
@@ -378,7 +383,7 @@ class Circle {
 
 <br>
 
-# 13.  아래의 메모리를 그리시오
+# 13. ★ 아래의 메모리를 그리시오 ★
 ```java
 class MobilePhone {
     protected String number;
