@@ -39,6 +39,11 @@ public static String valueOf(Object obj) {
 ▶ 이게 바로println의 정의인데 여기서 만약 객체가 null이면 "null"을 반환 
 null이 아니면 toString함수 호출 함수안에 오버라이딩 안되어있다면 부모안에 함수 호출
 문자열이 정의되어있지않다면 주소값은 '@~~~'라고 출력하게 정의되어있기 때문
+
+public String toString() {
+        return getClass().getName() + "@" + Integer.toHexString(hashCode());
+    } // toString 정의 
+    
 → 자손안에 toSting으로 오버라이딩해서 문자열 출력결과 넣어줘야한다(아님 주소값 뿌림)
 따라서 위 예시는 이러한 일련의 과정들이 적용된 케이스
 
