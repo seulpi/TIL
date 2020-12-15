@@ -54,3 +54,163 @@ why? interface에서 static 과 default 가 지원이 되면서 함수 구현도
 
 # 7. 사칙연산 계산기를 아래의 조건으로 짜시오
 ## -interface 를 활용할것 <br> -예외처리 메커니즘을 적용할것
+```java
+
+public class TranningMain {
+	public static void main(String[] args) {
+	// 사칙연산 계산기 interface 활용 예외처리 메커니즘
+		
+		ICalculator calculator = new Calculator();
+		
+		try {
+		calculator.add(5, 7);
+		calculator.min(10, 2);
+		calculator.mul(8, 4);
+		calculator.div(4, 0);
+		} 
+		catch(ArithmeticException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+	}
+}
+
+interface ICalculator {
+	public void add(int x, int y);
+	public void min(int x, int y);
+	public void mul(int x, int y);
+	public void div(int x, int y);
+}
+
+class Calculator implements ICalculator {
+	int x;
+	int y;
+	
+	@Override
+	public void add(int x, int y) {
+		System.out.println("두 수의 덧은: " + (x + y));
+	}
+	@Override
+	public void min(int x, int y) {
+		System.out.println("두 수의 덧셈: " + (x - y));
+	}
+	@Override
+	public void mul(int x, int y) {
+		System.out.println("두 수의 곱셈: " + (x * y));
+	}
+	@Override
+	public void div(int x, int y) {
+		System.out.println("두 수의 나눗셈: " + (x / y));
+	}
+}
+```
+<br>
+
+# 8. 다음 Stack 인터페이스를 상속받아 실수를 저장하는 <br>StringStack 클래스를 구현하라<br> (구현할수 있도록 할것)   * 수정중 *
+```java
+interface Stack {
+   int length(); // 현재 스택에 저장된 개수 리턴
+   int capacity(); // 스택의 전체 저장 가능한 개수 리턴
+   String pop(); // 스택의 톱(top)에 실수 저장
+   boolean push(String val); // 스택의 톱(top)에 저장된 실수 리턴
+}
+그리고 다음 실행 사례와 같이 작동하도록 StackApp 클래스에 main() 메소드를 작성하라.
+
+총 스택 저장 공간의 크기 입력 >> 3
+문자열 입력 >> hello
+문자열 입력 >> sunny
+문자열 입력 >> smile
+문자열 입력 >> happy
+스택이 꽉 차서 푸시 불가!
+문자열 입력 >> 그만
+스택에 저장된 모든 문자열 팝 : smile sunny hello 
+```
+```java
+//Answer
+import java.util.Scanner;
+
+public class TranningMain {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("총 Stack 저장 공간의 크기 입력 >> ");
+		
+		StackApp app = new StackApp();
+		
+		int arRoomCount;
+		arRoomCount = app.length();
+		System.out.println(arRoomCount);
+		
+		while(true) {
+
+			System.out.println("문자열 입력 >> ");
+			
+			String str1, str2, str3, str4, str;
+			str1 = sc.nextLine();
+			System.out.println("문자열 입력 >> ");
+			str2 = sc.nextLine();
+			System.out.println("문자열 입력 >> ");
+			str3 = sc.nextLine();
+			System.out.println("문자열 입력 >> ");
+			str4 = sc.nextLine();
+			
+			app.capacity();
+			
+			str = sc.nextLine();
+			
+			if(str.equals("그만")) {
+				break;
+			}
+			
+			System.out.print(app.pop());
+			app.push(str1);
+			app.push(str2);
+			app.push(str3);
+			
+		}
+		sc.close();
+	}
+}
+
+interface Stack {
+	int length();
+	int capacity();
+	String pop();
+	boolean push(String val);
+}
+
+class StackApp implements Stack {
+	String[] arr = new String[3];
+	int index = -1;
+	
+	
+	public int length() {
+		return arr.length;
+	}
+	
+	public int capacity() {
+		for(int i = 0; i <arr.length; i++) {
+			if(index >= arr.length) {
+				System.out.println("스택이 꽉 차서 푸시 불가!");
+			}
+		}return index = arr.length - index;
+	}
+	
+	public String pop() {
+		for(int i = arr.length; i < 0; i--) {
+			System.out.println(arr[i]);
+		}
+		return "스택에 저장된 모든 문자열 팝: " ;
+	}
+	
+	public boolean push(String val) {
+		for(int i = 0; i <arr.length; i++) {
+			if(val == arr[i]) {
+				index++;
+				System.out.print(arr[i] + " ");
+			}
+		}return true;
+	}
+}
+```
