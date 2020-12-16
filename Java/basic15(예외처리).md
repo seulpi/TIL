@@ -11,8 +11,8 @@ ex] 아 사장님 메모리가 꽉 찼어요~ / 디스크가 맛이 가서 다�
 ```java
 exception에는 checked exception / unchecked exception 존재 
 
-1. checked exception : 예외처리 안해줘도 OK OK
-2. unchecked exception : 예외처리 안해주면 우럭광광우럭(JVM이 삐져서 컴파일도 안해줘ㅠ)
+1. checked exception : 예외처리 안해주면 우럭광광우럭(JVM이 삐져서 컴파일도 안해줘ㅠ)
+2. unchecked exception : 예외처리 안해줘도 OK OK
 
 → 어떤 종류가 있는지 어떤 구조인지 위 그림 참고
 ```
