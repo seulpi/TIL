@@ -14,14 +14,14 @@ exception에는 checked exception / unchecked exception 존재
 1. Checked Exception : 예외처리 안해주면 우럭광광우럭(JVM이 삐져서 컴파일도 안해줘ㅠ)
  - 문법적 오류가 아닌 프로그램 실행과정에서 발생하는 오류(예외적오류)
  - Unchecked Exception - Runtime Exception을 제외한 Exception 
- - exception 처리 코드를 컴파일러가 check → 체크 없으면 오류 발생 → ★ 반드시 예외처리 해줘야함!! 
+ - exception 처리 코드를 컴파일러가 check → check 없으면 오류 발생 → ★ 반드시 예외처리 해줘야함!! 
  - EX]  1) 존재하지 않는 파일 처리 (FileNotException)
         2) 클래스의 이름 잘못 표기 (ClassNotFoundException)
         3) 입력한 데이터 형식의 오류 (DataFormatException)
 
 2. Unchecked Exception : 예외처리 안해줘도 OK OK
  - 발생 가능할 것 같은 예외를 처리해주지 않아서 발생하는 에러 (프로그래머 실수)
- - Code를 잘 못 만들어서 생기는 문제
+ - Code를 잘못 만들어서 생기는 문제
  - 컴파일 하는데는 문제 X / 실행하면 문제가 발생 (Runtime Exception)
 
  ▶ 따라서, Unchecked Exception은 try - catch를 사용한다기보다는 코드를 바꿔서 에러 수정하는데 더 적절!
