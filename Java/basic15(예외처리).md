@@ -24,7 +24,7 @@ exception에는 checked exception / unchecked exception 존재
  - Code를 잘못 만들어서 생기는 문제
  - 컴파일 하는데는 문제 X / 실행하면 문제가 발생 (Runtime Exception)
 
- ▶ 따라서, Unchecked Exception은 try - catch를 사용한다기보다는 코드를 바꿔서 에러 수정하는 더 적절!
+ ▶ 따라서, Unchecked Exception은 try - catch를 사용한다기보다는 코드를 바꿔서 에러 수정하는게 더 적절!
 
 
 → 어떤 종류가 있는지 어떤 구조인지 위 그림 참고
