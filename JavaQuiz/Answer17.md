@@ -234,7 +234,7 @@ class StackApp implements Stack {
 12
 ```
 ```java
-// Answer
+// Answer [Me]
 import java.util.Scanner;
 public class ExMain {
 	public static void main(String[] args) {
@@ -305,7 +305,7 @@ class Div extends Calc {
 }
 ```
 ```java
-//teacher
+//Answer [teacher]
 
 import java.util.Scanner;
 public class CalMain {
