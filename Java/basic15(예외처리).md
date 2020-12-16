@@ -75,7 +75,7 @@ Good Bye~!
 	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
 	at Main.main(Main.java:11)  
     /* 에러아님 catch에서 뿌린거 
-    e.printStackTrace();  → 개발자들이 자주 사용 
+    e.printStackTrace();  → 개발자들이 자주 사용, 고객한테 줄때는 이거 없애고 출력("에러가 없습니다")해줘야함 고객이뭘알앜ㅋㅋㅋㅋ(개발자확인용이라그럼)
     이 에러처리 함수를 사용해야 위에 catch가 뿌린거를 통해 더 자세하게 실행내용을 살펴볼 수 있기 때문! */
 ```
 ### Q. try는 어디에 생성해야할까?
