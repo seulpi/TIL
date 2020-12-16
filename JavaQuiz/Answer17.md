@@ -127,7 +127,7 @@ interface Stack {
 스택에 저장된 모든 문자열 팝 : smile sunny hello 
 ```
 ```java
-//Answer
+//Answer [me]
 import java.util.Scanner;
 
 public class TranningMain {
@@ -216,7 +216,88 @@ class StackApp implements Stack {
 }
 ```
 <br>
+```java
+// Answet [teacher]
+import java.util.Scanner;
 
+public class TranningMain {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.print("총 Stack 저장 공간의 크기 입력 >> ");
+		int num = sc.nextInt();
+		
+		StringStack stack = new StringStack(num);
+		
+		while(true) {
+
+			System.out.println("문자열 입력 >> ");
+			String word = sc.next();
+			if(word.equals("그만")) {
+				break;
+			} 
+			
+			if(!stack.push(word)) {
+				System.out.println("스택이 꽉 차서 푸시 불가!");
+				break;
+			}
+		}
+		
+		System.out.println("스택에 저장된 모든 문자열 팝: ");
+		int len = stack.length();
+		for(int i = 0; i <len; i++) {
+			String s = stack.pop();
+			System.out.println(s + " ");
+		}
+			
+		sc.close();
+		
+	}
+}
+
+
+interface Stack {
+	int length();
+	//int capacity();
+	String pop();
+	boolean push(String val);
+}
+
+class StringStack implements Stack {
+	
+	private String stack[];
+	private int top;
+	
+	StringStack(int length) {
+		stack = new String[length]; 
+		top = -1; // 0으로 둬도 상관없으나 기본적으로 -1로 설정 , 인덱스 번호 가리키는 변수 
+	}
+	
+	
+	public int length() {
+		return stack.length;
+	}
+	
+	
+	public boolean push(String val) {
+		
+		if(top == stack.length -1) // 길이만큼이니까 꽉 차면 false를 반환 top은 -1로 맞추고 length는 배열 
+			return false;
+		
+		stack[++top] = val; //top에 먼저 숫자하나를 증가시키고 val을 넣는다 
+		
+		return true;
+	}
+	
+	public String pop() {
+		if(top == -1)
+			return "스택이 비어있습니다.";
+		return stack[top--]; // 꺼내고 나서 후위증가 , 한개꺼냈으니까 줄어야지
+	}
+	
+}
+```
 # 9. 철수 학생은 다음 3개의 필드와 메소드를 가진 4개의 클래스 Add, Sub, Mul, Div를 작성하려고 한다 
 ### * 문제 이해가 처음에 잘안됐음 →  모르는 용어 : 피연산자, 필드  <br> 문제 7번과 같은 문제 같음 문제내는 방식만 다르다
 ```java
