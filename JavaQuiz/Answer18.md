@@ -6,6 +6,7 @@
 - throws는 '던진다'고 하는데 에러 처리를 어디에 던져서 처리할까의 방식으로 이해하면된다 <br>
 ▶ 어디로 던져서 처리할까? <br>
    - 자신을 **호출한** 함수에 던져서 에러처리하라고 요구한다 <br>
+   
 ![throw](https://user-images.githubusercontent.com/74290204/102306314-4b468a80-3fa5-11eb-939d-7dec7d56f6d1.PNG) 
 
 - throws는 main함수에서도 사용가능하나 main에서 잡는건 실무에서 적절한 방법이 아님!
