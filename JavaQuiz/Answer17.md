@@ -304,6 +304,101 @@ class Div extends Calc {
 	}
 }
 ```
+```java
+//teacher
+
+import java.util.Scanner;
+public class CalMain {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int result = 0;
+		System.out.println("두 정수와 연산자를 입력하시오 >> ");
+		
+		try {
+		int num1 = sc.nextInt();
+		int num2 = sc.nextInt();
+		char op = sc.next().charAt(0);
+		
+		Calc cal = null;
+		switch (op) {
+		case '+':
+			cal = new Add();
+			//cal.setValue(num1, num2); 여기에도 가능
+			break;
+		case '-':
+			cal = new Sub();
+			//cal.setValue(num1, num2); 여기에도 가능
+			break;
+		case '*':
+			cal = new Mul();
+			//cal.setValue(num1, num2); 여기에도 가능
+			break;
+		case '/':
+			cal = new Div();
+			//cal.setValue(num1, num2); 여기에도 가능
+			break;
+		default:
+			System.out.println("잘못된 연산입니다");
+		}
+		cal.setValue(num1, num2); // 여기에 넣은 이유는 +,-,*,/ 다 넣어줘야되는데 여기에 넣으면 한번만 넣어도되서
+		System.out.println(cal.calculate());
+		}
+		catch (Exception e) {
+			System.out.println("비정상 종료입니다");
+			
+		}
+		sc.close();
+	}
+}
+
+abstract class Calc {
+	protected int num1;
+	protected int num2;
+	
+	public void setValue(int num1, int num2) {
+		this.num1 = num1;
+		this.num2 = num2;
+	}
+	abstract public int calculate();
+}
+
+class Add extends Calc {
+
+	@Override
+	public int calculate() {
+		
+		return num1 + num2;
+	}
+}
+
+class Sub extends Calc {
+
+	@Override
+	public int calculate() {
+		
+		return num1 - num2;
+	}
+}
+
+class Mul extends Calc {
+
+	@Override
+	public int calculate() {
+		
+		return num1 * num2;
+	}
+}
+
+class Div extends Calc {
+
+	@Override
+	public int calculate() {
+		
+		return num1 / num2;
+	}
+}
+```
+
 # 10. 연습문제 7-22 번을 푸시오(JavaQuiz16] 4번문제)
 ### Point 클래스는 어디에 어떻게 활용??????
 ```java
