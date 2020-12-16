@@ -480,7 +480,7 @@ class Div extends Calc {
 ```
 
 # 10. 연습문제 7-22 번을 푸시오(JavaQuiz16] 4번문제)
-### Point 클래스는 어디에 어떻게 활용??????
+### Point 클래스는 어디에 어떻게 활용? 나중에 배울 문제인데 신경안써도됨
 ```java
 
 public class ExMain {
@@ -576,8 +576,6 @@ class Rectangle extends Shape {
 <br>
 
 # 11. 연습문제 7-23 번을 푸시오(JavaQuiz16] 5번문제)
-### Point 클래스는 어디에 어떻게 활용??????
-
 ```java
 public class Main {
 
