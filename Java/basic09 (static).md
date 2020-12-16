@@ -9,7 +9,8 @@ JVM이 클래스를 메모리에 올릴려면 main부터 찾게되고 <br>
 ★ 메모리에 클래스를 어떻게 올리는가?
   - 자바에서는 메모리 공간을 총 7개정도로 구성되는데 일단 3개로만 이해해도 충분하다 그 3개의 공간은 다음과 같다 <br>
   1. Method Area : 함수를 올리는 영역이며 클래스 정보(01010덩어리)와 **static**으로 선언된 변수와 함수를 여기에 **먼저** 저장한다 (main다음으로)
-  2. Calltack : 함수 실행할때 이뤄지는 영역이다, 지역변수 저장 ex) System.out.println , main()
+  2. Callstack : 함수 실행할때 이뤄지는 영역이다, 지역변수 저장 ex) System.out.println , main()
+     - Stack(push,pop)으로 구현되기 때문에 Callstack으로 불는 것 
   3. Heap : 객체들이 여기에 저장된다 <br>
   단! Method Area에 static이 한번 저장되면 두번다시 메모리에 반복해서 올리지 않는다(이미 공유하는 거기 때문에 그 정보를 계속 가지고있음)
 
