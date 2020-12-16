@@ -215,8 +215,8 @@ class StackApp implements Stack {
 	}
 }
 ```
-<br>
 ```java
+
 // Answet [teacher]
 import java.util.Scanner;
 
