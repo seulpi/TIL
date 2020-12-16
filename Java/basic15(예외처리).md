@@ -6,7 +6,7 @@
 ## @ Error 와 Exception의 차이
 1. error : 시스템상의 오류 <br>
 ex] 아 사장님 메모리가 꽉 찼어요~ / 디스크가 맛이 가서 다운됐어요~
-2. exception : 코딩상의 오류 (개발자의 로직 오류)
+2. exception : 코딩상의 오류 (개발자의 로직 오류) <br>
 ▶ exception과 error를 처리하는 클래스가 따로 존재
 ```java
 exception에는 checked exception / unchecked exception 존재 
