@@ -51,55 +51,6 @@ class GoldPaperBox extends PaperBox {
 
 <br>
 
-# Object클래스와 final 선언
-## @ final 선언
-- 클래스앞에 final = 상속하지말란뜻 (클래스상속X)
-- 함수 앞에 final = 다른 클래스에서 오버라이딩 X
-<br>
-
-## @ Object클래스
-### - 정의 : 모든 클래스의 최상위 클래스
-- **★ 모든클래스는 Object클래스를 상속한다★**<br>  
-  - 상속하는 클래스가 없다면 컴파일러에의해 java.lang.Object 클래스를 자동으로 상속하게 코드가 구성된다 / 비슷한 예로 '디폴트 생성자'
-  - 단] 상속은 2개 이상 안되기 때문에 다른 클래스를 상속하면 직접적으로 Object는 상속이X, 간접적으로 상속하는 형태로 상속O 
-```java
-Shape circle = new Circle(10); 
-System.out.println(circle);
-------------------------------------
-// 왜 error가 안날까? 
-▶ Object는 최고의 조상 
-어떠한 클래스든 다 받아내기 때문에 최고의 조상을두고 다형성을 적용한 예
-```
-### - Object 클래스는 함수 11개 정도로 구성되어있음 
-▶ [Object 클래스 함수 링크] https://hyeonstorage.tistory.com/178
-```java
-// 몇개는 반드시 기억하자!
-
-1. String toString() 
-
-public class Main {
-	public static void main(String[] args) {
-		A a = new A();
-		System.out.println(a);
-	}
-}
-
-class A  { } == class A /*extends Object */ { }
-==================================================
-▶ A@28a418fc (주소값출력)
-
-class A {
-	@Override // toString은 null이 아니면 toString호출
-	public String toString() {
-		return "이것은 A 클래스입니다";
-	}
-==================================================
-▶ 이것은 A 클래스입니다
-
-public static String valueOf(Object obj) {
-        return (obj == null) ? "null" : obj.toString();
-    } // 고슬링 아저씨가 toString 정의해놓은 함수 
-```
 # [Annotation] @Override
 -Annotation의 종류 https://elfinlas.github.io/2017/12/14/java-annotation/
 ### @Override는 개발자나 컴파일러에게 오버라이딩을 직관적으로 알려주는 것 <br>
