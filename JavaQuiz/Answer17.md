@@ -311,7 +311,6 @@ import java.util.Scanner;
 public class CalMain {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int result = 0;
 		System.out.println("두 정수와 연산자를 입력하시오 >> ");
 		
 		try {
