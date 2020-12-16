@@ -108,6 +108,7 @@ class Pear extends Fruit {
 ```
 
 # 6. 다음 조건을 만족하도록 클래스 Person과 Student를 작성하시오
+## 소스코드 스캐너로 받아서 소스 줄여보기!
 ```java
 - 클래스 Person
 * 필드 : 이름, 나이, 주소 선언
