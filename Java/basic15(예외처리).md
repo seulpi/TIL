@@ -11,14 +11,27 @@ ex] 아 사장님 메모리가 꽉 찼어요~ / 디스크가 맛이 가서 다�
 ```java
 exception에는 checked exception / unchecked exception 존재 
 
-1. checked exception : 예외처리 안해주면 우럭광광우럭(JVM이 삐져서 컴파일도 안해줘ㅠ)
-2. unchecked exception : 예외처리 안해줘도 OK OK
+1. Checked Exception : 예외처리 안해주면 우럭광광우럭(JVM이 삐져서 컴파일도 안해줘ㅠ)
+ - 문법적 오류가 아닌 프로그램 실행과정에서 발생하는 오류(예외적오류)
+ - Unchecked Exception - Runtime Exception을 제외한 Exception 
+ - exception 처리 코드를 컴파일러가 check → 체크 없으면 오류 발생 → ★ 반드시 예외처리 해줘야함!! 
+ - EX]  1) 존재하지 않는 파일 처리 (FileNotException)
+        2) 클래스의 이름 잘못 표기 (ClassNotFoundException)
+        3) 입력한 데이터 형식의 오류 (DataFormatException)
+
+2. Unchecked Exception : 예외처리 안해줘도 OK OK
+ - 발생 가능할 것 같은 예외를 처리해주지 않아서 발생하는 에러 (프로그래머 실수)
+ - Code를 잘 못 만들어서 생기는 문제
+ - 컴파일 하는데는 문제 X / 실행하면 문제가 발생 (Runtime Exception)
+
+ ▶ 따라서, Unchecked Exception은 try - catch를 사용한다기보다는 코드를 바꿔서 에러 수정하는데 더 적절!
+
 
 → 어떤 종류가 있는지 어떤 구조인지 위 그림 참고
 ```
 <br>
 
-## @ 예외처리 방법
+## @예외 처리 방법 1.
 : JAVA에서는 예외처리에 대한 매커니즘을 제공하는데 그게 바로 **Try - Catch - Finally 코드**
 >> 에러 객체 띄우는 주체 = JVM <br>
 에러 출몰 → JVM이 관련 에러에 대해서 뿌리면서 프로그램 die <br> 
@@ -91,6 +104,80 @@ A. try{ }의 영역은 개발자의 역량이고 어디에 두는게 맞다고 �
 /* 에러가 나는 부분에 감싸야한다고 생각했는데 메인에서 감싸야 
 여러번 try 하는 대신 한 번만 하면 되기 때문에 메인 함수 호출할때 감싸줌 */
 ```
+### - try catch는 여러개 사용가능! 단 순서가 존재
+: catch()에서 에러를 잡을 때 부모 즉 **Excetion은 가장 아래에 존재해야함** 
+▶ why? 예외의 최고 조상님 Excetion이 맨 위에 오게 되면 <br> Excetion은 모든 예외의 함수들을 다 포함하고 있기 때문에 <br>
+맨 위에 올 경우 **하위클래스의 예외처리구문을 타지 않고 그대로 빠져나온다** <br>
+그래서 **Unreachable error** 발생 
+```java
+public static void main(String[] args) {
+		
+		try {
+			int num = 6 / 0;
+		}
+		catch (Exception e ) {
+			e.printStackTrace();
+		}catch (InputMismatchException e ) {
+			e.printStackTrace();
+		} // error ! 
+	}
+error 수정 전 ▲
+------------------------------------------------------
+error 수정 후 ▼
+
+public class Main {
+	public static void main(String[] args) {
+		
+		try {
+			int num = 6 / 0;
+		}
+		catch (InputMismatchException e ) {
+			e.printStackTrace();
+		} 
+		catch (Exception e ) {
+			e.printStackTrace();
+		}
+	}
+}
+```
+### - Finally는 에러와 관계없이 Finally 구문을 무조건 타서 실행시킴 (중간에 탈출X)
+- ★ 따라서 **반드시! 무조건!** 실행해야되는 구문은 finally안에 위치
+>> try{} : 에러X <br>
+catch{} : try안에 에러없다면 탈 필요X<br>
+finally{} : 에러 유무와 상관없이 탄다
+
+   - 객체에대한.close(); 도 에러발생가능할 확률이 있기 때문에 finally 안에서 try - close로 묶어줘야함
+
+
+## @예외 처리 방법 2. try-with- resources (자바1.7부터 제공) 
+```java
+	// ↓ resources
+try(객체 직접 생성) { } 
+→ 끝날때는(실행한 후) 내부(try-check문)에서 객체에 대한 
+.close()를 자동으로 호출해주고 메모리를 날린다
+
+▶ [close()]
+객체에 대한 .close() : 더 이상안쓸거니까 JVM아 메모리 날려됨 ㅇㅇ
+```
+
+## @예외 처리 방법 3. throws
+: 예외처리 방법 중 하나
+>> 함수선언( ) throws 예외객체 { 바디 실행 }
+```java
+throws IOException 
+```
+- throws는 에러를 던진다 who? → 자기자신을 호출한 함수한테
+- throws 는 함수단위로 호출을 넘기는거기 때문에 class 단위로 넘기는 문법은 아님
+
+![throw](https://user-images.githubusercontent.com/74290204/102306314-4b468a80-3fa5-11eb-939d-7dec7d56f6d1.PNG)
+
+### - throws main() 사용 가능?
+▶ main도 함수이기 때문에 가능은 하다 
+![throw_main_re](https://user-images.githubusercontent.com/74290204/102306286-3cf86e80-3fa5-11eb-8d9d-b95f30dd9ad4.PNG)
+
+>> 추가설명) throws ','로 여러개 명시 가능 <br>
+Exception은 상위클래스이기 때문에 하위 에러들의 케이스를 다 받아낼 수 있다 <br>
+(Object가 그랬던 것처럼 )
 
 # Stack 
 : 양동이 같은 개념 (양동이 안에 물건 넣을때 1 - 2 -3 순이지만 꺼낼때는 3 - 2 -1 ) <br>
