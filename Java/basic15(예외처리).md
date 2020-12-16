@@ -56,7 +56,7 @@ public class Main {
 			System.out.printf("%d / %d = %d \n", n1, n2, n1 / n2);
 		}  // n1/n2에서 만약 0이 들어가면 error나니까 예외처리해줘야함
      // catch방법1    
-		catch (ArrayIndexOutOfBoundsException e) { // 에러나는걸 JVM이 받아서 처리해주는 부분
+		catch (AtithmeticException e) { // 에러나는걸 JVM이 받아서 처리해주는 부분
 			System.out.println(e.getMessage());  
 		} // 0넣어서 나눴을때 오류 처리
 		catch (InputMismatchException e) { 
