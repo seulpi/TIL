@@ -42,7 +42,7 @@ why? interface에서 static 과 default 가 지원이 되면서 함수 구현도
 # 5. unchecked 와 cheked 예외의 차이는?
 : 예외(exception) 처리는 두가지의 종류가 있는데 그게 바로 **unchecked exception, checked exception**이다 
 - unchecked exception : 예외처리를 해주지 않아도 되는 에러
-- checked exception : 예외처리를 해줘야 되는 에러 <br>
+- checked exception : 예외처리를 **반드시** 해줘야 되는 에러 <br>
 ▶ 아래 6.그림 참조
 
 <br>
