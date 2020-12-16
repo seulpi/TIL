@@ -70,6 +70,7 @@ f.print();
 나는 배이다.
 ```
 ```java
+//Answer 
 public class TranningMain {
 
 	public static void main(String[] args) {
@@ -143,6 +144,7 @@ class Pear extends Fruit {
 ```
 
 ```java
+//Answer
 import java.util.Scanner;
 
 public class TranningMain {
@@ -257,7 +259,7 @@ public static void main(String[] args) {
 }
 ```
 ```java
-
+//Answer
 public class TranningMain {
 
 	public static void main(String[] args) {
@@ -325,7 +327,7 @@ public static void main(String[] args) {
 면적은 400.0
 ```
 ```java
-
+//Answer
 public class TranningMain {
 
 	public static void main(String[] args) {
