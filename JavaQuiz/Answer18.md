@@ -29,11 +29,14 @@ try {
 
 # 3. try with resource 에 대하여 설명하시오
 - try with resource는 자바 1.7ver부터 사용 가능한 문법
-- 기존의 try - catch 구문은 ()없이 {}로 감싸서 오류 처리를 하고 실행한 메모리를 이제 사용하지 않고 없애도 좋다는 <br> 의미전달로(JVM에게) close를 직접 호출해줘야했었음 → 이 부분이 쌓이다 보면 out of memoty → 향상된 게 try with resource 
+- 기존의 try - catch 구문은 ()없이 {}로 감싸서 오류 처리를 하고 실행한 메모리를 이제 사용하지 않고 없애도 좋다는 <br> 의미전달로(JVM에게) close를 직접 호출해줘야했었음 → 이 부분이 쌓이다 보면 out of memory → 향상된 게 try with resource 
   - try with resources는 실행이 종료될때 close()를 자동 호출해주면서 메모리를 날려줌
 ```java
   // ↓ 이게 resource
 try(객체를 직접생성) { }
+
+try-catch-finally는 .close() 직접호출
+try with resource는 .close() 자동호출 
 ```
 
 # 4. equals 함수에 대하여 설명하시오
