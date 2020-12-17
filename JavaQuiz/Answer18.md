@@ -35,8 +35,9 @@ try {
   // ↓ 이게 resource
 try(객체를 직접생성) { }
 
-try-catch-finally는 .close() 직접호출
-try with resource는 .close() 자동호출 
+try-catch-finally는 .close() 직접 호출
+try with resource는 .close() 자동 호출 
+[모든걸 close해주는건 아니고 AutoCloseable을 가지고 있는 것(:implements or 상속) 에 한해서 자동 호출] 
 ```
 
 # 4. equals 함수에 대하여 설명하시오
