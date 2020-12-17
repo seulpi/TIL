@@ -37,13 +37,14 @@ double num2 = double1;
 Integer integer = 10;
 integer++; 
 /* new Integer(integer.intValue()+1); → 객체를 새로 생성하는 것 ; 메모리에 계속 객체가 쌓이는 것
-연산은 기본형에서 쓸 수 있는 연산을 쓸 수 있지만 객체 밑도끝도 없이 생성중 */
+연산은 기본형에서 쓸 수 있는 연산이 모두 가능하지만 객체 밑도 끝도 없이 생성중 */
+
 int num1 = integer + 5;
 ```
 
 ## 3. Number class
 ### - Byte, Short, Integer, Long, Float, Double 클래스들의 슈퍼 클래스
-- Number 클래스 안에는 기본형 타입의 함수가 정의되어이씀
+- Number 클래스 안에는 기본형 타입의 함수가 정의되어있음
 ```java
 public abstract int intValue();
 public abstract double doubleValue();
