@@ -169,41 +169,8 @@ public class Main {
 	2. Deep Copy 
 	- 객체를 복사할 때, 해당객체와 인스턴스 변수까지 복사
 	- 전부 복사해서 새 주소에 담기 때문에 참조를 공유하지X
-```java
-public class Main {
-	public static void main(String[] args) {
-		Point org = new Point(3, 5);
-		Point cpy;
-		try {
-			cpy = (Point)org.clone();
-			org.showPosition();
-			cpy.showPosition();
-		}
-		catch(CloneNotSupportedException e) {
-			e.printStackTrace();
-		}
-	}
-}
- 
-class Point implements Cloneable {
-	private int xPos;
-	private int yPos;
-	public PointRe(int x, int y) {
-		xPos = x;
-		yPos = y;
-	}
-	public void showPosition() {
-		System.out.printf("[%d, %d]", xPos, yPos);
-		System.out.println();
-	}
-	@Override 
-	public Object clone() throws CloneNotSupportedException {
-		return super.clone();
-	}
-}
-```
-<br>
-▶ ★ 위 코드 Shallow Copy, Deep Copy 메모리 구조 그림!!!!!!!
+
+▶ ★ Shallow Copy, Deep Copy 메모리 구조 그림!!!!!!!
 <br>
 
 ![clone](https://user-images.githubusercontent.com/74290204/102446980-5b786b80-4072-11eb-83a9-409af15b55fc.png)
