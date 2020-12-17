@@ -114,31 +114,36 @@ I Love you
 ```java
 import java.util.Scanner;
 
-public class ExClone {
-	
+public class Answer19_06 {
+
 	public static void main(String[] args) {
-		// 문자갯수 10개 , arraycopy를 반복으로 하면? 
+		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("문자열을 입력하세요>> ");
+		String text;
+		System.out.println("문장을 입력하세요.");
+		text = sc.nextLine();
 		
-		String str;
-		str = sc.nextLine();
 		
-		int index = 0;
-		char[] ar = new char[str.length()];
+		String[] textArr;
+		String[] temp = new String[0];
 		
-		for(int i = 0; i <ar.length; i++) {
-			for(int j = 0; j <ar.length; j++) {
-				ar[j] = str.charAt(index);
-				System.out.print(ar[j]);
-				index++;
-			}
-			if(index > ar.length) {
-				break;
+		
+		textArr = text.split(""); // 문자열입력하면 다 들어가있는 상태 
+		
+		// a p p l e 5 0~4 j = 1~5 2~6
+		for(int i = 0; i <textArr.length; i++) {
+			
+			
+			for(int j = i; j <textArr.length + i; j++) {
+				if(j > textArr.length) {   
+					j = textArr.length - i +1; 
+				}
+				temp[j+1] = textArr[j];
 			}
 			
-			System.out.println();
-			System.out.print(ar[i]);
+			for(int k = 0; k < temp.length; k++) {
+				System.out.println(temp[k]);
+			}
 		}
 	}
 }
