@@ -186,11 +186,13 @@ Rectangle[] rec = new Rectangle[3];
 ........
 Rectangle[] recSorting = Rectangle.getSortingRec(rec) 
 ......
+```
 ```java
+//Answer
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Answer_1218_8 {
+public class Answer20_09 {
 
 	public static void main(String[] args) {
 		Rectangle[] rec = new Rectangle[4];
@@ -205,6 +207,11 @@ public class Answer_1218_8 {
 			ar[i] = rec[i].getArea();
 			System.out.println(ar[i]);
 		}System.out.println();	
+		
+		Arrays.sort(ar);
+		for(int e : ar) {
+			System.out.println(e);
+		}	
 	}
 }
 
@@ -228,7 +235,7 @@ class Rectangle {
 	public int getHeight() {
 		return height;
 	}
-
+	
 	public void setHeight(int height) {
 		this.height = height;
 	}
@@ -236,5 +243,12 @@ class Rectangle {
 	public int getArea() {
 		return width*height;
 	}
+	public int compareTo(Rectangle arr[]) {
+		for(Rectangle i : arr) {
+			return i.getArea() - this.getArea();
+		}
+		return getArea();	
+	}
 }
+
 ```
