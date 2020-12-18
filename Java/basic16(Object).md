@@ -152,7 +152,7 @@ public class Main {
 2. Object class 안에 있는 clone을 이용
 * 'clone'은 주소 뿐 만 아니라 객체 안에 들어있는 값(value)까지 그대로 복사해준다 
 ``` 
->> //clone 함수 사용 방법 <br> 1단계: class 클래스명 implements Cloneable { } → Cloneable이라는 marker interface가 생성되어있어야함 <br> 2단계: <br> @Ovrride<br> public Object clone() throws CloneNotSupportdeException {<br> return super.clone()<br>}
+>> //clone 함수 사용 방법 <br> 1단계: class 클래스명 implements Cloneable { } → Cloneable이라는 marker interface <br> 2단계: <br> @Ovrride<br> public Object clone() throws CloneNotSupportdeException {<br> return super.clone() // 얇은 복사<br>}
 
 - 특징 <br> 
 1. 처음생성할때는 new ; clone은 대상이 있어야함(복사해야 되니까)
@@ -167,8 +167,8 @@ public class Main {
 	- 따라서, 해당 메모리 주소의 값이 변경되면 원본 객체 및 복사 객체의 인스턴스 변수값은 같이 변경된다 
 	>> 클래스안에 참조형이 있다면 클론의 대상은 객체가 아니라 자기가 가지고 있는 데이터 멤버까지만 <br> 클래스 안에서 객체 생성을 하면 new 생성자는 클론의 대상X (객체 참조 주소만 복사) 
 	2. Deep Copy 
-	- 객체를 복사할 때, 해당객체와 인스턴스 변수까지 복사
-	- 전부 복사해서 새 주소에 담기 때문에 참조를 공유하지X
+	- 객체를 복사할 때, 참조형 변수를 가지고 있다 그렇다면 그 참조형 변수마저도 clone해줘야한다
+	- **전부 복사해서 새 주소에 담기 때문에 참조를 공유하지X**
 
 ▶ ★ Shallow Copy, Deep Copy 메모리 구조 그림!!!!!!!
 <br>
