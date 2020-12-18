@@ -44,31 +44,6 @@ int big = ((num % 2 == 0) || (num % 7 == 0) ? 50 : 40);
 ▶ 50 ; 2의 배수를 만족하니까 true!!
 ```
 ---
-# 난수 (임의의 정수)
-```java
-						    //몇개 	스타트값
-int num = (int) (Math.random()* 6) + 1;
-
-; 6개의 숫자를 랜덤으로 뽑고 시작은 1부터
-```
-- 적용ex) 1~6까지의 임의의 정수를 뽑아서 어떤 숫자가 나왔는지 출력하시오  
-```java
-int num = (int) (Math.random()* 6) + 1;
-if(num == 1)
-    System.out.prinln("1번입니다")
-if(num == 2)
-    System.out.prinln("2번입니다")
-if(num == 3)
-    System.out.prinln("4번입니다")
-if(num == 4)
-    System.out.prinln("4번입니다")
-if(num == 5)
-    System.out.prinln("5번입니다")
-if(num == 6)
-    System.out.prinln("6번입니다")
-// 출력과정이 숫자가 랜덤으로 뽑히기때문에 출력결과도 랜덤결과에 따라 나타난다
-```
----
 # Switch / Break "switch에서 break까지
 - switch(n) : n값은 기본적으로 '정수' / 실수로 들어오면 이 문법 쓸 수 X 
   - 단, 문자열을 담는 String은 가능(사실 String자체가 인스턴스이고 주소를 참조하기 때문에 주소값은 정수이기때문에 가능하다) 
