@@ -243,7 +243,7 @@ class Rectangle {
 	public int getArea() {
 		return width*height;
 	}
-	public int compareTo(Rectangle arr[]) {
+	public int compareTo(Rectangle[] arr) {
 		for(Rectangle i : arr) {
 			return i.getArea() - this.getArea();
 		}
