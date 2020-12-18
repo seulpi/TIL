@@ -81,7 +81,7 @@ class Circle {
 	
 	@Override 
 	public boolean equals(Object obj) {
-		if(this.x == ((Circle)obj).x || this.y == ((Circle)obj).y) {
+		if(this.x == ((Circle)obj).x && this.y == ((Circle)obj).y) {
 			return true;
 		}else {
 			return false;
