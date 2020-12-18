@@ -113,8 +113,8 @@ I Love you
 [Hint] Scanner.nextLine()을 이용하면 빈칸을 포함하여 한 번에 한 줄을 읽을 수 있다
 ```
 ```java
+// Answer [me]
 import java.util.Scanner;
-
 public class Answer19_06 {
 
 	public static void main(String[] args) {
@@ -147,6 +147,22 @@ public class Answer19_06 {
 			}
 		}
 	}
+}
+```
+```java
+// Answer [teacher]
+public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("문자열을 입력하세요>> ");
+		
+		String str;
+		str = sc.nextLine();
+		
+		for(int i = 1; i <str.length(); i++) {
+			System.out.print(str.substring(i));
+			System.out.println(str.substring(0, i));
+	} 
 }
 ```
 
