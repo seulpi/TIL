@@ -271,5 +271,48 @@ equals()는 객체 안에 내용이 같은지에 대한 물음 (즉, equals는 S
 이 해의 25번째 주입니다. 
 ```
 ```java
+import java.util.Calendar;
+public class ExClone {
+	
+	public static void main(String[] args) {
+		Calendar cal = Calendar.getInstance(); 
+		/* 이 형태 자체가 SingleTon (나중에배움)
+		 *  Calendar class → private static Calendar ; 
+		 *  이 전체에 대해서 객체를 한개만 생성시킬 수 있단 뜻 게임에서 주인공1(user) new해서 여러개 못오게
+		 *  Calendar는 이미 만들어져있는거니까 가져다 사용하면됨
+		 */
+		
+		int year = cal.get(Calendar.YEAR);
+		int month = cal.get(Calendar.MONTH)+1;
+		int date = cal.get(Calendar.DATE);
+		String d;
+		
+		switch(cal.get(Calendar.DAY_OF_WEEK)) {
+		case 1 :
+			d = "일요일";
+			break;
+		case 2 :
+			d = "월요일";
+			break;
+		case 3 :
+			d = "화요일";
+			break;
+		case 4 :
+			d = "수요일";
+			break;
+		case 5 :
+			d = "목요일";
+			break;
+		case 6 :
+			d = "금요일";
+			break;
+		default:
+			d = "토요일";
+			break;
+
+		}
+
+	}
+}
 
 ```
