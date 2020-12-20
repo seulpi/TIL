@@ -93,9 +93,9 @@ public static void main(String[] args) {
 	stbuf.append(45678); // append 붙여서 출력
 
 	System.out.println(stbuf.toString()); /* 왜 toString으로 바꿔줘야되는가?
-											println은 기본형만 올 수 있고 함수를 받는 오버로딩을 만들어져있지않음 
-											따라서 toString을 받아서 String타입으로 바꿔줘야한다
-											println은 String타입 담을 수 있으니까 */
+						println은 기본형만 올 수 있고 함수를 받는 오버로딩을 만들어져있지않음 
+						따라서 toString을 받아서 String타입으로 바꿔줘야한다
+						println은 String타입 담을 수 있으니까 */
 
 	stbuf.delete(0, 2); // 0~1까지 문자열 삭제 12345678 → 345678
 
