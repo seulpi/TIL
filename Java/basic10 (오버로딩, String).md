@@ -124,10 +124,10 @@ public static void main(String[] args) {
 		System.out.println("str1과 str2는 다른 주소 참조");
 }
 =========================================================
-▶   str1과 str2는 동일 주소 참조
-    str3과 str4는 다른 주소 참조
-	str1과 str2는 다른 주소 참조
-	str1과 str2는 동일 주소 참조
+▶str1과 str2는 동일 주소 참조
+  str3과 str4는 다른 주소 참조
+  str1과 str3는 다른 주소 참조
+  str1과 str3는 동일 주소 참조
 ```
 ▶ 위 코드 그림
 ```java
