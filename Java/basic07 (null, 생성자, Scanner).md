@@ -61,7 +61,7 @@ System.out.println(str1 + " " + str2);
 
 ```java
 BankAccount = new BankAccount( ); 
-				// ↑ 생성자 함수
+			   // ↑ 생성자 함수
 ```
 
 ## - 디폴트 생성자
