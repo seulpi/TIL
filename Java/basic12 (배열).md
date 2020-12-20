@@ -177,8 +177,8 @@ for(int i = 0; i < ar.length; i++) {
 
 int[] ar = {1, 2, 3, 4, 5};
 
-for(ine e : ar) {
-	System.out.println(e);
+for(int i : ar) {
+	System.out.println(i);
 }
 ```
 <br>
