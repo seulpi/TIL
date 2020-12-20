@@ -20,7 +20,7 @@ System.out.println(str4);
 (index 범위)안에 있는 방의 값을 호출하는 함수 
 ```java
 String str = "abcdefg";
-str.substring(3); // 2번째 방에서부터 출력해라
+str.substring(3); // 3번째 숫자를 출력(index값 2번째 방에서부터 출력해라)
 str.substring(2, 4); //2번째방에서부터 3번째방까지 위치한 문자열 출력해라 
 // 같은 함수명 호출됐는데 에러가 안남 "오버로딩" 적용된것
 ```
