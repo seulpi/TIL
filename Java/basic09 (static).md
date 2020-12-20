@@ -92,7 +92,7 @@ class classVar {
 ## ★ 활용 ★
 1. 카드에서 가로 세로 사이즈가 같은데 여러개의 객체를 생성해야 할때
 2. PI
-3. 전제 개수 count <br>
+3. 전 개수 count <br>
 
 ▶ 즉 변하지 않는 공통의 것을 쓸 때 사용한다
 
@@ -166,7 +166,7 @@ public class Static {
 <br>
 
 # static 초기화 블록
-static 변수 값을 직접 할당하는 것이 아니라 값을 얻어와서 초기활할때 사용 <br>
+static 변수 값을 직접 할당하는 것이 아니라 값을 얻어와서 초기화 할때 사용 <br>
 static 안에 연산이 들어가야할 때 (연산도 **한번만** 초기화! 메모리에 한번 올리니까)
 ```java
 import java.time.LocalDate;
