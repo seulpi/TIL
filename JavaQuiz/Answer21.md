@@ -3,7 +3,7 @@
 >> class Box < T extends Number > { } <br> Number가 오거나 Number를 상속하는 것만 타입 매개변수로 가능
 - 제한하는 이유는 매개변수 자리에 어떤게 올 지 모르기 때문에 호출할 함수를 가지고 있을지도 알 수 가 없음  <br> 객체 안에 있는 함수를 호출하기 위해 제한을 둠으로써
 
-# 2. 아래와 같이 출력값이 나오도록 프로그래밍 하시오 (다시 DDBox그 부분해결X)
+# 2. 아래와 같이 출력값이 나오도록 프로그래밍 하시오 
 ```java
 class DDBoxDemo {
     public static void main(String[] args) {
@@ -24,19 +24,49 @@ Apple & 25
 Orange & 33
 ```
 ```java
-class DBox <F, N > {
-	private F fruit;
-	private N num;
+// Answer
+public class DDBoxDemo {
+	public static void main(String[] args) {
+	    DBox<String, Integer> box1 = new DBox<>();
+        box1.set("Apple", 25);
+
+        DBox<String, Integer> box2 = new DBox<>();
+        box2.set("Orange", 33);
+        
+        DDBox<DBox<String, Integer>, DBox<String, Integer>> ddbox = new DDBox<>();
+        ddbox.set(box1, box2);
+
+        System.out.println(ddbox);
+	}
+}
+
+class DBox <T1, T2> {
+	private T1 fruit1;
+	private T2 num1;
 	
-	public void set(F f, N n) {
-		fruit = f;
-		num = n;
+	public void set(T1 f1, T2 n1) {
+		fruit1 = f1;
+		num1 = n1;
 	}
 	
 	public String toString() {
-		return fruit + " & " + num;
+		return fruit1 + " & " + num1;
 	}
 }
+class DDBox<T3, T4> { 
+	private DBox fruit2;
+	private DBox num2;
+	
+	public void set(DBox f2, DBox n2) {
+		this.fruit2 = f2;
+		this.num2 = n2;
+	}
+	
+	public String toString() {
+		return fruit2 + "\n" + num2;
+	}
+}
+
 ```
 # 3. 아래와 같이 출력값이 나오도록 프로그래밍 하시오 
 ```java
@@ -56,8 +86,8 @@ class DBox <F, N > {
 55 & 99
 ```
 ```java
+//Answer
 public class Answer_1221 {
-
 	public static void main(String[] args) {
 		Box<Integer> box1 = new Box<>();
 		box1.set(99);
@@ -77,7 +107,6 @@ public class Answer_1221 {
 		box2.set(temp);
 	}
 }
-
 class Box <T> {
 	private T num;
 	
@@ -159,6 +188,7 @@ Toy가 오거나 Toy를 상속해주는 부모클래스가 올 수 있는데 'To
 Poly
 ```
 ```java
+//Answer
 public class Answer_1221 {
 
 	public static void main(String[] args) {
@@ -189,7 +219,6 @@ public class Answer_1221 {
 		}
 	}
 }
-
 class Box<T> {
 	private T ob;
 	
