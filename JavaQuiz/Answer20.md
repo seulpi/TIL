@@ -177,7 +177,7 @@ class Rectangle {
 }
 ```
 
-# 8. 아래를 프로그래밍 하시오
+# 8. ★ 아래를 프로그래밍 하시오 ★
 ## *(하는중 : 내림차순 구현...못하는중,,)*
 ```java
 - Rectangle 배열 4개를 만든후 스캐너 객체로 가로와세로를 입력하여 4개의 객체를 배열에 할당한다 
@@ -252,5 +252,110 @@ class Rectangle {
 		return getArea();	
 	}
 }
+
+```
+```java
+// Answer [teacher]
+import java.util.Arrays;
+
+public class RecSortMain {
+
+	public static void main(String[] args) {
+		Rectangle[] recArr = { new Rectangle(6,6), new Rectangle(5,5), new Rectangle(10,10)};
+		
+		//Rectangle.getSortingRec(recArr);
+		
+		RecArrays.sort(recArr); 
+		/* 현재는 오름차순상태! 내림차순으로 바꾸고 싶다면 compareTo함수에서 자리를 바꿔주면됨
+		this.getArea() - ((Rectangle)o).getArea()*/
+		
+		
+		for(Rectangle rec : recArr) {
+			System.out.println(rec.getArea());
+		}
+
+	}
+
+}
+
+class Rectangle implements Comparable { // Comparable 있을때 없을때 따로 구현해줘야함
+	private int width;
+	private int height;
+	
+	public Rectangle(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
+	
+	public int getArea() {
+		return width*height;
+	}
+	
+	
+	public static Rectangle[] getSortingRec(Rectangle[] recs) {
+		Rectangle temp = null;
+		
+		//버블 sorting (이정도는 암기하자,자주나옴)
+		for(int i = 0; i <recs.length; i++) {
+			for(int j = 0; j < recs.length - i -1; j++) {
+				 
+				if(recs[i].getArea() > recs[j+1].getArea())
+					temp = recs[j];
+					recs[j] = recs[j+1];
+					recs[j+1] = temp; 
+				
+			}
+		}
+		
+		// Arrays.sort(recs); 여기에 이렇게 하고 위에 for문을 다른 함수로 돌려되는데 그렇게 되면 오름차순 내림차순 함수를 따로 구현해줘야함
+		return recs;
+		
+	}
+	/*★[sorting의 디폴트는 오름차순] 
+	 음수의 의미 : 자리 바꿀 필요가 없음
+	 양수의 의미  : 자리 바꿈이 일어남★*/
+	@Override // Arrays.sort(recs)구현 
+	public int compareTo(Object o) {
+		return this.getArea() - ((Rectangle)o).getArea();
+	}
+}
+class RecArrays { // Comparable없을때 
+	   
+	   public static Rectangle[] sort(Object[] arrRecs) {
+	      Rectangle[] recs = (Rectangle[])arrRecs;
+	      Rectangle temp = null;
+	      
+	      if(recs instanceof Comparable[]) {
+	         
+	         for(int i = 0 ; i < recs.length ; i++) {
+	            for(int j = 0 ; j < recs.length -i -1 ; j ++) {
+	               
+	               if(recs[j].compareTo(recs[j+1]) > 0) {
+	                       temp = recs[j];
+	                       recs[j] = recs[j + 1];
+	                       recs[j + 1] = temp;
+	               }            
+	            }
+	         }
+	         
+	         
+	      }else {
+	         
+	         for(int i = 0 ; i < recs.length ; i++) {
+	            for(int j = 0 ; j < recs.length -i -1 ; j ++) {
+	               if(recs[j].getArea() > recs[j+1].getArea()) {
+	                       temp = recs[j];
+	                       recs[j] = recs[j + 1];
+	                       recs[j + 1] = temp;
+	               }
+	            }
+	         }
+	         
+	      }
+	      
+	      
+	      return recs;
+	   }
+	}
 
 ```
