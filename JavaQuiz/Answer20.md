@@ -30,7 +30,7 @@ class INum {
 		}
 	}
 }
-===================================================
+==========================================================================
 ▶ fasle가 나오는 이유는 equals가 주소값을 비교하는 함수이기때문에
 eqauls를 오버라이딩해서 true가 올 수 있게 만들어줬다(문자열 비교할 수 있게)
 ```
@@ -60,9 +60,8 @@ class Person implements Comparable {
 	public int compareTo(Object o) {  // !!함수명에 CompareTo로 넣어서 오버라이딩안됨 함수명은 소문자로시작,,ㅎㅎ
 	  Person p = (Person)o; 
 	  return this.name.compareTo(p.name); 
-	  /* compareTo가 사전적으로 비교하는건데 같으면 
-	   * 0, > 1, < -1 (값은 이게 맞는지는 모르겠으나 정수 반환한다고 했는데 정확히는 모름)
-	   * compareTo가 Sting 클래스 안에 있는 함수
+	  /* compareTo가 사전적으로 비교하는건데 값이 중요한게 아니고 
+	   * 같으면 0, > 양의정수, <음의정수를 반환 compareTo가 Sting 클래스 안에 있는 함수
 	   */  
 	}
 	
