@@ -102,7 +102,7 @@ public class Answer_1221 {
 
 	private static void swapBox(Box<Integer> box1, Box<Integer> box2) { 
 	//제네릭이니까 private static <T extends Number> void swapBox(Box<T> box1, Box<T> box2) 이렇게 사용하자~
-		int temp;
+		int temp;  // T temp 로 선언! 
 		temp = box1.get();
 		box1.set(box2.get());
 		box2.set(temp);
