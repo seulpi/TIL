@@ -9,7 +9,7 @@
  (시간이 배열에 비해 얼마 안걸림)
  - 단점: 저장된 인스턴스의 참조과정이 복잡함(LinkedList는 연속된 공간이 아니기 때문에  참조 → 참조를 찾아가는 과정)
  
-# 2. Scanner 클래스로 -1이 입력될 때까지 양의 정수를 입력받아  저장하고 검색하여 가장 큰 수를 출력하는 프로그램을 작성하라
+# 2. Scanner 클래스로 -1이 입력될 때까지 양의 정수를 입력받아  저장하고 <br>검색하여 가장 큰 수를 출력하는 프로그램을 작성하라
 ## - 정수(-1이 입력될 때까지)>> 10 6 22 6 88 77 -1
 ## - 가장 큰 수는 88
 ```java
@@ -166,6 +166,61 @@ ArrayList를 검색하여 학점을 점수(A=4.0, B=3.0, C=2.0, D=1.0, F=0)로 �
 6개의 학점을 빈 칸으로 분리 입력(A/B/C/D/F) >> A C A B F D
 
 2.3333333333333335
+```
+```java
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Answer21_06 {
+
+	public static void main(String[] args) {
+		Scan scanGrade = new Scan();
+		System.out.println("6개의 학점을 빈 칸으로 분리 입력(A/B/C/D/F) >> ");
+		scanGrade.scInput();
+		System.out.println(scanGrade.avg());
+	}
+
+}
+class Scan {
+	
+	List<String> grade = new ArrayList<>();
+	
+	public void scInput() {
+	Scanner sc = new Scanner(System.in);
+	
+	for(int i = 0; i < 6; i++) {
+		grade.add(sc.next());
+	}
+	sc.close();
+	}
+	
+	public double avg() {
+		
+		double sum = 0;
+		
+		for(int i =0; i <grade.size(); i++) {
+			switch(grade.get(i)) {
+			case "A" : 
+				sum += 4.0;
+				break;
+			case "B" : 
+				sum += 3.0;
+				break;
+			case "C" : 
+				sum += 2.0;
+				break;
+			case "D" : 
+				sum += 1.0;
+				break;
+			default: 
+				sum += 0.0;
+				break;
+			}
+		}
+		return sum / grade.size();
+	}
+}
 ```
 
 # 7. 출력이 아래와 같이 나오도록 하시오 (필수)
