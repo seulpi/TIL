@@ -347,8 +347,8 @@ class Person {
 	}
 	
 	@Override
-	public boolean equals(Object ob) {
-		if(this.firstN == ((Person)ob).firstN) {
+	public boolean equals(Object ob) { 
+		if(this.firstN == ((Person)ob).firstN) { // 주소비교로 하지말 것 만약 객체로 들어와서 비교하게 되면 이거 false남 if(firstN.equals~)
 			return true;
 		} else {
 			return false;
