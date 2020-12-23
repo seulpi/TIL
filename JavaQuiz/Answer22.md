@@ -324,7 +324,7 @@ class Num {
 4. 중복되는 요소를 비교한다(이때, equasl호출)
 ```
 
-# 9. 아래와 같이 출력되도록 하시오
+# 9. 아래와 같이 출력되도록 하시오(필수)
 ```java
 HashSet<Person> hSet = new HashSet<Person>();
 hSet.add(new Person("LEE", 10));
