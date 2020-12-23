@@ -301,7 +301,7 @@ class Num {
 	}
 	
 	public int hashCode() { 
-		return num % 2; // 순서 3으로 나눴다면 순서가 바뀜 먼저 방을 잡은 집합이 차례로 출력!
+		return num % 3; // hashCode 출력될때는 순서가 자유로움(그건 개의치않아도됨) 
 		
 	}
 	
