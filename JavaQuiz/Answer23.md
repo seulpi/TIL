@@ -269,7 +269,9 @@ ArrayList<Student> 대신, HashMap<String, Studnet> 해시맵을 이용하여 �
 ```
 
 # 4. 아래를 프로그래밍하시오 (Answer22_6번과 같은 문제)
-.도시 이름, 위도, 경도 정보를 가진 Location 클래스를 작성하고
+
+```java
+도시 이름, 위도, 경도 정보를 가진 Location 클래스를 작성하고
 도시 이름을 '키'로 하는 HashMap<String, Location> 컬렉션을 만들고
 사용자로부터 입력 받아 4개의 도시를 저장하라. 
 그리고 도시 이름으로 검색하는 프로그램을 작성하라.
@@ -306,7 +308,6 @@ LA 34 -118
 
 도시 이름 >> 그만
 ```
-
 ```java
 //Answer
 public class Answer_1222 {
