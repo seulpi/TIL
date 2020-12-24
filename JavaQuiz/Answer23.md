@@ -380,6 +380,130 @@ class Student { // 너무 길어져서 일단 get 함수만 넣어놓음
 ArrayList<Student> 대신, HashMap<String, Studnet> 해시맵을 이용하여 다시 작성하라. 
 해시맵에서 키는 학생 이름으로 한다.
 ```
+```java
+// Answer(teacher)
+package Answer_1223;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.StringTokenizer;
+
+public class Answer_03 {
+
+	final static int STUDENT_NUM = 4;
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		try {
+			HashMap<String, Student> stuList = new HashMap<>();
+
+			System.out.println("학생 이름, 학과, 학번, 학점 평균을 입력하세요.");
+
+			for (int i = 0; i < STUDENT_NUM; i++) {
+				System.out.print(">> ");
+				String text = sc.nextLine();
+
+				StringTokenizer st = new StringTokenizer(text, ",");
+				String name = st.nextToken().trim();
+				String major = st.nextToken().trim();
+				String sNumber = st.nextToken().trim();
+				double grade = Double.parseDouble(st.nextToken().trim());
+
+				Student student = new Student(name, major, sNumber, grade);
+				stuList.put(sNumber, student);
+			}
+
+			Set<String> key = stuList.keySet(); // 해시맵 stuList에 있는 모든 키 Set 컬렉션으로 리턴
+			Iterator<String> it = key.iterator(); // Set을 순차검색하는 이터레이터 리턴
+			
+			while (it.hasNext()) {
+				String sNum = it.next();
+				Student student = stuList.get(sNum); // 학번을 키로 하여 객체를 얻는다.(이름으로 하면 중복될수있으니까)
+				System.out.println("---------------------------");
+				System.out.println("이름:" + student.getName());
+				System.out.println("학과:" + student.getMajor());
+				System.out.println("학번:" + student.getsNumber());
+				System.out.println("학점평균:" + student.getGrade());
+				System.out.println("---------------------------");
+			}
+
+			while (true) {
+				System.out.print("학생 번호>> ");
+				String name = sc.nextLine();
+
+				if (name.equals("그만"))
+					break;
+				Student student = stuList.get(name); // 해시맵에서 학번을 키로 검색
+
+				if (student == null) { // 학번이 해시맵에 없다면
+					System.out.println(name + " 학생 없습니다.");
+				} else { // 해시맵에서 검색된 Student 객체
+					System.out.print(student.getName() + ", ");
+					System.out.print(student.getMajor() + ", ");
+					System.out.print(student.getsNumber() + ", ");
+					System.out.println(student.getGrade());
+				}
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("프로그램이 에러 입니다.");
+		}
+
+		System.out.println("프로그램이 종료 되었습니다.");
+		sc.close();
+
+	}
+
+}
+
+class Student {
+	private String name, major, sNumber;
+	private double grade;
+
+	public Student(String name, String major, String sNumber, double grade) {
+		this.name = name;
+		this.major = major;
+		this.sNumber = sNumber;
+		this.grade = grade;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getMajor() {
+		return major;
+	}
+
+	public void setMajor(String major) {
+		this.major = major;
+	}
+
+	public String getsNumber() {
+		return sNumber;
+	}
+
+	public void setsNumber(String sNumber) {
+		this.sNumber = sNumber;
+	}
+
+	public double getGrade() {
+		return grade;
+	}
+
+	public void setGrade(double grade) {
+		this.grade = grade;
+	}
+}
+```
 
 # 4. 아래를 프로그래밍하시오 (Answer22_6번과 같은 문제)
 
