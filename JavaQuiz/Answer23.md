@@ -519,5 +519,7 @@ class IntegerComparator implements Comparator<Integer> {
 ```
 
 # 10. Objects.hash의 용도와 사용법은?
-: 주어진 파라미터 값을 이용해 hashCode를 생성하는 역할의 함수 <br>
+: 주어진 파라미터 값을 이용해 hashCode를 생성하는 역할의 함수 <br> 
+hash알고리즘은 자기가 가지고 있는 객체를 넣으면 Objects가 알아서 그 객체의 정보를 토대로 hashCode를 만들어 줌 <br>
+hashCode에 대해서 사용이 어려울 때 사용하면 되는 함수 (중복될 수 있는 확률 확실히 더 줄일 수 있음!) : 나중에 실무에서 Spring 롬복 사용
 Object와는 다름!
