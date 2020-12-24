@@ -261,7 +261,120 @@ class Student { //너무 길어져서 일단 get 함수만 넣어놓음
     }
 }
 ```
+```java
+// Answer(teacher)
+package Answer_1223;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
+public class Answer_02 {
+	final static int STUDENT_NUM = 4; // 다른 포인트.1 ( 어차피 4명니까 나중에 숫자 늘어나면 여기서 바꿀 수 있게)
+
+	public static void main(String[] args) {
+
+		Student student = new Student();
+
+		Scanner sc = new Scanner(System.in);
+		ArrayList<Student> studentList = new ArrayList<>();
+
+		System.out.println("학생 이름, 학과, 학번, 학점평균 입력하세요");
+		try {
+			for (int i = 0; i < STUDENT_NUM; i++) { // 담는 과정
+
+				System.out.print(">> "); // 다른 포인트2.print','단위로 받아야해서
+				String text = sc.nextLine(); // 줄 전체로 받아들임
+
+				StringTokenizer st = new StringTokenizer(text, ","); // 다른 포인트3. ',' 단위로
+				String name = st.nextToken().trim(); // trim 공백제거
+				String major = st.nextToken().trim();
+				String stN = st.nextToken().trim();
+				double grade = Double.parseDouble(st.nextToken().trim()); // 더블을 문자형으로
+
+				studentList.add(new Student(name, major, stN, grade));
+			}
+
+			for (int i = 0; i < studentList.size(); i++) {
+				student = studentList.get(i);
+				student.output();
+			}
+
+			while (true) { // 검색하는 방법1. binarySearch 사용 2. for문 사용
+				System.out.println("학생 이름 =: ");
+				String name = sc.next();
+
+				if (name.equals("그만")) {
+					break;
+				}
+
+				for (Student s : studentList) { // 다른 포인트4. toString이 필요없네..
+					if (name.equals(s.getName().trim())) {
+						// 유저가 공백을 넣을수도 있으니까 공백을 넣으면 공백을 제거해라 : trim()
+						System.out.println(s.toString() + ",");
+						System.out.println(s.getName() + ",");
+						System.out.println(s.getMajor() + ",");
+						System.out.println(s.getStN() + ",");
+						System.out.println(s.getGrade() + ",");// "," 넣워줘야됨(넣어서 출력하라고 했으니까)
+					}
+				}
+
+			}
+		} catch (Exception e) { // 다른 포인트5. 에러처리
+			e.printStackTrace();
+			System.out.println("프로그램이 에러입니다");
+
+		}
+		System.out.println("프로그램 종료되었습니다");
+		sc.close();
+	}
+}
+// key 이름 나머지가 객체에서 받으면될듯
+
+class Student { // 너무 길어져서 일단 get 함수만 넣어놓음
+	private String name, major, stN; // 학번이나 전화번호는 string으로 하는게 더 좋음
+	private double grade;
+
+	public String getName() {
+		return name;
+	}
+
+	public String getMajor() {
+		return major;
+	}
+
+	public String getStN() {
+		return stN;
+	}
+
+	public double getGrade() {
+		return grade;
+	}
+
+	public Student() {
+
+	}
+
+	public Student(String name, String major, String stN, double grade) {
+		this.name = name;
+		this.major = major;
+		this.stN = stN;
+		this.grade = grade;
+	}
+
+	public void output() {
+		System.out.println("-------------------");
+		System.out.println("이름: " + this.name);
+		System.out.println("학과: " + this.major);
+		System.out.println("학번: " + this.stN);
+		System.out.println("학점 평균: " + this.grade);
+	}
+}
+```
 # 3. 위와 연관된 문제입니다
 ```
 ArrayList<Student> 대신, HashMap<String, Studnet> 해시맵을 이용하여 다시 작성하라. 
