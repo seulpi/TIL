@@ -60,3 +60,9 @@ post로 따로 지정을 하지 않으면 디폴트로 get이 설정되어 넘�
 http://192.168.0.96:8282/servlet_hello3
                          ↑ 프로젝트명(실무에서는 context명이라고 부른다)
 ```
+<br>
+
+# 7. 아래의 객체에 대하여 설명하시오
+## HttpServletRequest / HttpServletReponse
+: Client가 requset한 것에 대해 response해주려면 일단 Client의 주소와 정보를 알아야하는데 그에 대한 정보와 주소는 <br> 웹브라우저가 자동으로 프로토콜을 만들어 전달 <br> 
+Client의 IP주소와 정보를 전달받기 위해서는 웹서버가 정보를 저장할 내용을 갖고있어야 하는데 그게 바로 <br> **HttpServletRequest / HttpServletReponse** 이다 (HttpServletRequest : 객체를 생성하여 request를 저장 / HttpServletReponse : 객체를 생성하여 respons를 저장해 전달 )
