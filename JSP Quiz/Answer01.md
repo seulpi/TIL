@@ -24,7 +24,7 @@
 
 # 3. ★ .jsp 가 컴파일 되는 과정에 대하여 설명하시오 ★
 ```
-1. user가 requset (도메인 주소를 친다)
+1. Client(browser)가 requset (도메인 주소를 친다)
 2. Wep Server가 requset를 받아 → Wep Application에게 requset → DB 
 3. DB response →  Wep Application response → Wep Server responce → User (화면 출력)
 
