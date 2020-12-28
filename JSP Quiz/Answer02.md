@@ -12,8 +12,7 @@
 >> <del> HelloWorld
 - **< ins > : 밑줄** <br>
 >> <ins> HelloWorld
-- **< span > :  웹 페이지의 영역을 설정 할 때 사용하는 태그** <br>
- 주로 < div > 와 < p > 태그와 함께 일부분에 스타일을 적용시키기 위해 사용되는 태그 <br> 예전에는 table을 사용해 전체적인 레이아웃을 구성했다면 요새는 주로 div와 span을 사용한다
+- **< span > :  웹 페이지의 영역을 설정 할 때 사용하는 태그** , 주로 < div > 와 < p > 태그와 함께 일부분에 스타일을 적용시키기 위해 사용되는 태그 <br> 예전에는 table을 사용해 전체적인 레이아웃을 구성했다면 요새는 주로 div와 span을 사용한다
 ```
 * <span> 과 <div> 의 차이점
 1. 줄바꿈
@@ -31,7 +30,7 @@
 - block : 좀 더 넓은 범위를 지정할때 사용하는 태그, block요소를 사용할때는 자동으로 앞뒤 줄바꿈이 일어남 <br>
 >> 종류: < p >, < h1 >, < div >, < ol > 등
 
-- non block : inline으로 줄 속에 넣는 요소를 말함 , 특정 문자열을 선택할때 사용되며 자동으로 줄바꿈이 일어나지 않음
+- non block : block을 지정하지않는다 / non block의 요소로는 inline이 있음 (줄 속에 넣는 요소를 말함), 특정 문자열을 선택할 때 사용되며 자동으로 줄바꿈이 일어나지 않음
 >> 종류 : < b >, < span >, < a > 등 
 <br>
 
@@ -67,3 +66,24 @@ http://192.168.0.96:8282/servlet_hello3
 ## HttpServletRequest / HttpServletReponse
 : Client가 requset한 것에 대해 response해주려면 일단 Client의 주소와 정보를 알아야하는데 그에 대한 정보와 주소는 <br> 웹브라우저가 자동으로 프로토콜을 만들어 전달 <br> 
 Client의 IP주소와 정보를 전달받기 위해서는 웹서버가 정보를 저장할 내용을 갖고있어야 하는데 그게 바로 <br> **HttpServletRequest / HttpServletReponse** 이다 (HttpServletRequest : 객체를 생성하여 request를 저장 / HttpServletReponse : 객체를 생성하여 respons를 저장해 전달 )
+
+---
+# **[ Quiz ]**
+## 1. 
+![01](https://user-images.githubusercontent.com/74290204/103205879-ea706800-493d-11eb-8161-b33b445ecea0.PNG)
+
+
+## 2. 
+![02](https://user-images.githubusercontent.com/74290204/103205892-f5c39380-493d-11eb-8ea7-bcbe5af43097.PNG)
+
+
+## 3. 
+![03](https://user-images.githubusercontent.com/74290204/103205910-ff4cfb80-493d-11eb-8126-eb4afa0e7f59.PNG)
+
+
+## 4. 
+![04](https://user-images.githubusercontent.com/74290204/103205917-0247ec00-493e-11eb-95b6-afb332640c09.PNG)
+
+
+## 5.
+![05](https://user-images.githubusercontent.com/74290204/103205919-02e08280-493e-11eb-9d38-a601439e6a62.PNG)
