@@ -98,3 +98,46 @@ Client의 IP주소와 정보를 전달받기 위해서는 웹서버가 정보를
 
 ## 5.
 ![05](https://user-images.githubusercontent.com/74290204/103205919-02e08280-493e-11eb-9d38-a601439e6a62.PNG)
+
+
+```html 
+<!-- //teacher -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+
+	<style type="text/css">
+		.td_blank {
+			width:50px;
+		}
+	</style>
+ 
+</head>
+<body>
+	<table border ="1">
+		<tr>
+			<td>이름</td>
+			<td class="td_blank" ></td> <!-- &nbsp; 공백 -->
+			<td>연락처</td>
+			<td class="td_blank"></td>
+		</tr>
+		
+		<tr>
+			<td>주소</td>
+			<td colspan = "3" > </td>
+		</tr>
+		
+		
+		<tr>
+			<td>자기소개</td>
+			<td colspan ="3"></td>
+	
+	</table>
+
+
+</body>
+</html>
+```
