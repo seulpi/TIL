@@ -30,12 +30,13 @@ L(Language)
 <br>
 
 # 4. block 태그와 non block 태그에 대하여 설명하시오
-: 태그는 inline요소와 block요소로 나눌 수 있음
-- block : 좀 더 넓은 범위를 지정할때 사용하는 태그, block요소를 사용할때는 자동으로 앞뒤 줄바꿈이 일어남 <
->> 종류: < p >, < h1 >, < div >, < ol >, <table> 등
-<br>
+: 태그는 inline요소와 block요소로 나눌 수 있음 
+
+- block : 좀 더 넓은 범위를 지정할때 사용하는 태그, block요소를 사용할때는 자동으로 앞뒤 줄바꿈이 일어남
+ >> 종류: < p >, < h1 >, < div >, < ol >, <table> 등 <br>
+ 
 - non block(liLine): block을 지정하지않는다(줄 속에 넣는 요소를 말함), 특정 문자열을 선택할 때 사용되며 자동으로 줄바꿈이 일어나지 않음
->> 종류 : < b >, < span >, < a > 등 
+ >> 종류 : < b >, < span >, < a > 등 
 
 ▶ 태그종류 링크 참조
 https://calmdawnstudio.tistory.com/51
