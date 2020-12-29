@@ -288,8 +288,13 @@ class Num {
 
 2. 정의 : hashCode는 객체의 주소 (key값은 실제로 메모리에 잡히는 객체의 실제 주소값)
   - hashCode는 소스코드를 직접 볼 수 없지만 hashCode는 key(값)이 들어와서 hashCode함수안에서 값을 변경해서 결과값을 출력한다
-3. 목적 : 분류를 시키고 빠르게 탐색하는 것 
+3. 목적 : 분류를 시키고 빠르게 탐색하는 것 / 세밀하게 나눈 만큼 탐색속도 UP (세밀하게 나눈다는 것은 집합을 그만큼 자세하게 나누는것) <br>
+- ☞ Q1. 왜 탐색속도가 높아질까? 집합안에 들어가서 equals를 따져야하는데 분류를 자세하게 나눈다면 비교할 횟수가 줄어들기 때문
+- ☞ Q2. int로 친다면 분류를 해서 담는 게 빠를까? 아님 각자의 주소로 21억개의 방 만들어서 찾는게 빠를까? <br>
+
+A: 21억개! 검색할 때 방에 대한 주소를 찾아가는 데 (주소를 찾아 가는 시간은 얼마 안 걸림) 분류해 놓으면 들어가서 **'equals'라는 비교연산을 해야해서 시간이 많이 걸림** <br> 단 21억개 주소를 담는 메모리를 만들어야 하기 때문에 뭐가 좋다고는 할 수 X <br>  각각의 상황에 맞게 때에 맞게 사용(적당한 갯수 생각해서, 근데 요새 메모리 잘 안 따짐^_____^;;)
 4. 역할 :  캐비넷을 만든다 (분류하는 방을 만든다)
+5. Objects hash (Object아님 주의!) : hashCode를 생성하는 역할의 함수 
 
 ```java
 >> 실제 hashCode에 대한 Object 클래스 내부의 정의 
@@ -356,4 +361,457 @@ class Num {
 hashCode를 오버라이딩을 안하게되면 주소값을 리턴하게 되는데 hashCode는 7799의 나머지값이 같기 때문에 같은 캐비넷 
 - equals와 hashCode 호출하는 주체 set.add */
 ```
+
+### - TreeSet
+: Set은 순서가 없는데 정렬이 필요하다보니 생김 
+- 정렬 상태가 유지되면서 인스턴스가 저장된다 (중복 X)
+- Tree모양으로 정리하면서 정렬을 만들어서 출력한다 
+
+▶ 구조와 내용 참고 https://doublesprogramming.tistory.com/185
+```java
+public class SetTree {
+
+	public static void main(String[] args) {
+		TreeSet<Integer> tree = new TreeSet<Integer>();
+		tree.add(3);
+		tree.add(1);
+		tree.add(2);
+		tree.add(4);
+		System.out.println("인스턴스의 수 : " + tree.size());
 		
+		// for-each문 이용해서 출력
+		for(Integer n : tree) { // treeSet은 정렬상태가 유지되기 때문에 그냥 출력해도 정렬값이 나옴
+			System.out.print(n.toString() + '\t');
+		}System.out.println();
+		
+		//반복자 이용해서 출력
+		for(Iterator<Integer> itr = tree.iterator(); itr.hasNext();) {
+			System.out.print(itr.next().toString() + '\t');
+		}System.out.println();
+
+	}
+}
+========================================
+▶ 
+인스턴스의 수 : 4
+1	2	3	4	
+1		2		3		4
+```
+<br>
+
+#### @ TreeSet의 내림차순 구현
+1. Comparble, compareTo 를 Override해서 구현
+2. Comparator, compare를 Overrode해서 구현 
+- Comparator는 String을 정렬할 때 사용할 수 있음  
+```java
+package class_1223;
+
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.TreeSet;
+
+public class SetTree {
+
+	public static void main(String[] args) {
+		TreeSet<Person> tree = new TreeSet<>(new PersonComparator()); // Comparator는 생성자를 통해 구현할수 있다		
+        tree.add(new Person("YOON", 37));
+		tree.add(new Person("HONG", 53));
+		tree.add(new Person("PARK", 22));
+		
+		for(Person p : tree) {
+			System.out.println(p);
+		}
+	}
+}
+class Person implements Comparable<Person> {
+	String name;
+	int age;
+	
+	public Person(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+	
+	@Override 
+	public String toString() {
+		return name + " : " + age;
+	}
+	
+	@Override 
+	public int compareTo(Person p) {
+		return this.age - p.age;
+	}
+}
+class PersonComparator implements Comparator<Person> {
+	public int compare(Person p1, Person p2) {
+		return p2.age - p1.age;
+	}
+}
+========================================
+▶ 
+HONG : 53
+YOON : 37
+PARK : 22
+```
+```java
+package class_1223;
+
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.TreeSet;
+
+public class SetTree {
+
+	public static void main(String[] args) {
+		TreeSet<String> tree = new TreeSet<>(new StringComparator());
+		tree.add("Box");
+		tree.add("Rabbit");
+		tree.add("Robbot");
+		
+		for(String s : tree) {
+			System.out.print(s.toString() + "\t");
+		}System.out.println();
+		
+	}
+}
+class StringComparator implements Comparator<String> {
+	public int compare(String s1, String s2) {
+		return s1.length() - s2.length();
+	}
+}
+========================================
+▶ Box	Rabbit	
+//왜 이렇게 나오나 했더니 길이로 비교해놨더니 Rabbit과 Robbot이 길이가 같아서 같은걸로 인식해서 이렇게 출력
+```
+```java
+public static void main(String[] args) {
+		// 증복을 허용하는 List
+		List<String> lst = Arrays.asList("Box", "Toy", "Box", "Toy");
+		ArrayList<String> list = new ArrayList<>(lst);
+		
+		// List에 담긴 문자열 차례대로 출력
+		for(String s : list) {
+			System.out.print(s.toString() + '\t');
+		}System.out.println();
+		
+		// 중복된 인스턴스 허용X: Set , list에 담긴 문자열의 중복을 걸러낸 것을 set에 담겠다
+		HashSet<String> set = new HashSet<>(list);
+		
+		// set에 담긴 것을 다시 list에 옮김
+		list  = new ArrayList<>(set);
+		
+		// 중복없는 결과값 출력
+		for(String s : list) {
+			System.out.print(s.toString() + '\t');
+		}System.out.println();
+	}
+}
+========================================
+▶
+Box	Toy	Box	Toy	
+Box	Toy	
+```
+<br>
+
+## 3. Queue<E> : FIFO(First In First Out)
+; 잘 안쓰지만 개념만 잘 익혀놓자 
+
+ - Queue (FIFO :Firset In First Out) <br>
+ : 공간이 막혀있지 않고 뻥- 뚫려있는 구조
+
+ ![큐](https://user-images.githubusercontent.com/74290204/102997322-28e5db80-4568-11eb-8f57-67cd5463b5f4.PNG)
+
+ - Stack (FILO: First In Last Out) <br>
+ : 밑에 막힌 구조로 먼저 들어간 값이 제일 마지막에 나오는 구조
+
+ ![스택](https://user-images.githubusercontent.com/74290204/102997330-2d11f900-4568-11eb-9ded-f94d964e5168.PNG)
+
+ - 용어 
+    - offer : 넣기 (=add)
+    - poll : 꺼내기(=remove)
+    - peek : 엿보기, 또 있나~하는 것(=hasNext)
+
+    ```java
+    public static void main(String[] args) {
+	Queue<String> que = new LinkedList<>();
+	/*Queue 사이즈 컨트롤하는거지 안에 객체는 참조형이 들어와도괜찮음
+	따라서 LinkedList<>();도 들어갈수있음*/
+		
+	que.offer("Box");
+	que.offer("Toy");
+	que.offer("Robot");
+		
+	// 다음에 나올게 뭔지 확인
+	System.out.println("next: " + que.peek());
+		
+	// 순서대로 출력
+	System.out.println(que.poll());
+	System.out.println(que.poll());
+		
+	// 다음에 나올 게 뭔지 확인
+	System.out.println("next: " + que.peek());
+	// 남은 문자열 출력
+	System.out.println(que.poll());
+    }
+    ```
+<br>
+
+### - Deque<E> : 양방향(Queue보다 upgrade)
+- 용어
+![Deque](https://user-images.githubusercontent.com/74290204/103287986-377c3900-4a27-11eb-9519-3b8193e3629f.PNG)
+
+▶ addFirst와 offerFirst의 차이는? <br>
+: 같은건데 **리턴형이 다름** , 뭔가 확인해야할 게 있다면 offerFirst 사용
+```java
+public static void main(String[] args) {
+	Deque<String> deq = new ArrayDeque<>();
+		
+	// 앞으로 넣고
+	deq.offerFirst("1.Box");
+	deq.offerFirst("2.Toy");
+	deq.offerFirst("3.Robot");
+		
+	// 앞에서 꺼내기
+	System.out.println(deq.pollFirst());
+	System.out.println(deq.pollFirst());
+	System.out.println(deq.pollFirst());
+	}
+========================================
+▶
+3.Robot
+2.Toy
+1.Box
+```
+<br>
+
+## 4. Map<K, V>
+- map은 Set + List 
+- Key : 뒤에 들어가는 데이터를 구분짓는 요소(현관문 열쇠 같은 존재) / 자기요소를 구분지어야하기 때문에 중복 X (따라서 Set으로 구현되어있음)
+>> put : 넣기  / .get(key) : key에 있는 요소 꺼내오기, 해당 value값 튀어 나옴
+
+### - HashMap(K, V)
+```java
+public static void main(String[] args) {
+		HashMap<Integer, String> map = new HashMap<>();
+		
+		//넣기
+		map.put(45, "Brown");
+		map.put(37, "James");
+		map.put(23, "Martin"); 
+		//Key가 동일한 경우 :실시간 에러는 안나고, 먼저 들어간 value를 튕겨내고 마지막에 들어간 value로 바뀌어서 출력을 한다 (마지막에 들어간 value값으로)
+		map.put(23, "Lee"); 
+		
+		//꺼내기 
+		System.out.println("23번: " + map.get(23));
+		System.out.println("37번: " + map.get(37));
+		System.out.println("45번: " + map.get(45));
+	}
+```
+
+```java
+public static void main(String[] args) {
+		HashMap<Integer, String> map = new HashMap<>();
+		map.put(45, "Brown");
+		map.put(37, "James");
+		map.put(23, "Martin");
+		
+		//★ks에 map의 key들을 모아놓은 것을 넣음 (key를 Set으로 컨트롤하겠다)
+		Set<Integer> ks = map.keySet();
+		
+		// key값들 출력
+		for(Integer n : ks) {
+			System.out.print(n.toString() + '\t');
+		}System.out.println();
+		
+		// value값들 출력 (for-each문 활용)
+		for(Integer n : ks) {
+			System.out.print(map.get(n).toString() + '\t');
+		}
+		
+		// value값들 출력(반복자 활용)
+		for(Iterator<Integer> itr = ks.iterator(); itr.hasNext();) {
+			System.out.print(map.get(itr.next()) + '\t');
+		}System.out.println();
+	}
+```
+<br>
+
+### - TreeMap<K, V> : 순서 유지 (Key값을 순서대로 접근 )
+```java
+위 코드에서 
+HashMap<Integer, String> map = new HashMap<>(); → TreeMap<Integer, String> map = new TreeMap<>();
+이렇게 변경해서 사용하면 TreeMap임
+```
+<br>
+
+## 5. 컬렉션프레임워크의 정렬 
+>> public static<T extends Comparable < T >> void sort(List< T >list) 
+-  sort는 Comparable을 구현해내야한다라는 뜻 **(sort를 하기 위해서 반드시 Comparable 구현)**
+- List< T > list 객체를 받아 낼 수 있다  
+
+### - Collections.sort(list); 컬렉션 정렬 방법(기본정렬 - 오름차순)
+1. Comparable
+2. Comparator : 클래스에서 객체를 만들어 sort에 내가 만든 객체를 집어넣을 수 있고 내부적으로는 객체를 먼저 정렬한다 
+```java
+// 1. Comparable을 사용해서 정렬
+
+package class_1223;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+
+public class CollectionSort {
+	public static void main(String[] args) {
+		List<Car2> list = new ArrayList<>();
+		list.add(new Car2(1200));
+		list.add(new Car2(3000));
+		list.add(new Car2(1800));
+		
+		//정렬
+		Collections.sort(list);
+		
+		for(Iterator<Car2> itr = list.iterator(); itr.hasNext();) {
+			System.out.println(itr.next().toString() + '\t');
+		}
+	}
+}
+class Car2 implements Comparable<Car2> {
+	private int disp;
+	
+	public Car2(int d) {
+		this.disp = d;
+	}
+	
+	@Override
+	public String toString() {
+		return "cc: " + disp;
+	}
+	
+	@Override //Collection.sort가 호출 
+	public int compareTo(Car2 o) {
+		return this.disp - o.disp;
+	} 
+}
+------------------------------------------------------------------
+// 2. Comparator를 사용해서 정렬
+
+package class_1223;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+
+public class CollectionSort {
+
+	public static void main(String[] args) {
+		List<Car2> list = new ArrayList<>();
+		list.add(new Car2(1200));
+		list.add(new Car2(3000));
+		list.add(new Car2(1800));
+		
+		List<ECar> elist = new ArrayList<>();
+		elist.add(new ECar(3000, 55));
+		elist.add(new ECar(1800, 87));
+		elist.add(new ECar(1200, 99));
+		
+		CarComp comp = new CarComp();
+		
+		// 각각정렬
+		Collections.sort(list, comp);
+		Collections.sort(elist, comp);
+		
+		// 각각출력
+		for(Iterator<Car2> itr = list.iterator(); itr.hasNext();) {
+			System.out.println(itr.next().toString() + '\t');
+		}System.out.println();
+		
+		for(Iterator<ECar2> itr = elist.iterator(); itr.hasNext();) {
+			System.out.println(itr.next().toString() + '\t');
+        }
+	}
+}
+class Car2 {
+	protected int disp;
+	
+	public Car2(int d) {
+		this.disp = d;
+	}
+	
+	@Override
+	public String toString() {
+		return "cc: " + disp;
+	}
+}
+
+class CarComp implements Comparator<Car2> {
+	@Override // Car2 정렬을 위한 클래스 'Comparator' 사용
+	public int compare(Car2 o1, Car2 o2) {
+		return o1.disp - o2.disp;
+	}
+}
+
+class ECar extends Car2 {
+	private int battery;
+	
+	public ECar(int d, int b) {
+		super(d);
+		this.battery = b;
+	}
+	
+	@Override
+	public String toString() {
+		return "cc: " + disp + ", ba: " + battery;
+	}
+}
+```
+<br>
+
+### - Search : 찾기 
+- binarySearch를 사용하려면 그 전에 반드시 **정렬이 되어있어야 함**
+- binarySearch하면 index값을 주게 된다 <br>
+
+▶[참고] basic 17. Arrray 클래스
+```java
+public static void main(String[] args) {
+		List<String> list = new ArrayList<>();
+		list.add("Box");
+		list.add("Toy");
+		list.add("Apple");
+		
+		Collections.sort(list);
+		
+		int index = Collections.binarySearch(list, "Toy");
+		System.out.println(list.get(index));
+}
+```
+---
+# Q. 아래의 IntegerComparator를 내림차순으로 정렬이 되게끔 구현하시오
+```java
+class ComparatorIntegerDemo {
+    public static void main(String[] args) {
+        TreeSet<Integer> tr = new TreeSet<>(new  IntegerComparator());
+        tr.add(30);
+        tr.add(10);    
+        tr.add(20);        
+        System.out.println(tr);   
+    }
+}
+
+// 정렬은 2가지 종류인데 객체 올 수 있는게 Comparator이니까 Comparator 사용!
+class IntegerComparator implements Comparator<Integer> {
+
+	@Override
+	public int compare(Integer o1, Integer o2) {
+		return o2.intValue() - o1.intValue(); //intValue는 Integer 객체에서 int형 값을 뽑아내는 함수
+	}
+}
+```
+
+
+
