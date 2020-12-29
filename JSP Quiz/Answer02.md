@@ -1,10 +1,14 @@
 # 1. html 이란 무엇인가?
 : HTML(Hyper Text Markup Language)은 **웹문서를 기술하는 언어**를 말한다 
-<br>
+```
+HT(Hyper Text) : 문서와 문서가 링크로 연결
+M(Markup) : Mark(태그)로 이루어져있다(웹문서를 표현하기 위한 태그들로 구성)
+L(Language)
+```
 
 # 2. css 란 무엇인가?
-: CSS(Cascading Style Sheets)란 html문서를 디자인적으로 예쁘게 만들어 정보 전달을 하기 위해 만들어진 문서
-<br>
+- CSS(Cascading Style Sheets)란 html문서를 디자인적으로 예쁘게 만들어 정보 전달을 하기 위해 만들어진 문서 
+- style 태그로 들어가는 것들 (HTML은 정보 / CSS는 화면상의 레이아웃등을 컨트롤한다)
 
 # 3. 아래의 태그에 대하여 설명하시오
 ## < del > / < ins > / < span >
@@ -28,20 +32,26 @@
 # 4. block 태그와 non block 태그에 대하여 설명하시오
 : 태그는 inline요소와 block요소로 나눌 수 있음
 - block : 좀 더 넓은 범위를 지정할때 사용하는 태그, block요소를 사용할때는 자동으로 앞뒤 줄바꿈이 일어남 <br>
->> 종류: < p >, < h1 >, < div >, < ol > 등
+>> 종류: < p >, < h1 >, < div >, < ol >, <table> 등
 
-- non block : block을 지정하지않는다 / non block의 요소로는 inline이 있음 (줄 속에 넣는 요소를 말함), 특정 문자열을 선택할 때 사용되며 자동으로 줄바꿈이 일어나지 않음
+- non block(liLine): block을 지정하지않는다(줄 속에 넣는 요소를 말함), 특정 문자열을 선택할 때 사용되며 자동으로 줄바꿈이 일어나지 않음
 >> 종류 : < b >, < span >, < a > 등 
+
+▶ 태그종류 링크 참조
+https://calmdawnstudio.tistory.com/51
+https://potionstory.tistory.com/11
+https://stajun.tistory.com/entry/HTML-%ED%83%9C%EA%B7%B8-%EC%A0%95%EB%A6%AC
 <br>
 
-# 5. get 방식과 post 방식에 대하여 설명하시오
-: client가 WAS에게 requst하는 방식은 크게 2가지로 나누는데 그게 바로 get,post방식이다
+
+# ★ 5. get 방식과 post 방식에 대하여 설명하시오 (필수)
+: client가 WAS에게 requst하는 방식은 크게 2가지로 나누는 데(정보를 넘기는 방식) 그게 바로 get, post방식이다
 - get : 주소창 안에 **'? key value**를 달아서 전송하는 방식
 ```
 http:// locallhost:8080/boardList?name=제목&contents=내용
 ```
 
-- post : post는 HEAD 영역과 BODY영역이 존재 , get방식과 달리 URL에 데이터가 노출되지 않고 BODY영역에 숨겨서 전송 된다
+- post : post는 HEAD 영역과 BODY영역이 존재, get방식과 달리 URL에 데이터가 노출되지 않고 BODY영역에 숨겨서 전송 된다 (주소 전송 X)
 
 ▶ 다이렉트로 URL을 치면 doget()호출이 되는 이유? <br>
 post로 따로 지정을 하지 않으면 디폴트로 get이 설정되어 넘어오기 때문!
