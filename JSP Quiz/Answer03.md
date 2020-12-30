@@ -29,7 +29,7 @@
 ▶ 개발자들이 div를 많이 사용하다보니 발전되서 나온 게 시멘틱태그(가장 upgrade된 게 오디오와 비디오 삽입) 
 >> 시멘틱태그 : div + 의미 <br> 문서 구조를 태그 이름만 봐도 쉽게 이해 할 수 있도록 해 놓은것
 
-![시멘틱태그](https://user-images.githubusercontent.com/74290204/103280483-e0b93400-4a13-11eb-88ca-7da20b0b9909.png)
+![시멘틱태그](https://user-images.githubusercontent.com/74290204/103324525-341a9900-4a8b-11eb-8f4f-07d46403f1f2.png)
 
 ☞ 더 많은 종류 참고
 https://thrillfighter.tistory.com/492
