@@ -57,7 +57,7 @@ request가 한명한테만 오는게 아닌 다수의 request이기 때문에 �
     >> destroy()가 호출된 후에 실행되길 원하는 메소드는 @PreDestroy라는 Annotation을 사용 
 <br>
 
-## @ServletContextListener : 프로젝트 단튀별 생명주기 감시
+## @ServletContextListener : 프로젝트 단위별 생명 주기 감시
 - 프로그램이 죽기전에 반드시 해야할 일이 있을 때 사용 
 - destroy 서버를 강제로 끊으면 contextInitialized 작동안됨
 
