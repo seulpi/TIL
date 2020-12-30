@@ -192,7 +192,7 @@ Servlet 객체를 생성하고 초기화하는 작업은 비용이 많이 들기
 </html>
 ```
 
-## 2. 
+## 2. 필수!
 
 ![2-1](https://user-images.githubusercontent.com/74290204/103277578-b9129d80-4a0c-11eb-8cc3-16e0e4ead779.PNG)
 
