@@ -1,3 +1,140 @@
+# 1. jsp/servlet 에서  한글처리 방식은?
+: 한글 인코딩 방식은 크게 "UTF-8" , "EUC_KR" 2가지 방식 
+```
+[참고]
+- UTF-8 : 유니코드(문자와 일대일 매칭), 조합형 
+    ex) ㅇ ㅏ ㄴ ㅕ ㅇ : 이 방식으로 문자 찾아오는 형태 
+- EUC_KR : 다른 언어 사용불가, 완성형 
+    ex)  안 녕 : 이 방식으로 문자 찾아오는 형태 
+
+>> 따라서 EUC_KR에서 완성된 글자를 찾을 수 없는 경우에 글자 깨짐 현상 발생 
+   (웹에서는 보통  UTF-8 주로 사용)
+```
+- server.xml 수정 (톰캣 서버에서 처리) : 왠만하면 서버 건드리지말기^_____^(so dangerous!!!!!!)
+```java
+<Connector connectionTimeout="20000" port="8282" protocol="HTTP/1.1" redirectPort="8443"/>
+↑ 여기에 URIEncoding="EUC-KR" 삽입
+
+▶ <Connector connectionTimeout="20000" URIEncoding="EUC-KR" port="8282" protocol="HTTP/1.1" redirectPort="8443"/>
+
+//[알고가자!] 웹로직이나 제우스는 세팅방법이 다를 수 있음 
+```
+- request 객체의 setCharactrerEncoding() 메소드 이용
+```java
+servlet.java 에서 request.setCharacterEncoding("EUC-KR");
+```
+<br>
+
+# 2. 선택자" > + ~ a[href="https://net.tutsplus.com"]"에 대하여 설명하시오
+- '>' : 자손 선택자 , 부등호 방향이 큰 쪽이 부모, 바로 밑에 자식만 속성 적용이 가능하다(후손 불가능)
+```html
+div > h1
+→ div 바로 밑에 h1만 속성 적용해라
+```
+- '+' , '~' : 동위 선택자 , 부모밑에 있는게 아닌 같은 레벨에 있는 선택자를 말한다
+```html
+h3~div : h3에서 같은 레벨에 div까지 속성 적용
+h3+div : h3 바로 옆에 있는 div까지만 속성 적용
+```
+- a[href="https://net.tutsplus.com"] : a의 요소이면서 href속성을 갖고 value= https://net.tutsplus.com인 요소만 선택한다 
+    -  []는 지정한 속성을 선택한다
+<br>
+
+# 3. 웹어프리케이션 감시를 위한 프로그래밍 방법은? (????)
+: ServletContextListener를 통해 웹어플리케이션을 감시
+- 리스너는 웹 어플리케이션의 시작과 종료 시 해당 메소드를 호출한다.
+```java
+@WebListener
+public class ContextListenerEx implements ServletContextListener{
+
+	public ContextListenerEx() {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void contextDestroyed(ServletContextEvent arg0) {
+		System.out.println("contextDestroyed");
+	} // 종료시 호출
+
+	@Override
+	public void contextInitialized(ServletContextEvent arg0) {
+		System.out.println("contextInitialized");
+	} // 시작시 호출 
+}
+// 위 코드 처럼 ServletContextListener class를 만든 후 web.xml에 기술한다
+```
+```java
+  <listener>
+	<listener-class>com.javalec.ex.ContextListenerEx</listener-class>
+  </listener>
+```
+
+# 4.데이터 공유를 위한 ServletContext와 서블릿 초기화 파라미터 ServletConfig에 대하여 설명하시오 (???)
+- ServletConfig
+    - ServletConfig는 Servlet 생성 시 초기에 필요한 파라미터를 입력시킨다. 즉, 초기화 한다 
+    - 초기화 파라미터를 이용하는 방법에는 **web.xml**에 입력하는 방법과 **servlet**에 직접 입력하는 방법이 있다.
+    ```html
+    <!--web.xml에 init-param을 입력하면 해당 servlet-class에 init-param이 초기화된다.-->
+    <servlet>
+  	<servlet-name>ServletInitParam</servlet-name>
+  	<servlet-class>com.javalec.ex.ServletInitParam</servlet-class>
+  	
+  	<init-param>
+  		<param-name>id</param-name>
+  		<param-value>abcdef</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>pw</param-name>
+  		<param-value>1234</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>path</param-name>
+  		<param-value>C:\\javalec\\workspace</param-value>
+  	</init-param>
+  </servlet>
+    
+    <!--servlet class에서는 다음과 같이 초기화 파라미터를 이용 가능하다 -->
+    String id = getInitParameter("id");
+    String pw = getInitParameter("pw");
+    String path = getInitParameter("path");
+    ```
+ 
+```java
+//Servlet에 직접 입력하는 방법
+
+@WebServlet(urlPatterns={"/ServletInitParam"}, initParams={@WebInitParam(name="id", value="abcdef"), @WebInitParam(name="pw", value="1234"), @WebInitParam(name="path", value="C:\\javalec\\workspace")})
+public class ServletInitParam extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ServletInitParam() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		System.out.println("doGet");
+		
+		String id = getInitParameter("id");
+		String pw = getInitParameter("pw");
+		String path = getInitParameter("path");
+	}
+```
+- ServletContext : 여러 Servlet에서 특정 데이터를 공유해야 할 경우 context parameter를 이용해서 web.xml에 데이터를 기술하고 Servlet에 공유해서 사용 가능 
+
+<br>
+
+# 5. 후손 선택자와 자식 선택자에 대하여 설명하시오
+- 자손선택자: **선택자A > 선택자 B** 형태로 사용, 선택자 A의 자손에 위치하는 선택자 B를 선택한다
+- 후손 선택자: **선택자A (띄어쓰기) 선택자 B** 형태로 사용, 아래에 존재하는 선택자들에 대해 모든 속성을 같이 적용한다 
+
+---
 # Quiz
 
 ## 1. 
