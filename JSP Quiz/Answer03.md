@@ -3,7 +3,7 @@
 <br>
 
 # 2. CSS 문법은?
->> 선택자 { 속성명: 속성값; }
+>> <style> <br> 선택자 { 속성명: 속성값; } <br> </style>
 ```html 
 <!DOCTYPE html>
 <html>
@@ -26,7 +26,7 @@
 - block 태그 : 자동으로 개행이 일어남 → **div**
 - inline 태그(unblock): 자동으로 개행이 일어나지 X → **span**
 
-▶ 개발자들이 div를 많이 사용하다보니 발전되서 나온 게 시멘틱태그 
+▶ 개발자들이 div를 많이 사용하다보니 발전되서 나온 게 시멘틱태그(가장 upgrade된 게 오디오와 비디오 삽입) 
 >> 시멘틱태그 : div + 의미 <br> 문서 구조를 태그 이름만 봐도 쉽게 이해 할 수 있도록 해 놓은것
 
 ![시멘틱태그](https://user-images.githubusercontent.com/74290204/103280483-e0b93400-4a13-11eb-88ca-7da20b0b9909.png)
