@@ -1,4 +1,16 @@
-# 들어가기 전 용어 정리
+# 들어가기 전 
+<details markdown="1">
+<summary>파일 import하는 방법 click!</summary>
+이클립스 → Packacge → 우클릭 Import → Exisiting Projects into Workspace → Import할 폴더 위치 copy paste (Select root directory-Browse) 
+→ option -Copy projects into workspace
+
+> [import 했을 때 컴파일 에러 잡는 법: 사람마다 깔린 버전이 다르고 환경설정이 달라서 생기는 것]
+프로젝트 우클릭 → Properties → Java Build Path →Libraries (unbound) 체크 → edit 
+→  내 컴퓨터의 깔린 자바프로그램(Workspace default JRE)과 서버의 version을 맞춰 주기 (내컴퓨터에 맞춰서 환경설정)
+</details>
+<br>
+
+## @ 용어 정리
 - 웹 : 인터넷 기반 서비스
 - 웹프로그래밍 : 웹어플리케이션을 구현하는 행위
 - ★ **프로토콜(Protocol) :** 네트워크상에서 **약속한 통신규약**, 각각의 목적에 맞게 약속된 통신들
@@ -52,7 +64,7 @@ http://www.sba.seoul.kr:80/kr/index
     ![캡처4](https://user-images.githubusercontent.com/74290204/103077111-7fa7ef80-4612-11eb-81e1-287a3376ba67.PNG)
     </details>
 
-# ★ JSP 구조 
+## @ ★ JSP 구조 
 ```
 .jsp file → (java파일로 변환) .java file → (컴파일) .class file
 ```
@@ -60,7 +72,7 @@ http://www.sba.seoul.kr:80/kr/index
 - java 파일을 이클립스에서 자동으로 컴파일했다면 jsp파일을 java파일로 바꾸고 컴파일해주는 주체 : 톰캣!
 - .class가 메모리에 올라가고 채팅 프로그램이 돌아가는 원리(request한 곳으로 html을 다시 돌려보내주는 것)
 
-# 웹서버 & 웹어플리케이션
+## @웹서버 & 웹어플리케이션
 ```
 <클라이언트 request>
 클라이언트 서버 → 웹서버 (html을 처리하는 부분) → WAS: 웹어플리케이션 서버 (java를 처리하는 부분) → DB (데이터 베이스)
@@ -70,39 +82,6 @@ DB → WAS : 웹어플리케이션 서버 → 웹서버 → 클라이언트 서�
 
 ☞ java부분이 html로 변환되서 웹서버로 전달하고 웹서버에서 html로 사용자에게 전달 
 ```
-
-# Servlet : 자바에서 제공하는 http프로토콜을 지원하는 라이브러리
-- MVC 모델 : Model View Controller
-- HttpServlet을 상속받는 모든 클래스를 servlet이라 한다
-- http를 쉽게 사용하기 위한 캡슐화시킨 라이브러리(클래스들의 집합)
-- 자바1.5 버전부터는 @Annotation이 제공됨
-    ```html
-    <servlet-name>hello</servlet-name> 
-    <servlet-class>edu.bit.ex.HelloWorld</servlet-class> class
-    <servlet-mapping>
-        <servlet-name>hello</servlet-name>
-        <url-pattern>/hw</url-pattern>   
-    </servlet-mapping>
-    따라서 위에 코드를 @WebServlet("/HWorld") 이 한줄로 대체 시켜줌
-    ```
-- URL mapping 변경 가능 
-- web.xml은 톰캣이 웹서비스를 읽어들이기 전에 먼저 읽고 설정하는 파일
-```html
-<servlet-name>hello</servlet-name> 은 이름이 달라도되지만 
-<servlet-class>edu.bit.ex.HelloWorld</servlet-class> class이름은 똑같아야함 (대소문자까지)
-```
-```html
-<servlet-name>hello</servlet-name> 
-<servlet-class>edu.bit.ex.HelloWorld</servlet-class> class
-▶ HelloWorld hello = new HelloWorld(); 객체생성하는것과 같음!
-
-  <servlet-mapping>
-     <servlet-name>hello</servlet-name>
-     <url-pattern>/hw</url-pattern>   
-  </servlet-mapping>
-: url이 /hw 치고들어오면 hello를 실행시켜라 
-서버프로그램은 자바방식을 기반으로 더해진 새로운 프로그램이기 때문에 자바방식으로 접근하면 안됨!!!
-``` 
 <br>
 
 # ★★ ★  do post/ do get ★ ★ ★ 
@@ -144,27 +123,7 @@ naver 창에 검색단어를 친다 → 검색단어를 어디에 보내? 네이
 ![html tag05](https://user-images.githubusercontent.com/74290204/103292253-ce99be80-4a30-11eb-99a5-d88102e1b41c.PNG)
 
 ![html tag06](https://user-images.githubusercontent.com/74290204/103292259-cfcaeb80-4a30-11eb-8988-faec158cc9e0.PNG)
-
-# HttpServletRequest request / HttpServletResponse response
-: 클라이언트가  requst한것을 response해주려면 클라이언트의 주소와 정보를 알아야하는데 웹브라우저에서 자동으로 프로토콜로 만들어 전달해줌 <br> 그러면 이걸 받기위해서는 웹서버가 정보를 저장할 내용을 가지고 있어야하는데 그게 바로 HttpServletRequest request, HttpServletResponse response
-```java
-System.out.println("HelloWorld~~"); 콘솔에서 출력
-```
-```html
-response.setContentType("text/html; charset=euc-kr");
-<!--response니까 다시 돌려주는것 (클라이언트의 IP로)-->
-PrintWriter writer = response.getWriter();
-		
-writer.print("<html>");
-writer.print("<head>");
-writer.print("</head>");
-writer.print("<body>");
-writer.print("<h1>post방식입니다</h1>");
-writer.print("</body>");
-writer.print("<html>");
-		
-writer.close();
-```
+<br>
 
 # Context Path
  <주의!> 여기서는 톰캣 서버 기준으로 설명 (OS에서의 context path는 또 다른 용어의 의미를 가짐)
@@ -176,9 +135,3 @@ http://192.168.0.96:8282/servlet_hello3
 
 ** server 파일은 함부로 건들지 말 것 !
 ```
-
-
-
-
-
-
