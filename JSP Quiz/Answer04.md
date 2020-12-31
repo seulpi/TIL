@@ -10,7 +10,7 @@
 >> 따라서 EUC_KR에서 완성된 글자를 찾을 수 없는 경우에 글자 깨짐 현상 발생 
    (웹에서는 보통  UTF-8 주로 사용)
 ```
-- server.xml 수정 (톰캣 서버에서 처리) : 왠만하면 서버 건드리지말기^_____^(so dangerous!!!!!!)
+1) server.xml 수정 (톰캣 서버에서 처리) : 왠만하면 서버 건드리지말기^_____^(so dangerous!!!!!!)
 ```java
 <Connector connectionTimeout="20000" port="8282" protocol="HTTP/1.1" redirectPort="8443"/>
 ↑ 여기에 URIEncoding="EUC-KR" 삽입
@@ -19,7 +19,7 @@
 
 //[알고가자!] 웹로직이나 제우스는 세팅방법이 다를 수 있음 
 ```
-- request 객체의 setCharactrerEncoding() 메소드 이용
+2) request 객체의 setCharactrerEncoding() 메소드 이용
 ```java
 servlet.java 에서 request.setCharacterEncoding("EUC-KR");
 ```
