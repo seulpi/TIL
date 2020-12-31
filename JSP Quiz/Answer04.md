@@ -147,6 +147,7 @@ public class ServletInitParam extends HttpServlet {
 </head>
 <body> 
 <!-- http://localhost:8282/Answer/1230/A01?dan=6 -->
+	<!-- 이 form 자체도 servlet에 넣으면 html안써도 되겠지^^!(문제 자체가 servlet으로 하라했으니 이것도 servlet에 넣었어야함 servlet 2개)->
 	<form action="A01" method="get">
 	출력한 구구단 단수 입력: <input type="text" name="num" size="10">
 	<input type="submit" value="실행">
@@ -206,10 +207,11 @@ public class A01 extends HttpServlet {
 		}
 		
 		write.println("</table>");
-		write.println("<form action='A01' method='get'>");
-		write.println("<input type='submit' value='돌아가기'>");
-		// 돌아가기해서 주소 리턴이 안됨
-		write.println("</form></body></html>");//
+		write.println("<a href='/1230/A01'>"); 
+		write.println("<button>=돌아가기</button>");//button에 경로 주소로 넣어주는것(button과 submit에 차이)
+		write.println("</a>");
+		// 돌아가기해서 주소 리턴이 안됐었음..
+		write.println("</body></html>");//
 	}
 
 	/**
