@@ -25,7 +25,7 @@ servlet.java 에서 request.setCharacterEncoding("EUC-KR");
 ```
 <br>
 
-# 2. 선택자" > + ~ a[href="https://net.tutsplus.com"]에 대하여 설명하시오
+# 2. 선택자" > + ~ a[href="https://net.tutsplus.com"] 에 대하여 설명하시오
 - '>' : 자손 선택자 , 부등호 방향이 큰 쪽이 부모, 바로 밑에 자식만 속성 적용이 가능하다(후손 불가능)
 ```html
 div > h1
