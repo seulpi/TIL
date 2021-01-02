@@ -1,4 +1,4 @@
-# 1. 선택자(Seletore)란?
+# 1. 선택자(Seletor)란?
 ## : style을 주기 위해 html안에 요소들을 선택하는 것 
 <br>
 
