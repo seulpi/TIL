@@ -26,6 +26,17 @@
 4. 표현식(출력out.println): **<%=     %>**
 5. 스크립트릿(JAVA 코드): **<%      %>** 
 6. 액션태그(자바빈연결): **< jsp:action >	< /jsp:action >**
+	- 액션태그란 jsp페이지 내에서 어떤 동작을 하도록 지시하는 태그
+	- 종류 : 
+		1. forword : 현재 페이지를 다른 페이지로 전환할 때 사용
+		2. param : forword 액션태그와 param을 이용해서 다른 페이지에 데이터를 전달할 수 있음
+		3. include : jsp페이지 내에서 다른 페이지를 삽입하는 태그
+		>> 지시자include와는 다름 - 지시자 include: jsp를 포함하여 java파일을 생성하지만 액션태그를 사용할 경우 실행 중에 동적으로 포함시킴 
+		4. useBean : 자바빈을 JSP 페이지에서 사용할 때 사용 ▶[자바빈즈참조링크] https://m.blog.naver.com/pjok1122/221728877690
+		5. setProperty : property의 값을 세팅할 때 사용 
+		6. getProperty : property의 값을 얻어낼 때 사용 
+		
+	
 ```html
 <!-- 스크립트릿 -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
