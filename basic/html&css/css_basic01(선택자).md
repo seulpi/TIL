@@ -1,8 +1,13 @@
 # CSS
 - 목적 : html상에 style을 주는 것 (꾸밈), 디자인 요소
 - html 태그상으로는 < style > → < style >을 사용하면 문법이 달라짐 (< head >< /head >안에 넣어서 하위코드들의 적용)
+<br>
+▶ css properties 링크 https://www.w3schools.com/cssref/ 
+
 >> 선택자 { }
+
 - ★ 선택자 : html안에 있는 요소(body안에 태그 요소)들을 선택하는 것
+
 ```html
 <!DOCTYPE html>
 <html>
