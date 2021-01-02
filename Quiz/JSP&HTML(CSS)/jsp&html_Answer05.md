@@ -143,3 +143,28 @@ public class oneInput extends HttpServlet {
 </body>
 </html>
 ```
+<br>
+
+## 3. 위의 프로그램을 아래의 순서로  작성하시오
+```
+1. include.jsp파일을 생성합니다.
+- <h4> 태그에 '구구단 출력하기'를 작성합니다.
+- include 액션 태그로 구구단을 출력하는 include_data.jsp 파일로 이동하도록 작성합니다.
+- param 액션 태그로 숫자 5를 출력하는 include_data.jsp 파일에 전달하도록 작성합니다.
+
+2. include_data.jsp 파일을 생성합니다.
+- 전달받은 숫자 5의 구구단을 출력하도록 작성합니다.
+
+3. 웹 브라우저에 http://localhost:8080/Exercise/ch04/include.jsp를 입력하여 실행 결과를 확인합니다
+```
+
+
+## 4. jsp로 작성하시오
+![3](https://user-images.githubusercontent.com/74290204/103455898-6bf83980-4d34-11eb-9cf1-c9eb58aee29d.PNG)
+
+
+## 5. jsp로 작성하시오
+![4](https://user-images.githubusercontent.com/74290204/103455928-ac57b780-4d34-11eb-8d8a-5fde6aa83d5c.PNG)
+
+## 6. jsp로 작성하시오
+![5](https://user-images.githubusercontent.com/74290204/103455929-af52a800-4d34-11eb-95e1-fcca67edef93.PNG)
