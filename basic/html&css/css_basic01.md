@@ -30,6 +30,7 @@
 </html>
 ```
 <details><summary>▶ 출력</summary>
+	
 ![css01](https://user-images.githubusercontent.com/74290204/103255065-2dc4e800-49cb-11eb-94e4-c43c4873fd0c.PNG)
 </details>
 
@@ -97,6 +98,7 @@
 ```
 
 <details><summary>▶ 출력</summary>
+	
 ![속성 선택자01](https://user-images.githubusercontent.com/74290204/103323241-472a6a80-4a85-11eb-9581-6ee1c2e54839.PNG)
 </details>
 
@@ -154,6 +156,7 @@ div > h1 : 큰 쪽이 부모 div 바로 밑에 h1을 말한다 (자식만가능)
 ```
 
 <details><summary>▶ 출력</summary>
+	
 ![속성 선택자02](https://user-images.githubusercontent.com/74290204/103324235-f9fcc780-4a89-11eb-88c9-de972fcb599b.PNG)
 </details>
 
@@ -200,6 +203,7 @@ h3~div : h3에서 같은 레벨에 div까지 속성 적용
 ```
 
 <details><summary>▶ 출력</summary>
+	
 ![동위선택자](https://user-images.githubusercontent.com/74290204/103324259-1bf64a00-4a8a-11eb-86d2-503e072efabd.PNG)
 </details>
 
@@ -240,6 +244,7 @@ h3~div : h3에서 같은 레벨에 div까지 속성 적용
 ```
 
 <details><summary>▶ 출력</summary>
+	
 ![반응 선택자](https://user-images.githubusercontent.com/74290204/103325079-7ba22480-4a8d-11eb-9f97-90abe4099d12.PNG)
 </details>
 
@@ -285,6 +290,7 @@ disabled : 못건드림(편집X)
 ```
 
 <details><summary>▶ 출력</summary>
+	
 ![상태선택자1](https://user-images.githubusercontent.com/74290204/103325505-7514ac80-4a8f-11eb-87b6-a6fbb464fee8.PNG)
 </details>
 
@@ -348,6 +354,7 @@ disabled : 못건드림(편집X)
 ```
 
 <details><summary>▶ 출력</summary>
+	
 ![선택자](https://user-images.githubusercontent.com/74290204/103326238-b8244f00-4a92-11eb-90a6-2a337eacdd15.PNG)
 </details>
 
@@ -396,6 +403,7 @@ first-letter: 첫 글자
 </html>
 ```
 <details><summary>▶ 출력</summary>
+	
 ![1](https://user-images.githubusercontent.com/74290204/103388689-ce431580-4b4d-11eb-935b-908166d590ee.PNG)
 </details>
 
