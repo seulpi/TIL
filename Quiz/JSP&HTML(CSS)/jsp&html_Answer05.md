@@ -44,7 +44,15 @@
 - 표현식(출력) : <%=   %>
 - 스크립트릿(java코드) : <%   %>
 - 액션태그 : < jsp:action > < /jsp:action >
-
+	- 액션태그란 jsp페이지 내에서 어떤 동작을 하도록 지시하는 태그
+	- 종류 : 
+		1. forword : 현재 페이지를 다른 페이지로 전환할 때 사용
+		2. param : forword 액션태그와 param을 이용해서 다른 페이지에 데이터를 전달할 수 있음
+		3. include : jsp페이지 내에서 다른 페이지를 삽입하는 태그
+		>> 지시자include와는 다름 - 지시자 include: jsp를 포함하여 java파일을 생성하지만 액션태그를 사용할 경우 실행 중에 동적으로 포함시킴 
+		4. useBean : 자바빈을 JSP 페이지에서 사용할 때 사용
+		5. setProperty : property의 값을 세팅할 때 사용 
+		6. getProperty : property의 값을 얻어낼 때 사용 
 ---
 # Quiz 
 
@@ -157,14 +165,181 @@ public class oneInput extends HttpServlet {
 
 3. 웹 브라우저에 http://localhost:8080/Exercise/ch04/include.jsp를 입력하여 실행 결과를 확인합니다
 ```
+```jsp
+// include.jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h4>구구단 출력하기</h4>
+	
+	<jsp:include page="include_data.jsp" flush="false">
+		<jsp:param value="5" name="dan"/>
+	</jsp:include>
 
+</body>
+</html>
+```
+```jsp
+// includ_data.jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+	String dan = request.getParameter("dan");
+	int danPrint = Integer.parseInt(dan);
+	
+	for(int i =1; i <10; i++) {
+		out.println(danPrint + "*" + i + "=" + (danPrint*i) + "<br>");
+	}
+
+%>
+</body>
+</html>
+```
+<br>
 
 ## 4. jsp로 작성하시오
 ![3](https://user-images.githubusercontent.com/74290204/103455898-6bf83980-4d34-11eb-9cf1-c9eb58aee29d.PNG)
+```jsp
+// form04.jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action=formOut.jsp" method="get">
+	이름: <input type="text" name="uname" size="10"><br>
+	주소: <input type="text" name="uadress" size="10"><br>
+	이메일: <input type="text" name="uemail" size="10"><br>
+	전송: <input type="submit" value="전송">
+	</form>
+</body>
+</html>
+```
+```jsp
+// formOut.jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<%
+	String name = request.getParameter("uname");
+	String ad = request.getParameter("uadress");
+	String e = request.getParameter("uemail");
+	%>
+	
+	<%=name %>
+	<%=ad %>
+	<%=e %>
 
+</body>
+</html>
+```
+<br>
 
 ## 5. jsp로 작성하시오
 ![4](https://user-images.githubusercontent.com/74290204/103455928-ac57b780-4d34-11eb-8d8a-5fde6aa83d5c.PNG)
+```jsp
+//form05.jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="formOut.jsp" method="get">
+	오렌지<input type="checkbox" name="fruit" value="오렌지">
+	사과<input type="checkbox" name="fruit" value="사과">
+	바나나<input type="checkbox" name="fruit" value="바나나">
+	<input type="submit" value="전송">
+	</form>
+</body>
+</html>
+```
+```jsp
+//formOut.jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h4>선택한 과일</h4>
+	<%
+	String[] fruit = request.getParameterValues("fruit");
+	for(String f:fruit) {
+		out.println(f + "<br>");
+	}
+	%>
+</body>
+</html>
+```
+<br>
 
 ## 6. jsp로 작성하시오
 ![5](https://user-images.githubusercontent.com/74290204/103455929-af52a800-4d34-11eb-95e1-fcca67edef93.PNG)
+```jsp
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>몇시 일까요??</h1>
+	<% 
+		// 현재시간 구하는 방법 1. Date 객체
+		Date date = new Date();
+		out.println(date);
+	%>
+	
+	<% 
+		// 현재시간 구하는 방법 2. Calendar getInstance()활용
+		Calendar date = Calendar.getInstance();
+		out.println(date);
+		// 필요한 정보만 얻고싶다면 int year = now.get(Calnedar.YEAR); 이런식으로도 가능
+	%>
+	
+	<% 
+		// 현재시간 구하는 방법 3. SimpleDateFormat 활용(생성자의 매개변수가 필요)
+		SimpleDateFormat now = new SimpleDateFormat("yyyy / MM / dd / HH:mm:ss");
+		String date = date.format(cal.getTime());
+		out.println(date);
+	%>
+</body>
+</html>
+```
+<br>
+▶ 참조한 링크 https://m.blog.naver.com/PostView.nhn?blogId=kj930519&logNo=221440967773&proxyReferer=https:%2F%2Fwww.google.com%2F
