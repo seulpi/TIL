@@ -1,6 +1,5 @@
 # CSS
-- 목적 : html상에 style을 주는 것 (꾸밈), 디자인 요소
-▶ css properties 링크 https://www.w3schools.com/cssref/ 
+- 목적 : html상에 style을 주는 것 (꾸밈), 디자인 요소 ▶ **css properties 링크** https://www.w3schools.com/cssref/ 
 
 - html 태그상으로는 < style > → < style >을 사용하면 문법이 달라짐 (< head >< /head >안에 넣어서 하위코드들의 적용)
 >> 선택자 { }
