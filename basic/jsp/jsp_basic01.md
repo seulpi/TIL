@@ -8,7 +8,6 @@
 프로젝트 우클릭 → Properties → Java Build Path →Libraries (unbound) 체크 → edit 
 →  내 컴퓨터의 깔린 자바프로그램(Workspace default JRE)과 서버의 version을 맞춰 주기 (내컴퓨터에 맞춰서 환경설정)
 </details>
-<br>
 
 ## @ 용어 정리
 - 웹 : 인터넷 기반 서비스
@@ -105,6 +104,7 @@ naver 창에 검색단어를 친다 → 검색단어를 어디에 보내? 네이
 ## - form 태그
 - form은 action과 method를 지정할 수 있음 
 >> action : 클릭했을때 주소 / method : post or get 방식 중 하나 선택 
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -125,6 +125,17 @@ naver 창에 검색단어를 친다 → 검색단어를 어디에 보내? 네이
 ![html tag06](https://user-images.githubusercontent.com/74290204/103292259-cfcaeb80-4a30-11eb-8988-faec158cc9e0.PNG)
 <br>
 
+- button과 submit의 차이 
+button과 submit은 기능적으로는 동일하나 <br>
+button은 버튼을 생성해주는 것 / submit 은 태그내에 입력된 데이터를 서버로 전달해주는것
+```
+<input> 태그의 'type' 속성을 'submit'이라고 지정해 주면,
+1. 자동으로 데이터를 전송할 수 있는 버튼이 생성되고,
+2. 그 버튼을 클릭하면 지정된 URL로 <form>태그 안에 입력된 값들이 'action' 속성으로 지정된 서버 페이지로 전송
+
+reset <form> 태그 안의 사용자 입력을 초기화
+```
+
 # Context Path
  <주의!> 여기서는 톰캣 서버 기준으로 설명 (OS에서의 context path는 또 다른 용어의 의미를 가짐)
  - context : 프로젝트 , 웹 어플리케이션을 구분하기 위한 path
@@ -135,3 +146,5 @@ http://192.168.0.96:8282/servlet_hello3
 
 ** server 파일은 함부로 건들지 말 것 !
 ```
+
+
