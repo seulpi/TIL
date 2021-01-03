@@ -90,88 +90,76 @@ www.bit.com / 팀명: Management Team
 <br>
 
 # 9. 가위, 바위, 보 게임 작성하시오
-## 가위바위보로 작성해야하는데 숫자를 넣어서 나옴..(코드수정필요)
 ```java
->> main class
+package java_quiz_trainning01;
 
 import java.util.Scanner;
 
-public class RandomMain {
+public class javaOne {
 
 	public static void main(String[] args) {
-		// 가위 바위 보 
-		
-		Scanner scanner = null;
+		// 가위바위보
+
 		
 		while(true) {
-		scanner = new Scanner(System.in);
-		System.out.println("가위바위보를 입력하세요");
-		
-		int num;
-		num = scanner.nextInt();
-		
-		Random random = new Random(num);
-		random.randomVS();
-		
-		System.out.println("계속하시겠습니까? (Y/N)");
-		
-		String yesOrNo = scanner.next();
-		
-		if(yesOrNo.equals("Y") || yesOrNo.equals("y"))
-			continue;
-		else
-			break;
-		
-		
-		}	scanner.close();
-		
-
+			
+			System.out.println("가위바위보를 입력하세요");
+			Game game = new Game();
+			game.myturn();
+			game.gameVS();
+			
+			System.out.println("계속하시겠습니까?");
+			
+			Scanner sc2 = new Scanner(System.in);
+			char answer = sc2.next().charAt(0);
+			
+			if(answer == 'y' || answer == 'Y' || answer == '예') {
+				continue;
+			} else {
+				break;
+			}			
+		}
 	}
-
 }
-==========================================================
->> Random class
 
-public class Random {
+class Game {
 	
-	int num; 
-	int num2;
-
-	public Random(int num) {
-		this.num = num;
-	}
-
-	public int getNum() {
-		return num;
-	}
-
-
-	public void setNum(int num) {
-		this.num = num;
-	}
-
-
-	public int getNum2() {
-		return num2;
-	}
-
-
-	public void setNum2(int num2) {
-		this.num2 = num2;
-	}
-
-
-	public void randomVS() {
+	String myNum;
+	int comNum;
+	
+	int mygame= 0;
+	
+	public void myturn() {
 		
-		int num2 = (int) (Math.random()* 3) + 1;
+		Scanner sc = new Scanner(System.in);
+		myNum = sc.next();
+		switch(myNum) {
+			case "가위":
+				mygame = 1;
+				break;
+			case "바위": 
+				mygame = 2;
+				break;
+			default:
+				mygame = 3;
+				break;
+		}
 		
-		if(num == num2) 
+		sc.close();
+	}
+
+	public void gameVS() {
+		
+		comNum  = (int)(Math.random()*3)+1;
+		
+		if(mygame == comNum) {
 			System.out.println("무승부");
-		else if(num > num2) 
-			System.out.println("개발자 승");
-		else 
-			System.out.println("컴퓨터 승");
-	}
+		} else if(mygame > comNum) {
+			System.out.println("유저 승리!");
+		} else {
+			System.out.println("컴퓨터 승리!");
+		}
+	}	
 }
 ```
 
