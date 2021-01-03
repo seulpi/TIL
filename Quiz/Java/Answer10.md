@@ -169,7 +169,6 @@ static은 메모리 내부에서 Method Area에 **먼저** 공간을 잡고 인�
 인스턴스 함수안에는 static 변수,함수 가능한 이유는 static이 미리 생성되어있기 때문에 가능한 것
 
 # 10. 아래의 프로그램을 작성 하시오
-```java
 
 - int 타입의 x, y, width, height 필드: 사각형을 구성하는 점과 크기 정보
 - x, y, width, height 값을 매개변수로 받아 필드를 초기화하는 생성자
@@ -177,6 +176,7 @@ static은 메모리 내부에서 Method Area에 **먼저** 공간을 잡고 인�
 - void show() : 사각형의 좌표와 넓이를 화면에 출력
 - boolean contatins(Rectangle r) : 매개변수로 받은 r이 현 사각형 안에 있으면 true 리턴
 - main() 메소드의 코드와 실행 결과는 다음과 같다
+```java
 public static void main(String[] args) {
    Rectangle r = new Rectangle(2, 2, 8, 7);
    Rectangle s = new Rectangle(5, 5, 6, 6);
