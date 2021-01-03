@@ -4,7 +4,27 @@
     - javac 파일명.java // JVM이 컴퓨터언어로 바꿔주는 행위가 이루어진다
 - 출력을 원하는 결과값을 호출한다 
     - java 파일명 
+```
+cd Doucuments  
+//(cd: change directory) 디렉토리를 documents로 이동한다.
 
+dir /w  
+//해당 디렉토리 안에 helloworld.java파일이 있는지 확인한다.
+
+javac HelloWorld.java
+//컴파일해서 .class 파일을 생성한다.
+
+dir /w 
+//디렉토리에 HelloWorld.class파일이 생성되어있는지 확인한다.
+
+HelloWorld.java 와 HelloWorld.class 
+//파일이 모두 있다면 성공적으로 컴파일 된 것이다.
+//*해당 문법에 에러가 있으면 .class가 생성되지 않고 에러가 뜬다.
+
+java HelloWorld
+// 실행한다.
+//java HelloWorld.class가 의도한 것이지만 .class생략 가능하도록 만들어준것
+```
 <br>
 
 # 2. 명령어 javac / java 를 설명하시오 (기능)
