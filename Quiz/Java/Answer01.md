@@ -44,7 +44,7 @@ java HelloWorld
 <br>
 
 # 5. JDK란? / 다운로드 경로 / OS별 버전이 다른이유를 설명하시오
-- JDK : Java Development tool Kit 
+- JDK : Java Development tool Kit (Java 환경에서 돌아가는 프로그램을 개발하는데 필요한 툴을 모아 놓은 소프트웨어 패키지)
 - 다운로드는 오라클 사이트에서 가능
 - 운영체제가 다른 사양 어디에서도 사용 가능(범용성이 넓음)
 
