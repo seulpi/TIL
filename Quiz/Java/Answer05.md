@@ -327,7 +327,7 @@ for(int i = 1; i <= 1000; i++) {
 ```java
 int count = 0;
 
-for(int i = 1; i <= 100; i++) {
+for(int i = 1; i <= 1000; i++) {
 	if((i % 2 == 0) && (i % 3 ==0)) {
 		count++;
 	}else {
@@ -335,7 +335,7 @@ for(int i = 1; i <= 100; i++) {
 	}
 } System.out.println(count);
 =========================================
-▶  16
+▶  166
 ```
 <br>
 
