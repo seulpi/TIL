@@ -135,6 +135,27 @@ ___★★★★ <br>
 _★★★★★ <br>
 
 ```java
+public static void main(String[] args) {
+	for(int i=1; i<=5; i++) {
+		for(int j =5; j>i; j--) {
+			System.out.print(" ");
+		}
+		for(int j=1; j<=i; j++) {
+			System.out.print("*");
+		}
+		System.out.println();
+	}	
+}
+```
+
+## 5-5) 
+★★★★★<br>
+__★★★★<br>
+___★★★<br>
+_____★★<br>
+_______★<br>
+
+```java
 // 방법 1
 
 for(int i = 1; i <= 5; i++) {
@@ -147,7 +168,6 @@ for(int i = 1; i <= 5; i++) {
     System.out.println();
 }
 
-
 ================================================================================================
 // 방법 2
 for(int i = 5; i >= 1; i--) {
@@ -159,10 +179,9 @@ for(int i = 5; i >= 1; i--) {
 	}
 	System.out.println();
 }
-
 ```
 
-## 5-5) ???????? 소스 봐도 모르겠음 ㅠㅠㅠ
+## 5-6) ???????? 소스 봐도 모르겠음 ㅠㅠㅠ
 ____ ★  <br>
 __ ★★★ <br>
 _ ★★★★★ <br>
