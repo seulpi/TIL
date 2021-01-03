@@ -248,7 +248,7 @@ while과 do while문의 차이가 있다면 while문은 조건이 만족되지 �
  3.실행 <br>
  4.변수값 증감 <br>
 ```java
-for(int i = 0; →; i++){
+for(int i = 0; i<= 100; i++){
     System.out.prinln("Hello" + i);
 }
 /* int i = 0  → i <=100 → System.out.prinln("Hello" + i) → i++ → i <=100 → System.out.prinln("Hello" + i) → i++
