@@ -1,5 +1,5 @@
 # 1. box-sizing 속성들에 대하여 설명하시오
-## : box-sizing이란 padding,margin,border등을 활용했을때 기존 width와 height에 포함해서 계산하는지 아닌지에 대한 정의
+## : box-sizing이란 padding,margin,border등을 활용했을때 <br>기존 width와 height에 포함해서 계산하는지 아닌지에 대한 정의
 ### 1. box-sizing : border-box → 기존 크기 안에 속성을 포함해서 내부에서 해결
 ### 2. box-sizing : content-box → default, 기존 크기를 건드리지 않고 content내용들이 더해진다 (기존에 정의했던 크기가 속성들이 더해질때마다 커짐)
 <br>
