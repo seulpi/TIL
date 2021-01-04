@@ -2,15 +2,18 @@
 ## : box-sizing이란 padding,margin,border등을 활용했을때 기존 width와 height에 포함해서 계산하는지 아닌지에 대한 정의
 ### 1. box-sizing : border-box → 기존 크기 안에 속성을 포함해서 내부에서 해결
 ### 2. box-sizing : content-box → default, 기존 크기를 건드리지 않고 content내용들이 더해진다 (기존에 정의했던 크기가 속성들이 더해질때마다 커짐)
+<br>
 
 # 2. margin 과 padding의 차이는?
 ### - margin : 외부 간격
 ### - padding : 내부 간격
 ![padding margin](https://user-images.githubusercontent.com/74290204/103519895-a6d7aa00-4eb9-11eb-8fb4-1c08c6ed82c6.PNG)
+<br>
 
 # 3. 내장객체에 대하여 설명하시오
 ### : 객체생성(new)을 따로 하지 않아도 객체가 이미 jsp안에 만들어져 있어서 기본적으로 제공하는 객체 
 ▶ 대표적인 내장 객체 : request / response / out
+<br>
 
 # 4. 구구단을 세로로 나타내도록 jsp 로 짜시오
 ## - out.println 을쓰지 말고 <%= expression을 사용 하시오
@@ -49,6 +52,7 @@
 
 ![A4](https://user-images.githubusercontent.com/74290204/103521092-8d376200-4ebb-11eb-8d77-7c97b4148cfc.PNG)
 </details>
+<br>
 
 # 5. redirect forward 의 차이는?
 ## 활용: redirect와 forward는 페이지에서 조건문을 줘서 나눌 때 사용!
@@ -106,6 +110,7 @@
 
 ![A1](https://user-images.githubusercontent.com/74290204/103512228-b6e88d00-4eab-11eb-90b5-25b93611e419.PNG)
 </details>
+<br>
 
 ## 2. 아래를 구현하시오 
 ![Q2](https://user-images.githubusercontent.com/74290204/103512367-e7302b80-4eab-11eb-8560-143e66895036.PNG)
@@ -258,6 +263,7 @@
 
 ![A2](https://user-images.githubusercontent.com/74290204/103514155-68d58880-4eaf-11eb-8b3e-09f1f7fe30c6.PNG)
 </details>
+<br>
 
 ## 3. 아래를 구현하시오 
 ![Q3](https://user-images.githubusercontent.com/74290204/103514204-8276d000-4eaf-11eb-8068-9d8e2ed0910c.PNG)
@@ -302,6 +308,7 @@
 </details>
 
 ## 4. jsp로 아래를 구현하시오(필수)
+<br>
 
 ![Q4-1](https://user-images.githubusercontent.com/74290204/103515566-4db84800-4eb2-11eb-8ffc-1fb684698dd9.PNG)
 ![Q4-2](https://user-images.githubusercontent.com/74290204/103515581-5741b000-4eb2-11eb-98f5-178276f6ee4b.PNG)
