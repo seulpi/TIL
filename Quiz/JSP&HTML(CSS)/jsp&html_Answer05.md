@@ -128,6 +128,8 @@ public class oneInput extends HttpServlet {
 
 ## 2. 1번 문제를 jsp로 작성하시오 
 ```jsp
+<!-- answer(me) -->
+
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -154,6 +156,33 @@ public class oneInput extends HttpServlet {
 			%> 
 		</tr>
 	</table>
+</body>
+</html>
+```
+```jsp
+<!-- answer(teacher) -->
+
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<table border = "1">
+<%
+	for(int i = 2; i <10; i++) {
+		out.println("<tr>");
+		for(int j = 1; j<10; j++) {
+			out.println("<td>");
+			out.println(i + "*" + j + "=" + (i*j));
+			out.println("<br></td>");
+		} out.println("</tr>");
+	}
+%>
+</table>
 </body>
 </html>
 ```
