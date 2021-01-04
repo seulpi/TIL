@@ -1,23 +1,23 @@
 # css 단위 
-1. em : 기본크기의 *(곱하기) 해주는 단위 
+### 1. em : 기본크기의 *(곱하기) 해주는 단위 
     - ex) 2em : 기본크기 * 2
     - 태그의 기본 px 크기 : 16px = 1em
-2. pt
-3. px
-4. % 
+### 2. pt
+### 3. px
+### 4. % 
 등등 
 
 # 속성
 ## ★ @ Display
 - margin : 0 auto → 중앙 정렬  / margin : 외부에 공백을 주는 것 
 : 모든 태그는 기본적으로 **3가지 속성을 가진다(block, inline, inline-block)**
-1. display : block → block으로 보여주기 (block 자동개행이 일어남)
+### 1. display : block → block으로 보여주기 (block 자동개행이 일어남)
     - 의미 : 개행을 줬다는 의미는 **전체 행에 대해서 내 구역이다**라는 의미(크기 설정하는 건 크기만큼 내가 구역을 다 가지겠다는 의미)
-2. display : inline
+### 2. display : inline
     - 크기(width, height)를 설정해도 inline으로 display를 준 순간 크기가 적용되지 않음
     - block태그여도 개행 X 
-3. display : none → 안 보여주기 
-4. ★ **display : inline-block → inline요소 + block요소**
+### 3. display : none → 안 보여주기 
+### 4. ★ **display : inline-block → inline요소 + block요소**
     - 크기 설정이 가능하면서 inline요소도 갖고 있기 때문에 block과 달리 영역 허용 가능 <br> ex) < button > < select >
     >>[tip] < li >는 원래 아래로 리스트업되서 출력 but, display:inline 옆으로 리스트 출력 가능
 ```html
@@ -127,8 +127,8 @@
 </details>
 
 ## @ Visibility 
-- display : none → 아예 출력하지마(영역 없음)
-- visibility : hidden → 출력은 하는데 빈 공간처럼 보여줘(해당 영역은 차지하고 있음)
+### - display : none → 아예 출력하지마(영역 없음)
+### - visibility : hidden → 출력은 하는데 빈 공간처럼 보여줘(해당 영역은 차지하고 있음)
 
 ## @ Opacity 
 : opacity의 허용되는 **값의 범위는 0 ~ 1**
