@@ -62,7 +62,7 @@
 ---
 # Quiz 
 
-## 1. 아래를 Servlet으로 작성하시오 (1,2번 테이블 정렬이 안되는데..)
+## 1. 아래를 Servlet으로 작성하시오
 ![q1](https://user-images.githubusercontent.com/74290204/103401786-b12e3700-4b8d-11eb-9b9e-727e415471d7.PNG)
 
 ```java
@@ -128,7 +128,7 @@ public class oneInput extends HttpServlet {
 
 ## 2. 1번 문제를 jsp로 작성하시오 
 ```jsp
-<!-- answer(me) -->
+<!-- answer(me) : 내가 한 코드는 테이블 정렬이 안되는데 css로 해결하면 되는건가? -->
 
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
