@@ -27,8 +27,9 @@
 ```
 
 ### ▶ URL과 URI란?  
-- URL :
-- URI : 절대 경로 만들 때 사용
+- URI(Uniform Resource Identifier) : 절대 경로 만들 때 사용, URI는 URN과 URL을 포함(상위개념이다)
+- URL(Uniform Resource Locator) : 위치 (일종의 하나의 파일 위치)
+- URN(Uniform Resource Name) : 이름
 
 ```jsp
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
