@@ -7,7 +7,7 @@
 
 ## @ padding : 내부 간격(내부 공백) 정의 (padding도 top.botton,right,left 다 설정 가능)
 
-![Padding](https://user-images.githubusercontent.com/74290204/103523587-6a0eb180-4ebf-11eb-9e90-e00bcebc5816.png)
+![Padding](https://user-images.githubusercontent.com/74290204/103602568-b0135600-4f4f-11eb-9e75-855a5f74c805.png)
 
 ```html
 <!DOCTYPE html>
