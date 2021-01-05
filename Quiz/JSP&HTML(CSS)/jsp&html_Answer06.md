@@ -5,8 +5,8 @@
 <br>
 
 # 2. margin 과 padding의 차이는?
-### - margin : 외부 간격
-### - padding : 내부 간격
+### - margin : 외부 간격 (외부공백)
+### - padding : 내부 간격 (내부공백)
 ![padding margin](https://user-images.githubusercontent.com/74290204/103519895-a6d7aa00-4eb9-11eb-8fb4-1c08c6ed82c6.PNG)
 <br>
 
