@@ -111,8 +111,117 @@
 2. addCookie(Cookie) : 쿠키 지정할때 사용 
 3. sendRedirect() : 지정한 URL로 이동할 때 사용
 
-### ★ redirect와 forward의 차이! 
+### @ redirect와 forward의 차이! ★
 - redirect : 클라이언트에서 요청했을 때 웹서버에서 redirect하면 **클라이언트로 하여금 다시 접근하게 하는 것(클라이언트에게 다시 요청**
 - forward : **자기 자신이 접근**해서 클라이언트에게 넘겨주는 것
 
 >> redirect와 forward는 페이지에서 조건문을 줘서 나눠서 작성해야할 때 사용한다
+#### _*redirect EX 코드*
+```html
+<!--redirectex.html-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="request_send.jsp">
+		당신의 나이는: <input type ="text" name = "age" size = "5">
+		<input type ="submit" value="전송">
+	</form>
+</body>
+</html>
+```
+```jsp
+<!--redirect_send.jsp-->
+
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<%! 
+		int age;
+	%>
+	
+	<%
+		String str = request.getParameter("age");
+		age = Integer.parseInt(str);
+		
+		if(age<20) {
+			response.sendRedirect("nonpass.jsp?age=" + age);
+		} else {
+			response.sendRedirect("pass.jsp?age=" + age);
+		}
+	%>
+	성인입니다. 주류구매가 가능합니다 
+	<a href = "requestex.html">처음으로 이동</a>
+</body>
+</html>
+```
+```jsp
+<!--pass.jsp-->
+
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<%! 
+		int age;
+	%>
+	
+	<%
+		String str = request.getParameter("age");
+		age = Integer.parseInt(str);
+	%>
+	
+	
+	성인입니다. 주류구매가 가능합니다 
+	<a href = "requestex.html">처음으로 이동</a>
+</body>
+</html>
+```
+```jsp
+<!--nonpass.jsp-->
+
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<%! 
+		int age;
+	%>
+	
+	<%
+		String str = request.getParameter("age");
+		age = Integer.parseInt(str);
+	%>
+	
+	성인이 아닙니다. 주류구매가 불가능합니다 
+	<a href = "requestex.html">처음으로 이동</a>
+</body>
+</html>
+```
+
+▶ 출력
+
+![re1](https://user-images.githubusercontent.com/74290204/103597884-97517300-4f44-11eb-9a1d-c6724dfe8ea6.PNG)
+![re2](https://user-images.githubusercontent.com/74290204/103597886-97ea0980-4f44-11eb-9cdf-649abe024170.PNG)
+![re3](https://user-images.githubusercontent.com/74290204/103597888-991b3680-4f44-11eb-9e20-95fdd3c6417f.PNG)
+![re4](https://user-images.githubusercontent.com/74290204/103597889-9a4c6380-4f44-11eb-8eaf-21c09470b65b.PNG)
+
