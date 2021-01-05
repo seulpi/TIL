@@ -116,7 +116,6 @@
 ![Q2](https://user-images.githubusercontent.com/74290204/103512367-e7302b80-4eab-11eb-8560-143e66895036.PNG)
 
 ```html
-<!-- 방법1 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -150,7 +149,7 @@
 			text-align: right;
 		}
 		
-		div p:nth-child(6) {
+		div p:nth-child(6) { <!--p:nth-child(6) p태그의 자손이 아니라 p에서 시작해서 6번째-->
 			height:100px;
 			line-height: 70px;
 			text-align: center;
@@ -172,7 +171,7 @@
 		<p>html5, CSS5 study is very easy</p>
 		<p>From. SBA</p>
 		
-		<hr/>
+		<hr/> 
 		
 		<p><a href="www.sba.kr">서울산업진흥원</a></p>
 	
