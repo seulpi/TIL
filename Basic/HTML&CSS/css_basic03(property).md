@@ -159,3 +159,155 @@
 </body>
 </html>
 ```
+# - position : 위치를 나타내는 속성 (defalut=static)
+1. 정적 위치 **(static position)** : 기본위치이기 때문에 생략이 가능하지만 top,left,right,bottom에 영향을 받지 않는다
+>> top,left,right,bottom로 위치 조정이 불가능 
+2. 상대 위치 **(relative position)** : 기존에 있는 위치에 대해서 영향을 받아 상대적으로 위치한다 
+>> 동일 선상일때는 동일 선상에 있는것에 대해서 영향을 받고 부모 자식간에는 부모에 영향을 받는다
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+	<style>
+		#red {
+			width: 100px;
+			height: 100px;
+			background-color: red;  
+		}
+		
+		#yellow {
+			width: 400px; 
+			height: 400px;
+			background-color: yellow;
+			position: relative;
+			top: 100px; 
+			left: 100px;
+		}
+		
+		#gereen {
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			position: relative;
+			top: 0;
+			left: 100px;
+		}
+		
+		#blue {
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			top: 100px;
+			left: 100px;
+		}
+	</style>
+</head>
+<body>
+    <div id="red"></div>
+    <div id="yellow">
+        <div id="green"></div>
+        <div id="blue"></div>
+    </div>
+</body>
+</html>
+```
+
+▶출력 
+![position](https://user-images.githubusercontent.com/74290204/103594757-f1e6d100-4f3c-11eb-95df-07cac749b70b.PNG)
+
+3. **absolute position :** 속성을 가지고 있지 않은 부모를 기준으로 움직인다 
+>> if, 부모중에 position태그가 없다면 가장 위의 태그인 body를 기준으로 한다
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+	<style>
+		div {
+			width: 100px; 
+			height: 100px;
+			opacity: 0.7;
+		}
+		
+		div:nth-child(1) {
+			background-color: #ff0000;
+			position: fixed;
+			top: 0;
+			left: 0;
+		}
+		
+		div:nth-child(2) {
+			background-color: #00ff00;
+			position: absolute;
+			top: 50px;
+			left: 50px;
+		}
+		
+		div:nth-child(3) {
+			background-color: #0000ff;
+			position: absolute;
+			top: 100px;
+			left: 100px;
+	
+		}
+		
+		#wrap {
+			width: 300px;
+			height: 300px;
+			position: fixed;
+			top: 300px;
+			left: 300px;
+			background-color: yellow;
+			opacity: 1.0;
+		}
+		
+		#wrap .content {
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			top:100px; 
+			left:100px;
+			background-color: red;
+			opacity: 1.0;
+		}
+	</style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <div id="wrap">
+        <div class="content"></div>
+    </div>
+</body>
+</html>
+```
+
+▶출력 
+![absolute](https://user-images.githubusercontent.com/74290204/103595359-90276680-4f3e-11eb-9028-4627ce963c07.PNG)
+
+### - viewport : 스마트 기기상에서 최초에 페이지를 로딩할 때 확대정도, 최대 확대비율, 최소 확대비율등을 다루는 meta data에 속하는 속성 
+>> viewport는 스마트기기 화면에서 실제 내용이 표시되는 영역을 의미 <br> 따라서 웹사이트를 제작할때 viewport에 대한 설정을 해주어야 반응형 웹사이트를 제대로 동작시킬 수 있음
+
+- [viewport 참고 링크] https://penguingoon.tistory.com/129
+
+# - float : position과 마찬가지로 위치를 설정하기 위한 속성
+>> float : 띄운다의 의미
+```html
+<style>
+	float : left
+</style>
+
+▶ 프로그래밍 내부적으로는 왼쪽으로가서 공중으로 띄운다는 뜻 
+```
+- [float 원리] float을 하면 다음에 올 영역이 바로 밑으로 들어가게되서 따로 float:clear를 선언해주지 않으면 display되지 않음(띄워져있어서 가리니까)
+- [에외!] float을 하면 당연히 영역이 float한 영역 밑으로 쌓여야하는데 **글자는 예외!** <br>
+why? css의 목적은 사용을 쉽게하기 위함이기 때문에 기능적으로 따로 추가된 부분 
+```
+원리는 글자의 컨텐의 면적은 float 영역 밑에서부터 시작되지만 display는 float영역 밖에 보이게 된다
+```
+
