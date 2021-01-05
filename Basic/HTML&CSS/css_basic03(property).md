@@ -5,7 +5,7 @@
 3. margin-right : 오른쪽
 4. margin-left : 왼쪽 
 
-## @ padding : 내부 간격(내부 공백) 정의 (padding도 위아래오른쪽왼쪽 다 설정 가능)
+## @ padding : 내부 간격(내부 공백) 정의 (padding도 top.botton,right,left 다 설정 가능)
 
 ![Padding](https://user-images.githubusercontent.com/74290204/103523587-6a0eb180-4ebf-11eb-9e90-e00bcebc5816.png)
 
