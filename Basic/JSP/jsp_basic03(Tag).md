@@ -35,8 +35,7 @@
 		
 		>> **지시자include와는 다름** <br> 
 		지시자 include: jsp를 포함하여 java파일을 생성하지만 액션태그를 사용할 경우 실행 중에 동적으로 포함시킴 
-		<br>
-		
+	
 		4. useBean : 자바빈을 JSP 페이지에서 사용할 때 사용 <br>
 		▶[자바빈즈참조링크] https://m.blog.naver.com/pjok1122/221728877690
 		
