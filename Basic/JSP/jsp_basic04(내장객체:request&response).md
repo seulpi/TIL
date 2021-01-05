@@ -2,7 +2,7 @@
 ## request 객체는 내장 객체 
 >> 내장객체란? 객체생성(new)을 따로 하지 않아도 기본적으로 jsp에서 제공하는 객체 <br> 대표적인 내장객체 : request, response, out ▶ 내장객체 종류 참고 링크 https://pathas.tistory.com/184
 
-- [참조] jsp 페이지 실행시 jsp파일을 servlet으로 바꾸기 때문에(servlet이 자동으로 생성되기 때문에) jsp가 변환된 .java파일 안 jspService() 메소드 내부에 내장객 선언되어있다
+- [참조] jsp 페이지 실행시 jsp파일을 servlet으로 바꾸기 때문에(servlet이 자동으로 생성되기 때문에) <br> jsp가 변환된 .java파일 안 jspService() 메소드 내부에 내장객 선언되어있다
 
 ```jsp
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
