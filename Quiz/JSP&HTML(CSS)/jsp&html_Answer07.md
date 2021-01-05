@@ -35,19 +35,18 @@
 <br>
 
 # 3. css에서의 position 의 4가지 설명하시오
-## 1. static
+## - static
 - **position의 default값** , default이기 때문에 생략가능하고 따로 positon을 지정해주지 않으면 static
 - **top, left, right, bottom의 영향을 받지 않기 때문에 위치 조정이 불가능하다**
 
-## 2. relative
+## - relative
 - 상대적인 위치를 나타내는 속성으로 **주변의 위치(기존에 이미 위에서 선언된 위치)에 영향을 받아 위치한다**
 - 동위선상일때는 동위선상에 있는 것에 대해서 영향을 받고 부모 자식간에는 부모에 영향을 받는다
 
-## 3. absolute
+## - absolute
 -  **속성을 가지고 있지 않은 부모를 기준으로 움직인다** (if 부모중에 태그:relative, absolute, fixed가 없다면 가장 위의 태그: body를 기준으로 한다)
 
-## 4. fixed : 위치 고정
-<br>
+## - fixed : 위치 고정
 
 # 4. float 속성에 대하여 설명하시오
 - float = '띄운다'라는 의미 
