@@ -56,7 +56,9 @@
 
 # 5. redirect forward 의 차이는?
 ## 활용: redirect와 forward는 페이지에서 조건문을 줘서 나눌 때 사용!
-### 차이점 : redirect는 클라이언트로 다시 접근하게 하는 것 / forward는 자기자신이 접근해서 클라이언트에게 넘겨주는 것
+### 차이점 : redirect는 클라이언트로 다시 접근하게 하는 것 / forward는 자기자신이 접근해서 클라이언트에게 넘겨주는 것 
+>> forward : 현재페이지와 나중에 호출될 페이지가 request와 response객체를 공유! 따라서 클라이언트가 최초로 요청한 주소가 다음 주소에도 유효 <br>
+redirect : 새로운 페이지에서 request와 response 객체가 새로 생성되기 때문에 주소가 바뀐다 
 
 ---
 # Quiz
