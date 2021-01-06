@@ -218,7 +218,7 @@
 ![position](https://user-images.githubusercontent.com/74290204/103594757-f1e6d100-4f3c-11eb-95df-07cac749b70b.PNG)
 
 3. **absolute position :** 속성을 가지고 있지 않은 부모를 기준으로 움직인다 
->> if, 부모중에 position태그가 없다면 가장 위의 태그인 body를 기준으로 한다
+>> if, 부모중에 static을 제외한 position태그가 없다면 가장 위의 태그인 body를 기준으로 한다
 ```html
 <!DOCTYPE html>
 <html>
@@ -289,6 +289,8 @@
 
 ▶출력 
 ![absolute](https://user-images.githubusercontent.com/74290204/103595359-90276680-4f3e-11eb-9028-4627ce963c07.PNG)
+
+4. **fixed :** 위치 고정 , viewport를 가진다 
 
 ### - viewport : 스마트 기기상에서 최초에 페이지를 로딩할 때 확대정도, 최대 확대비율, 최소 확대비율등을 다루는 meta data에 속하는 속성 
 >> viewport는 스마트기기 화면에서 실제 내용이 표시되는 영역을 의미 <br> 따라서 웹사이트를 제작할때 viewport에 대한 설정을 해주어야 반응형 웹사이트를 제대로 동작시킬 수 있음
