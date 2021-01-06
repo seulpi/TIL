@@ -356,11 +356,11 @@ public class Student {
 		
 		if(comNum == user) {
 			out.println("<br><h1>무승부</h1>");
-		} else if((comNum == 1)&&(userNum==3)) { //가위 보 
+		} else if((comNum == 1)&&(userNum==3)) { //comNum=가위 userNum=보 
 			out.println("<br><h1>컴퓨터 승리</h1>");
-		} else if((comNum == 2)&&(userNum==1)) { // 주먹 가위
+		} else if((comNum == 2)&&(userNum==1)) { // comNum=주먹 userNum=가위
 			out.println("<br><h1>컴퓨터 승리</h1>");
-		} else if((comNum == 3)&&(userNum==2)) { //보 
+		} else if((comNum == 3)&&(userNum==2)) { //comNum=보 userNum=바위
 			out.println("<br><h1>컴퓨터 승리</h1>");
 		} else {
 			out.println("<br><h1>유저 승리</h1>");
