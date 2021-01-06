@@ -1,204 +1,199 @@
-# - 쿠키(Cookie) 
-- http프로토콜은 서버쪽과 **연결된 상태에서** 정보를 주고받음 (그래야 전송이 가능!)
-- 웹브라우저에서 요청(request)하면 서버에서 **응답(response)하면 서버는 웹브라우저와의 관계를 종료시킨다(연결끊음: 소켓을 끊어버린다)** <br> 
-    why → 서버 한대에 클라이언트는 몇천만명인데 다 연결하게 두면 서버 다운되니까 끊을 수 밖에 없음 
+# - 예외 페이지 
+: 예외를 처리하는 페이지를 설정하는 것! 방법은 2가지 
+## 1. page 지시자를 이용한 예외 처리
+- [핵심] 예외페이지로 넘어가면서 예외처리한 부분으로 화면 출력 → 주소 바뀌지X 
+>> ▶ 내부적으로 forward 처리 
 
-1. 쿠키와 세션이 나오게 된 배경 <br>
-: html이나 채팅 프로그램이나 프로그래밍하는 방법은 완.똑! **차이가 있다면 연결성의 차이가 존재** 
-``` 
-채팅 : 채팅을 안한다고 해서 연결이 끊기지 않음, 계속 살아있음 (핸드폰 전화통화도 마찬가지 이치)
-인터넷 :  서버 1  = ∞ (서버 die)
-
-▶ 그렇다보니 response를 받고나서 계속 유지되야 할 필요성이 존재 (ex. 로그인) 
-따라서, 나온 게 Cookie & Session
-```
-2. 정의 : 쿠키와 섹션은 연결을 유지시켜주기 위한 수단이다
-
-3. 용량 : 4kb , 300개까지 정보 저장 가능하다
-
-4. 저장 공간 : 서버가 아닌 클라이언트측에 특정 정보를 저장한다 (key value형태로 웹브라우저에 저장)
-    - 웹브라우저 안에는 2개의 영역이 존재 
-    1. 쿠키를 담을 영역 (서버 이름별로 쿠키를 저장한다)
-    2. 캐시 공간(캐시는 웹브라우저마다 존재 , 웹브라우저 자체가 성능을 위해 만드는 공간)
-    <detaisl><summary>성능을 위해 만든 공간에 대한 의미 click!</summary>
-    - 웹브라우저에 접속하면 웹페이지에 display된 이미지같은 것들이 있어야 불러오는데 
-     <br> 접속할때마다 불러오기에는 생각보다 이미지의 크기가 크기 때문에 성능이 떨어지게됨
-     <br> 따라서 저장 공간에 담고 있으면 다음에 접속했을 때 빠르게 접근할 수 있기 때문에 공간에 저장하는 것
-
-5. 문법 
 ```jsp
-Cookie cookie = new Cookie("name", "value"); // 객체생성
-cookie.setMaxAge(60); // 속성 설정 
-response.addCookie(cookie); // response 객체의 쿠키 저장
+<!--main.jsp-->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+   <%@ page errorPage="errorPage.jsp" %> <!-- 에러가 발생하면 errorPage.jsp로 보내라-->
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<%
+		int i = 40/0; // 에러 발생 
+	%>
+
+</body>
+</html>
+
+<!-- errorPage.jsp-->
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+   <%@ page isErrorPage="true" %> 
+   <% response.setStatus(200); %> <!-- 에러가 아닌 정상적으로 잘 돌아가면 200, body안에 있어도 상관없음 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	에러 발생 <br>
+	에러 메세지: <%= exception.getMessage() %> <!-- 에러 발생하면 띄움 --> 
+
+	<!-- response 와 exception은 객체생성을 따로 하지 않아도 사용가능하니 "내장 객체" -->
+</body>
+</html> 
 ```
+
+## 2. web.xml 를 이용한 예외 처리 
+: 예외 처리를 보내는 경로는 **절대 경로** 
+
 ```jsp
-<!--cookietest.jsp-->
+// info.jsp
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+   <%@ page errorPage="errorPage.jsp" %> <!-- 에러가 발생하면 errorPage.jsp로 보내라-->
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
+
+	<a href="error03.jsp">error03.jsp</a>
+
+</body>
+</html>
+
+
+//error404.jsp 
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page isErrorPage="true" %>
+<% response.setStatus(200); %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+	404에러입니다.
+
+</body>
+</html>
+
+
+//error500.jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page isErrorPage="true" %>
+<% response.setStatus(200); %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR"s>
+<title>Insert title here</title>
+</head>
+<body>
+
+	500에러입니다.
+
+</body>
+</html>
+
+
+//web.xml [에러처리]
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+	<display-name>class_ex</display-name>
+	<welcome-file-list> //경로 리스트 
+		<welcome-file>index.html</welcome-file> 
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
 	
-	<form action="loginOk.jsp" method="post">
-		아이디 : <input type="text" name="id" size="10"><br>
-		비밀번호 : <input type="password" name="pw" size="10"><br>
-		<input type="submit" value="로그인">
-	</form>
-</body>
-</html>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error404.jsp</location> // 절대경로! 경로 주의 
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error500.jsp</location>
+	</error-page>
 
-
-<!--loginOk.jsp-->
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	
-	<%! String id, pw; %>
-	<%
-		id = request.getParameter("id");
-		pw = request.getParameter("pw");
-		
-		if(id.equals("abcde") && pw.equals("12345")) {
-			Cookie cookie = new Cookie("id", id);
-			cookie.setMaxAge(60);
-			response.addCookie(cookie); 
-			//여기까지 쿠키가 서버에서 저장되어있고 클라이언트에게 redirect하기 전
-			response.sendRedirect("welcome.jsp");
-			//redirect를 해야 클라이언트 쿠키에 저장됨
-		}
-		
-		else {
-			response.sendRedirect("cookietest.jsp");
-		}
-	%>
-</body>
-</html>
-
-<!--welcome.jsp-->
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	<%
-		Cookie[] cookies = request.getCookies(); 
-		
-		for(int i = 0; i <cookies.length; i++) {
-			String id = cookies[i].getValue();
-			if(id.equals("abcde")) {
-				out.println(id + "님 안녕하세요." + "<br>");
-			} // 클라이언트쪽에서 들어오는 모든 쿠키를 확인
-		}
-	%>
-	<a href ="logout.jsp">로그아웃</a>
-</body>
-</html>
-
-<!--logout.jsp-->
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	<% 
-		Cookie[] cookies = request.getCookies();
-	
-		if(cookies != null) {
-			for(int i =0; i <cookies.length; i++) {
-				if(cookies[i].getValue().equals("abcde")) {
-					cookies[i].setMaxAge(0);
-					response.addCookie(cookies[i]);
-				}
-			} 
-		}
-		
-		response.sendRedirect("cookietest.jsp");
-	%>
-</body>
-</html>
+</web-app>
 ```
 
+# - 빈(Bean) 
+: Bean이란, JAVA언어의 데이터와 기능으로 이루어진 클래스(객체)
+- 일반 데이터 멤버의 기본적인 getter&setter 함수를 만들어준다 
+- jsp에서는 생성자 함수 앞에 되도록이면 piblic 명시해주기!
+- 액션태크를 이용하여 빈 사용 
+>> < jsp : useBean id="변수명" class="패키지를 포함한 객체경로" scope="페이지허용범위">
+  ```
+  [scope범위]
+    - page : 생성된 페이지 내애서만 사용 가능
+    - request : 요청된 페이지 내에서만 사용 가능
+    - session : 웹브라우저의 생명주기와 동일하게 사용 가능
+    - application : 웹 어플리케이션 생명주기와 동일하게 사용가능
 
-# - 세션(Session) : 내장 객체
-- 웹브라우저와 서버를 연결시키기 위한 하나의 수단 
-- session은 서버상에 객체로 저장(클라이언트쪽에 저장하는 게 X)
-- 대표적인 EX : 자동 로그인, 장바구니 등
+    ▶ scope의 default는 "page"
+  ```
 
-## @ 특징
-1. 서버에만 존재하고 session ID 값만 클라이언트에게 넘겨주기 때문에 Cookie보다 보완이 우수함
-2. 저장할 수 있는 데이터 한계 X 
-    - 그렇다고 자주 쓰는 건 좋은 접근이 아님 → why? 메모리를 많이 잡아먹으니까 
-3. 서버는 session 객체를 클라이언트마다 자동으로 생성 (클라이어트 당 1개)
+```java
+package edu.bit.ex;
 
-## @ session 메소드()
-```
-- setAttribute() : session에 데이터를 저장(=메모리에 올린다)
-                   setAttribute를 활용하면 addCookie처럼 데이터를 따로 저장할 필요가 없다 
-- getAttribute() : session에 저장되어있는 데이터를 얻는다
-- getAttributeNames() : session에 저장되어 있는 모든 데이터의 이름(고유의 key값)을 얻는다
-- ★getID() : 자동 생성된 session의 고유의 ID를 얻는다
-- isNew : session이 최초로 생성된건지 이전에 생성된것인지를 구분
-- getMaxInactiveInterval() : session의 유효시간 / 가장 최근 요청시점을 기준으로 카운트(접근할때마다 유효시간이 바뀜)
-- removeAttribute() : session의 특정 데이터를 제거 
-- Invaildate() : session의 모든 데이터를 삭제 (싹 밀어버리는 것)
-```
-
-### ★ session.getID() : 이 친구의 원리를 이해하는 게 웹프로그래밍의 핵심
-- 로그인 여부를 떠나서 클라이언트가 접속하면 웹서버에서는 session이라는 공간에 접속하는 사람마다 session ID라는 것이 존재
-- session.getID는 클라이언트를 구분하고 , ID 발급 기준은 **웹브라우저당 1개씩 ID를 할당한다** 
-- ID의 저장시간의 유효시간은 30분을 기준으로 하고 접근할때마다 유효시간이 다시 카운트된다
-    >> 시간이 지나면 자동으로 저장된 값 초기화(=소멸)
-- 클라이언트에게 Cookie를 담아서 클라이언트쪽에 똑같은 session ID를 전달해서 구분하는 원리 <br>
-(다시 접근할 때 서버는 session ID로 '아 저번에 온 친구'로 인식해서 알 수 있는 것)
-- session ID는 Cookie와 session을 동시에 가져다 쓴다
-
-
-#### ▶ Q. 로그인 했을 때 같은 브라우저에서는 로그인이 유지되고 <br> 다른 브라우저에서는 왜 로그인이 유지되지 않는 지 설명하시오 
-: session ID는 웹브라우저당 1개씩 할당하기 떄문인데 같은 브라우저안에서는 유효시간까지 session ID가 있어 로그인이 유지되지만<br> 새로운 브라우저에는 session ID가 다르기 때문에 다시 로그인해야하는 것 <br>
-
->>[참고] 쿠키와 세션 확인 방법: 크롬 F12 - 네트워크 -F5(새로고침)
-
-```html
-<!--login2.html-->
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	<form action="loginOk2" method="post">
-		아이디: <input type="text" name="id" size=10><br>
-		비밀번호: <input type="password" name="pw" size=10><br>
-		<input type="submit" value="로그인">
-	</form>
-
-</body>
-</html>
+public class Student {
+	
+	private String name;
+	private int age;
+	private int grade;
+	private int studentNum;
+	
+	public Student() {
+		
+	}
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	public int getStudentNum() {
+		return studentNum;
+	}
+	public void setStudentNum(int studentNum) {
+		this.studentNum = studentNum;
+	}
+	
+}
 ```
 ```jsp
-<!--loginOk2.jsp-->
-
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+    
+    <!-- Student student = new Student(); , class는 student가 참조하는 객체가 속해있는 패키지명.클래스명-->
+<jsp:useBean id="student" class="edu.bit.ex.Student" scope="page" />
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -206,109 +201,20 @@ response.addCookie(cookie); // response 객체의 쿠키 저장
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- 처음으로 정보 저장 -->
-	<%! String id, pw; %>
-	<%
-		id = request.getParameter("id");
-		pw = request.getParameter("pw");
-		
-		if(id.equals("abcde") && pw.equals("12345")) {
-			session.setAttribute("id", id); /* 정보가 일치하면 세션에 데이터 저장  */
-			response.sendRedirect("welcome2.jsp"); /* 저장하고 클라이언트에게 다시 welcome2로 접근요청 */
-		} else { 
-			response.sendRedirect("logln2.html"); /* 정보가 일치하지 않으면 다시 로그인 */
-		}
+			<!-- student.setName("홍길동"); -->
+	<jsp:setProperty name="student" property="name" value="홍길동"/>
+	<jsp:setProperty name="student" property="age" value="13"/>
+	<jsp:setProperty name="student" property="grade" value="60"/>
+	<jsp:setProperty name="student" property="studentNum" value="20121101"/>
 	
-	%>
-</body>
-</html>
+				<!-- student.getName(); -->
+	이름 : <jsp:getProperty property="name" name="student"/> <br>
+	나이 : <jsp:getProperty property="age" name="student"/> <br>
+	점수 : <jsp:getProperty property="grade" name="student"/> <br>
+	학번 : <jsp:getProperty property="studentNum" name="student"/>
 
-<!--welcome2.jsp-->
-<%@page import="java.util.Enumeration"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	<!-- 클라이언트가 다시 접근했을때 세션에 있는 모든 값들 검사 -->
-	<% 
-		Enumeration enumeration = session.getAttributeNames(); /* 세션에 저장되어있는 모든 값 */
-		while(enumeration.hasMoreElements()) { /* 저장된 값들을 다 돌려서 검사 */
-			String sName = enumeration.nextElement().toString(); /* 받은 이름(key)을 toString해서 sName에 담는다 */
-			String sValue = (String)session.getAttribute(sName); /* 세션에서 저장되어 있는 이름(key)의 값을 sVlaue에 담는다 */
-			/* 캐스팅 하기 전까지 : session.getAttribute(sName)는 객체타입으로 인식하기 때문에 형변환을 맞춰서 캐스팅해줘야한다
-			집어넣을때는 객체니까 어떠한 형도 다 받을 수 있음(데이터 타입은 항상 타입을 맞춰줘야함)*/ 
-			if(sValue.equals("abcde")) {
-				out.println(sValue + "님 안녕하세요.");
-			}
-		}
-	%>
-	
-	<a href = "logout2.jsp">로그아웃</a>
-</body>
-</html>
-
-<!--logout2.jsp-->
-<%@page import="java.util.Enumeration"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	<% 
-		Enumeration enumeration = session.getAttributeNames();
-		while(enumeration.hasMoreElements()) {
-			String sName = enumeration.nextElement().toString();
-			String sValue = (String)session.getAttribute(sName);
-			
-			if(sValue.equals("abcde")) {
-				session.removeAttribute(sName);
-			}
-		}
-	%>
-	
-	<a href = "sessiontest.jsp">sessionTest</a>
-</body>
-</html>
-
-<!--sessionTest.jsp-->
-<%@page import="java.util.Enumeration"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	<%
-		Enumeration enumeration = session.getAttributeNames();
-	
-	
-		int i =0;
-		while(enumeration.hasMoreElements()) {
-			i++; /* 세션안에 저장되어있는 갯수 count */
-			String sName = enumeration.nextElement().toString();
-			String sValue = (String)session.getAttribute(sName);
-			
-			out.println("sNmae : " + sName + "<br>");
-			out.println("sVlalue : " + sValue + "<br>");
-		}
-		
-		if(i==0) {
-			out.println("해당 세션이 삭제 되었습니다");
-		}
-	
-	%>
 </body>
 </html>
 ```
+
+
