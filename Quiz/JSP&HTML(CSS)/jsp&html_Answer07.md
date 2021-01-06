@@ -26,7 +26,7 @@
 <form action="0105/request_send.jsp">
 당신의 나이는 : <input type="text" name="age" size="5">
 		<input type="submit" value="전송">
-	</form>
+</form>
 ```
 - 0105/request_send.jsp : 상대경로! 현재 페이지에 같은 선상(같은 폴더 0105)에 있는 request_send.jsp로 페이지 이동
 - ..0105/request_send.jsp : 0105의 상위폴더에 있는 request_send.jsp로 페이지 이동
