@@ -319,10 +319,7 @@ public class Student {
 <title>Insert title here</title>
 </head>
 <body>
-	<%!	 int userNum; 
-		int comNum;	
-		
-	%>
+	<%!	 int userNum, comNum; 	%>
 
 	<%
 		request.setCharacterEncoding("EUC-KR");
