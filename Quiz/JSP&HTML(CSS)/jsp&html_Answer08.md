@@ -319,26 +319,25 @@ public class Student {
 <title>Insert title here</title>
 </head>
 <body>
-	<%! int scissors, paper, rock; 
+	<%!	 int userNum; 
 		int comNum;	
-		String computer;
+		
 	%>
 
 	<%
 		request.setCharacterEncoding("EUC-KR");
 	
-		scissors = Integer.parseInt(request.getParameter("user"));
-		paper = Integer.parseInt(request.getParameter("user"));
-		rock = Integer.parseInt(request.getParameter("user"));
+		userNum = Integer.parseInt(request.getParameter("user"));
+		
 		
 		response.setContentType("text/html; charset=EUC-KR");
 		
 		out.println("<h1>당신이 낸 것</h1>");
 
-		if(scissors == 1) {
+		if(userNum == 1) {
 			out.println("<img src='https://apktada.com/storage/images/appinventor/ai_bbestest2/RSP_sjy_06/appinventor.ai_bbestest2.RSP_sjy_06_1.png'>");
 
-		} else if(paper == 2) {
+		} else if(userNum == 2) {
 			out.println("<img src='https://blog.kakaocdn.net/dn/dWscPZ/btqFnPyjcoJ/EkFxXpYN58Xaf0HuAMWpH0/img.png'>");
 		} else {
 			out.println("<img src='https://mnmsoft.co.kr/aivs/images/3.png'>");
@@ -355,9 +354,13 @@ public class Student {
 			out.println("<br><img src='https://mnmsoft.co.kr/aivs/images/3.png'>");
 		}
 		
-		if(comNum == scissors || comNum == paper || comNum == rock) {
+		if(comNum == user) {
 			out.println("<br><h1>무승부</h1>");
-		} else if(comNum > paper || comNum < rock || comNum < scissors) {
+		} else if((comNum == 1)&&(userNum==3)) { //가위 보 
+			out.println("<br><h1>컴퓨터 승리</h1>");
+		} else if((comNum == 2)&&(userNum==1)) { // 주먹 가위
+			out.println("<br><h1>컴퓨터 승리</h1>");
+		} else if((comNum == 3)&&(userNum==2)) { //보 
 			out.println("<br><h1>컴퓨터 승리</h1>");
 		} else {
 			out.println("<br><h1>유저 승리</h1>");
