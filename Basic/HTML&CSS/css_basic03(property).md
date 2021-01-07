@@ -299,19 +299,4 @@
 
 - [viewport 참고 링크] https://penguingoon.tistory.com/129
 
-# - float : position과 마찬가지로 위치를 설정하기 위한 속성
->> float : 띄운다의 의미
-```html
-<style>
-	float : left
-</style>
-
-▶ 프로그래밍 내부적으로는 왼쪽으로가서 공중으로 띄운다는 뜻 
-```
-- [float 원리] float을 하면 다음에 올 영역이 바로 밑으로 들어가게되서 display되지 않음(띄워져있어서 가리니까)
-- [에외!] float을 하면 당연히 영역이 float한 영역 밑으로 쌓여야하는데 **글자는 예외!** <br>
-why? css의 목적은 사용을 쉽게하기 위함이기 때문에 기능적으로 따로 추가된 부분 
-```
-원리는 글자의 컨텐의 면적은 float 영역 밑에서부터 시작되지만 display는 float영역 밖에 보이게 된다
-```
 
