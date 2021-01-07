@@ -27,8 +27,8 @@
 <!-- errorPage.jsp-->
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-   <%@ page isErrorPage="true" %> 
-   <% response.setStatus(200); %> <!-- 에러가 아닌 정상적으로 잘 돌아가면 200, body안에 있어도 상관없음 -->
+<%@ page isErrorPage="true" %> 
+<% response.setStatus(200); %> <!-- 에러가 아닌 정상적으로 잘 돌아가면 200, body안에 있어도 상관없음 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +51,7 @@
 // info.jsp
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-   <%@ page errorPage="errorPage.jsp" %> <!-- 에러가 발생하면 errorPage.jsp로 보내라-->
+<%@ page errorPage="errorPage.jsp" %> <!-- 에러가 발생하면 errorPage.jsp로 보내라-->
 <!DOCTYPE html>
 <html>
 <head>
