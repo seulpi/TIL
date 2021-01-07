@@ -129,3 +129,91 @@
 </web-app>
 ```
 
+# - 빈(Bean) 
+: Bean이란, JAVA언어의 데이터와 기능으로 이루어진 클래스(객체)
+- 일반 데이터 멤버의 기본적인 getter&setter 함수를 만들어준다 
+- jsp에서는 생성자 함수 앞에 되도록이면 piblic 명시해주기!
+- 액션태크를 이용하여 빈 사용 
+>> < jsp : useBean id="변수명" class="패키지를 포함한 객체경로" scope="페이지허용범위"/>
+  ```
+  [scope범위]
+    - page : 생성된 페이지 내애서만 사용 가능
+    - request : 요청된 페이지 내에서만 사용 가능
+    - session : 웹브라우저의 생명주기와 동일하게 사용 가능
+    - application : 웹 어플리케이션 생명주기와 동일하게 사용가능
+
+    ▶ scope의 default는 "page"
+  ```
+
+```java
+package edu.bit.ex;
+
+public class Student {
+	
+	private String name;
+	private int age;
+	private int grade;
+	private int studentNum;
+	
+	public Student() {
+		
+	}
+
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	public int getStudentNum() {
+		return studentNum;
+	}
+	public void setStudentNum(int studentNum) {
+		this.studentNum = studentNum;
+	}
+	
+}
+```
+```jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+    
+    <!-- Student student = new Student(); , class는 student가 참조하는 객체가 속해있는 패키지명.클래스명-->
+<jsp:useBean id="student" class="edu.bit.ex.Student" scope="page" />
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+			<!-- student.setName("홍길동"); -->
+	<jsp:setProperty name="student" property="name" value="홍길동"/>
+	<jsp:setProperty name="student" property="age" value="13"/>
+	<jsp:setProperty name="student" property="grade" value="60"/>
+	<jsp:setProperty name="student" property="studentNum" value="20121101"/>
+	
+				<!-- student.getName(); -->
+	이름 : <jsp:getProperty property="name" name="student"/> <br>
+	나이 : <jsp:getProperty property="age" name="student"/> <br>
+	점수 : <jsp:getProperty property="grade" name="student"/> <br>
+	학번 : <jsp:getProperty property="studentNum" name="student"/>
+
+</body>
+</html>
+```
+
+
