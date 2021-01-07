@@ -8,7 +8,7 @@
 <!--main.jsp-->
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-   <%@ page errorPage="errorPage.jsp" %> <!-- 에러가 발생하면 errorPage.jsp로 보내라-->
+<%@ page errorPage="errorPage.jsp" %> <!-- 에러가 발생하면 errorPage.jsp로 보내라-->
 <!DOCTYPE html>
 <html>
 <head>
