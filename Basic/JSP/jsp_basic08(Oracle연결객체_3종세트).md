@@ -2,15 +2,50 @@
 - 제조사마다 구현(java는 interface만 제공) <br>
 *→ why? DB는 제조사마다 다르기 때문에 제조사마다 구현해야하는 건 너무나 당연한 것*
 
+>> SQL(Structed Query Language) : RDBMS의 데이터를 관리하기 위해 설계된 특수 목적의 프로그래밍 언어 
+
 ## 1. Connection 
-#### : DriverManager클래스의 getConnection()메소드를 실행함으로써 정의되면 DB와 연결된 session역할을 한다 
+#### : DriverManager클래스의 getConnection()메소드를 실행함으로써 정의되며 DB와 연결된 session역할을 한다 
 - 이 session을 이용하여 DB의 SQL을 전송하고 그 결과인 ResultSet 객체를 얻는다
 
 ## 2. Statement 
+### : Statement의 객체는 Connection 인터페이스와 createStatement()메소드를 이용하여 생성되며 DB에 SQL문을 보내기 위한 작업과 <br> 실제 SQL을 실행하여 결과 값을 반환하는 기능을 제공한다 
+- Connction 객체의 연결 정보를 가져오기 때문에 Connection객체가 먼전 존재해야함 
+- SQL문을 전송하고 실행할 수 있는 객체를 생성한다 , 삽입&수정&삭제&검색을 처리하는 DML문을 사용할 때 이 인터페이스를 사용
+>> DML(Data Manipulation Language) : 정의된 DB에 입력된 레코드를 조회 or 수정, 삭제하는 등의 역할을 하는 언어
+##### - DML 종류
 - exexcuteUpdate(): 테이블 내용 변경
-- insert : 추가 
-- delete 
-- update
+- insert : 추가(삽입)
+- delete : 삭제
+- update : 수정
+- select : 조회 
+
+#### - JDBC 드라이버가 쿼리를 실행할 수 있도록 제공하는 함수
+1.  execute() : 모든 유형의 SQL문과 함께 사용할 수 있음(select, insert, update, delete, ddl문 모두 실행 가능) 
+- boolen 값을 반환하다 <br>
+▶ *반환값이 true* : getResultSet()메소드를 사용해 결과의 집합을 얻을 수 있음! <br>
+*반환값 false* : 업데이트 개수 or 결과가 없는 경우
+
+2.  executeUpdate () : DB에 데이터를 select문 제외한 추가, 삭제, 수정하는 SQL문을 실행하는 함수
+- 메서드의 반환 값은 해당 SQL문 실행에 영향을 받는 행 수를 반환 
+
+
+3. executeQuery() : DB에 데이터를 가져와서 결과 집합을 반환하는 함수, DB에 명령
+- ResultSet 객체에 결과값을 담을 수 있음
+- **select문에서만 실행할 수 있음** 
+
+## 3. ResultSet
+### : Statement 객체로 select문을 사용하요 얻어온 레코드 값들을 테이블의 형태로 갖게 되는 객체 
+- select문을 통해 데이터를 가져온다면 ResultSet 객체에 그 데이터를 저장해야함
+- next() : 다음 행으로 커서를 이동한다 (다음 행이 없으면 false 반환)
+
+```jsp
+while(rs.next())
+BOF의 위치에 커서가 있음 
+true가되면 첫번째 row로 이동
+
+EOF의 위치 : 마지막에 값이 없으면 커서가 EOF로 이동
+```
 
 #### - Oracle 이클립스와 연결 문법과 원리
 ```jsp
@@ -84,9 +119,3 @@
 </html> 
 ```
 
-- #####
-while(rs.next())
-BOF의 위치에 커서가 있음 
-true가되면 첫번째 row로 이동
-
-EOF의 위치 : 마지막에 값이 없으면 커서가 EOF로 이동
