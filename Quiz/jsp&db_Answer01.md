@@ -36,76 +36,78 @@ JAMES is a CLERK
 FORD is a ANALYST
 MILLER is a CLERK
 ```
-```sql
--- 부서 번호(DEPTNO)가 20인 사원에 관한 정보만 출력
-select * from emp where deptno= 20;
 
---이름(ENAME)이 FORD인 사람의 사번(empno), 이름(ename), 급여(SAL)를 출력하는 쿼리문
-select empno, ename, sal from emp where ename='FORD';
+<details><summary> ANSWER! </summary>
+	```sql
+	-- 부서 번호(DEPTNO)가 20인 사원에 관한 정보만 출력
+	select * from emp where deptno= 20;
 
---1982년 1월 1일 이후에 입사한 사원을 출력하는 쿼리문
-select * from emp where hiredate > '1982/01/01';
+	--이름(ENAME)이 FORD인 사람의 사번(empno), 이름(ename), 급여(SAL)를 출력하는 쿼리문
+	select empno, ename, sal from emp where ename='FORD';
 
---job 이 manage 이고 10번 부서인 사원
-select * from emp where job = 'MANAGER' and deptno=10;
+	--1982년 1월 1일 이후에 입사한 사원을 출력하는 쿼리문
+	select * from emp where hiredate > '1982/01/01';
 
---job 이 manage 이거나 10번 부서인 사원
-select * from emp where job = 'MANAGER' or deptno=10;
+	--job 이 manage 이고 10번 부서인 사원
+	select * from emp where job = 'MANAGER' and deptno=10;
 
---10번 부서가 아닌 사원
-select * from emp where not deptno = 10;
-select * from emp where deptno <> 10;
+	--job 이 manage 이거나 10번 부서인 사원
+	select * from emp where job = 'MANAGER' or deptno=10;
 
---급여가 2000~3000 사이의 사원을 검색하는 쿼리문
-select * from emp where sal >= 2000 and sal <= 3000;
-select * from emp where sal BETWEEN 2000 AND 3000;
+	--10번 부서가 아닌 사원
+	select * from emp where not deptno = 10;
+	select * from emp where deptno <> 10;
 
---급여가 2000 미만이거나 3000 초과인 사원을 검색하는 쿼리문
-select * from emp where sal < 2000 and sal > 3000;
+	--급여가 2000~3000 사이의 사원을 검색하는 쿼리문
+	select * from emp where sal >= 2000 and sal <= 3000;
+	select * from emp where sal BETWEEN 2000 AND 3000;
 
---1987년에 입사한 사원을 출력하는 쿼리문
-select * from emp where hiredate BETWEEN'1987/01/01' and '1987/01/01';
+	--급여가 2000 미만이거나 3000 초과인 사원을 검색하는 쿼리문
+	select * from emp where sal < 2000 and sal > 3000;
 
---커미션(COMM)이 300 혹은 500 혹은 1400인 사원이 있는지 검색하는 쿼리문
-select * from emp where comm=300 or comm=500 or comm=1400;
-select * from emp where comm in(300, 500, 1400);
+	--1987년에 입사한 사원을 출력하는 쿼리문
+	select * from emp where hiredate BETWEEN'1987/01/01' and '1987/01/01';
 
---커미션(COMM)이 300 혹은 500 혹은 1400이 아닌 사원이 있는지 검색하는 쿼리문
-select * from emp where not comm in(300, 500, 1400);
-select * from emp where comm not in(300, 500, 1400);
+	--커미션(COMM)이 300 혹은 500 혹은 1400인 사원이 있는지 검색하는 쿼리문
+	select * from emp where comm=300 or comm=500 or comm=1400;
+	select * from emp where comm in(300, 500, 1400);
 
---이름이 F로 시작하는 사람을 찾는 쿼리문
-select * from emp where ename like 'F%';
+	--커미션(COMM)이 300 혹은 500 혹은 1400이 아닌 사원이 있는지 검색하는 쿼리문
+	select * from emp where not comm in(300, 500, 1400);
+	select * from emp where comm not in(300, 500, 1400);
 
---위치 상관 없이 이름 중에 A가 들어있는 사람을 찾는 쿼리문
-select * from emp where ename like '%A%';
+	--이름이 F로 시작하는 사람을 찾는 쿼리문
+	select * from emp where ename like 'F%';
 
---이름이 N으로 끝나는 사람을 찾는 쿼리문
-select * from emp where ename like '%N';
+	--위치 상관 없이 이름 중에 A가 들어있는 사람을 찾는 쿼리문
+	select * from emp where ename like '%A%';
 
---이름의 두 번째 글자가 A인 사원을 찾는 쿼리문
-select * from emp where ename like '_A%';
+	--이름이 N으로 끝나는 사람을 찾는 쿼리문
+	select * from emp where ename like '%N';
 
---이름의 세 번째 글자가 A인 사원을 찾는 쿼리문
-select * from emp where ename like '__A%';
+	--이름의 두 번째 글자가 A인 사원을 찾는 쿼리문
+	select * from emp where ename like '_A%';
 
---이름에 A를 포함하지 않는 사람만 검색하는 쿼리문
-select * from emp where ename not like '%A%';
-select * from emp where not ename like '%A%';
+	--이름의 세 번째 글자가 A인 사원을 찾는 쿼리문
+	select * from emp where ename like '__A%';
 
---사원들의 급여를 오름차순으로 정렬하는 쿼리문
-select * from emp order by sal asc ;
+	--이름에 A를 포함하지 않는 사람만 검색하는 쿼리문
+	select * from emp where ename not like '%A%';
+	select * from emp where not ename like '%A%';
 
---가장 최근에 입사한 사원부터 출력하는 쿼리문
-select * from emp order by hiredate desc;
+	--사원들의 급여를 오름차순으로 정렬하는 쿼리문
+	select * from emp order by sal asc ;
 
---사원들이 소속되어 있는 부서의 번호를 출력하는 쿼리문
-select distinct deptno from emp;
+	--가장 최근에 입사한 사원부터 출력하는 쿼리문
+	select * from emp order by hiredate desc;
 
--- 아래와같이 출력하라(연결문)
-select ename || 'is a' || job from emp;
-```
-<br>
+	--사원들이 소속되어 있는 부서의 번호를 출력하는 쿼리문
+	select distinct deptno from emp;
+
+	-- 아래와같이 출력하라(연결문)
+	select ename || 'is a' || job from emp;
+	```
+</details>
 
 ---
 # Quiz
