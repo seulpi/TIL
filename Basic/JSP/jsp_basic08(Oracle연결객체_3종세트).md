@@ -24,7 +24,7 @@
 1.  execute() : 모든 유형의 SQL문과 함께 사용할 수 있음(select, insert, update, delete, ddl문 모두 실행 가능) 
 - boolen 값을 반환하다 <br>
 ▶ *반환값이 true* : getResultSet()메소드를 사용해 결과의 집합을 얻을 수 있음! <br>
-*반환값 false* : 업데이트 개수 or 결과가 없는 경우
+▶ *반환값 false* : 업데이트 개수 or 결과가 없는 경우
 
 2.  executeUpdate () : DB에 데이터를 select문 제외한 추가, 삭제, 수정하는 SQL문을 실행하는 함수
 - 메서드의 반환 값은 해당 SQL문 실행에 영향을 받는 행 수를 반환 
