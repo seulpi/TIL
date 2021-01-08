@@ -9,7 +9,7 @@
 - 이 session을 이용하여 DB의 SQL을 전송하고 그 결과인 ResultSet 객체를 얻는다
 
 ## 2. Statement 
-### : Statement의 객체는 Connection 인터페이스와 createStatement()메소드를 이용하여 생성되며 DB에 SQL문을 보내기 위한 작업과 <br> 실제 SQL을 실행하여 결과 값을 반환하는 기능을 제공한다 
+### : Statement의 객체는 Connection 인터페이스와 createStatement()메소드를 이용하여 생성되며 DB에 SQL문을 보내기 위한 작업과 실제 SQL을 실행하여 결과 값을 반환하는 기능을 제공한다 
 - Connction 객체의 연결 정보를 가져오기 때문에 Connection객체가 먼전 존재해야함 
 - SQL문을 전송하고 실행할 수 있는 객체를 생성한다 , 삽입&수정&삭제&검색을 처리하는 DML문을 사용할 때 이 인터페이스를 사용
 >> DML(Data Manipulation Language) : 정의된 DB에 입력된 레코드를 조회 or 수정, 삭제하는 등의 역할을 하는 언어
