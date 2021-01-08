@@ -36,7 +36,7 @@
 - **select문에서만 실행할 수 있음** 
 
 ## 3. ResultSet
-### : Statement 객체로 select문을 사용하요 얻어온 레코드 값들을 테이블의 형태로 갖게 되는 객체 
+### : Statement 객체로 select문을 사용하여 얻어온 레코드 값들을 테이블의 형태로 갖게 되는 객체 
 - select문을 통해 데이터를 가져온다면 ResultSet 객체에 그 데이터를 저장해야함
 - next() : 다음 행으로 커서를 이동한다 (다음 행이 없으면 false 반환)
 
