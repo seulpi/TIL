@@ -21,6 +21,8 @@
 - select : 조회 
 
 #### - JDBC 드라이버가 쿼리를 실행할 수 있도록 제공하는 함수
+>> query란 DB에 정보를 요청하는 것 
+
 1.  execute() : 모든 유형의 SQL문과 함께 사용할 수 있음(select, insert, update, delete, ddl문 모두 실행 가능) 
 - boolen 값을 반환하다 <br>
 ▶ *반환값이 true* : getResultSet()메소드를 사용해 결과의 집합을 얻을 수 있음! <br>
