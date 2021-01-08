@@ -50,6 +50,7 @@ select substr('Welcome to Oracle', '3', '4') from dual;
 select ename, 19 || substr(hiredate, 1, 2)년도, substr(hiredate, 4, 2)달 from emp;
 ```
 <details><summary>출력</summary>
+ 
  ![1](https://user-images.githubusercontent.com/74290204/103961210-543b0e00-5197-11eb-99da-1e4dd5bb6bc1.PNG)
 </details>
 
