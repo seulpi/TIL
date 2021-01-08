@@ -426,4 +426,156 @@ public class Employee {
 </html>
 ```
 
+<details><summary> 모범 답안 click! </summary>
+	
+	```java
+	//EmpVO class
 
+	package edu.bit.ex.vo; //vo= value object의 약자
+
+	import java.sql.Timestamp;
+
+	public class EmpVO {
+
+		private String ename;
+		private int empno;
+		private String job;
+		private Timestamp date; // Timestamp 시간에 대한 타입
+
+		public EmpVO() {
+
+		}
+
+		public EmpVO(String name, int empno, String job) {
+			this.ename = name;
+			this.empno = empno;
+			this.job = job;
+		}
+		public String getEname() {
+			return ename;
+		}
+		public void setEname(String ename) {
+			this.ename = ename;
+		}
+		public int getEmpno() {
+			return empno;
+		}
+		public void setEmpno(int empno) {
+			this.empno = empno;
+		}
+		public String getJob() {
+			return job;
+		}
+		public void setJob(String job) {
+			this.job = job;
+		}
+		public Timestamp getDate() {
+			return date;
+		}
+		public void setDate(Timestamp date) {
+			this.date = date;
+		}
+	}
+	```
+	```java
+	//EmpDVO.class
+
+	package edu.bit.ex.dao; //dao : data access object의 약자
+
+	import java.sql.Connection;
+	import java.sql.DriverManager;
+	import java.sql.ResultSet;
+	import java.sql.Statement;
+	import java.util.ArrayList;
+
+	import edu.bit.ex.vo.EmpVO;
+
+	public class EmpDAO { 
+		private String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		private String uid = "scott";
+		private String upw = "tiger";
+
+		public EmpDAO() {
+			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+			}catch(Exception e) {
+
+			}
+		}
+
+		public ArrayList<EmpVO> empSelect() {
+			ArrayList<EmpVO> dots = new ArrayList<EmpVO>(); // 가져오는 값을 list로 관리하겠다(row 하나 당 하나의 리스트에 담는것)
+
+			Connection con = null;
+			Statement stmt = null;
+			ResultSet rs = null;
+			String sql = "select * from emp order by ename"; //sql에는 가져오는 값을 오름차순으로 정렬해서 대입
+
+			try {
+
+				con = DriverManager.getConnection(url,uid,upw);
+				stmt = con.createStatement();
+				rs = stmt.executeQuery(sql);
+
+				while(rs.next()) {
+					String name = rs.getString("ename");
+					int empno = rs.getInt("empno");
+					String job = rs.getString("job");
+
+					EmpVO eDto = new EmpVO(name, empno, job);
+					dots.add(eDto); // 리스트를 참조하고 있는 객체에 들어오는 값을 저장
+
+				}
+
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				  try {
+
+				    if (rs != null) rs.close();
+				    if(stmt != null) stmt.close();
+				    if (con != null) con.close(); 
+
+				 } catch (Exception e2) {
+				    e2.printStackTrace();
+				 }
+
+			      }
+
+			      return dots;
+			}
+		}
+	```
+	```jsp
+	//empList.jsp
+
+	<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	    pageEncoding="EUC-KR"%>
+	<%@page import="edu.bit.ex.dao.EmpDAO"%>
+	<%@page import="java.util.ArrayList"%>
+	<%@page import="edu.bit.ex.vo.EmpVO"%>
+	<%@page import="java.sql.*"%>
+	<jsp:useBean id="eDao" class="edu.bit.ex.dao.EmpDAO" scope="page" />
+
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	</head>
+	<body>
+	<%
+	   //EmpDAO eDao = new EmpDAO();   
+
+	   ArrayList<EmpVO> dtos = eDao.empSelect(); // 객체 생성하고 empSelect함수 호출해서 dtos에 대입(값 불러온거 저장되어있는 것을 다시 불러오는것)
+	   for (int i = 0; i < dtos.size() ; i++){
+	      EmpVO vo = dtos.get(i); 
+
+	      out.println("이름: "+vo.getEname()+", 번호: "+vo.getEmpno()+"<br/>");
+	   }
+
+	%>
+	</body>
+	</html>
+	```
+</details>
