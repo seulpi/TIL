@@ -14,7 +14,6 @@
 - SQL문을 전송하고 실행할 수 있는 객체를 생성한다 , 삽입&수정&삭제&검색을 처리하는 DML문을 사용할 때 이 인터페이스를 사용
 >> DML(Data Manipulation Language) : 정의된 DB에 입력된 레코드를 조회 or 수정, 삭제하는 등의 역할을 하는 언어
 ##### - DML 종류
-- exexcuteUpdate(): 테이블 내용 변경
 - insert : 추가(삽입)
 - delete : 삭제
 - update : 수정
