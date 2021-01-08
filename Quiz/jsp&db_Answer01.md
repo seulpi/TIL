@@ -113,320 +113,323 @@ MILLER is a CLERK
 # Quiz
 
 ## 1. 가위바위보 게임을 useBean을 활용하여(객체로 만들어서) 만드시오
-```jsp
-//gameInput.jsp
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>가위바위보 게임</h1>
-	<img src ="http://res.heraldm.com/content/image/2016/06/17/20160617000234_0.jpg" width="30%">
-	<form action="gameObj.jsp">
-		<select name ="user">
-			<option value="1">가위</option>
-			<option value="2">바위</option>
-			<option value="3">보</option>
-		</select>
-		<input type="submit" value="제출">
-	</form>
-</body>
-</html>
-```
-```jsp
-//gameObj.jsp
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<jsp:useBean id="gamerun" class="answer2.GameRun"/>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-	
-	<%
-		gamerun.setMyNum(Integer.parseInt(request.getParameter("user")));
-	
-		out.println("<h1>당신이 낸 것</h1>");
+<details><summary> ANSWER! </summary>
+	```jsp
+	//gameInput.jsp
+	<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	    pageEncoding="EUC-KR"%>
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	</head>
+	<body>
+		<h1>가위바위보 게임</h1>
+		<img src ="http://res.heraldm.com/content/image/2016/06/17/20160617000234_0.jpg" width="30%">
+		<form action="gameObj.jsp">
+			<select name ="user">
+				<option value="1">가위</option>
+				<option value="2">바위</option>
+				<option value="3">보</option>
+			</select>
+			<input type="submit" value="제출">
+		</form>
+	</body>
+	</html>
+	```
+	```jsp
+	//gameObj.jsp
+	<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	    pageEncoding="EUC-KR"%>
+	<jsp:useBean id="gamerun" class="answer2.GameRun"/>
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	</head>
+	<body>
 
-		if(gamerun.getMyNum() == 1) {
-			out.println("<img src='https://apktada.com/storage/images/appinventor/ai_bbestest2/RSP_sjy_06/appinventor.ai_bbestest2.RSP_sjy_06_1.png'>");
+		<%
+			gamerun.setMyNum(Integer.parseInt(request.getParameter("user")));
 
-		} else if(gamerun.getMyNum() == 2) {
-			out.println("<img src='https://blog.kakaocdn.net/dn/dWscPZ/btqFnPyjcoJ/EkFxXpYN58Xaf0HuAMWpH0/img.png'>");
-		} else {
-			out.println("<img src='https://mnmsoft.co.kr/aivs/images/3.png'>");
-		} 
-		
-		out.println("<br><h1>컴퓨터가 낸 것</h1>");
-		
-		if(gamerun.getComNum() == 1) {
-			out.println("<br><img src='https://apktada.com/storage/images/appinventor/ai_bbestest2/RSP_sjy_06/appinventor.ai_bbestest2.RSP_sjy_06_1.png'>");
-		} else if(gamerun.getComNum() == 2) {
-			out.println("<br><img src='https://blog.kakaocdn.net/dn/dWscPZ/btqFnPyjcoJ/EkFxXpYN58Xaf0HuAMWpH0/img.png'>");
-		} else {
-			out.println("<br><img src='https://mnmsoft.co.kr/aivs/images/3.png'>");
+			out.println("<h1>당신이 낸 것</h1>");
+
+			if(gamerun.getMyNum() == 1) {
+				out.println("<img src='https://apktada.com/storage/images/appinventor/ai_bbestest2/RSP_sjy_06/appinventor.ai_bbestest2.RSP_sjy_06_1.png'>");
+
+			} else if(gamerun.getMyNum() == 2) {
+				out.println("<img src='https://blog.kakaocdn.net/dn/dWscPZ/btqFnPyjcoJ/EkFxXpYN58Xaf0HuAMWpH0/img.png'>");
+			} else {
+				out.println("<img src='https://mnmsoft.co.kr/aivs/images/3.png'>");
+			} 
+
+			out.println("<br><h1>컴퓨터가 낸 것</h1>");
+
+			if(gamerun.getComNum() == 1) {
+				out.println("<br><img src='https://apktada.com/storage/images/appinventor/ai_bbestest2/RSP_sjy_06/appinventor.ai_bbestest2.RSP_sjy_06_1.png'>");
+			} else if(gamerun.getComNum() == 2) {
+				out.println("<br><img src='https://blog.kakaocdn.net/dn/dWscPZ/btqFnPyjcoJ/EkFxXpYN58Xaf0HuAMWpH0/img.png'>");
+			} else {
+				out.println("<br><img src='https://mnmsoft.co.kr/aivs/images/3.png'>");
+			}
+
+			if(gamerun.getComNum() == gamerun.getMyNum()) {
+				out.println("<br><h1>무승부</h1>");
+			} else if((gamerun.getComNum() == 1)&&(gamerun.getMyNum()==3)) { //comNum=가위 userNum=보 
+				out.println("<br><h1>컴퓨터 승리</h1>");
+			} else if((gamerun.getComNum() == 2)&&(gamerun.getMyNum()==1)) { // comNum=주먹 userNum=가위
+				out.println("<br><h1>컴퓨터 승리</h1>");
+			} else if((gamerun.getComNum() == 3)&&(gamerun.getMyNum()==2)) { //comNum=보 userNum=바위
+				out.println("<br><h1>컴퓨터 승리</h1>");
+			} else {
+				out.println("<br><h1>유저 승리</h1>");
+			}
+
+		%>
+		<a href="gameInput.jsp">다시 하기</a>
+	</body>
+	</html>
+	```
+	```java
+	//GameRun.java
+	package answer2;
+
+	public class GameRun {
+
+		int myNum;
+		int comNum = (int)(Math.random()*3)+1 ;
+		public int getMyNum() {
+			return myNum;
 		}
-		
-		if(gamerun.getComNum() == gamerun.getMyNum()) {
-			out.println("<br><h1>무승부</h1>");
-		} else if((gamerun.getComNum() == 1)&&(gamerun.getMyNum()==3)) { //comNum=가위 userNum=보 
-			out.println("<br><h1>컴퓨터 승리</h1>");
-		} else if((gamerun.getComNum() == 2)&&(gamerun.getMyNum()==1)) { // comNum=주먹 userNum=가위
-			out.println("<br><h1>컴퓨터 승리</h1>");
-		} else if((gamerun.getComNum() == 3)&&(gamerun.getMyNum()==2)) { //comNum=보 userNum=바위
-			out.println("<br><h1>컴퓨터 승리</h1>");
-		} else {
-			out.println("<br><h1>유저 승리</h1>");
+
+		public void setMyNum(int myNum) {
+			this.myNum = myNum;
 		}
-		
-	%>
-	<a href="gameInput.jsp">다시 하기</a>
-</body>
-</html>
-```
-```java
-//GameRun.java
-package answer2;
 
-public class GameRun {
-	
-	int myNum;
-	int comNum = (int)(Math.random()*3)+1 ;
-	public int getMyNum() {
-		return myNum;
+		public int getComNum() {
+			return comNum;
+		}
+
+		public void setComNum(int comNum) {
+			this.comNum = comNum;
+		}
+
 	}
-
-	public void setMyNum(int myNum) {
-		this.myNum = myNum;
-	}
-
-	public int getComNum() {
-		return comNum;
-	}
-
-	public void setComNum(int comNum) {
-		this.comNum = comNum;
-	}
-
-}
-```
-<br>
+	```
+</details>
 
 ## 2. 아래의 프로그램을 Employee 객체를 생성하여 아래를 만드시오
 ![q2](https://user-images.githubusercontent.com/74290204/103884434-f15b5f80-5121-11eb-9012-911261b7afde.PNG)
 
-```java
+<details><summary> ANSWER! </summary>
+	```java
 
-// Employee.java
-package answer2;
+	// Employee.java
+	package answer2;
 
-public class Employee {
-	
-	private String empno, name, job, management, date, salary, comm, deptno;
-	
-	public Employee() {
-		
+	public class Employee {
+
+		private String empno, name, job, management, date, salary, comm, deptno;
+
+		public Employee() {
+
+		}
+
+		public String getEmpno() {
+			return empno;
+		}
+
+		public void setEmpno(String empno) {
+			this.empno = empno;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public String getJob() {
+			return job;
+		}
+
+		public void setJob(String job) {
+			this.job = job;
+		}
+
+		public String getManagement() {
+			return management;
+		}
+
+		public void setManagement(String management) {
+			this.management = management;
+		}
+
+		public String getDate() {
+			return date;
+		}
+
+		public void setDate(String date) {
+			this.date = date;
+		}
+
+		public String getSalary() {
+			return salary;
+		}
+
+		public void setSalary(String salary) {
+			this.salary = salary;
+		}
+
+		public String getComm() {
+			return comm;
+		}
+
+		public void setComm(String comm) {
+			this.comm = comm;
+		}
+
+		public String getDeptno() {
+			return deptno;
+		}
+
+		public void setDeptno(String deptno) {
+			this.deptno = deptno;
+		}
+
 	}
+	```
+	```jsp
+	//employee.jsp
+	<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	    pageEncoding="EUC-KR"%>
+	<%@ page import="java.sql.*" %>
+	<jsp:useBean id="employee" class="answer2.Employee" />
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="EUC-KR">
+	<title>Insert title here</title>
+	</head>
+	<body>
 
-	public String getEmpno() {
-		return empno;
-	}
+		<%! 
+			Connection connection;
+			Statement statement;
+			ResultSet resultSet;
 
-	public void setEmpno(String empno) {
-		this.empno = empno;
-	}
+			String driver = "oracle.jdbc.driver.OracleDriver";
+			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String uid = "scott";
+			String upw = "tiger";
+			String query = "select * from emp";
+		%>
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getJob() {
-		return job;
-	}
-
-	public void setJob(String job) {
-		this.job = job;
-	}
-
-	public String getManagement() {
-		return management;
-	}
-
-	public void setManagement(String management) {
-		this.management = management;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public String getSalary() {
-		return salary;
-	}
-
-	public void setSalary(String salary) {
-		this.salary = salary;
-	}
-
-	public String getComm() {
-		return comm;
-	}
-
-	public void setComm(String comm) {
-		this.comm = comm;
-	}
-
-	public String getDeptno() {
-		return deptno;
-	}
-
-	public void setDeptno(String deptno) {
-		this.deptno = deptno;
-	}
-
-}
-```
-```jsp
-//employee.jsp
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%@ page import="java.sql.*" %>
-<jsp:useBean id="employee" class="answer2.Employee" />
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-
-	<%! 
-		Connection connection;
-		Statement statement;
-		ResultSet resultSet;
-		
-		String driver = "oracle.jdbc.driver.OracleDriver";
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String uid = "scott";
-		String upw = "tiger";
-		String query = "select * from emp";
-	%>
-	
-	<% 
-		try {
-			Class.forName(driver);
-			connection = DriverManager.getConnection(url, uid, upw);
-			statement = connection.createStatement();
-			resultSet = statement.executeQuery(query);
-			
-			out.println("<table border='1'><tr>");
-			out.println("<td>EMPNO</td>");
-			out.println("<td>ENAME</td>");
-			out.println("<td>JOB</td>");
-			out.println("<td>MGR</td>");
-			out.println("<td>HIREDATE</td>");
-			out.println("<td>SAL</td>");
-			out.println("<td>COMM</td>");
-			out.println("<td>DEPTNO</td></tr>");
-		
-			while(resultSet.next()) {
-				employee.setEmpno(resultSet.getString("EMPNO"));// set은 값을 변경하는거니까 true, get은 값 넣어져있는걸 가져오니까 false(넣은값이 없음))
-				employee.setName(resultSet.getString("ENAME"));
-				employee.setJob(resultSet.getString("JOB"));
-				employee.setManagement(resultSet.getString("MGR"));
-				employee.setDate(resultSet.getString("HIREDATE"));
-				employee.setSalary(resultSet.getString("SAL"));
-				employee.setComm(resultSet.getString("COMM"));
-				employee.setDeptno(resultSet.getString("DEPTNO"));
-				
-				out.println("<tr>");
-				
-				if(employee.getEmpno()==null) {
-					out.println("<td>"+ " " +"</td>");
-				} else {
-					out.println("<td>"+ employee.getEmpno()+"</td>");
-				}
-				
-				if(employee.getName()==null) {
-					out.println("<td>"+ " " +"</td>");
-				} else {
-					out.println("<td>"+employee.getName()+"</td>");
-				}
-				
-				if(employee.getJob()==null) {
-					out.println("<td>"+ " " +"</td>");
-				} else {
-					out.println("<td>"+employee.getJob()+"</td>");
-				}
-				
-				if(employee.getManagement()==null) {
-					out.println("<td>"+ " " +"</td>");
-				} else {
-					out.println("<td>"+employee.getManagement()+"</td>");
-				}
-				
-				if(employee.getDate()==null) {
-					out.println("<td>"+ " " +"</td>");
-				} else {
-					out.println("<td>"+employee.getDate()+"</td>");
-				}
-				
-				if(employee.getSalary()==null) {
-					out.println("<td>"+ " " +"</td>");
-				} else {
-					out.println("<td>"+employee.getSalary()+"</td>");
-				}
-				
-				if(employee.getComm()==null) {
-					out.println("<td>"+ " " +"</td>");
-				} else {
-					out.println("<td>"+employee.getComm()+"</td>");
-				}
-				
-				if(employee.getDeptno()==null) {
-					out.println("<td>"+ " " +"</td>");
-				} else {
-					out.println("<td>"+employee.getDeptno()+"</td>");
-				}
-				
-				out.println("</tr>");
-				
-			}
-			out.println("</table>");
-			
-		} catch(Exception e) {
-			
-		} finally {
+		<% 
 			try {
-				if(connection != null)
-					connection.close();
-				if(statement != null)
-					statement.close();
-				if(resultSet != null) 
-					resultSet.close();
+				Class.forName(driver);
+				connection = DriverManager.getConnection(url, uid, upw);
+				statement = connection.createStatement();
+				resultSet = statement.executeQuery(query);
+
+				out.println("<table border='1'><tr>");
+				out.println("<td>EMPNO</td>");
+				out.println("<td>ENAME</td>");
+				out.println("<td>JOB</td>");
+				out.println("<td>MGR</td>");
+				out.println("<td>HIREDATE</td>");
+				out.println("<td>SAL</td>");
+				out.println("<td>COMM</td>");
+				out.println("<td>DEPTNO</td></tr>");
+
+				while(resultSet.next()) {
+					employee.setEmpno(resultSet.getString("EMPNO"));// set은 값을 변경하는거니까 true, get은 값 넣어져있는걸 가져오니까 false(넣은값이 없음))
+					employee.setName(resultSet.getString("ENAME"));
+					employee.setJob(resultSet.getString("JOB"));
+					employee.setManagement(resultSet.getString("MGR"));
+					employee.setDate(resultSet.getString("HIREDATE"));
+					employee.setSalary(resultSet.getString("SAL"));
+					employee.setComm(resultSet.getString("COMM"));
+					employee.setDeptno(resultSet.getString("DEPTNO"));
+
+					out.println("<tr>");
+
+					if(employee.getEmpno()==null) {
+						out.println("<td>"+ " " +"</td>");
+					} else {
+						out.println("<td>"+ employee.getEmpno()+"</td>");
+					}
+
+					if(employee.getName()==null) {
+						out.println("<td>"+ " " +"</td>");
+					} else {
+						out.println("<td>"+employee.getName()+"</td>");
+					}
+
+					if(employee.getJob()==null) {
+						out.println("<td>"+ " " +"</td>");
+					} else {
+						out.println("<td>"+employee.getJob()+"</td>");
+					}
+
+					if(employee.getManagement()==null) {
+						out.println("<td>"+ " " +"</td>");
+					} else {
+						out.println("<td>"+employee.getManagement()+"</td>");
+					}
+
+					if(employee.getDate()==null) {
+						out.println("<td>"+ " " +"</td>");
+					} else {
+						out.println("<td>"+employee.getDate()+"</td>");
+					}
+
+					if(employee.getSalary()==null) {
+						out.println("<td>"+ " " +"</td>");
+					} else {
+						out.println("<td>"+employee.getSalary()+"</td>");
+					}
+
+					if(employee.getComm()==null) {
+						out.println("<td>"+ " " +"</td>");
+					} else {
+						out.println("<td>"+employee.getComm()+"</td>");
+					}
+
+					if(employee.getDeptno()==null) {
+						out.println("<td>"+ " " +"</td>");
+					} else {
+						out.println("<td>"+employee.getDeptno()+"</td>");
+					}
+
+					out.println("</tr>");
+
+				}
+				out.println("</table>");
+
 			} catch(Exception e) {
-			}
-		}	
-	
-	%>
-</body>
-</html>
-```
+
+			} finally {
+				try {
+					if(connection != null)
+						connection.close();
+					if(statement != null)
+						statement.close();
+					if(resultSet != null) 
+						resultSet.close();
+				} catch(Exception e) {
+				}
+			}	
+
+		%>
+	</body>
+	</html>
+	```
+</details>
 
 <details><summary> 모범 답안 click! </summary>
 	
