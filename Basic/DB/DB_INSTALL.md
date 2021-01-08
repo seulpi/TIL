@@ -25,9 +25,11 @@
 
 ☞ 설치하는 영상 
 
-# SqleDeveloper와 이클립스에서 불러오기
-- 컴퓨터 / 로컬디스크(C:) / oraclexe / app / oracle / product / 11.2.0 / server /  jdbc / lib
+# SqleDeveloper를 이클립스에서 불러오기(연결)
+## 1. 컴퓨터 / 로컬디스크(C:) / oraclexe / app / oracle / product / 11.2.0 / server /  jdbc / lib
 ![경로](https://user-images.githubusercontent.com/74290204/103959948-6bc4c780-5194-11eb-8834-95fffc5ba601.PNG)
 
-- 복사한 파일을 이클립스에 프로젝트에 붙여넣기
+
+## 2. 복사한 파일을 이클립스에 프로젝트에 붙여넣기
+
 ![붙여넣을 경로](https://user-images.githubusercontent.com/74290204/103959981-8139f180-5194-11eb-98b2-a5692c5312a8.PNG)
