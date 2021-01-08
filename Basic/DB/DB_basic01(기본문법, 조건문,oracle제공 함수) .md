@@ -19,8 +19,8 @@ select dnmae from dept;
 ![select2](https://user-images.githubusercontent.com/74290204/103839752-75d2c180-50d3-11eb-8a79-508dcfb73aca.PNG)
 
 ### 2. 조건문
-#### - where
->> select * from emp where 출력하고싶은 항목 조건; 
+#### - where 
+>> select * from emp where 조건; 
 <br> → emp 안에서 출력하고 싶은 항목에 조건에 해당하는 것을 다 출력해라
 
 ```sql
