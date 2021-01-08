@@ -155,12 +155,12 @@ view 를 참조하는 내부속성 값을 가지면 안된다는 것
 - 어플리케이션의 메인 로직은 컨트롤러가 담당
 
 ## Model 1 방식
-### *Model 1 방식*이란 Controller에 View를 같이 구현하는 방식 
+### *Model 1 방식이란 Controller에 View를 같이 구현하는 방식*
 - 사용자의 요청을 jsp가 bean이나 class를 사용하여 전부 처리하는 방식
 ![model1](https://user-images.githubusercontent.com/74290204/103993276-b36d4280-51d8-11eb-80d0-8710f7a657bf.PNG)
 
 ## model 2 방식
-### *Model 2 방식* 이란 Controller 와 View 영역을 분리해 구현하는 방식
+### *Model 2 방식이란 Controller 와 View 영역을 분리해 구현하는 방식*
 - 사용자의 요청을 Servlet이 받고 Servlet은 요청을 View로 보여줄건지 Model로 보여줄건지 정해 전송한다<br>
 여기서 View 페이지는 사용자에게 보여주는 역할만 담당 / 실질적인 기능 → Model에서 담당
 ![model2](https://user-images.githubusercontent.com/74290204/103993610-37bfc580-51d9-11eb-8d7c-7e0c1b464f53.PNG)
