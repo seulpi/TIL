@@ -1,4 +1,4 @@
-# 문법 3종 세트  Conncion / Statement / ResultSet
+# 문법 3종 세트  Connecion / Statement / ResultSet
 - 제조사마다 구현(java는 interface만 제공) <br>
 *→ why? DB는 제조사마다 다르기 때문에 제조사마다 구현해야하는 건 너무나 당연한 것*
 
