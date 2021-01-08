@@ -114,6 +114,7 @@ MILLER is a CLERK
 
 ## 1. 가위바위보 게임을 useBean을 활용하여(객체로 만들어서) 만드시오
 <details><summary> ANSWER! </summary>
+	
 	```jsp
 	//gameInput.jsp
 	<%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -192,6 +193,7 @@ MILLER is a CLERK
 	</body>
 	</html>
 	```
+	
 	```java
 	//GameRun.java
 	package answer2;
