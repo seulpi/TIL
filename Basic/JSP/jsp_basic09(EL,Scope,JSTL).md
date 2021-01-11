@@ -4,11 +4,12 @@
 - EL (Experssion Language) : 액션태그나 자바스트립을 사용하지 않고 좀 더 간결하게 사용하기 위한 언어 <br>
 " 다양한 위치에 있는 데이터에 접근하기 위한 언어로 **JSP의 기본 문법을 보완하는 역할**을 한다 "
 - EL은 기본객체를 제공하는데 기본객체는 객체를 생성하지 않아도 사용 가능하다 <br>
+    <br>
     ▶ EL의 기본 객체 <br>
 
  ![EL기본객체](https://user-images.githubusercontent.com/74290204/104171681-5bd40e80-5446-11eb-8631-db3992637166.PNG)
 
-- 문법  : ${ }
+#### - 문법  : ${ }
 >> ${member.name} = < jsp:getProperty name = "member" property="name"/ > <br> 객체 생성하고 객체안에 값을 호출하는 것 
 
 ```jsp
