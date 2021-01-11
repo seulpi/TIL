@@ -9,7 +9,7 @@
 
  ![EL기본객체](https://user-images.githubusercontent.com/74290204/104171681-5bd40e80-5446-11eb-8631-db3992637166.PNG)
 
-#### - 문법  : ${ }
+### - 문법  : ${ }
 >> ${member.name} = < jsp:getProperty name = "member" property="name"/ > <br> 객체 생성하고 객체안에 값을 호출하는 것 
 
 ```jsp
