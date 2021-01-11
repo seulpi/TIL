@@ -11,9 +11,9 @@
 - Java 클래스 메소드 호출 가능
 - EL만의 기본 객체 제공 
 <br>
-▶ EL의 기본 객체 
+▶ EL의 기본 객체 <br>
 
-    ![EL기본객체](https://user-images.githubusercontent.com/74290204/104171681-5bd40e80-5446-11eb-8631-db3992637166.PNG)
+ ![EL기본객체](https://user-images.githubusercontent.com/74290204/104171681-5bd40e80-5446-11eb-8631-db3992637166.PNG)
 <br>
 
 # 2. jstl 문법에 대하여 설명하시오
@@ -45,7 +45,7 @@
 ```
 
 ### 3. choose, when, otherwise
-- switch~case문과 유사 , if~else의 기능
+- switch case문과 유사 , if else의 기능
 ```jsp
 <c:choose>
     <c:when test='조건1'>
