@@ -136,12 +136,11 @@ insert into mvc_board(bId, bName, bTitle, bContent, bHit, bGroup, bStep, bIndent
 values (mvc_board_seq.nextval, 'abcd', 'is title', 'its content', 0, mvc_board_seq.currval, 0, 0);
 >> 원글을 하나 더 생성한거기 때문에 bGroup에 번호는 2
 ```
+![table 생성](https://user-images.githubusercontent.com/74290204/104261647-58359b80-54c9-11eb-964f-d4428989d9a2.PNG)
 
-<img src="![table 생성](https://user-images.githubusercontent.com/74290204/104261647-58359b80-54c9-11eb-964f-d4428989d9a2.PNG)" width="40%">
+![table 생성2](https://user-images.githubusercontent.com/74290204/104261707-80bd9580-54c9-11eb-99b2-90d047b340bf.PNG)
 
-<img src="![table 생성2](https://user-images.githubusercontent.com/74290204/104261707-80bd9580-54c9-11eb-99b2-90d047b340bf.PNG)" width="40%">
-
-<img src="![table insert](https://user-images.githubusercontent.com/74290204/104261638-54097e00-54c9-11eb-809d-90d2ad33a520.PNG)" width="40%">
+![table insert](https://user-images.githubusercontent.com/74290204/104261638-54097e00-54c9-11eb-809d-90d2ad33a520.PNG)
 
 
 ### 2. Controller 생성 : controller는 servlet으로!
