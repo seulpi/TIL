@@ -138,7 +138,7 @@ select * from emp, dept where emp.deptno = dept.deptno;
 select deptno, min(sal), max(sal) from emp group by deptno having max(sal) >= 2900;
 
 -- 부서별 사원의 수와 커미션을 받는 사원의 수를 계산하는 쿼리문 (다시)
-select deptno, comm from emp where is not null;
+select count(*), count(comm) from emp group by deptno;
 
 --소속 부서별 급여 총액과 평균 급여를 구하는 쿼리문
 select deptno, sum(sal), avg(sal) from emp group by deptno;
