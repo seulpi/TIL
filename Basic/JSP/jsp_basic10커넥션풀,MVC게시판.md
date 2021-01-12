@@ -12,7 +12,7 @@
 ## @ 사용 방법 
 - Servers / context.xml에 connection 정의 *(위치가 중요)*
 
-<img src="![Connection Pool](https://user-images.githubusercontent.com/74290204/104257141-12280a00-54c0-11eb-8037-22b545551354.PNG)" width="40%">
+![Connection Pool](https://user-images.githubusercontent.com/74290204/104257141-12280a00-54c0-11eb-8037-22b545551354.PNG)
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -82,7 +82,7 @@
 - View : 사용자한테 보여지는 UI화면, jsp&html 같이 화면 꾸미는 것 
 - Controller : 비즈니스 로직(흐름의 순서, if-els문 같은 것)
 
-<img src="![model2](https://user-images.githubusercontent.com/74290204/104268393-24617280-54d7-11eb-8072-ef59525b9b16.PNG)" width="50%">
+![model2](https://user-images.githubusercontent.com/74290204/104268393-24617280-54d7-11eb-8072-ef59525b9b16.PNG)
 
 ### ▶ 자세한 MVC설명 'Quiz/jsp&DB_Answer02.md' 참조 
 ##### https://github.com/Lee-sb92/TIL/blob/main/Quiz/jsp%26DB_Answer02.md
