@@ -206,6 +206,70 @@ ${(1>2) || (1<2) }
 ![jspl](https://user-images.githubusercontent.com/74290204/104172149-21b73c80-5447-11eb-8409-253fadeb98b8.PNG)
 <br>
 
+1. if : if절과 비슷하나 else역할을 하는 부분이 X
+```jsp
+<c:if test="${1+2=3}">
+	1 + 2 = 3 // 만약 1+2=3이 true면 실행
+</c:if>
+```
+
+2. forEach : 배열 or ArrayList<>와 똑같이 쓰인다
+```jsp
+<c:forEach var="forE" begin="0" end="30" step="3">
+	${forE} // var="변수명" , begin="시작점", end="끝점", step="간격 or 증가단계"
+<c:forEach>
+```
+![foreach](https://user-images.githubusercontent.com/74290204/104255109-a5127580-54bb-11eb-8674-6f5a357bc703.PNG)
+
+```jsp
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<%
+		//1. String 배열
+		String[] arr = {"순두부", "된장찌개", "제육덮밥"};
+		request.setAttribute("menu", arr);
+		
+		//2. ArrayList 배열
+		ArrayList<String> arr2 = new ArrayList<String>();
+		
+		arr2.add("순두부1");
+		arr2.add("된장찌개1");
+		arr2.add("제육덮밥1");
+		
+		request.setAttribute("menu1", arr2);
+
+	%>
+	
+	// 1.String 배열로 담은 값 출력 
+	<ul>
+	<c:forEach var="dish" items="${menu}">
+		<li>${dish}</li>
+	</c:forEach>	
+	</ul>
+	
+	// 2. ArrayList로 담은 값 출력 
+	<ul>
+    <c:forEach var="dish" items="${menu1}">
+    	<li> ${dish}</li>
+    </c:forEach>
+    </ul>
+
+</body>
+</html>
+```
+![foreach2](https://user-images.githubusercontent.com/74290204/104255857-5e257f80-54bd-11eb-96af-962942b43724.PNG)
+
+
 ### ▶ 자세한 설명은 jsp&DB_Answer03 <br> https://github.com/Lee-sb92/TIL/blob/main/Quiz/jsp%26DB_Answer03.md
 
 ```jsp
