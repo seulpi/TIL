@@ -24,7 +24,8 @@ update mvc_board set bNam= ?, bTitle=?, bContent=? where bId=?
 
 ## - 게시판 글 insert sql
 ```sql
-insert into mvc_board(bId, bName, bTitle, bContent, bHit, bGroup, bStep, bIndent) values (mvc_board_seq.nextval, ?, ?, ?, 0, mvc_board_seq.currval, 0, 0);
+insert into mvc_board(bId, bName, bTitle, bContent, bHit, bGroup, bStep, bIndent) 
+values (mvc_board_seq.nextval, ?, ?, ?, 0, mvc_board_seq.currval, 0, 0);
 ```
 <br>
 
