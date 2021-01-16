@@ -50,6 +50,18 @@
 
 - #id 와 .class의 사용은?
 
+- id는 1개만 속성적용이 가능하고 중복해서 속성적용할수없음!!, class는 여러개 속성적용이 가능(id=주민번호, class=성별)
+```html
+<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="utilities-color.html">Colors</a>
+            <a class="collapse-item" href="utilities-border.html">Borders</a>
+            <a class="collapse-item" href="utilities-animation.html">Animations</a>
+            <a class="collapse-item" href="utilities-other.html">Other</a>
+</div>
+```
+
 ## ★ @ overflow & float
 : 어려운 부분(안되면 암기, 자바에서 지네릭과 같은 존재)
 - float를 통해 위치 조정이 가능
