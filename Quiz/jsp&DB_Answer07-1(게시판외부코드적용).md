@@ -2,6 +2,9 @@
 - http://locallhost:8282/context명/list.do 을 치면 나오게 하면됨 
 ![주석 2021-01-16 175608](https://user-images.githubusercontent.com/74290204/104807707-323f2c80-5824-11eb-8e1c-52a6f7eac98f.png)
 
+### [알아야 접근가능한것!] 외부 소스코드를 어떻게 적용할것인가? link 이용하는 방법
+- link는 현재 페이지 말고 다른 외부페이지의 css속성을 가져와 적용하는것, 외부 리소스를 받아오는 태그
+
 ```
 [힌트] 짜고 있는 게시판 소스코드에 sb admin 폴더에서 css 및 img 등등을
 webcontent 아래로 복사하고 table.jsp를 분석한 후 위와 같이 나오도록 프로그래밍!
