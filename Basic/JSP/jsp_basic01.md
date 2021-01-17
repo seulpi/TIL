@@ -140,9 +140,12 @@ reset <form> 태그 안의 사용자 입력을 초기화
  <주의!> 여기서는 톰캣 서버 기준으로 설명 (OS에서의 context path는 또 다른 용어의 의미를 가짐)
  - context : 프로젝트 , 웹 어플리케이션을 구분하기 위한 path
 ```java
-Servers → server.xml → <Context docBase="servlet_hello3" path="/servlet_hello3" reloadable="true" source="org.eclipse.jst.jee.server:servlet_hello3"/></Host> // 현재 돌리고 있는 server를 표시 
+Servers → server.xml 
+→ <Context docBase="servlet_hello3" path="/servlet_hello3" reloadable="true" source="org.eclipse.jst.jee.server:servlet_hello3"/></Host> 
+// 현재 돌리고 있는 server를 표시 
+
 http://192.168.0.96:8282/servlet_hello3
-							↑ 프로젝트명(실무에선 context명이라 부름)
+			↑ 프로젝트명(실무에선 context명이라 부름)
 
 ** server 파일은 함부로 건들지 말 것 !
 ```
