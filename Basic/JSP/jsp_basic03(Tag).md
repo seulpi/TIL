@@ -19,6 +19,7 @@
 	(뿌려질때는 에러나지 않지만 굉장히 복잡해지고 꼬여서 이상하게 출력될 가능성이있음 따라서 include를 사용해서 내용 삽입해서 사용)
     - taglib: 태그라이브러리의 태그 사용 
 <details><summary>지시자 코드 EX</summary>
+	
 ```jsp
 <!-- 지시자 -->
 <%@ page import="java.util.Arrays" %> <!-- page: 해당 페이지의 전체적인 속성 지정 -->
