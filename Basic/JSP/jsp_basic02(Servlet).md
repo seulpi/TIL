@@ -13,6 +13,7 @@
     따라서 위에 코드를 @WebServlet("/HWorld") 이 한줄로 대체 시켜줌
     ```
 - URL mapping 변경 가능 
+>> mapping : 간단하게 경로를 표현해주는 것
 - web.xml은 톰캣이 웹서비스를 읽어들이기 전에 먼저 읽고 설정하는 파일
 ```html
 <servlet-name>hello</servlet-name> 은 이름이 달라도되지만 
