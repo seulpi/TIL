@@ -48,6 +48,7 @@
     
 ### 3. **선언(변수, 메소드선언): <%!	    %>**
 <details><summary>선언 코드 EX</summary>
+	
 ```jsp
 <!-- 선언 -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -80,6 +81,7 @@
 
 ### 4. **표현식(출력out.println): <%=     %>**
 <details><summary>표현식 코드 EX</summary>
+	
 ```jsp
 <!-- 표현식 -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -110,6 +112,7 @@
 
 ### 5. **스크립트릿(JAVA 코드): <%      %>** 
 <details><summary>스크립트릿 코드 EX</summary>
+	
 ```jsp
 <!-- 스크립트릿 -->
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
