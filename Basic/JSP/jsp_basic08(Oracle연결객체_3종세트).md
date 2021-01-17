@@ -78,12 +78,12 @@ EOF의 위치 : 마지막에 값이 없으면 커서가 EOF로 이동
 		/* try catch 문은 무조건 써야함(문법임) */
 		try {
 			Class.forName(driver); /* Class명이 Class이고 static , driver 는 위에 oracle 드라이버 
-									따라서 이 문장은 oracle driver를 메모리에 올린다는 뜻 / OracleDriver 객체 생성, 로딩한다고 표현(sqldeveloper-lib에 있음)
-                                    이 문구를 올려야지 3종세트에 대한 자식들의 구현이 실행된다 
+						따라서 이 문장은 oracle driver를 메모리에 올린다는 뜻 / OracleDriver 객체 생성, 로딩한다고 표현(sqldeveloper-lib에 있음)
+                                    		이 문구를 올려야지 3종세트에 대한 자식들의 구현이 실행된다 
                                     
-                                    왜 DriverManager를 메모리에 올리는가? 
-                                    3종세트에 대한 내용이 DriverManager에 들어있기 때문에 
-                                    메모리에 올려야 3종세트에 대한 사용이 가능하다 */
+                                   		왜 DriverManager를 메모리에 올리는가? 
+                                  		3종세트에 대한 내용이 DriverManager에 들어있기 때문에 
+                                    		메모리에 올려야 3종세트에 대한 사용이 가능하다 */
 			connection = DriverManager.getConnection(url,uid,upw); // 내가 가지고 있는 DB와 커넥션하는 문장, 채팅처럼 연결되어있는 상태
 			statement = connection.createStatement(); /* Statement객체의 정보를 Connection에서 가져오는것
 			                                                Query란 DB에 정보를 요청하는 것 
