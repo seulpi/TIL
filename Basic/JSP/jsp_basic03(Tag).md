@@ -148,6 +148,7 @@
 	1. forword : 현재 페이지를 다른 페이지로 전환할 때 사용
 	>> [중요!] forward는 서버내에서 페이지를 넘겨주기 때문에 **클라이언트가 치고 들어오는 주소가 바뀌지 X** <br> redirect는 클라이언트가 다시 접근하게 하는거라서 주소 바뀜!!!
 	<details><summary>forward 예제 소스 코드</summary>
+	
 	```html
 	<!-- main.jsp-->
 	<%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -184,6 +185,7 @@
 
 	2. param : forword 액션태그와 param을 이용해서 다른 페이지에 데이터를 전달할 수 있음
 	<details><summary>param 예제 소스 코드</summary>
+	
 	```jsp
 	<!--main.jsp-->
 	<%@ page language="java" contentType="text/html; charset=EUC-KR"
