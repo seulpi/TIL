@@ -373,18 +373,18 @@ public class BReplyCommand implements BCommand {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		  String bId = request.getParameter("bId");
-	      String bName = request.getParameter("bName");
-	      String bTitle = request.getParameter("bTitle");
-	      String bContent = request.getParameter("bContent");
-	      // 위에는 원글에 대한 정보 (write할때는 저것만 있어도됨)
-	      String bGroup = request.getParameter("bGroup");
-	      String bStep = request.getParameter("bStep");
-	      String bIndent = request.getParameter("bIndent");
-	      //댓글에 필요한 요소(hidden으로 숨겨진 요소들을 받아야하기때문에 선언)
+		String bId = request.getParameter("bId");
+	      	String bName = request.getParameter("bName");
+	     	String bTitle = request.getParameter("bTitle");
+	      	String bContent = request.getParameter("bContent");
+	      	// 위에는 원글에 대한 정보 (write할때는 저것만 있어도됨)
+	     	String bGroup = request.getParameter("bGroup");
+	      	String bStep = request.getParameter("bStep");
+	     	String bIndent = request.getParameter("bIndent");
+	      	//댓글에 필요한 요소(hidden으로 숨겨진 요소들을 받아야하기때문에 선언)
 	      
-	      BDao dao = new BDao();
-	      dao.reply(bId, bName, bTitle, bContent, bGroup, bStep, bIndent);
+	     	BDao dao = new BDao();
+	      	dao.reply(bId, bName, bTitle, bContent, bGroup, bStep, bIndent);
 	}
 }
 ```
@@ -700,7 +700,8 @@ public class BDao {
 
 	public void reply(String bId, String bName, String bTitle, String bContent, String bGroup, String bStep,
 			String bIndent) {
-		replyShape(bGroup, bStep); // 다른 댓글이 최신으로 달리면 달려있던 댓글 밀어내는 함수
+	//reply는 insert로 처리한 후 보여줄 필요 없으니까 insert만 처리해주면됨!	
+	    replyShape(bGroup, bStep); // 다른 댓글이 최신으로 달리면 달려있던 댓글 밀어내는 함수
 	    Connection connection = null;
 	    PreparedStatement preparedStatement = null;
 	    
@@ -718,7 +719,6 @@ public class BDao {
            preparedStatement.setInt(6, Integer.parseInt(bIndent) + 1);
            
            int rn = preparedStatement.executeUpdate();
- 
            /* execute : 실행한다의 뜻이니까 이걸해야 DB가 실행되는것!!!
            int rn으로 변수 선언한게 디버깅용 rn 값에 따라서 잘들어갔는지를 확인하는 용 */
            System.out.println(rn);
