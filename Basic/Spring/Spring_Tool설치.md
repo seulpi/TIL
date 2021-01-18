@@ -18,3 +18,5 @@ http://oss.opensagres.fr/tern.repository/1.2.0/를 복사 붙여넣기
  → Browser체크, CKEditor체크, jQuery 체크 (프로젝트마다 해줘야함) : 내 노트북에서 설정 ok
 
 - 톰캣 설정 다시 잡아줘야함 : 내 노트북에서 설정 ok
+
+
