@@ -16,7 +16,7 @@
 - 자바에서는 **close()가 필요한 객체들이 존재**하는데 자바어플리케이션 내에서만 사용되는 게 아니라 <br> 운영체제의 자원들을 사용하는 것들 **(File, Network, DB등)** 이 해당된다
 - Exception 중 RuntimeException 이외의 모든것들은 예외처리를 해줘야한다. 따라서 SQL 관련된 SQLException도 예외처리 해줘야함
    - 예외처리 방법 1. therows 2. try-catch 
-   - **basic / java / basic15 참고!! https://github.com/seulpi/TIL/blob/main/Basic/Java/basic15(%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC).md**
+   ### - **basic / java / basic15 참고!! https://github.com/seulpi/TIL/blob/main/Basic/Java/basic15(%EC%98%88%EC%99%B8%EC%B2%98%EB%A6%AC).md**
 - *에러처리를 try-catch로만 하고 finally 블럭안에 close()를 호출해 연결 종료를 해주지 않을 경우* 한정된 시스템 자원을 낭비하게 된다 <br> 자원은 close() 메소드를 호출할 때 까지는 반환되지 않기 때문에 중간에 예외가 발생하여 close() 메소드를 호출할 수 없는 경우 <br> 그 Connection 객체는 계속해서 데이터베이스 연결된 상태로 남아 있게 되며 데이터베이스 연결은 쓸데없이 시스템 자원만을 차지하게 된다 <br> **결국 어플리케이션이 사용할 수 있는 자원이 모자란 상황이 발생하게 된다** <br>
 ▶ 자원 부족 현상이 발생하지 않도록 하기 위해서는 예외 발생 여부와 상관없이 <br> 사용한 모든 자원(Connection, Statement, PreparedStatement, ResultSet)의 close() 메소드를 호출할 수 있도록 해야 한다<br> 방법으로는 try .. catch .. finally 블럭을 사용하면 된다
   - **finally 블럭은 try { .. } catch 블럭에서 예외가 발생했는지의 여부에 상관없이 항상 실행된다** <br> 따라서, finally 블럭은 사용한 모든 자원을 반납(close)하기에 가장 알맞은 곳 (안전하게 자원을 반납한다=어플리케이션이 좀 더 안정적으로 작동한다)
