@@ -1,11 +1,6 @@
 # - JS
 ### : 외부 자바 스크립트 파일을 적용하는 방법 (import와 비슷)
-<br>
-
 >> [문법] < script src="주소"> < /script>
-
-<br>
-
 ```html 
 <!-- javascript.html -->
 
