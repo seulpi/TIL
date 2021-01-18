@@ -9,7 +9,7 @@
 ![3](https://user-images.githubusercontent.com/74290204/104861328-bbfd1000-5972-11eb-977c-ef4b9a76715c.PNG)
 
 ## @ 자동 완성 기능 안될때
-### [자동완성하는 방법 링크] https://code-nen.tistory.com/8 
+### [자동완성하는 방법 링크] https://blog.naver.com/njw1204/221654918683
 - install new software → 
 http://oss.opensagres.fr/tern.repository/1.2.0/를 복사 붙여넣기
 >> 혹시, 중간에 Security Warning이 뜨면 Install anyway를 클릭해주면된다
