@@ -77,7 +77,7 @@
 --47> 직업이 Clerk 인 사원들보다 더 많은 급여를 받는 사원의 사원번호, 이름, 급여를 출력하되 결과를 급여가 높은 순으로 정렬하라.
 select empno, ename, sal from emp where sal > all(select sal from emp where job = 'CLERK') order by sal desc; 
 → cleck부서의 급여들을 전체적으로 다 제외하고 뽑은 결과 (따라서 clecrk의 급여중 최대급여를 받는 사람을 기준으로 비교)
-select empno, ename, sal from emp where sal > all(select sal from emp where job = 'CLERK') order by sal desc;
+select empno, ename, sal from emp where sal > any(select sal from emp where job = 'CLERK') order by sal desc;
 → cleck 부서의 최저 급여를 받는 사람을 기준으로 쿼리문 출력
 * 비교의 대상이 한개가 아니기때문에(급여가 사람마다 다르기때문) 정확한 비교기준이 필요
 
