@@ -144,7 +144,8 @@ values (mvc_board_seq.nextval, 'abcd', 'is title', 'its content', 0, mvc_board_s
 
 
 ### 2. Controller 생성 : controller는 servlet으로!
-```jsp
+
+```java
 package edu.bit.ex.controller;
 
 import java.io.IOException;
