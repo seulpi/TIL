@@ -1,4 +1,4 @@
-# 1. 아래를 try catch 로 묶지 않으면 에러가 나는 이유를 설명하시오 (설명필요)
+# 1. 아래를 try catch 로 묶지 않으면 에러가 나는 이유를 설명하시오 (설명필요, 다시 복습하기!!!!! 동영상으로..ㅎ..까먹었어...)
 ```java
 	try {
 			connection = dataSource.getConnection();
