@@ -75,8 +75,8 @@ var varArrReverse = new Array("E", "B", "A", "C", "D");
 - 변수를 지정해주지 않아도 선언만 하게되면 배열이 사용가능하고 후에 초기화해서 사용이 가능하다(갯수 제한X)
 ```javascript
 function funName() {
-			return arguments;
-		}
+	return arguments;
+	}
 
 	var varArr;
 	varArr = funName(1, 2, 3, 4, 5, 6, 7);
