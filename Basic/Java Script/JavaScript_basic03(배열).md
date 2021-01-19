@@ -1,9 +1,7 @@
 # - 배열 
 - index는 '0'부터 시작 
 - 배열 객체는 **new로 생성**
-- 값 다이렉트로 초기화 → [ ] 사용 
-- leng() : Ok
-- indexOf() : 인덱스 검색
+- 값 다이렉트로 초기화 → **[ ]** 사용 
 ```html 
 <!-- javascript.html -->
 
@@ -29,3 +27,74 @@
 </body>
 </html>
 ```
+## @ 배열 함수
+
+### - length() : 배열의 길이
+### - indexOf() : 처음부터 순차적인 인덱스 값 검색 
+
+### - lastIndexOf() : 배열의 끝에서부터 인덱스 값 검색 
+- 배열에 해당하는 값이 없으면 -1로 반환 
+
+### - concat() : 배열간 값 연결
+```java script
+var arr1 = new Array ("배열 1", "배열 2");
+var arr2 = new Array ("배열 3", "배열 4");
+var arr = arr1.concat(arr2);
+```
+
+### - join() : 배열 데이터를 문자열로 반환 
+- 전체를 묶어주는데 묶을 조건을 줘서 연결하는 것
+```java script
+var varArrJoin = new Array("ABC", "DEF", "GHI", "JKL");
+	console.log("varArrJoin : " + varArrJoin.join());
+	console.log("varArrJoin : " + varArrJoin.join(" | "));
+	console.log("varArrJoin : " + varArrJoin.join(":"));
+	console.log("varArrJoin : " + varArrJoin.toString());
+```
+
+### - sort() : 배열 정렬
+
+### - reverse() : 배열값의 순서를 반대로~
+```java script 
+var varArrReverse = new Array("E", "B", "A", "C", "D");
+	console.log("varArrReverse : " + varArrReverse);
+	console.log("varArrReverse.reversr() : " + varArrReverse.reverse());
+	console.log("varArrReverseAfter : " + varArrReverse);
+```
+### **▶ mutable 이기때문에 reverse하면 한 후에 그대로 값이 저장된다**
+
+### - push() : 데이터를 추가, 배열의 크기를 리턴 (추가한 후 값이 증가)
+
+### - shift() : 배열의 첫 번째 요소를 제거한 후, 제거한 요소를 반환
+
+### - pop() : 배열의 마지막 요소를 제거한 후, 제거한 요소를 반환
+<br>
+
+# - 조건문 : Java문법과 동일 
+## - if, else if
+```java script
+var num = 100;	
+	if(num > 50 ) {
+		console.log("num > 50");
+	} if (num <= 50) {
+		console.log("num <= 50");
+	} console.log(num);
+```
+
+## - switch
+
+## - 삼항연산자
+<br>
+
+# - 반복문 : Java문법과 동일
+## - for
+```java script 
+var varArr = [1, 2, 3, 4, 5];
+	for(var i = 0; i <varArr.length; i++) {
+		console.log("varArr[" + i + "] : " + varArr[i]);
+	}for(var i in varArr) 
+		document.write("varArr [" + i + "] : " + varArr[i]);
+```
+
+## - forEach문 (enhanced for문)
+>> for(var i in varArr) = for(int i : varArr)
