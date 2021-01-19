@@ -2,7 +2,7 @@
 - index는 '0'부터 시작 
 - 배열 객체는 **new로 생성**
 - 값 다이렉트로 초기화 → [ ] 사용 
-- lengrh() : Ok
+- leng() : Ok
 - indexOf() : 인덱스 검색
 ```html 
 <!-- javascript.html -->
