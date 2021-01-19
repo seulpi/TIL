@@ -58,7 +58,7 @@ var varArrJoin = new Array("ABC", "DEF", "GHI", "JKL");
 ```java script 
 var varArrReverse = new Array("E", "B", "A", "C", "D");
 	console.log("varArrReverse : " + varArrReverse);
-	console.log("varArrReverse.reversr() : " + varArrReverse.reverse());
+	console.log("varArrReverse.reverse() : " + varArrReverse.reverse());
 	console.log("varArrReverseAfter : " + varArrReverse);
 ```
 ### **▶ mutable 이기때문에 reverse하면 한 후에 그대로 값이 저장된다**
