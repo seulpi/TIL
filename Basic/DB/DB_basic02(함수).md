@@ -95,8 +95,8 @@ select trim('aaaORACLEaaa') from dual;
 ```sql
 select sysdate from dual;
 ```
-- sysdate **+** 숫자 : 오늘을 기준으로 숫자만큼의 **과거 날짜** 출력 
-- sysdate **-** 숫자 : 오늘을 기준으로 숫자만큼의 **미래 날짜** 출력 
+- sysdate **-** 숫자 : 오늘을 기준으로 숫자만큼의 **과거 날짜** 출력 
+- sysdate **+** 숫자 : 오늘을 기준으로 숫자만큼의 **미래 날짜** 출력 
 ```sql
 select sysdate-1 어제, sysdate 오늘, sysdate+1 내일 from dual;
 ```
