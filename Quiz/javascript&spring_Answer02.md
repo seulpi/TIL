@@ -102,6 +102,10 @@ public class Triangle {
 
 </beans>
 ```
+
+### ▶ 출력
+![사각형 출력](https://user-images.githubusercontent.com/74290204/105012469-87c44500-5a81-11eb-9a01-1991b1618f4c.PNG)
+
 ---
 
 ```java
@@ -172,4 +176,7 @@ public class Rectangle {
 
 </beans>
 ```
+
+### ▶ 출력
+![삼각형 출력](https://user-images.githubusercontent.com/74290204/105012467-85fa8180-5a81-11eb-801a-f4712ca06a40.PNG)
 
