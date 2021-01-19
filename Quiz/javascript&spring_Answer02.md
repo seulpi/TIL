@@ -45,6 +45,66 @@ select min(emp.sal) from emp, dept where emp.deptno = dept.deptno group by dept.
 
 # 4. 삼각형및 사각형의 넓이를 구하는 프로그래밍을 IoC 컨테이너를 이용하여 프로그래밍 하시오
 ```java
+//TriangleMain.java
+package com.javalec.ex;
+
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+public class TriangleMain {
+
+	public static void main(String[] args) {
+		String configLocation = "classpath:applicationCTX3.xml";
+		
+		AbstractApplicationContext ctx = new GenericXmlApplicationContext(configLocation);
+		
+		Triangle tri = ctx.getBean("tri", Triangle.class);
+		System.out.println("삼각형의 넓이 : " + tri.area());
+		ctx.close();
+
+	}
+
+}
+```
+```java
+//Triangle.java
+package com.javalec.ex;
+
+public class Triangle {
+	private double radius;
+
+	public double getRadius() {
+		return radius;
+	}
+
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}
+	
+	public double area() {
+		return radius*radius*Math.PI;
+	}
+}
+```
+```html
+//applicationCTX3.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 여기 위에까지는 ctrl c + ctrl v -->
+
+  <bean id="tri" class="com.javalec.ex.Triangle">
+    <property name="radius">
+      <value>3.5</value>
+    </property>
+  </bean>
+
+</beans>
+```
+---
+
+```java
 //RectangleMain.java
 package com.javalec.ex;
 
