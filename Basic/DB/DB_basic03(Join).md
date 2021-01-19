@@ -25,7 +25,7 @@ select dept.dname from emp, dept where emp.ename = 'KING'
 --각 사원의 급여가 몇 등급인지 살펴보는 쿼리문
 1) select ename, sal, grade from emp, salgrade where emp.sal >= salgrade.losal and emp.sal <= salgrade.j=hisal;
 
-2) select ename, sal, grade from emp, salgrade where emp.sal brtween salgrade.losal and slagrade.hisal;
+2) select ename, sal, grade from emp, salgrade where emp.sal between salgrade.losal and slagrade.hisal;
 ```
 
 ## @ Self Join : 자기 자신을 join 
