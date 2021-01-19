@@ -85,7 +85,7 @@ select trim(' ORACLE ') from dual;
 =======================================================================
 ▶ ORACLE
 
-select trin('aaaORACLEaaa') from dual;
+select trim('aaaORACLEaaa') from dual;
 =======================================================================
 ▶ ORACLE
 ```
