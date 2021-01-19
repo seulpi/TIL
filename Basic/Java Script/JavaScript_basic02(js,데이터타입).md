@@ -110,7 +110,7 @@ alert("HelloWorld!!");
 		
 		var varFun = function fun() { };
 		console.log("varFun: " + varFun);
-		//function fun() { }; 는 함수를 변수에 대입이 가능하다, 리턴타입이 function 인 이유는 변수표현을 var 1개이기 때문에
+		//function fun() { }; 는 함수를 변수에 대입이 가능하다, 리턴타입이 function 인 이유는 변수표현 var 1개이기 때문에
 		
 		var varObj = {}; //자바에서는 배열 초기화 표시지만 자바스크립트에서는 객체를 표현한다
 		console.log("varObj : " + varObj);
