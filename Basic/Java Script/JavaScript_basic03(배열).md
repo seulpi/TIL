@@ -68,6 +68,25 @@ var varArrReverse = new Array("E", "B", "A", "C", "D");
 ### - shift() : 배열의 첫 번째 요소를 제거한 후, 제거한 요소를 반환
 
 ### - pop() : 배열의 마지막 요소를 제거한 후, 제거한 요소를 반환
+
+## - argument : 매개변수를 데이터로 하는 배열 객체 
+- **함수 안에서 사용할 수 있도록 이름이나 특성이 약속되어 있는 일종의 배열(자바스크립트만의 특징)**
+- 변수를 지정해주지 않아도 선언만 하게되면 배열이 사용가능하고 후에 초기화해서 사용이 가능하다(갯수 제한X)
+```javascript
+function funName() {
+			return arguments;
+		}
+
+	var varArr;
+	varArr = funName(1, 2, 3, 4, 5, 6, 7);
+	console.log("varArr : " + varArr);
+	console.log("varArr.length : " + varArr.length);
+		
+	for(var i in varArr) {
+		console.log("varArr[" + i + "] : " + varArr[i]);
+	}
+```
+
 <br>
 
 # - 조건문 : Java문법과 동일 
