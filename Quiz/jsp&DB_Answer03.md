@@ -82,7 +82,7 @@ var - 읽어올 결과를 저장할 변수명 , scope - 변수를 저장할 영�
 </c:import>
 ```
 
-### 6. resirect
+### 6. redirect
 - 지정한 페이지로 redirect, response.sendRedirect()와 비슷
 ```jsp
 <c:redirect url="리다이렉트할 URL">
