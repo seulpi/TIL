@@ -18,5 +18,8 @@ http://oss.opensagres.fr/tern.repository/1.2.0/를 복사 붙여넣기
  → Browser체크, CKEditor체크, jQuery 체크 (프로젝트마다 해줘야함) : 내 노트북에서 설정 ok
 
 - 톰캣 설정 다시 잡아줘야함 : 내 노트북에서 설정 ok
+<br>
 
+## @ import 하는 방법 ▶ eclips와 동일
+![import](https://user-images.githubusercontent.com/74290204/104990858-d31a2b80-5a60-11eb-8e05-5dc5ed087573.PNG)
 
