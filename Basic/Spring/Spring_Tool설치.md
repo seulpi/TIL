@@ -35,18 +35,17 @@ http://oss.opensagres.fr/tern.repository/1.2.0/를 복사 붙여넣기
 ```
 - **Maven**은 Spring과 아무런 연관이 없지만 **라이브러리를 자동으로 받아줄수있게 해줌** 따라서 Maven을 build tool(라이브러리 다운로드~ 배포까지)이라 부름 
    - Maven을 관리하는 프로젝트 = pom.xml
-
-- ![캡처](https://user-images.githubusercontent.com/74290204/105135949-2b6e2d80-5b34-11eb-8df9-9d05a6db39b4.PNG)
-```xml
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>spring_student</groupId>
-  <artifactId>spring_student</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+   - pom에 태그를 붙여줘야 Maven이 자동으로 라이브러리를 다운받을 수 있음, 태그 복붙은 ↓ 아래와 같음 
+   ```xml
+   <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0       https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>spring_student</groupId>
+    <artifactId>spring_student</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
   
-   <properties>
-
-      <!-- Generic properties -->
+    <properties>
+     
+     <!-- Generic properties -->
       <java.version>1.6</java.version>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -132,4 +131,3 @@ http://oss.opensagres.fr/tern.repository/1.2.0/를 복사 붙여넣기
     </plugins>
   </build>
 </project>
-```
