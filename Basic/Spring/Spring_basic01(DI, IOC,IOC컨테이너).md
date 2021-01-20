@@ -154,6 +154,9 @@ public class StudentMain {
 
 }
 ```
+### - tring configLocatioin = "classpath:applicationCTX.xml"에서 "classpath:applicationCTX.xml" 경로
+![캡처](https://user-images.githubusercontent.com/74290204/105135949-2b6e2d80-5b34-11eb-8df9-9d05a6db39b4.PNG)
+
 ```xml
 <!--pom.xml-->
 
