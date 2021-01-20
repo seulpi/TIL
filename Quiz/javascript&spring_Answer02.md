@@ -71,18 +71,36 @@ public class TriangleMain {
 package com.javalec.ex;
 
 public class Triangle {
-	private double radius;
-
-	public double getRadius() {
-		return radius;
-	}
-
-	public void setRadius(double radius) {
-		this.radius = radius;
+	private double width;
+	private double height;
+	
+	public Triangle() {
+		
 	}
 	
-	public double area() {
-		return radius*radius*Math.PI;
+	public Triangle(double width, double height) {
+		this.width = width;
+		this.height = height;
+	}
+
+	public double getWidth() {
+		return width;
+	}
+
+	public void setWidth(double width) {
+		this.width = width;
+	}
+
+	public double getHeight() {
+		return height;
+	}
+
+	public void setHeight(double height) {
+		this.height = height;
+	}
+	
+	public double getArea() {
+		return (width * height)/2 ;
 	}
 }
 ```
@@ -95,7 +113,10 @@ public class Triangle {
 <!-- 여기 위에까지는 ctrl c + ctrl v -->
 
   <bean id="tri" class="com.javalec.ex.Triangle">
-    <property name="radius">
+    <property name="width">
+      <value>3.5</value>
+    </property>
+	<property name="height">
       <value>3.5</value>
     </property>
   </bean>
