@@ -23,3 +23,113 @@ http://oss.opensagres.fr/tern.repository/1.2.0/를 복사 붙여넣기
 ## @ import 하는 방법 ▶ eclips와 동일
 ![import](https://user-images.githubusercontent.com/74290204/104990858-d31a2b80-5a60-11eb-8e05-5dc5ed087573.PNG)
 
+## @ 환경설정 
+- new → Spring Legacy Project → Simple Spring Maven 
+- new → Spring Legacy Project → Simple Java (위로 하니 spring 폴더로 안생겨서 학원에서 이렇게 설정함)
+   - 우클릭 → config → converr to maven project (maven project로 바꿈)
+   - 우클릭  → Spring  → Add Spring Project Nature (Spring으로 S자 생김)
+```
+[참고]
+폴더에 S자붙으면 Spring이란 뜻
+폴더에 M, S 붙은거 Maven Project란 뜻 
+```
+- **Maven**은 Spring과 아무런 연관이 없지만 **라이브러리를 자동으로 받아줄수있게 해줌** 따라서 Maven을 build tool(라이브러리 다운로드~ 배포까지)이라 부름 
+   - Maven을 관리하는 프로젝트 = pom.xml
+
+- ![캡처](https://user-images.githubusercontent.com/74290204/105135949-2b6e2d80-5b34-11eb-8df9-9d05a6db39b4.PNG)
+```xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>spring_student</groupId>
+  <artifactId>spring_student</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+   <properties>
+
+      <!-- Generic properties -->
+      <java.version>1.6</java.version>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+      <!-- Spring -->
+      <spring-framework.version>3.2.3.RELEASE</spring-framework.version>
+
+      <!-- Hibernate / JPA -->
+      <hibernate.version>4.2.1.Final</hibernate.version>
+
+      <!-- Logging -->
+      <logback.version>1.0.13</logback.version>
+      <slf4j.version>1.7.5</slf4j.version>
+
+      <!-- Test -->
+      <junit.version>4.11</junit.version>
+
+   </properties>
+   
+   <dependencies> <!-- dependency는 다 라이브러리 이름 -->
+      <!-- Spring and Transactions -->
+      <dependency>
+         <groupId>org.springframework</groupId> <!-- org.springfanmework에서 라이브러리를 다운로드 자동으로 받아줌 -->
+         <artifactId>spring-context</artifactId>
+         <version>${spring-framework.version}</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-tx</artifactId>
+         <version>${spring-framework.version}</version>
+      </dependency>
+
+      <!-- Logging with SLF4J & LogBack -->
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-api</artifactId>
+         <version>${slf4j.version}</version>
+         <scope>compile</scope>
+      </dependency>
+      <dependency>
+         <groupId>ch.qos.logback</groupId>
+         <artifactId>logback-classic</artifactId>
+         <version>${logback.version}</version>
+         <scope>runtime</scope>
+      </dependency>
+
+      <!-- Hibernate -->
+      <dependency>
+         <groupId>org.hibernate</groupId>
+         <artifactId>hibernate-entitymanager</artifactId>
+         <version>${hibernate.version}</version>
+      </dependency>
+
+      
+      <!-- Test Artifacts -->
+      <dependency> 
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-test</artifactId>
+         <version>${spring-framework.version}</version>
+         <scope>test</scope>
+      </dependency>
+      <dependency>
+         <groupId>junit</groupId>
+         <artifactId>junit</artifactId>
+         <version>${junit.version}</version>
+         <scope>test</scope>
+      </dependency>
+
+   </dependencies>   
+  
+
+  
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>15</release>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
+```
