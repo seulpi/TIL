@@ -158,9 +158,9 @@ select deptno, sum(sal), avg(sal) from emp group by deptno;
 ## 1. 아래를 프로그래밍하시오 
 ### - 객체생성할것 
 ### - 조건 객체 밑 EL 또는 JSTL을 사용해 볼 것
-<img src = "![Q1](https://user-images.githubusercontent.com/74290204/104168127-e31e8380-5440-11eb-9a54-a15e153575e5.PNG)" width="40%">
+<img src = "https://user-images.githubusercontent.com/74290204/104168127-e31e8380-5440-11eb-9a54-a15e153575e5.PNG" width="40%">
 
-<img src = "![Q2222](https://user-images.githubusercontent.com/74290204/104168130-e44fb080-5440-11eb-8f38-444d57b20f88.PNG)" width="40%">
+<img src = "https://user-images.githubusercontent.com/74290204/104168130-e44fb080-5440-11eb-8f38-444d57b20f88.PNG" width="40%">
 
 ```jsp
 <!--gradeInput.jsp-->
@@ -286,6 +286,6 @@ select deptno, sum(sal), avg(sal) from emp group by deptno;
 - EL에서 기본으로 제공하는 객체에는 request, param등이 있음 <br> 따라서 reqeust.Parameter를 따로 담아서 객체를 만들지 않아도 Parameter에 자동으로 담겨 사용 가능)
 
 ## 2. 아래를 프로그래밍하시오
-<img src = "![q444](https://user-images.githubusercontent.com/74290204/104170003-c9327000-5443-11eb-88ce-f4e57d8b2810.PNG)" width="40%">
+<img src = "https://user-images.githubusercontent.com/74290204/104170003-c9327000-5443-11eb-88ce-f4e57d8b2810.PNG" width="40%">
 
-<img src="![q3](https://user-images.githubusercontent.com/74290204/104170006-cafc3380-5443-11eb-819c-1f602343d5af.PNG)" width="40%">
+<img src="https://user-images.githubusercontent.com/74290204/104170006-cafc3380-5443-11eb-819c-1f602343d5af.PNG" width="40%">
