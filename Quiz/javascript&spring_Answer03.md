@@ -214,6 +214,100 @@ function Circle() {
 </body>
 </html>
 ```
+```html
+<!--선생님 코드 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function RPSPlayer(your) {
+
+			var rps = [ '가위', '바위', '보' ]; // 배열로 선언해주면 편함 why? 인덱스값을 
+			var selfNum = 0;
+			var yourRPS = your;
+
+			this.setSelfNum = function() {
+				selfNum = Math.floor(Math.random() * 3);
+			};
+
+			this.result = function() {
+
+				this.setSelfNum();
+
+				switch (yourRPS) {
+
+				case "가위":
+					if (rps[selfNum] == "가위") {
+						document.write("컴퓨터:" + rps[selfNum] + "<br>");
+						document.write("유저는" + yourRPS + "<br>");
+						document.write("무승부입니다" + "<br>");
+					} else if (rps[selfNum] == "바위") {
+						document.write("컴퓨터:" + rps[selfNum] + "<br>");
+						document.write("유저는" + yourRPS + "<br>");
+						document.write("컴퓨터 WIN!" + "<br>");
+					} else if (rps[selfNum] == "보") {
+						document.write("컴퓨터:" + rps[selfNum] + "<br>");
+						document.write("유저는" + yourRPS + "<br>");
+						document.write("유저 WIN!" + "<br>");
+					}
+					break;
+
+				case "바위":
+					if (rps[selfNum] == "바위") {
+						document.write("컴퓨터:" + rps[selfNum] + "<br>");
+						document.write("유저는" + yourRPS + "<br>");
+						document.write("무승부입니다" + "<br>");
+					} else if (rps[selfNum] == "보") {
+						document.write("컴퓨터:" + rps[selfNum] + "<br>");
+						document.write("유저는" + yourRPS + "<br>");
+						document.write("컴퓨터 WIN!" + "<br>");
+					} else if (rps[selfNum] == "가위") {
+						document.write("컴퓨터:" + rps[selfNum] + "<br>");
+						document.write("유저는" + yourRPS + "<br>");
+						document.write("유저 WIN!" + "<br>");
+					}
+					break;
+
+				case "보":
+					if (rps[selfNum] == "보") {
+						document.write("컴퓨터:" + rps[selfNum] + "<br>");
+						document.write("유저는" + yourRPS + "<br>");
+						document.write("무승부입니다" + "<br>");
+					} else if (rps[selfNum] == "가위") {
+						document.write("컴퓨터:" + rps[selfNum] + "<br>");
+						document.write("유저는" + yourRPS + "<br>");
+						document.write("컴퓨터 WIN!" + "<br>");
+					} else if (rps[selfNum] == "바위") {
+						document.write("컴퓨터:" + rps[selfNum] + "<br>");
+						document.write("유저는" + yourRPS + "<br>");
+						document.write("유저 WIN!" + "<br>");
+					}
+					break;
+
+				default:
+					document.write(yourRPS + " 잘못된 입력 입니다 .다시입력하세요");
+
+				}
+
+			};
+			
+				this.
+
+		}
+
+		var rps = prompt("(가위, 바위, 보)를 입력하세요");
+		var player = new RPSPlayer(rps);
+		player.result();
+		//new RPSPlayer(rps).result();
+	</script>
+</body>
+</html>
+```
+<br>
 
 # 6. annotation 방식으로 하여 객체 생성후 사각형과 삼각형 넓이를 구하시오
 ### ▶ 6&7번을 선생님과 함께 풀고 안 상식 
