@@ -242,6 +242,12 @@ function Circle() {
 ![가위바위보](https://user-images.githubusercontent.com/74290204/105151636-878f7c80-5b49-11eb-874c-67c7782d4048.PNG)
 
 # 6. annotation 방식으로 하여 객체 생성후 사각형과 삼각형 넓이를 구하시오
+### ▶ 6&7번을 선생님과 함께 풀고 안 상식 
+1. getBean("변수명", class)에는 polymortism 적용해서 부모 = 자식의 형태로 만들어주기
+- 즉, class는 자식으로 해주면된다 6번이나 7번은 interface로 둘다 적용이 가능함
+2. xml에서 <bean>을 추가로 하면 하나의 빈으로 컨트롤 안해도됨 
+3. AnnotationConfigApplicationContext, GenericXmlApplicationContext 는 AbstractApplicationContext의 자식이므로 <br> 부모 = 자식의 형태로 만들어두면 하나의 변수로 다 컨트롤이 가능함 
+
 ## 6-1 삼각형넓이
 ```java
 //Circle.java
@@ -307,7 +313,7 @@ public class Main {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
 												
 		Circle circle = context.getBean("circle", Circle.class);
-							//↑ Annotation 사용할때는 부모 = 자식으로 해서 클래스를 자식클래스로 맞춰주는게좋음
+							//부모 = 자식으로 해서 클래스를 자식클래스로 맞춰주는게좋음
 		System.out.println("원의 넓이는: " + circle.getArea());
 
 	}
@@ -477,7 +483,6 @@ public class Main {
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext(configLocation);
 		
 		Area area = ctx.getBean("area", Area.class);
-						//↑ 이 클래스는 인터페이스로 맞춰줘야함, 자식들은 xml에서 컨트롤
 		area.area();
 		ctx.close();
 
