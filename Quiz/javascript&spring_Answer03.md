@@ -476,7 +476,7 @@ public class Main {
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext(configLocation);
 		
 		Area area = ctx.getBean("area", Area.class);
-										//↑ 이 클래스는 인터페이스로 맞춰줘야함, 자식들은 xml에서 컨트롤
+						//↑ 이 클래스는 인터페이스로 맞춰줘야함, 자식들은 xml에서 컨트롤
 		area.area();
 		ctx.close();
 
