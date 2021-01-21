@@ -133,7 +133,7 @@ http://oss.opensagres.fr/tern.repository/1.2.0/를 복사 붙여넣기
   </build>
 </project>
 
-### @ Maven 다운로드 받아오는 곳 mavenrepository
+### & Maven 다운로드 받아오는 곳 mavenrepository
 - https://mvnrepository.com/
 
 ![다운1](https://user-images.githubusercontent.com/74290204/105314945-f4664d80-5c01-11eb-8b8e-51582245388b.PNG)
@@ -144,3 +144,13 @@ http://oss.opensagres.fr/tern.repository/1.2.0/를 복사 붙여넣기
 
 ![다운4](https://user-images.githubusercontent.com/74290204/105314953-f6301100-5c01-11eb-9821-8aeb03309be6.PNG)
 
+## @ STS에서 Spring MCV 생성하는 방법
+### new → Spring Legacy Project → Spring MVC Project
+
+![캡처](https://user-images.githubusercontent.com/74290204/105311590-cfbda600-5c00-11eb-855a-9118f3e84069.PNG)
+
+![1](https://user-images.githubusercontent.com/74290204/105305122-48236780-5bff-11eb-975e-73e7e585234f.PNG)
+
+![2](https://user-images.githubusercontent.com/74290204/105305141-48bbfe00-5bff-11eb-83f6-c39e835c5894.PNG)
+
+![3](https://user-images.githubusercontent.com/74290204/105305149-49549480-5bff-11eb-8994-564df127fe9d.PNG)
