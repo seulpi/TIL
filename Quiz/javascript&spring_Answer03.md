@@ -35,12 +35,44 @@
 
 # 2. JS로 시간이 초단위로 갱신되는 페이지를 만드시오
 ```jsp
+// 새로고침 페이지
 <script type="text/javascript">
 		var pageSetTimeStop = setTimeout(location.reload();
 		}, 10000); // 10초마다 새로고침
 	
 	</script>
+``` 
+
+## ▶ 문제의도: 전자시계 만들어라 (초단위로 나오는)
+
+```html
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <title>Javascript</title>
+      <script>
+      
+      	setInterval(function(){
+      		var timer = new Date();
+      		var h = timer.getHours();
+      		var m = timer.getMinutes();
+      		var s = timer.getSeconds();
+      		document.getElementById('clock').innerHTML = h + ":" + m + ":" +s;
+      	})
+         
+      </script>
+   
+   </head>
+   
+   <body>
+   	<hi id="clock">
+   
+   </body>
+
+</html>
 ```
+
 
 # 3. js에서의 객체 생성 방법은? 
 ## var 변수명 = {key: value}  
