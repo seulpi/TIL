@@ -129,7 +129,7 @@ history.go(-1); = 뒤로가기 history.back();
 
 >>  Dom안에 모든 태그(Element)들은 객체로 정의된다 
 
- ![DOM](https://user-images.githubusercontent.com/74290204/105273806-56618b80-5bdf-11eb-9e47-9f967337a63d.PNG)
+![DOM TREE](https://user-images.githubusercontent.com/74290204/105366895-3499f000-5c43-11eb-954e-23472b9b62b6.png)
 
 ### - 함수
 1. Text노드 이용
