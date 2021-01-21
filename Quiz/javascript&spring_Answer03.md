@@ -247,6 +247,12 @@ function Circle() {
 - 즉, class는 자식으로 해주면된다 6번이나 7번은 interface로 둘다 적용이 가능함
 2. xml에서 <bean>을 추가로 하면 하나의 빈으로 컨트롤 안해도됨 
 3. AnnotationConfigApplicationContext, GenericXmlApplicationContext 는 AbstractApplicationContext의 자식이므로 <br> 부모 = 자식의 형태로 만들어두면 하나의 변수로 다 컨트롤이 가능함 
+4. shape.setWidth(10);으로 접근하면 안되는 이유!!!!!!!
+```java
+AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:applicationCTX.xml");
+Ishape shape = ctx.getBean("shape", Ishape.class);
+shape.setWidth(10); → 안되는 이유
+```
 
 ## 6-1 삼각형넓이
 ```java
@@ -313,7 +319,7 @@ public class Main {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
 												
 		Circle circle = context.getBean("circle", Circle.class);
-							//부모 = 자식으로 해서 클래스를 자식클래스로 맞춰주는게좋음
+							//Annotiation사용할때 부모 = 자식으로 해서 클래스를 자식클래스로 맞춰주는게좋음
 		System.out.println("원의 넓이는: " + circle.getArea());
 
 	}
@@ -483,6 +489,7 @@ public class Main {
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext(configLocation);
 		
 		Area area = ctx.getBean("area", Area.class);
+		
 		area.area();
 		ctx.close();
 
