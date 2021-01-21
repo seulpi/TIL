@@ -35,6 +35,7 @@ http://oss.opensagres.fr/tern.repository/1.2.0/를 복사 붙여넣기
 ```
 - **Maven**은 Spring과 아무런 연관이 없지만 **라이브러리를 자동으로 받아줄수있게 해줌** 따라서 Maven을 build tool(라이브러리 다운로드~ 배포까지)이라 부름 
    - Maven을 관리하는 프로젝트 = pom.xml
+   - pom.xml 은 개발환경 구축을 위한 툴 /web.xml 부터가 스프링개발
    - pom에 태그를 붙여줘야 Maven이 자동으로 라이브러리를 다운받을 수 있음, 태그 복붙은 ↓ 아래와 같음 
    ```xml
    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0       https://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -131,3 +132,15 @@ http://oss.opensagres.fr/tern.repository/1.2.0/를 복사 붙여넣기
     </plugins>
   </build>
 </project>
+
+### @ Maven 다운로드 받아오는 곳 mavenrepository
+- https://mvnrepository.com/
+
+![다운1](https://user-images.githubusercontent.com/74290204/105314945-f4664d80-5c01-11eb-8b8e-51582245388b.PNG)
+
+![다운2](https://user-images.githubusercontent.com/74290204/105314949-f5977a80-5c01-11eb-9fc7-9640c14192cd.PNG)
+
+![다운3](https://user-images.githubusercontent.com/74290204/105314951-f6301100-5c01-11eb-90c9-ee6dab1311c5.PNG)
+
+![다운4](https://user-images.githubusercontent.com/74290204/105314953-f6301100-5c01-11eb-9821-8aeb03309be6.PNG)
+
