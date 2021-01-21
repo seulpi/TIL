@@ -305,8 +305,9 @@ public class Main {
 	public static void main(String[] args) {
 		
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
-		
+												
 		Circle circle = context.getBean("circle", Circle.class);
+							//↑ Annotation 사용할때는 부모 = 자식으로 해서 클래스를 자식클래스로 맞춰주는게좋음
 		System.out.println("원의 넓이는: " + circle.getArea());
 
 	}
