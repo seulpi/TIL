@@ -144,102 +144,76 @@ function Circle() {
 </head>
 <body>
 	<script type="text/javascript">
-		function RandomGame() { //여기서 유저로 받아가지고 비교?
+		function RandomGame() {
 			var user = "";
-			var computer = 0;
-			var strCom ="";	
-
-			this.getUser = function() {
-				return this.user;
-			}
-			
+		
 			this.setUser = function(user) {
 				this.user = user;
-			} 
-			
-			this.getComputer = function() {
-				return this.computer;
-			}
-			
-			this.setComputer = function(computer) {
-				this.computer = computer;
-				
 			};
 			
-			this.getStrCom = function() {
-				return this.strCom;
-			}
-			
-			this.setStrCom = function(strCom) {
-				this.strCom = strCom;
-				
+			this.getUser = function() {
+				return this.user;
 			};
 			
-			this.play = function comeResult(getComputer) {
-	  			if (getComputer == 1) {
-	  				this.strCom = "가위";
-	  			} else if (getComputer == 2) {
-	  				this.strCom = "바위";
+			this.comeResult = function() {
+				
+				var computer = Math.floor(Math.random()*3 )+ 1;
+				var strCom ="";
+				
+	  			if (computer == 1) {
+	  				strCom = "가위";
+	  			} else if (computer == 2) {
+	  				strCom = "바위";
 	  			} else {
-	  				this.strCom = "보";
+	  				strCom = "보";
 	  			};
+	  			
+	  			
+	  			switch (this.getUser()) { // 함수가 다르니까 호출해서 사용해야하는데 그걸 몰랐음..
 
-	  		}
-			
+	  			case "가위":
+	  				if (strCom== "가위") {
+	  					document.write("무승부입니다");
+	  				} else if (strCom== "바위") {
+	  					document.write("컴퓨터 WIN!");
+	  				} else if (strCom== "보") {
+	  					document.write("유저 WIN!");
+	  				}
+	  				break;
+
+	  			case "바위":
+	  				if (strCom== "바위") {
+	  					document.write("무승부입니다");
+	  				} else if (strCom == "보") {
+	  					document.write("컴퓨터 WIN!");
+	  				} else if (strCom == "가위") {
+	  					document.write("유저 WIN!");
+	  				}
+	  				break;
+
+	  			case "보":
+	  				if (strCom == "보") {
+	  					document.write("무승부입니다");
+	  				} else if (strCom== "가위") {
+	  					document.write("컴퓨터 WIN!");
+	  				} else if (strCom== "바위") {
+	  					document.write("유저 WIN!");
+	  				}
+	  				break;
+	  			}
+	  		};	
 		};
 		
   		var game = new RandomGame();
   		var user = prompt("가위바위보를 입력하세요", "ex. 가위")
   		game.setUser(user);
-  		game.setComputer(Math.floor(Math.random()*3 + 1));
-  		game.play;
+  		game.comeResult();
   		
-		switch (game.getUser()) {
-
-		case "가위":
-			if (game.getStrCom()== "가위") {
-				document.write("무승부입니다");
-			} else if (game.getStrCom()== "바위") {
-				document.write("컴퓨터 WIN!");
-			} else if (game.getStrCom()== "보") {
-				document.write("유저 WIN!");
-			} else {
-				document.write("다시입력하세요");
-			}
-			break;
-
-		case "바위":
-			if (game.getStrCom()== "바위") {
-				document.write("무승부입니다");
-			} else if (game.getStrCom() == "보") {
-				document.write("컴퓨터 WIN!");
-			} else if (game.getStrCom() == "가위") {
-				document.write("유저 WIN!");
-			} else {
-				document.write("다시입력하세요");
-			}
-			break;
-
-		case "보":
-			if (game.getStrCom() == "보") {
-				document.write("무승부입니다");
-			} else if (game.getStrCom() == "가위") {
-				document.write("컴퓨터 WIN!");
-			} else if (game.getStrCom()== "바위") {
-				document.write("유저 WIN!");
-			} else {
-				document.write("다시입력하세요");
-			}
-			break;
-
-		}
+		
 	</script>
 </body>
 </html>
 ```
-
-### ▶ 출력
-![가위바위보](https://user-images.githubusercontent.com/74290204/105151636-878f7c80-5b49-11eb-874c-67c7782d4048.PNG)
 
 # 6. annotation 방식으로 하여 객체 생성후 사각형과 삼각형 넓이를 구하시오
 ### ▶ 6&7번을 선생님과 함께 풀고 안 상식 
