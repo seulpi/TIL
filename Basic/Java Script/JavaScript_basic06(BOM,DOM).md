@@ -131,8 +131,8 @@ history.go(-1); = 뒤로가기 history.back();
 
 ![DOM TREE](https://user-images.githubusercontent.com/74290204/105366895-3499f000-5c43-11eb-954e-23472b9b62b6.png)
 
-### - 함수
-**1. Text노드 이용**
+## - 함수
+### **1. Text노드 이용**
 ```javascript
 window.onload = function() {
     var elementNode = document.createElement("p");
@@ -149,7 +149,7 @@ window.onload = function() {
 }
 ```
 
-**2. img노드 이용** 
+### **2. img노드 이용** 
 ```javascript
 window.onload = function() {
     var imgNode = document.createElement("img");
@@ -175,7 +175,7 @@ window.onload = function() {
 };
 ```
 
-**3. innerHTML : html태그를 바로 넣는 요소**
+### **3. innerHTML : html태그를 바로 넣는 요소**
 ```javascript
 window.onload = function() {
       		var str = "";
@@ -189,7 +189,7 @@ window.onload = function() {
 ```
 ### ※ 주의) innerHTML을 사용하게 되면 태그안에 내용들이 무시되고 innerHTML으로 정의해준 내용만 출력한다 
 
-**4. id를 통한 객체 선택**
+### **4. id를 통한 객체 선택**
 ```javascript
 window.onload = function() {
       		var str = "";
@@ -210,7 +210,7 @@ window.onload = function() {
       	};
 ```
 
-**5. 부모&자식 객체**  
+### **5. 부모&자식 객체**  
 - 부모와 자식관계로 컨트롤 
 ```jsp
    <head>
@@ -240,7 +240,7 @@ window.onload = function() {
    </head>
 ```
 
-**6. style속성을 이용한 css적용**
+### **6. style속성을 이용한 css적용**
 ```jsp
  <head>
       <title>Javascript</title>
