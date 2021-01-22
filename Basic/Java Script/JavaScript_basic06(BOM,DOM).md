@@ -132,7 +132,7 @@ history.go(-1); = 뒤로가기 history.back();
 ![DOM TREE](https://user-images.githubusercontent.com/74290204/105366895-3499f000-5c43-11eb-954e-23472b9b62b6.png)
 
 ### - 함수
-1. Text노드 이용
+**1. Text노드 이용**
 ```javascript
 window.onload = function() {
     var elementNode = document.createElement("p");
@@ -149,7 +149,7 @@ window.onload = function() {
 }
 ```
 
-2. img노드 이용 
+**2. img노드 이용** 
 ```javascript
 window.onload = function() {
     var imgNode = document.createElement("img");
@@ -175,7 +175,7 @@ window.onload = function() {
 };
 ```
 
-3. innerHTML : html태그를 바로 넣는 요소 
+**3. innerHTML : html태그를 바로 넣는 요소**
 ```javascript
 window.onload = function() {
       		var str = "";
@@ -189,7 +189,7 @@ window.onload = function() {
 ```
 ### ※ 주의) innerHTML을 사용하게 되면 태그안에 내용들이 무시되고 innerHTML으로 정의해준 내용만 출력한다 
 
-4. id를 통한 객체 선택 
+**4. id를 통한 객체 선택**
 ```javascript
 window.onload = function() {
       		var str = "";
@@ -208,4 +208,62 @@ window.onload = function() {
       		logoNode.setAttribute("height", 150);	
       	
       	};
+```
+
+**5. 부모&자식 객체**  
+- 부모와 자식관계로 컨트롤 
+```jsp
+   <head>
+      <title>Javascript</title>
+      <script>
+      
+      	window.onload = function() {
+      		
+      		var str = "";
+      		str += "<p id='jsTitle'> javascript </p>";
+      		str += "<img id='logoImg', src ='/img/logo.png',";
+      		str += "width = '170', height='67', tempData='logoImg'>";
+      		
+      		document.body.innerHTML = str;
+			//body에 str을 다이렉트로 넣겠다
+      		
+      		var titleNode = document.getElementById("jsTitle");
+      		titleNode.parentNode.removeChild(titleNode);
+      		// 부모로 접근을해서 해당객체를 삭제, 현재 <p> 태그의 부모 body
+      		var logoNode = document.getElementById("logoImg");
+      		logoNode.parentNode.removeChild(logoNode);
+      		// 부모로 접근을해서 해당객체를 삭제, 현재 <img> 태그의 부모 body
+      		// 두개 다 삭제했으니 아무것도 출력이 안됨
+      	};
+         
+      </script>
+   </head>
+```
+
+**6. style속성을 이용한 css적용**
+```jsp
+ <head>
+      <title>Javascript</title>
+      <script>
+      
+      	window.onload = function() {
+      		
+      		var str = "";
+      		str += "<p id='jsTitle'> javascript </p>";
+      		str += "<img id='logoImg', src ='/img/logo.png'>";
+      		
+      		
+      		document.body.innerHTML = str;
+      		
+      		var titleNode = document.getElementById("jsTitle");
+      		titleNode.style.fontSize = "1.2em";
+      		titleNode.style.border ="1px solid #ff0000";
+      		
+      		var logoNode = document.getElementById("logoImg");
+      		logoNode.style.width = "170px";
+      		logoNode.style.height = "67px";
+      	};
+         
+      </script>
+   </head>
 ```
