@@ -151,6 +151,8 @@ case when sal>= 1800 then 'good'
 </head>
 <script type="text/javascript">
  window.onload = function(){
+   //onload를 해주지않으면 이미지 var yourImg = document.getElementById("user");여기서 에러남 
+   //onload를 안하면 처음부터 읽는데 메모리에 아직 올려지지않았기때문에 에러나는것
    
       function RPSPlayer(your) {
          var rps = ['가위','바위','보'];
