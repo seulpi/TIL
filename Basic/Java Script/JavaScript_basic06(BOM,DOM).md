@@ -187,7 +187,7 @@ window.onload = function() {
       	
       	};
 ```
-### ※ 주의) body 태그안에 글 적어놔도 innerHTML을 사용하게 되면 body안에 태그들이 무시되고 innerHTML에 들어간 태그들만 출력한다 
+### ※ 주의) innerHTML을 사용하게 되면 태그안에 내용들이 무시되고 innerHTML으로 정의해준 내용만 출력한다 
 
 4. id를 통한 객체 선택 
 ```javascript
