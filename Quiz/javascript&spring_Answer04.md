@@ -141,6 +141,126 @@ case when sal>= 1800 then 'good'
 ### ▶ 출력
 ![가위바위보](https://user-images.githubusercontent.com/74290204/105336585-c6dacd80-5c1c-11eb-98a6-c114786e3058.PNG)
 
+```jsp
+//선생님 풀이 
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="EUC-KR">
+   <title>Insert title here</title>
+</head>
+<script type="text/javascript">
+ window.onload = function(){
+   
+      function RPSPlayer(your) {
+         var rps = ['가위','바위','보'];
+         var rcpImg = [
+            "https://lh3.googleusercontent.com/proxy/sKYu5a59Vo-J1kf95vaT6qNeNlJ3-P8UmPpOXYIb-qNtOboDS0kC8-uyj9_6fZaVzgABV6VqLBPXujScvQyolLNTJWyr6A",
+            "https://lh3.googleusercontent.com/proxy/I8igzN6mkoV4n55CnIZGxd1s2F1tCeP21iv95qOisNQyO2RdhagyV9uncNbvSWiHftI-JkuDTXK93_e1gtKSrWoQaVvP8g",
+            "http://isweb.joongbu.ac.kr/~jgm/photo/paper.png"
+         ];
+         
+         var selfNum = 0;
+         var yourRPS = your;
+         
+         this.setSelfNum = function() {
+            selfNum = Math.floor( Math.random() * 3 );
+         };
+
+         this.result = function() {
+
+            this.setSelfNum();
+            var yourImg = document.getElementById("user");
+            var comImg = document.getElementById("computer");
+            var resultText = document.getElementById("result");
+   
+
+            switch (yourRPS) {
+
+               case "가위":
+                  if (  rps[selfNum] == "가위") {
+                     yourImg.setAttribute("src",rcpImg[rps.indexOf(yourRPS)]);
+                     comImg.setAttribute("src",rcpImg[selfNum]);
+                     resultText.innerHTML = "무승부입니다";
+
+                  } else if (rps[selfNum]== "바위") {
+                     yourImg.setAttribute("src",rcpImg[rps.indexOf(yourRPS)]);
+                     comImg.setAttribute("src",rcpImg[selfNum]);
+                     resultText.innerHTML = "컴퓨터 WIN!";
+
+                  } else if(rps[selfNum] == "보") {
+                     yourImg.setAttribute("src",rcpImg[rps.indexOf(yourRPS)]);
+                     comImg.setAttribute("src",rcpImg[selfNum]);
+                     resultText.innerHTML = "유저 WIN!";
+                  } 
+                  break;
+   
+               case "바위":
+                  if (rps[selfNum]== "바위") {
+                     yourImg.setAttribute("src",rcpImg[rps.indexOf(yourRPS)]);
+                     comImg.setAttribute("src",rcpImg[selfNum]);
+                     resultText.innerHTML = "무승부입니다";
+                  } else if (rps[selfNum] == "보") {
+                     yourImg.setAttribute("src",rcpImg[rps.indexOf(yourRPS)]);
+                     comImg.setAttribute("src",rcpImg[selfNum]);
+                     resultText.innerHTML = "컴퓨터 WIN!";
+                  } else if (rps[selfNum] == "가위") {
+                     yourImg.setAttribute("src",rcpImg[rps.indexOf(yourRPS)]);
+                     comImg.setAttribute("src",rcpImg[selfNum]);
+                     resultText.innerHTML = "유저 WIN!";
+                  } 
+                  break;
+   
+               case "보":
+                  if (rps[selfNum] == "보") {
+                     yourImg.setAttribute("src",rcpImg[rps.indexOf(yourRPS)]);
+                     comImg.setAttribute("src",rcpImg[selfNum]);
+                     resultText.innerHTML = "무승부입니다";
+                  } else if (rps[selfNum] == "가위") {
+                     yourImg.setAttribute("src",rcpImg[rps.indexOf(yourRPS)]);
+                     comImg.setAttribute("src",rcpImg[selfNum]);
+                     resultText.innerHTML = "컴퓨터 WIN!";
+                  } else if (rps[selfNum] == "바위") {
+                     yourImg.setAttribute("src",rcpImg[rps.indexOf(yourRPS)]);
+                     comImg.setAttribute("src",rcpImg[selfNum]);
+                     resultText.innerHTML = "유저 WIN!";
+                  }
+                  break;
+   
+               default:
+                  document.write(yourRPS + " 잘못된 입력 입니다 .다시입력하세요");
+
+            }   
+         
+            
+         };         
+         
+      }
+      
+      var rps = prompt("(가위, 바위, 보)를 입력하세요");
+      //var player = new RPSPlayer(rps);
+      //player.result();
+      new RPSPlayer(rps).result() ; 
+      
+   } 
+   </script>
+<body>
+   <table border='1'>
+      <tr>
+         <td>유저</td>
+         <td>컴퓨터</td>
+      </tr>
+      <tr>
+         <td><img id='user'></td>
+         <td><img id='computer'></td>
+      </tr>
+      <tr>
+         <td id="result" colspan='2'></td>
+      </tr>
+   </table>
+</body>
+</html>
+```
 
 # 4. Bom , 과 Dom 이란?
 
