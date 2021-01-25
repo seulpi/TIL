@@ -8,7 +8,7 @@
 1. 파일을 다운받아 적용
 2. CDN을 통해 < header > 태그 안에 입력 
 ```jsp
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 ```
 
 ▶ 배포시에 만약 인터넷이 안되는 곳에 적용하는 것이라면 무조건 1번 방법으로 JQuery를 설치 받아야 추후에도 사용 가능, <br>
