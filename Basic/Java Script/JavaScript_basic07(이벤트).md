@@ -156,6 +156,9 @@
 ### 4. 이벤트 객체
 
 - this : 이벤트가 발생한 자기자신
+
+![this](https://user-images.githubusercontent.com/74290204/105698956-fe61b680-5f49-11eb-985d-f08adbb7a266.PNG)
+
 - event : 이벤트를 눌렀을 때 key value형태로 값을 받아온다 
 
 ```jsp
