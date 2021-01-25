@@ -221,7 +221,7 @@ public class Grade {
 
 # 5. 아래를 프로그래밍하시오
 ## - 놓쳤던 부분 : 부모 자식으로 태그 관계를 만들어 사용해야 코드가 덜 복잡해진다! (addChild)
-### *※addhild, addEventListener 부분 다시 공부 (dom의 핵심이기 때문)*
+### *※ addhild, addEventListener 부분 다시 공부 (dom의 핵심이기 때문)*
 
 ```
 - 제일 위에 입력버튼 하나를 만든다
