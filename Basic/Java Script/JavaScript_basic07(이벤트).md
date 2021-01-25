@@ -152,3 +152,188 @@
 
 </html>
 ```
+
+### 4. 이벤트 객체
+
+- this : 이벤트가 발생한 자기자신
+- event : 이벤트를 눌렀을 때 key value형태로 값을 받아온다 
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Click</title>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			function addHandler(e) {
+				console.log("click!");
+				console.log("this : " + this);
+				
+				var event = e || window.event;
+				for(var key in event) {
+					console.log(key + " : " + event[key]);
+				}
+			};
+			
+			var objD = document.getElementById("objDiv");
+			objD.addEventListener("click", addHandler, false);
+			
+			var objP = document.getElementById("objPar");
+			objP.addEventListener("click", addHandler, false);
+		};
+		
+		
+	</script>
+	
+	<style>
+         #objDiv {
+            width: 200px; height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 1.2em;
+            background-color: #f00;
+            color: #fff;
+            font-weight: bolder;
+         }
+         
+         #objPar {
+            width: 200px; height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 1.2em;
+            background-color: #0f0;
+            color: #fff;
+            font-weight: bolder;
+         }
+         
+         #eventProp {
+            width: 500px;
+            border: 1px solid #cccccc;
+         }
+      </style>
+	
+
+</head>
+
+<body>
+
+	<div id="objDiv">Object Division</div>
+	<p id="objPar">Object Paragraph</p>
+
+</body>
+</html>
+```
+
+### 5. 마우스
+- mouseover : 설정한 영역에 들어갔을때
+- mouseout : 설정한 영역에 나왔을때
+- mouseup:
+- mousedown : 
+- dbclick : 더블 클릭 
+
+### 6. form(양식) 
+- button : button으로 처리하는 이유는 이벤트로 이용하기 위함! 
+    - button으로 처리할때는 데이터 전송을 위해서 value="submit" 으로 표시
+```jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Click</title>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			
+			// @JS의 유효성 검사!!
+			var sbmBtn = document.getElementById("sbmBtn");
+			sbmBtn.onclick = function() {
+				if(document.getElementById("uid").value == "") {
+					alert("user id blank!!");
+				} else if(document.getElementById("upw").value == "") {
+					alert("user pw blank!!");
+				} else {
+					alert("login Ok!!");
+					document.getElementById("loginForm").submit();
+				}
+			};
+			
+			var resBtn = document.getElementById("resBtn");
+			resBtn.onclick = function() {
+				alert("reset Ok!!!");
+				document.getElementById("loginForm").reset();
+			};
+		}
+	</script>
+	
+
+</head>
+
+<body>
+
+	<form id = "loginForm" action="http://www.google.com">
+		USER ID : <input id="uId" type="text" name="uId"><br>
+		USER PW : <input id= "upw" type="password" name="upw"><br>
+		<input id="sbmBtn" type="button" value="submit">
+		<input id="resBtn" type="button" value="reset">
+
+	</form>
+
+</body>
+</html>
+```
+
+- submit : 일반적인 sublmit을 사용할때는(< input type="submit >) onsubmit을 활용
+- submit의 주체는 **form 자체** (form태그를 컨트롤, 따라서 form태그 안에 submit이 주체가 X)
+```jsp
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Click</title>
+
+	<script type="text/javascript">
+		window.onload = function() {
+			
+			// @JS의 유효성 검사!!
+			var lf = document.getElementById("loginForm");
+			lf.onsubmit = function() {
+				if(document.getElementById("uid").value == "") {
+					alert("user id blank!!");
+					return false;
+					// false이면 데이터 전송X true여야 전송O
+				} else if(document.getElementById("upw").value == "") {
+					alert("user pw blank!!");
+					return false;
+				} else {
+					alert("login Ok!!");
+					return true;
+				}
+			};
+	
+		}
+	</script>
+	
+
+</head>
+
+<body>
+
+	<form id = "loginForm" action="http://www.google.com">
+		USER ID : <input id="uId" type="text" name="uId"><br>
+		USER PW : <input id= "upw" type="password" name="upw"><br>
+		<input id="sbmBtn" type="submit" value="SUBMIT">
+		<input id="resBtn" type="reset" value="RESET">
+
+	</form>
+
+</body>
+</html>
+```
