@@ -154,3 +154,40 @@ http://oss.opensagres.fr/tern.repository/1.2.0/를 복사 붙여넣기
 ![2](https://user-images.githubusercontent.com/74290204/105305141-48bbfe00-5bff-11eb-83f6-c39e835c5894.PNG)
 
 ![3](https://user-images.githubusercontent.com/74290204/105305149-49549480-5bff-11eb-8994-564df127fe9d.PNG)
+
+## @ 롬복 설치 : getter&setter함수, 생성자등을 자동으로 생성해주는 어플리케이션
+
+- 설치하는 방법
+https://medium.com/@dlaudtjr07/spring-boot-lombok-%EA%B0%9C%EB%85%90-%EB%B0%8F-%EC%84%A4%EC%B9%98-71f9dbbc2f42
+
+- 설치링크 
+https://projectlombok.org/download
+
+1. 다운로드 후  cmd
+```
+cd C:\Users\AI\Downloads (다운로드 받은 곳) 엔터 
+C: C:\Users\AI\Downloads> java -jar lombok.jar
+```
+
+2. location 못 잡으면 이클립스, sts 바로가기 우클릭 눌러서 속성 - 대상(T) 에 경로 복사 붙여넣기 
+
+3. 다시 재부팅
+
+4. pom.xml에 dependency 추가 
+
+	- 버전을 맞춰줌(다운로드한 버전) 1.18.16인데 다운로드 받는 곳에 올라와있는지 확신할 수 없어서 1.18.0으로 일단 맞춰줘도됨(학원ver)
+ - <dependencies> : 안에 넣어야 됨
+  ```xml
+  <dependency>
+   <groupId>org.projectlombok</groupId>
+   <artifactId>lombok</artifactId>
+   <version>1.18.0</version>
+   <scope>provided</scope>
+  </dependency>
+      ```
+5, @Data로 annotation을 붙여주면 변수에 대한 getter&setter, 생성자, equals함수, hashcode까지 만들어줌 <br>
+→ 좋은 반면에 종종 에러가 남
+
+![롬복](https://user-images.githubusercontent.com/74290204/105699071-26511a00-5f4a-11eb-8915-bf3124423acf.PNG)
+
+
