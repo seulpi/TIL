@@ -17,7 +17,7 @@
 
 
 
-# @ Controller (이부분 다시 정리할것, 코드넣어서 월요일에 할것!!)
+# @ Controller
 - 기본 작동 방법
 
 ![mapping](https://user-images.githubusercontent.com/74290204/105436455-963d7700-5ca2-11eb-998e-6fca313b08f0.PNG)
@@ -38,13 +38,33 @@
     - → HttpServletRequest 으로 요청된 값을 받아오고 Model로 값을 넘긴다
 
 ### 1. HttpServlet request 이용 
-
-# 코드 추가할것 ^_____^
+```java
+@RequestMapping("board/confirmId")
+	public String confirmId(HttpServletRequest request, Model model) {
+		
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
+		
+		model.addAttribute("id", id);
+		model.addAttribute("pw", pw);
+		
+		return "board/confirmId";
+	}
+```
 
 ### 2. @RequestParam 이용
-# 코드 추가할것 ^_____^
-
-
+```java
+@RequestMapping("board/checkId")
+	public String checkId(@RequestParam("id") String id, @RequestParam("pw") int pw , Model model) {
+		// �� ����� �޾Ƴ� �����Ͱ� �������� �ڵ���� �ʹ� ������ ���� '�����Ͱ�ü'�� ������� ����
+		// null���¿����� �ѱ�� ���⶧���� ��������ü���� ������ ������ ���� ȭ�� ����� �ȵǰ� 400���(������������ �������ʴ°�)
+		// param ������̼��� �����ʾ������� ������������ �Ѱ���µ�? �� �ٸ�����?
+		model.addAttribute("ID", id);
+		model.addAttribute("PW", pw);
+		
+		return "board/checkId";
+	}
+```
 <br>
 
 ### 3. Command 객체(데이터 객체) 이용: 우리가 아는 커맨드 아님, 다른 개념의 스프링 커맨드
