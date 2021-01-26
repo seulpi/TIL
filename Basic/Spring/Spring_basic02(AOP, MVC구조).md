@@ -13,9 +13,7 @@
 
 
 # ★★★★★스프링 MVC 구조★★★★★
-##  구조 그림자리(월요일변경예정)
-
-
+![Sprin_MVC](https://user-images.githubusercontent.com/74290204/105818387-358fa080-5ffa-11eb-9a28-d541915d12e1.png)
 
 # @ Controller
 - 기본 작동 방법
