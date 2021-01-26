@@ -33,7 +33,7 @@
 <br>
 
 # 2. 스프링에서 게시판 사용을 위한 설계도를 그리시오
-![Sprin_MVC_Web](https://user-images.githubusercontent.com/74290204/105821861-aa64d980-5ffe-11eb-81d5-04a75df76600.png)
+![Sprin_MVC_Web](https://user-images.githubusercontent.com/74290204/105824158-57405600-6001-11eb-9a73-557db599a85d.png)
 <br>
 
 # 3. 스프링에서 한글처리는 어떻게 하는가?
