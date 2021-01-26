@@ -561,3 +561,75 @@ public class HomeController { }
 </mapper>
 ```
 
+### - loog4j.xml 
+- 기존 코드 지우고 다시 복붙
+<details><summary>복붙할 코드</summary>
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+   <!-- Appenders -->
+   <appender name="console" class="org.apache.log4j.ConsoleAppender">
+      <param name="Target" value="System.out" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %-5p: %c - %m%n" />
+      </layout>
+   </appender>
+   
+   <appender name="fileLogger" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="d://logs//spring//spring.Log"/>
+        <param name="Append" value="true"/>
+        <param name="dataPattern" value=".yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %-5p: %F:%L - %m%n" />
+        </layout>
+    </appender>
+   
+   <!-- Application Loggers -->
+   <logger name="edu.bit.board">
+      <level value="info" />
+   </logger>
+   
+   <!-- 3rdparty Loggers -->
+   <logger name="org.springframework.core">
+      <level value="info" />
+   </logger>
+   
+   <logger name="org.springframework.beans">
+      <level value="info" />
+   </logger>
+   
+   <logger name="org.springframework.context">
+      <level value="info" />
+   </logger>
+
+   <logger name="org.springframework.web">
+      <level value="info" />
+   </logger>
+
+   <!-- Root Logger -->
+   <root>
+      <priority value="info" />
+      <appender-ref ref="console" />
+      <appender-ref ref="fileLogger"/>
+   </root>
+   
+</log4j:configuration>
+```
+</details>
+
+
+### - log4jdbc.log4j2.properties
+- 기존 코드 지우고 다시 복붙 , Untilted Text File로 만들면됨
+```text
+log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator
+log4jdbc.dump.sql.maxlinelength=0
+```
+- ※ 위치 주의 : log4j.xml과 같은 위치 
+![위치](https://user-images.githubusercontent.com/74290204/105832203-003f7e80-600b-11eb-8640-be80fc31e6ba.PNG)
+
+
+## ▶ 설정이 다 끝나면 만들어지는 폴더들 
+![mvc보드 폴더](https://user-images.githubusercontent.com/74290204/105835073-ab9e0280-600e-11eb-8a09-10b0dbeb8ee2.PNG)
