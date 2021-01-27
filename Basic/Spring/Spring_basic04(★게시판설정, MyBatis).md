@@ -1,6 +1,6 @@
 # Spring - 요청 생명주기
 ## ▶ 동작 원리
-![Sprin_MVC](https://user-images.githubusercontent.com/74290204/105818387-358fa080-5ffa-11eb-9a28-d541915d12e1.png)
+![Sprin_MVC](https://user-images.githubusercontent.com/74290204/105934997-8522aa80-6094-11eb-8540-aecbf8e4c0f2.png)
 
 ## ▶ 게시판 사용을 위한 설계도
 ![Sprin_MVC_Web](https://user-images.githubusercontent.com/74290204/105824158-57405600-6001-11eb-9a73-557db599a85d.png)
