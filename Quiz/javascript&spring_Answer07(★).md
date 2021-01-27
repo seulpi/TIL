@@ -72,4 +72,5 @@
 >> 참조] https://velog.io/@changyeonyoo/Mybatis%EB%9E%80-%EC%9E%A5%EC%A0%90-%ED%8A%B9%EC%A7%95-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8
 
 # 5. 스프링에서 hello.jsp 가 유저에게 전달되기 까지의  순서와 해당 객체를 그림으로 표현하시오
-![Sprin_MVC](https://user-images.githubusercontent.com/74290204/105818387-358fa080-5ffa-11eb-9a28-d541915d12e1.png)
+![Sprin_MVC](https://user-images.githubusercontent.com/74290204/105934997-8522aa80-6094-11eb-8540-aecbf8e4c0f2.png)
+
