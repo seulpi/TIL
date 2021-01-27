@@ -52,6 +52,7 @@ URI : URL을 확장, Idenfication
 
 ## @Redirect
 - redirect:studentOk → studentOk는 jsp 파일이 아닌 URL을 뜻함
+- redirect : 서버에서 클라이언트로 하여금 다시 주소 요청 / window.location.assign("URL") : 함수로 접근(클라이언트) → 이거 다시 체크해서 정리해놓기, 제대로 못들음
 ```java
 @RequestMapping("/studentConfirm") 
 	public String studentRedirect(HttpServletRequest httpServletRequest, Model model) {
