@@ -4,7 +4,7 @@
 - 댓글에 대한 이해도 떨어짐
 
 
-# 1. BoardController
+# 1. BoardController [FrontController]
 ```java
 package edu.bit.board.controller;
 
@@ -211,7 +211,7 @@ public class BoardVO {
 }
 ```
 
-# 3. BoardService
+# 3. BoardService [BCommand]
 ```java
 package edu.bit.board.service;
 
@@ -307,7 +307,7 @@ public class BoardServiceImpl implements BoardService{
 }
 ```
 
-# 5. BoardMapper
+# 5. BoardMapper [DAO]
 ```java
 package edu.bit.board.mapper;
 
