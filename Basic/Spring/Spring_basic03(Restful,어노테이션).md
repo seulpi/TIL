@@ -150,7 +150,9 @@ public class StudentValidator implements Validator {
 		
 		// 검증할 로직
 		String studentName = student.getName();
-		if(studentName == null || studentName.trim().isEmpty()) {
+		if(studentName == null || studentName.trim().isEmpty()) { 
+		/* trim해줘야하는이유? 유저는 공백그런거 신경안쓰고 입력하지만 받는 우리 입장에서는 공백까지 문자로 포함하기 때문에 
+		DB저장할때나 활용할때 문제가 생기기때문에 반드시 trim을 써야한다*/
 			System.out.println("student is null or empty");
 			
 			errors.rejectValue("name", "trouble");
