@@ -94,6 +94,7 @@ public class BoardController {
 		log.info("reply()");
 		boardService.replyShape(boardVO);
 		boardService.replyBoard(boardVO);
+		
 		/* controller에서는 함수를 한개를 호출 따라서 댓글 정렬해주고 하는 로직들은 Service단에서(비즈니스로직)
 		   controller에서는 view만 결정할 수 있게 하는게 목적 (replyShape-Service단으로 옮겨야함)*/
 		   
