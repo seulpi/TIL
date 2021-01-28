@@ -1,6 +1,7 @@
 # jQuery
 : javascript를 한번 더 캡슐화한 라이브러리 (JS문법을 좀 더 쉽게 사용하기 위해 만든 언어)
 - 따라서, 태그라이브러리가 존재
+>>[jQuery UI] https://jqueryui.com/
 
 # - jQuery 설치 방법
 ### [링크 참조] https://dullyshin.github.io/2019/09/05/jQuery-download/
