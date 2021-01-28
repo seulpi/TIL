@@ -324,6 +324,8 @@
 - **ContextLoadListener**는 **root-WebApplicationContext를 생성**
 - [x] web.xml에서 설정하는 종류 → dispatcher 생성, fliter처리(한글처리 등), 예외처리, session처리등
 - 학원에서 한글처리 여기서 fliter로 정리했음 
+- web.xml에서 한글코딩을 UTF-8로 설정했기 때문에 해당 jsp파일들은  UTF-8로 맞춰줘야 한글이 깨지지않는다 <br>
+※ 설정을  UTF-8로 하고 EUC-KR로 하면 한글이 깨짐
 - < /web-app> 위에 복붙(**위치가 중요!**)
     <details><summary>web.xml 복붙할 코드</summary>
 
@@ -590,6 +592,7 @@ public class HomeController { }
       </layout>
    </appender>
    
+	<!-- log안나올 때 이 부분 있는지 check -->
    <appender name="fileLogger" class="org.apache.log4j.DailyRollingFileAppender">
         <param name="file" value="d://logs//spring//spring.Log"/>
         <param name="Append" value="true"/>
