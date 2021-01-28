@@ -184,8 +184,9 @@ C: C:\Users\AI\Downloads> java -jar lombok.jar
    <version>1.18.0</version>
    <scope>provided</scope>
   </dependency>
-      ```
-5, @Data로 annotation을 붙여주면 변수에 대한 getter&setter, 생성자, equals함수, hashcode까지 만들어줌 <br>
+```
+
+5. @Data로 annotation을 붙여주면 변수에 대한 getter&setter, 생성자, equals함수, hashcode까지 만들어줌 <br>
 → 좋은 반면에 종종 에러가 남
 
 ![롬복](https://user-images.githubusercontent.com/74290204/105699071-26511a00-5f4a-11eb-8915-bf3124423acf.PNG)
