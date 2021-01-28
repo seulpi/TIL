@@ -2,6 +2,8 @@
 - servlet 게시판 까먹음
 - 까먹으니까 쿼리문 기억 못함
 - 댓글에 대한 이해도 떨어짐
+## *- 수업듣고 추가&수정되야 할 부분*
+- contoller단 비즈니스로직 추가된 부분(댓글 정렬하는 함수) → 서비스단으로 이동 (주석으로 내용 달았음)
 
 
 # 1. BoardController [FrontController]
@@ -92,7 +94,9 @@ public class BoardController {
 		log.info("reply()");
 		boardService.replyShape(boardVO);
 		boardService.replyBoard(boardVO);
-		
+		/* controller에서는 함수를 한개를 호출 따라서 댓글 정렬해주고 하는 로직들은 Service단에서(비즈니스로직)
+		   controller에서는 view만 결정할 수 있게 하는게 목적 (replyShape-Service단으로 옮겨야함)*/
+		   
 		return "redirect:list";
 		}
 	
