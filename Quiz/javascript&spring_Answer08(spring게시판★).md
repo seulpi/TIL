@@ -4,6 +4,7 @@
 - 댓글에 대한 이해도 떨어짐
 ## *- 수업듣고 추가&수정되야 할 부분*
 - contoller단 비즈니스로직 추가된 부분(댓글 정렬하는 함수) → 서비스단으로 이동 (주석으로 내용 달았음)
+<br>
 
 # 1. BoardController [FrontController]
 ```java
