@@ -320,8 +320,11 @@
 </details>
 <br>
 
-## 2. web.xml 설정 → 한글처리(필터로 처리한다)
-- < /web-app> 위에 복붙(위치가 중요!)
+## 2. web.xml 설정
+- **ContextLoadListener**는 **root-WebApplicationContext를 생성**
+- [x] web.xml에서 설정하는 종류 → dispatcher 생성, fliter처리(한글처리 등), 예외처리, session처리등
+- 학원에서 한글처리 여기서 fliter로 정리했음 
+- < /web-app> 위에 복붙(**위치가 중요!**)
     <details><summary>web.xml 복붙할 코드</summary>
 
     ```xml
@@ -397,7 +400,7 @@
 </web-app>
 ```
 
-## 3. root-context.xml 
+## 3. root-context.xml →  DB관련 설정등 처리
 1. 기존에 있는 코드 지우기
 2. 복붙(히카리 사용을위한 코드)
     <details><summary>Hikary 복붙 코드 </summary>
