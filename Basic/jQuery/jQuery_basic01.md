@@ -28,8 +28,8 @@ CDN을 통해 사용하는 것은 인터넷이 작동한다는 가정하에 간�
 <title>Click</title>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-																<!-- ↑ min은 축소시켰다는 뜻! 
-																인터넷으로 이용하려면 공간이랑 용량을 축소시켜야 하니까 -->
+									<!-- ↑ min은 축소시켰다는 뜻! 
+									인터넷으로 이용하려면 공간이랑 용량을 축소시켜야 하니까 -->
 
 	<script type="text/javascript">
 		window.onload = function() {
