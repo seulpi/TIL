@@ -238,8 +238,8 @@ textMethod : text function
 
 ## 3. addClass : class 추가 
 ## 4. removeClass : class 삭제
-### - **remove** : **객체 제거**
-### - **empty** : 객체 **내부 제거**
+- [x] **remove** : **객체 제거**
+- [x] **empty** : 객체 **내부 제거**
 ## 5. attr : attribute, 속성
 
 ```jsp
