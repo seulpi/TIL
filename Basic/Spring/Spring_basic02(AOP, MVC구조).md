@@ -15,7 +15,8 @@
 # ★★★★★스프링 MVC 구조★★★★★
 ![Sprin_MVC](https://user-images.githubusercontent.com/74290204/105818387-358fa080-5ffa-11eb-9a28-d541915d12e1.png)
 
-# @ Controller
+# @ Controller 
+*Controller는 ModelAndView만 전달해주는 영역이기 때문에 소스코드는 Command(Service)쪽에서 다 정리해서 와야함*
 - 기본 작동 방법
 
 ![mapping](https://user-images.githubusercontent.com/74290204/105436455-963d7700-5ca2-11eb-998e-6fca313b08f0.PNG)
