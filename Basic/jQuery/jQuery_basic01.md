@@ -130,7 +130,7 @@ $(function() {
 		});
 
 ```
-▶
+▶ 출력 <br>
 
 ![선택자출력](https://user-images.githubusercontent.com/74290204/105927807-12133700-6088-11eb-9378-2a115f415337.PNG)
 
