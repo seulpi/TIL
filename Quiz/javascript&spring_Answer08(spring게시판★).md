@@ -5,7 +5,6 @@
 ## *- 수업듣고 추가&수정되야 할 부분*
 - contoller단 비즈니스로직 추가된 부분(댓글 정렬하는 함수) → 서비스단으로 이동 (주석으로 내용 달았음)
 
-
 # 1. BoardController [FrontController]
 ```java
 package edu.bit.board.controller;
@@ -307,7 +306,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public void upHit(BoardVO boardVO) {
 		mapper.upHit(boardVO);
-		
+		// 만약에 매개변수가 두개 들어오면 xml에서 어떤 객체의 값을 가져오는지 명시를 해줘야한다!
 	}	
 }
 ```
