@@ -11,6 +11,8 @@
 1. Mapper도 interface! xml자식이 구현해주는거기 때문에 class가 아님
 2. VO만들때 롬복이 안먹음 따라서 손으로 쳐줘야함
 
+[에러] 프로젝트에 X 가뜬다 → Maven 업데이트 → 그래도 안된다: project-clean → 그래도 안된다: 우클릭 - property - Project Facets - Dynamic Web Module 을 4.0으로 맞추기
+
 진짜 별별 오류가 다 생긴다ㅋㅋㅋ
 오타부터 값 못받아오는 에러까지..List만 잘 구현되도 뒤에는 좀 수월할듯하다
 근데 view단에서 똑같이 했는데 안되는건 왜그런거지? 기존에 view단을 복붙하면 된다!  단순에러인가..
