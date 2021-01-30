@@ -1,5 +1,9 @@
 # KAKAO LOGIN
 
+## ▶ 소셜로그인 원리
+>> [kakaodeveloper] https://developers.kakao.com/docs/latest/ko/kakaologin/common
+![소셜로그인 원리](https://user-images.githubusercontent.com/74290204/106353008-bc11ee00-632a-11eb-9ac5-d996268cc46c.png)
+
 ## 1. pom.xml (필요한 dependebcy 추가)
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
