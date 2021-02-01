@@ -28,7 +28,7 @@ public class Criteria {
 
 }
 ````
-```
+```java
 //PageVO
 package edu.bit.ex.page;
 
