@@ -50,6 +50,8 @@ URI : URL을 확장, Idenfication
 	}
 ```
 
+![어노테이션](https://user-images.githubusercontent.com/74290204/106417911-6fe4bc00-6498-11eb-9238-119755e7dd0c.PNG)
+
 ## @Redirect
 - redirect:studentOk → studentOk는 jsp 파일이 아닌 URL을 뜻함
 - redirect : 서버에서 클라이언트로 하여금 다시 주소 요청 / window.location.assign("URL") : 함수로 접근(클라이언트) → 이거 다시 체크해서 정리해놓기, 제대로 못들음
