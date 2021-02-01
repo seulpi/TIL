@@ -18,11 +18,11 @@ select count(*) from mvc_board;
 
 --- 
 # [수업 중 문제] 
-## 아래를 프로그래밍하시오
-1. resources처리해서 부트스트랩 적용해서 List 출력
+## Q. 아래를 프로그래밍하시오
+### 1. resources처리해서 부트스트랩 적용해서 List 출력
 ![화면 캡처 2021-02-01 222737](https://user-images.githubusercontent.com/74290204/106465042-ca077080-64dc-11eb-9ac6-138777bcd43f.png)
 
-2. 사원추가하면 화면 출력(DB에서 정보 가져올ㅍ것)
+### 2. 사원추가하면 화면 출력(DB에서 정보 가져올ㅍ것)
 ![화면 캡처 2021-02-01 222750](https://user-images.githubusercontent.com/74290204/106465046-cb389d80-64dc-11eb-9f19-546d8b07c052.png)
 
 ```java
