@@ -18,14 +18,15 @@ select rownum rn, * from emp a; -- error! rownum을 사용할때는 어디에서
 ```
 
 ### *★ rownum이 언제 적용되는가?*
-- sql 처리 순서 
-1. from/where절이 먼저처리
+- **sql 처리 순서**
+1. from/where절이 먼저 처리
 2. rownum이 할당되고 from/where절에서 전달되는 각각의 출력 row에 대해 증가
-	- rownum은 select가 적용되기 전에 where까지 확인을 하고 번호를 할당
+	- **rownum은 select가 적용되기 전에** where까지 확인을 하고 번호를 할당
 3. select 적용
 4. group by 조건 적용
 5. having 적용
 6. order by 적용
+
 ```sql
 select rownum rn, bid, bname, btitle from mvc_board where rownum > 10 and rownum <= 20;
 --rownum은 처음에 무조건 1 where 1 > 10 false 따라서 아예 갖고오지 못하기 때문에 select할 수 없음
