@@ -17,7 +17,7 @@ select rownum rn, a.* from emp a;
 select rownum rn, * from emp a; -- error! rownum을 사용할때는 어디에서 *(all)인지 표시해줘야한다
 ```
 
-### ★ rownum이 언제 적용되는가?
+### *★ rownum이 언제 적용되는가?*
 - sql 처리 순서 
 1. from/where절이 먼저처리
 2. rownum이 할당되고 from/where절에서 전달되는 각각의 출력 row에 대해 증가
