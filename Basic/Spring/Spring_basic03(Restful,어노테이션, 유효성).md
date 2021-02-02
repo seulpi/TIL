@@ -278,7 +278,10 @@ public class StudentController {
 	}
 
 	@RequestMapping("/student/create")
-	public String studentCreate(@ModelAttribute("student") @Valid Student student, BindingResult result) {
+	public String studentCreate(@ModelAttribute("student") @Valid Student student, BindingResult result) { 
+		/* view로 넘길때 <form:form command 객체 사용하는 방법, hasBindErrors 사용방법
+		또는 여기서 model로 넘겨도됨
+		Model model 추가해서 model.addAttribute("erroeId", "id가 이상합니다"); */
 		
 		String page = "createDonePage";
 
