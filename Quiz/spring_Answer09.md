@@ -1,5 +1,30 @@
 # 1. emp list 페이징을 구현하시오
-## - dummy table 만들어서 테스트해 볼 것! 
+## - dummy table 만들어서 테스트해 볼 것! (밑에 방법 제시한것도 지금 테스트 안해봐서 돌려봐야함)
+```sql
+--방법1 
+-- dummy data 생성
+begin
+  for i in 1..1000 loop
+   insert into emp (empno, ename, job, mgr, hiredate,sal,comm,deptno) values (ex_seq.nextval, "test" , "job" , 0, sysdate, 0, 0, 0);
+  end loop;
+end; --random으로 deptno을 쿼리로 줘야하는데 못 줄 때 spring test로 끌고와서 돌려본다 
+
+create sequence ex_seq
+increment by 1
+start with 9091;
+-- 시작 숫자 1
+
+-- 방법2
+begin
+  for i in 1..1000 loop
+   insert into emp (select max(empno) + 1 from emp, ename, job, mgr, hiredate,sal,comm,deptno) values (ex_seq.nextval, "test" , "job" , 0, sysdate, 0, 0, 0);
+  end loop;
+end;
+
+-- emp 복사가 안되는데 그 이유는 이미 이름이 존재하는 key이름이어서 안됨 따라서 alter문을 통해서 forien key와 pk 를 따로 지정해줘야함 
+CONSTRAINT "FK_DEPTNO" FOREIGN KEY ("DEPTNO") → 이 부분 , 우클릭/ 편집 / 제약조건 / + 새 제약조건 key 설정 
+→ 이게 싫으면 그냥 다이렉트로해서 emp에 집어넣어도 나중에 @??뭐시기로 되돌릴수있다함
+```
 ```java
 //Creteria
 package edu.bit.ex.page;
