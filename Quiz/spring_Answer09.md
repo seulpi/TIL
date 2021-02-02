@@ -99,11 +99,14 @@ public class PageVO {
 	}
 	
 	public String makeQuery(int page) { //1page, 2page,.. 값만으로 query문 계산해서 넘기기때문에 필요한 요소는 page값뿐임(rownum사용할거니까)
+	
 											// pageNum=3           pageNum=3&amount=10	build()→ ?pageNum=3&amount=10
 		UriComponents uricomp = UriComponentsBuilder.newInstance().queryParam("pageNum", page).queryParam("amount", cri.getAmount()).build();
+		
 		/* UriComponents: 문자열 URI를 만들어야 할때, URI를 동적으로 만들어주는 클래스
 		 * UriComponentsBuilder : 여러 개의 파라미터들을 연결하여 URL 형태로 만들어 주는 기능, 
 		 * 즉 Controller단에서 addAttribute로 하나 하나 속성을 지정해주지 않아도 이 class를 이용하면 손쉽고 간단하게 파라미터 전달 가능*/
+		 
 		return uricomp.toString();
 	}
 }
