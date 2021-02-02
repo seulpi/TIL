@@ -25,6 +25,17 @@ select count(*) from mvc_board;
 ### 2. 사원추가하면 화면 출력(DB에서 정보 가져올것) - 아직 유효성 검사 못함
 ![화면 캡처 2021-02-01 222750](https://user-images.githubusercontent.com/74290204/106465046-cb389d80-64dc-11eb-9f19-546d8b07c052.png)
 
+### [유효성 추가 설명] 
+- 기본적으로 autoIncreament 를 사용 (중복을 피하기위해 제약조건이 반드시 들어가야함)
+   - autoIncreament : seq.nextval 해서 중복 안되게 쿼리문 정리 <br> 
+   중복되는 부분을 체크해야될때는 select문으로 체크를 하고 난 다음에 데이터를 저장해야한다 (한마디로 sql구문을 두번 사용해야함 select문) 
+```sql
+select count(*) from emp where empno = 1;
+-- count가 0이면 데이터 저장 O, 1개라도 있으면 데이터 저장 X
+```
+- 소프트웨어 적으로는 Bind, reject , errors등으로 
+>> [유효성 설명] https://github.com/seulpi/TIL/blob/main/Basic/Spring/Spring_basic03(Restful%2C%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98%2C%20%EC%9C%A0%ED%9A%A8%EC%84%B1).md
+
 ```java
 //Controller
 package edu.bit.ex.controller;
