@@ -746,7 +746,7 @@ select count(*) from emp
 									</tr>
 								</table>
 								
-                						// 이전이나 다음이 나오지 않는 이유 10단위로 움직이기 때문에 당연히 그것보다 갯수가 적으면 안나옴
+                						<!-- 이전이나 다음이 나오지 않는 이유 10단위로 움직이기 때문에 당연히 그것보다 갯수가 적으면 안나옴 -->
 								<c:if test="${pageMaker.previus}">
 									<a href = "empPage${pageMaker.makeQuery(pageMaker.startPage - 1)}"> 이전 </a>
 								</c:if>
@@ -754,6 +754,7 @@ select count(*) from emp
 								<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 									<c:out value="${pageMaker.cri.page == idx?'':''}" /> 
 								<!-- 삼항연산자, idx 혹시나 값이 잘못넘어오면 아무것도 넣지 않게 하기위한 하나의 에러처리문 여기서는 필요없음 -->
+									
 									<a href = "empPage${pageMaker.makeQuery(idx)}">${idx}</a>
 								</c:forEach>
 								
