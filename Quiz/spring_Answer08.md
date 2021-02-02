@@ -34,7 +34,7 @@ select count(*) from emp where empno = 1;
 -- count가 0이면 데이터 저장 O, 1개라도 있으면 데이터 저장 X
 ```
 - 소프트웨어 적으로는 Bind, reject , errors등으로 
->> [유효성 설명] https://github.com/seulpi/TIL/blob/main/Basic/Spring/Spring_basic03(Restful%2C%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98%2C%20%EC%9C%A0%ED%9A%A8%EC%84%B1).md
+>> [유효성 개념 정리] https://github.com/seulpi/TIL/blob/main/Basic/Spring/Spring_basic03(Restful%2C%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98%2C%20%EC%9C%A0%ED%9A%A8%EC%84%B1).md
 
 ```java
 //Controller
