@@ -756,6 +756,8 @@ select count(*) from emp
 								<!-- 삼항연산자, idx 혹시나 값이 잘못넘어오면 아무것도 넣지 않게 하기위한 하나의 에러처리문 여기서는 필요없음 -->
 									
 									<a href = "empPage${pageMaker.makeQuery(idx)}">${idx}</a>
+									<!-- empPage?pageNum=2&amount=10 -->
+									<!-- <a href = "empPage?pageNum=${idx}&amount=10">${idx}</a> -->
 								</c:forEach>
 								
 								<c:if test= "${pageMaker.next && pageMaker.endPage > 0}">
