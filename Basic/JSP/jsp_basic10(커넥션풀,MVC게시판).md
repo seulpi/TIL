@@ -87,7 +87,10 @@
 ### ▶ 자세한 MVC설명 'Quiz/jsp&DB_Answer02.md' 참조 
 ##### https://github.com/Lee-sb92/TIL/blob/main/Quiz/jsp%26DB_Answer02.md
 <br>
-<br>
+
+- DTO (Data Transfer Object) : DB에서의 데이터들을 프로그래밍하면서 사용할 수 있게 프로그래밍 언어로 변환해주는 객체
+- DAO (Data Access Object) : DB와 관련된 로직을 수행하는 객체 (삽입, 수정, 삭제등) 
+- Servlet : 자바언어를 사용해 클라이언트의 요청을 처리하고 반환한다. MVC모델에서는 Controller를 servlet으로 구현
 
 ## @ 게시판을 만들어보자!
 ### 1. Data Base 생성 (글 리스트)
@@ -105,8 +108,6 @@ bGroup : 최초원글에 대한 그룹 , 원글 번호
 bStep : 원글에 대해 세로로 몇번째인지는 나타냄
 bIndent : 가로로 몇번째인지 나타냄 (들여쓰기같은것)
 ```
-
-
 
 ```sql
 create table mvc_board ( 
