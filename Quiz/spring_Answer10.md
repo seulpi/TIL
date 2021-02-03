@@ -6,7 +6,7 @@
 ![1111](https://user-images.githubusercontent.com/74290204/106584796-f7f6be80-6589-11eb-8078-560893ad8a3f.PNG)
 
 
-# 2. Juit를 통해서 랜덤으로 emp 더미 데이터에서 deptno 업데이트 하시오
+# 2. Juit를 통해서 랜덤으로 emp 더미 데이터에서 deptno 업데이트 하시오(다시)
 ```java
 public interface EmpMapper {
     public void update();    
