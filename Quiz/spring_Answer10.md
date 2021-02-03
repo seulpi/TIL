@@ -104,7 +104,7 @@ commit;
 </html>
 ```
 
-### @ 내 코드 마무리 못했음 append의 개념이 덜 잡혀있는 것 같다 
+### ▼ 내 코드 마무리 못했음 append의 개념이 덜 잡혀있는 것 같다 
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -163,7 +163,7 @@ commit;
 </html>
 ```
 
-###  teacher_Answer!!!
+### + *Teacher_Answer!!!*
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
