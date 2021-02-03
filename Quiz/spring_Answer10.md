@@ -7,6 +7,42 @@
 
 
 # 2. Juit를 통해서 랜덤으로 emp 더미 데이터에서 deptno 업데이트 하시오
+```java
+public interface EmpMapper {
+    public void update();    
+}
+```
+```xml
+//empMapper.xml
+
+<update id="update" >
+    <![CDATA[
+        update emp set deptno = (ROUND(DBMS_RANDOM.VALUE(1, 4),0)*10)
+    ]]>
+</update>  
+```
+```java
+//empMapperTest
+
+@RunWith(SpringRunner.class) //ioc 컨테이너를 생성
+@ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")  
+//dataSource에 대한 정보는 root-context.xml에 존재하기 때문에 표기 필수
+@Log4j
+public class EmpMapperTest {
+    @Setter(onMethod_ = @Autowired)
+    private EmpMapper mapper;
+    @Test
+    public void testupdate() {  //mapper.xml id와 동일한 명으로 사용하기!
+        mapper.update();        //update 후에 값 가져오기, 대신 return 타입은 void!
+        List<EmpVO> list = mapper.getlist();
+        log.info(mapper);
+        
+        for(EmpVO empVO : list) {
+            log.info(empVO.getDeptno());
+        }
+    }
+}
+```
 
 # 3. emp01테이블을 emp 에서 복사하여, pk ,fk 툴을 사용해도 좋고, alter 문으로 설정하여, emp01로 페이징 테스트 하기
 ```sql
