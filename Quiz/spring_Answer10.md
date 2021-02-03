@@ -73,8 +73,9 @@ commit;
 ![fk](https://user-images.githubusercontent.com/74290204/106693150-2e2f4f00-6619-11eb-8547-f97d7ddcafef.PNG)
 
 
-# 4.아래의 리스트 페이지 에서 Jquery 로 makeList() 함수를 완성하여, 페이지를 뿌리도록 하시오 (수정중)
-```jsp
+# 4.아래의 리스트 페이지 에서 Jquery 로 makeList() 함수를 완성하여, 페이지를 뿌리도록 하시오 (다시)
+### 내 코드 마무리 못했음 append의 개념이 덜 잡혀있는 것 같다 
+```jsp 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -157,6 +158,68 @@ commit;
 	
 	</table>
 
+</body>
+</html>
+```
+
+```jsp
+// teacher_Answer!!!
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+   <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Insert title here</title>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script type="text/javascript">
+   function makeList() {
+         var htmls="";
+         
+           $("#list-table").html("");   
+
+         $("<tr>" , {
+            html : "<td>" + "번호" + "</td>"+  // 컬럼명들
+                  "<td>" + "이름" + "</td>"+
+                  "<td>" + "제목" + "</td>"+
+                  "<td>" + "날짜" + "</td>"+            
+                  "<td>" + "히트" + "</td>"
+         }).appendTo("#list-table") // 이것을 테이블에붙임
+
+         /* jstl + el 이 자바스크립트에 넣을 수 있는 이유는? (혼용해서 사용이 가능한 이유)
+			자바스크립트는 서버쪽에서 해석하는게 아닌 웹브라우저에서 언어를 해석하기 때문에 html, 자바스크립트는 언어를 바꿀필요없이(해석안해도) 그냥 보내도됨
+			jstl + el은 자바 기반에 서버쪽 언어 -> 웹언어로 바꿔줘서 전송해줘야 에러가 나지 않기 때문에 서버쪽에서 언어를 자동으로 바꿔서 보내준다 (이 역할을 하는 게 톰캣)
+			페이지 생성 시 jstl을 tomcat이 해석해서 보내기 때문에 script 안에서도 동작 가능 */
+            <c:forEach var="boardVO" items="${list}" >
+               htmls += '<tr>';
+                  htmls += '<td>'+ '${boardVO.bId}' + '</td>';
+                  htmls += '<td>'+ '${boardVO.bId}'+ '</td>';
+                  htmls += '<td>';
+                  <c:forEach begin="1" end="${boardVO.bIndent}">
+                     htmls += '-';
+                  </c:forEach>
+                  htmls += '<a href="${pageContext.request.contextPath}/content_view?bId=' + '${boardVO.bIndent}' + '">' + '${boardVO.bTitle}' + '</a></td>';
+                  htmls += '/<td>';
+                  htmls += '${boardVO.bDate}';
+                  htmls += '${boardVO.bDate}';
+            </c:forEach>                          
+            
+            
+         $("#list-table").append(htmls);               
+              
+   }//end   getList()   
+   </script>
+   
+   <script>
+      $(document).ready(function(){
+         makeList();
+      });
+   </script>
+
+</head>
+<body>
+   <table id="list-table" width="500" cellpadding="0" cellspacing="0" border="1">
+   </table>
 </body>
 </html>
 ```
