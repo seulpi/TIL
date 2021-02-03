@@ -70,7 +70,8 @@ commit;
 
 ![fk](https://user-images.githubusercontent.com/74290204/106585686-ef52b800-658a-11eb-9a47-fa04da6e7c50.PNG)
 
-![fk2](https://user-images.githubusercontent.com/74290204/106585693-f11c7b80-658a-11eb-9544-30c8adcc28d3.PNG)
+![fk](https://user-images.githubusercontent.com/74290204/106693150-2e2f4f00-6619-11eb-8547-f97d7ddcafef.PNG)
+
 
 # 4.아래의 리스트 페이지 에서 Jquery 로 makeList() 함수를 완성하여, 페이지를 뿌리도록 하시오 (수정중)
 ```jsp
