@@ -74,7 +74,6 @@ commit;
 
 
 # 4.아래의 리스트 페이지 에서 Jquery 로 makeList() 함수를 완성하여, 페이지를 뿌리도록 하시오 (다시)
-### 내 코드 마무리 못했음 append의 개념이 덜 잡혀있는 것 같다 
 ```jsp 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -104,6 +103,8 @@ commit;
 </body>
 </html>
 ```
+
+### @ 내 코드 마무리 못했음 append의 개념이 덜 잡혀있는 것 같다 
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -162,8 +163,8 @@ commit;
 </html>
 ```
 
+###  teacher_Answer!!!
 ```jsp
-// teacher_Answer!!!
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
