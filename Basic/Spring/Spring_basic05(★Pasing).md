@@ -53,7 +53,7 @@ import lombok.ToString;
 @Setter
 public class Criteria {
 	// 페이징 처리를 위해서는 페이지 번호와 한 페이지당 몇개의 데이터를 보여줄것인지 결정해줘야함
-	private int pageNum; //page번호
+	private int pageNum; //page번호, 이 변수들과 list에 사용하는 변수명이 같아야 getPageNum을 알아서 찾아올 수 가 있음!!! (주의!!!)
 	private int amount; // 한 페이지 당 몇개의 데이터를 보여줄것인가?
 	
 	public Criteria() {
@@ -93,7 +93,7 @@ public class PageVO {
 		this.cri = cri;
 		this.total = total;
 		
-		//현재 페이지가 13이면 13/10 = 1.3 → 2 , 끝페이지는 2*10 = 20
+		//현재 페이지가 13이면 13/10 = 1.3 → 2 , 끝페이지는 2*10 = 20, 이 생성자에서 startPage와 endPage 등 변수에 대한 초기화, 정의
 		this.endPage = (int)(Math.ceil(cri.getPageNum() /10.0)) * 10; // 10개씩 끊어져서 나옴 1-10, 11-20, 21-30...
 		this.startPage = this.endPage - 9;
 		
@@ -147,7 +147,10 @@ public class BoardController {
 		log.info("list2()");
 		log.info(cri); //PageVO에서 toString을 해놨기 때문에 toString 되는것들이 콘솔에 뿌려진다
 		
-		model.addAttribute("list2", boardService.getList2(cri));
+			
+		//model.addAttribute("empList", empService.empList());  
+		model.addAttribute("list2", boardService.getList2(cri)); 
+		// 이 함수 자체가 리스트를 10개씩만 해서 보일수있도록 이미 설정을 다했기 때문에 위에 List 전체를 다 뿌리고 또 함수사용하면 X
 		int total = boardService.getTotal(cri);
 		
 		log.info("total" + total);
@@ -241,8 +244,11 @@ public interface BoardMapper {
                 select * from mvc_board order by bGroup desc, bStep asc
             ) a where rownum <= #{pageNum} * #{amount}
    	)where rnum > (#{pageNum}-1) * #{amount} 
-   	]]>
+   	]]> 
 	</select>
+	<!-- rownum이 두 번 생성되는거고 rownum은 다시 생성될 때 1부터 할당되기 때문에 
+	별칭을 줘서 만들어진 rnum에 대해서 비교가 들어가야 where 조건절이 성립되는 것 1 > 10 클 수 가 없기 때문에 조건 성립이 안되서 출력 X  -->
+
 	
 	<select id="getTotalCount" resultType="int">
 	<![CDATA[ 
