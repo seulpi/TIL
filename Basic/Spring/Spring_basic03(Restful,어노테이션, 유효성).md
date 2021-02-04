@@ -57,25 +57,27 @@ URI : URL을 확장, Idenfication
 - redirect : 서버에서 클라이언트로 하여금 다시 주소 요청 / window.location.assign("URL") : 함수로 접근(클라이언트) → 이거 다시 체크해서 정리해놓기, 제대로 못들음
 ```java
 @RequestMapping("/studentConfirm") 
-	public String studentRedirect(HttpServletRequest httpServletRequest, Model model) {
-		String id = httpServletRequest.getParameter("id");
-		if(id.equals("abc")) {
-			return "redirect:studentOk";
-		}
-		return "redirect:studentNg";
-		//forward로 바꿔주면 forwarding된다 (forward니까 url에 주소창이 변경되지는않음)
+public String studentRedirect(HttpServletRequest httpServletRequest, Model model) {
+	String id = httpServletRequest.getParameter("id");
+	if(id.equals("abc")) {
+		return "redirect:studentOk";
 	}
+	return "redirect:studentNg";
+	//forward로 바꿔주면 forwarding된다 (forward니까 url에 주소창이 변경되지는않음)
+}
 	
-	@RequestMapping("/studentOk")
-	public String studentOk(Model model) {
-		return "student/studentOk";
-	}
+@RequestMapping("/studentOk")
+public String studentOk(Model model) {
+	
+return "student/studentOk";
+}
 	
 
-	@RequestMapping("/studentNg")
-	public String studentNg(Model model) {
-		return "student/studentNg";
-	}
+@RequestMapping("/studentNg")
+public String studentNg(Model model) {
+
+return "student/studentNg";
+}
 ```
 
 ## @Validator : 해당 데이터가 유효한지 check, 서버&클라이언트 둘다 검사 가능
