@@ -11,7 +11,7 @@ URI : URL을 확장, Idenfication
 ## @ 특징
 - **2000년도 로이필딩**이 개념을 만듦
 - URI는 정보의 자원을 표현해야함
-- 자원에 대한 행위는 **HTTP Method(GET, POST, PUT, DELETE)**로 표현
+- 자원에 대한 행위는 **HTTP Method(GET, POST, PUT, DELETE)** 로 표현
 	- get(조회), post(생성), put(수정), delete(삭제)의 메소드를 활용해 **Create Read Update Delete**
 - 특정 행위의 표현은 JSON, XML등을 이용
 - URI 마지막에 "/"를 포함하지 X ("/"는 계층관계를 나타낼때 사용)
