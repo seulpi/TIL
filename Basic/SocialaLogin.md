@@ -481,3 +481,200 @@ public class SocialController {
 ![2](https://user-images.githubusercontent.com/74290204/106352968-6e958100-632a-11eb-92f5-ed7d393f33cc.PNG)
 
 ![3](https://user-images.githubusercontent.com/74290204/106352970-6f2e1780-632a-11eb-812c-ad5c2ff1c476.PNG)
+
+
+# NAVER LOGIN
+## 1. naverLogin.jsp
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="java.net.URLEncoder" %>
+<%@page import="java.security.SecureRandom" %>
+<%@page import="java.math.BigInteger" %>
+<%@page contentType="text/html; charset=UTF-8" language="java" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>네이버 로그인</title>
+
+
+</head>
+
+<%
+String clientId = "YOUR_CLIENT_ID";
+String redirectURI =URLEncoder.encode("http://localhost:8282/ex/callback", "UTF-8");
+
+SecureRandom random = new SecureRandom();
+
+String state = new BigInteger(130, random).toString();
+
+String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+apiURL += "&client_id=" + clientId;
+apiURL += "&redirect_uri=" + redirectURI;
+apiURL += "&state=" + state;
+
+session.setAttribute("state", state);
+%>
+<a href="<%=apiURL%>"><img height ="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+<body>
+
+</body>
+</html>
+```
+
+## 2. callback.jsp
+```jsp
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="java.net.URLEncoder" %>
+<%@page import="java.net.URL" %>
+<%@page import="java.net.HttpURLConnection" %>
+<%@page import="java.io.BufferedReader" %>
+<%@page import="java.io.InputStreamReader" %>
+<%@page contentType="text/html; charset=UTF-8" language="java" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>네이버 로그인</title>
+</head>
+
+<%
+
+	String clientdId = "YOUR_CLIENT_ID"; 
+	String clientSecret = "YOUR_CLIENT_SECRET";
+	String code = request.getParameter("code");
+	String state = request.getParameter("state");
+	String redirectURI = URLEncoder.encode("YOUR_CLIENT_CALLBACK_URL", "UTF-8");
+	
+	String apiURL;
+	
+	apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
+	apiURL += "client_id=" + clientdId;
+	apiURL += "&client_secret=" + clientSecret;
+	apiURL += "&redirect_uri=" + redirectURI;
+	apiURL += "&code=" + code;
+	apiURL += "&state=" + state;
+	
+	String access_token = "";
+	String refresh_token ="";
+	System.out.println("apiURL=" + apiURL);
+	
+	try {
+		URL url = new URL(apiURL);
+		HttpURLConnection con = (HttpURLConnection)url.openConnection();
+		con.setRequestMethod("GET");
+		
+		int responseCode = con.getResponseCode();
+		
+		BufferedReader br;
+		System.out.println("responseCode=" + responseCode);
+		
+		if(responseCode == 200) {
+			br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+		} else {
+			br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+		}
+		
+		String inputLine;
+		StringBuffer res = new StringBuffer();
+		
+		while((inputLine = br.readLine()) != null) {
+			res.append(inputLine);
+		}
+		br.close();
+		
+		if(responseCode == 200) {
+			out.print(res.toString());
+		}
+		
+	}catch (Exception e) {
+		System.out.println(e);
+}	
+%>
+
+
+<body>
+
+</body>
+</html>
+```
+
+## 3. LoginController.java
+```java
+package edu.bit.ex.controller;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Controller
+@AllArgsConstructor
+@Log4j
+public class LoginController {
+	
+	@RequestMapping(value="/testLogin")
+	public String isComplete(HttpSession session) {
+		return "naverLogin";
+	}
+	
+	@RequestMapping(value="/callback")
+	public String naverLogin(HttpServletRequest request) throws Exception {
+		return "callback";
+	}
+	
+	@RequestMapping(value="/pesonalInfo")
+	public void personalInfo(HttpServletRequest request) throws Exception {
+		String token = "YOUR_CLIENT_TOKEN";
+		String header = "Bearer " + token;
+		
+		try {
+			String apiURL ="https://openapi.naver.com/v1/nid/me";
+			
+			URL url = new URL(apiURL);
+			HttpURLConnection con = (HttpURLConnection)url.openConnection();
+			con.setRequestMethod("GET");
+			con.setRequestProperty("Authorization", header);
+			
+			int responseCode = con.getResponseCode();
+			
+			BufferedReader br;
+			
+			if(responseCode == 200) {
+				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			}else {
+				br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			}
+			
+			String inputLine;
+			StringBuffer response = new StringBuffer();
+			
+			while((inputLine = br.readLine()) != null) {
+				response.append(inputLine);
+			}
+			
+			br.close();
+			System.out.println(response.toString());
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+}
+```
+
+## ▶ 출력 
+![11111111111](https://user-images.githubusercontent.com/74290204/106881792-50ac8f80-6721-11eb-9e57-9b4c5a6f625d.PNG)
