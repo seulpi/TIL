@@ -504,7 +504,7 @@ public class SocialController {
 
 <%
 String clientId = "YOUR_CLIENT_ID";
-String redirectURI =URLEncoder.encode("http://localhost:8282/ex/callback", "UTF-8");
+String redirectURI =URLEncoder.encode("YOUR_CLIENT_CALLBACK_URL", "UTF-8");
 
 SecureRandom random = new SecureRandom();
 
