@@ -1,5 +1,238 @@
 # 1. 마이바티스 사용 4가지 방법에 대하여 설명하시오.
-# 2. ajax+json으로 list를 뿌리시오.
+## 1. SqlSession을 가져와 getMapper사용 
+- [x] interface IBDao를  XML namespace에 매핑 <mapper namespace="edu.bit.ex.one.IBDao"> 
+- [x] sqlSession.getMapper(IBDao.class)를 이용.
+
+```java
+//IBDao.java
+package edu.bit.ex.board.one;
+
+import java.util.List;
+
+import edu.bit.ex.board.vo.BoardVO;
+
+public interface IBDao { //Interface Board Dao 
+	public List<BoardVO> listDao();
+}
+```
+```xml
+<!--Board1.xml-->
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.bit.ex.board.one.IBDao"><!-- 해당 클래스,인터페이스의 위치 -->
+
+<select id="listDao" resultType="edu.bit.ex.board.BoardVO"> 
+<![CDATA[ 
+select bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent from mvc_board order by bGroup desc, bStep asc
+
+]]>
+</select>
+
+</mapper>
+```
+<br>
+
+- root-context.xml
+```xml
+ <!-- 1.번 방법을 위하여 mapperLocations 을 추가 함 (객체 생성 반드시 필요) -->
+   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource"/>
+   <property name="mapperLocations" value="classpath:/edu/bit/ex/board/mapper/*.xml" /> 
+   </bean>
+   
+   <!-- 1번 방식 사용을 위한 sqlSession -->
+   <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+      <constructor-arg index="0" ref="sqlSessionFactory" />
+   </bean>
+```
+```java
+// Bservice1.java
+package edu.bit.ex.board.one;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import edu.bit.ex.board.vo.BoardVO;
+
+@Service
+public class Bservice1 { 
+	// 1번 방식을 사용하는 방법
+	
+	@Autowired
+	SqlSession sqlSession; //root-context.xml에 있는 객체를 가져와 사용 
+	
+	public List<BoardVO> selectBoardList() throws Exception {
+		IBDao dao = sqlSession.getMapper(IBDao.class);
+		return dao.listDao();
+	}
+}
+```
+```java
+//BController1.java
+package edu.bit.ex.board.controller;
+
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import edu.bit.ex.board.one.Bservice1;
+import edu.bit.ex.board.service.BService;
+import edu.bit.ex.board.vo.BoardVO;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Controller
+public class BController1 {
+	
+	@Inject
+	private Bservice1 bSerivce;
+	
+	@RequestMapping("/list1") 
+	public String list(Model model) throws Exception {
+		System.out.println("log()");
+		
+		model.addAttribute("list", bSerivce.selectBoardList());
+		return "list1";
+	}
+}
+```
+
+## 2. SqlSesson 안에 있는 함수 이용
+- [x] interface는 필요가 없음
+- [x] sqlSession에서 제공하는 함수(selectList, selectOne)을 이용함 
+- [x] 쿼리구현을 위한 xml이 필요, 해당 XML의 namespace는  개발자가가 정함 
+
+```java
+//Bservice2.java
+package edu.bit.ex.board.two;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import edu.bit.ex.board.vo.BoardVO;
+
+@Service
+public class Bservice2 { 
+	// 2번 방식을 사용하는 방법
+	
+	@Autowired
+	SqlSession sqlSession; //root-context.xml에 있는 객체를 가져와 사용 
+	
+	public List<BoardVO> selectBoardList() throws Exception {
+		return sqlSession.selectList("board.selectBoardList"); 
+		/*board.selectBoardList mapper의 경로와 id가 된다
+		 *<mapper namespace="board">
+		 *<select id="selectBoardList" resultType="edu.bit.ex.board.BoardVO">*/
+	}
+
+}
+```
+```xml
+<!--Board2.xml-->
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board"><!-- 개발자가 직접 정의 -->
+
+<select id="selectBoardList" resultType="edu.bit.ex.board.BoardVO"> 
+<![CDATA[ 
+select bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent from mvc_board order by bGroup desc, bStep asc
+
+]]>
+</select>
+
+</mapper>
+```
+```java
+//BController2.java
+package edu.bit.ex.board.two;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import edu.bit.ex.board.one.Bservice1;
+import edu.bit.ex.board.service.BService;
+import edu.bit.ex.board.vo.BoardVO;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Controller
+public class BController2 {
+
+	@Inject
+	private Bservice2 bSerivce;
+	
+	@RequestMapping("/list2") 
+	public String list(Model model) throws Exception {
+		System.out.println("list2()");
+		
+		model.addAttribute("list", bSerivce.selectBoardList());
+		return "list2";
+	}
+	
+}
+```
+
+## 3. interface를 통해서 mapper를 가져와 interface를 정의하는 방법 (우리가 쓰던 것)
+- [x] root-context.xml 에서 mapperLocation을 필요없음
+```xml
+<property name="mapperLocations" value="classpath:/edu/bit/ex/board/mapper/*.xml" /> 
+```
+- [x] root-context.xml 에서 이 scan을 사용해서 mybatis 경로 이용
+```xml
+<mybatis-spring:scan base-package="edu.bit.ex.board.mapper" />
+```
+
+## 4. Mapper Interface -> mapper.xml(자손이 구현) 하는 방식 -> Mapper Interface에서 xml이 구현하지 않고 Interface에 @어노테이션으로 사용
+- 단점: paging같은 한줄에 들어갈 수 없는 쿼리문은 복잡해짐(간결해지지못함) -> 따라서 간단한것만 사용 (그렇기 때문에 실무에서는 사용할 일이 별로 없음)
+- 이 방식을 사용하면 mapper scan의 경로는 필요없음 
+
+```java
+package edu.bit.ex.board.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+
+import edu.bit.ex.board.vo.BoardVO;
+
+public interface BMapper {
+	
+	@Select("select * from mvc_board")
+	public List<BoardVO> list();
+
+	public BoardVO contenetView(int getbId);
+
+	public void writeBoard(BoardVO boardVo);
+
+	public void modify(BoardVO boardVo);
+
+	public void reply(BoardVO boardVo);
+
+	public void replySort(BoardVO boardVo);
+}
+```
+# 2. ajax+json으로 list를 뿌리시오
+
 # 3. 아래를 설계하시오 
 ```
 1.  DVD를 대여하기 위해서는 회원 가입을 해야 한다. 회원 가입 시에는 회원에 대한 이름, 주
