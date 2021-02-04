@@ -1,4 +1,5 @@
 # KAKAO LOGIN
+>> [참조링크] https://daddyprogrammer.org/post/1012/springboot2-rest-api-social-login-kakao/
 
 ## ▶ 소셜로그인 원리
 >> [kakaodeveloper] https://developers.kakao.com/docs/latest/ko/kakaologin/common
