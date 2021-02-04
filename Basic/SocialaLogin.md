@@ -484,6 +484,8 @@ public class SocialController {
 
 
 # NAVER LOGIN
+>> [참조링크] https://yoo-hyeok.tistory.com/88
+
 ## 1. naverLogin.jsp
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
