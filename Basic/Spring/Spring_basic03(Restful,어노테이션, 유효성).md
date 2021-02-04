@@ -22,7 +22,7 @@ URI : URL을 확장, Idenfication
 ## @ PathVariable : Restful 관련 Annotation
 - 경로에 변수를 넣어 요청메소드에서 파라미터로 이용하는 어노테이션
 ```java
-@RequestMapping(value = "/stydent/{studentId}")
+@RequestMapping(value = "/student/{studentId}")
 	public String getStudent(@PathVariable String studentId, Model model) {
 		model.addAttribute("studentId", studentId);
 		
