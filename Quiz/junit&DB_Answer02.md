@@ -18,5 +18,6 @@
     알고 싶어 한다.
 ```
 
-## 초기설계
+## ▶ *Answer* 
+### 초기설계
 ![KakaoTalk_20210204_162017809](https://user-images.githubusercontent.com/74290204/106882567-40e17b00-6722-11eb-9b08-2c4e808ae298.jpg)
