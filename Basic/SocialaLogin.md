@@ -341,8 +341,8 @@ import edu.bit.ex.util.HttpClientManager;
 @Controller
 public class SocialController {
 	// 1. 안드로이드&IOS : 네이티브앱 → 핸드폰관련 2. REST API 키 : 내부서버에서 동작할수 있게 해주는 키
-	private static final String CLIENT_ID = "4842b99441375374ce354675820965a4"; // REST API 키 : 내부서버에서 동작할수 있게 해주는 키
-	private static final String REDIRECT_URL = "http://localhost:8282/ex/login/callback";
+	private static final String CLIENT_ID = "YOUR_CLIENT_ID"; // REST API 키 : 내부서버에서 동작할수 있게 해주는 키
+	private static final String REDIRECT_URL = "YOUR_CLIENT_REDIRECT_URL";
 
 	@GetMapping("/login")
 	public String login() {
@@ -358,7 +358,7 @@ public class SocialController {
 		 * Map<String, String> params = new HashMap<String, String>(); // 문서>카카오 로그인>
 		 * REST API params.put("grant_type", "authorization_code"); //grant_type은
 		 * authorization_code로 설정하라고 카카오에서 정리해줘서 이렇게 설정한것 params.put("client_id",
-		 * CLIENT_ID); params.put("client_secret", "vjSPH7c6fDoB5UztQjgdHg8PLBFmfVDw");
+		 * CLIENT_ID); params.put("client_secret", "YOUR_CLIENT_SECRET");
 		 * Client Secret (카카오디벨롭퍼에 내 토큰) : 토큰 발급 시, 보안을 강화하기 위해 Client Secret을 사용할 수
 		 * 있습니다. (REST API인 경우에 해당) 내 애플리케이션>제품 설정>카카오 로그인> 보안
 		 * 
@@ -371,7 +371,7 @@ public class SocialController {
 		MultiValueMap<String, Object> params = new LinkedMultiValueMap<>();
 		params.set("grant_type", "authorization_code");
 		params.set("client_id", CLIENT_ID);
-		params.set("client_secret", "vjSPH7c6fDoB5UztQjgdHg8PLBFmfVDw");
+		params.set("client_secret", "YOUR_CLIENT_SECRET");
 		params.set("code", code);
 		params.set("redirect_uri", REDIRECT_URL);
 
