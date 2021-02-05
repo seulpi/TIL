@@ -126,6 +126,11 @@ alter table emp01 drop column job;
 drop table emp01; 
 ```
 
+### - create as : 기존 TABLE 복사 (TABLE 전체 복사)
+```sql
+create table emp2 as select * from emp;
+```
+
 ### ▶ DB는 저장 목적이 아니라 HISTORY 저장 목적 (=기존에 저장된 데이터를 구조화시키는 게 목적임) <br> 따라서, 실무에서는 테스트가 아닌 이상 **※꼭꼭 백업했는지 확인하고 drop을 실행해야한다 (3번이상 묻기)**
 
 
