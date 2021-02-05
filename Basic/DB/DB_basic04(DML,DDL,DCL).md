@@ -126,7 +126,7 @@ alter table emp01 drop column job;
 drop table emp01; 
 ```
 
-### - create as : 기존 TABLE 복사 (TABLE 전체 복사)
+### - CREATE AS : 기존 TABLE 복사 (TABLE 전체 복사)
 ```sql
 create table emp2 as select * from emp;
 ```
