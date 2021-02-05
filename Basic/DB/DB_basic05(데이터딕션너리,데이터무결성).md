@@ -1,7 +1,23 @@
-# @ 데이터 딕션너리 (정처기용)
+# - 데이터 딕션너리 (정처기용)
 - DB 자원을 효율적으로 관리하기 위한 다양한 정보를 저장하는 시스템 테이블
+- 논리적, 물리적 데이터 베이스 설계시에 사용되는 용어들(Entity, columm)의 의미를 정의해놓은 문서
+- 사용자는 필요한 정보 탐색용(select)로만 사용
+```
+[저장되는 내용들]
+- 오라클의 사용자 정보
+- 오라클 권한과 롤 정보
+- 데이터베이스 스키마 객체(TABLE, VIEW, INDEX ..etc)
+- 무결성 제약조선에 관한 정보
+- 데이버 베이스의 구조 정보
+- 오라틀 테이터베이스의 함수와 프로지저 및 트리거에 대한 정보
+- 기타 일반적인 DATABASE 정보
+```
+```sql
+-- 모든 테이블 검색
+select * from all_all_tables 
+```
 
-## - SUB QUERY : select문 안에 select 
+# - SUB QUERY : select문 안에 select 
 - 컬럼끼리 연산 가능
 ```sql
 --사원들의 평균 급여보다 더 많은 급여를 받는 사원 출력하는 쿼리문
@@ -17,8 +33,8 @@ select dname from dept where deptno = (select deptno from emp where ename='SMITH
 select ename, sal, deptno from emp where deptno in(select distinct deptno from emp where sal >= 3000);
 ```
 
-### @ 단일행 쿼리 : '=' 로 한개로 답이 오는 것
-### @ 다중행 쿼리 : 'in'으로 한개 이상으로 답이 오는 것 
+## @ 단일행 쿼리 : '=' 로 한개로 답이 오는 것
+## @ 다중행 쿼리 : 'in'으로 한개 이상으로 답이 오는 것 
 - any : 조건이 일치하면 true인것만 출력
 >> any (조건) - 조건중에 한개라도 부등호에 맞게되면 출력, 범위를 따지는 것
 ```sql
