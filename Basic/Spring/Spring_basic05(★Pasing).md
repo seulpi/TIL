@@ -39,6 +39,11 @@ where rn > 10;
 ```
 
 ## @ Pasing 처리
+### <더 외워야할 부분>
+- [x] 페이징 uri 쿼리 처리하는 것
+- [x] 페이징 계산
+- [x] 페이징 쿼리문
+- [x] view단에서 페이징 처리하는 부분 
 ### [게시판 코드] https://github.com/seulpi/TIL/blob/main/Quiz/javascript%26spring_Answer08(spring%EA%B2%8C%EC%8B%9C%ED%8C%90%E2%98%85).md
 ```java
 //Criteria.java
