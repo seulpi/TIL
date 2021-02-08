@@ -63,6 +63,6 @@ MJ 주유소의 주유기 소유자들은 고객들이 안심하고 거래 할 �
 
 ![KakaoTalk_20210205_162615109](https://user-images.githubusercontent.com/74290204/107002693-f5d17180-67ce-11eb-8a5d-c9bd142f872f.jpg)
 
-##  ▶ **
+##  ▶ *정답*
 ![KakaoTalk_20210208_150132095](https://user-images.githubusercontent.com/74290204/107181692-ba2ce680-6a1e-11eb-8820-afccd283c783.png)
 
