@@ -27,8 +27,7 @@
 			  $("#rest_delete").click(function(event) {
 				    
 				    event.preventDefault();
-				    event.remove;
-
+			
 				    var id = $(this).data('id');
 				    var url = "${pageContext.request.contextPath}/restful/board/" + id;
 				    
@@ -46,12 +45,11 @@
 				        */
 				        success: function(result) {
 				          // success,error 안에 콜백함수(매개변수를 함수로 사용하는것) 
-				          var resultObj = $(this).closest('tr');
+				          var resultObj = $(this).parent();
 				          
-				          if(result="SUCCESS") {
+				          if(result.equals("SUCCESS") ) {
 				            resultObj.remove(); 
-				            console.log(resultObj);
-				            alert("삭제되었습니다")
+				           
 				          }
 				        }
 				    });
