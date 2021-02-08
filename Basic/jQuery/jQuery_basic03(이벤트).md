@@ -35,7 +35,7 @@
 
 ## - 마우스 
 ## - form 
-- event.preventDefault(); → 전송했을 때 서버로 바로 넘어가는 것을 방지함! , **다음 동작을 더이상 진행시키지 않고 싶을ㅍ때 사용**
+- event.preventDefault(); → 전송했을 때 서버로 바로 넘어가는 것을 방지함! , **다음 동작을 더이상 진행시키지 않고 싶을때 사용**
     - form 태그의 고유동작은 submit 했을 때 action주소로 넘기는데  event.preventDefault()사용하면 **주소를 넘기지않고 중단** 시켜버림
 ```jsp
 <!DOCTYPE html>
