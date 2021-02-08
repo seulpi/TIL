@@ -177,7 +177,8 @@ uname=a (uname이 key / a(:user가 입력한) 가 vaule
 
 ## @ 시멘틱(semantic)을 이용한 레이아웃 : div + 의미 
 - 문서의 구조와 의미를 브라우저와 개발자 모두에게 명확하게 설명하는 태그 
-- ex) <form>, <table>, <Header>등
+- ex) < form >, < table >, < Header >등
+	
 >> [자세한 설명 - Quiz 참고] https://github.com/seulpi/TIL/blob/main/Quiz/JSP&HTML(CSS)/jsp&html_Answer03.md
 ```html
 <!--시멘틱 이전 코드-->
