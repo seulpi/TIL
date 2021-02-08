@@ -37,7 +37,7 @@ console.log(jsonText2);
 ```
 <br>
 
-# 3.list를 ajax로 json으로 뽑아 내고, content_view 의 삭제또한 ajax를 사용하여 삭제해 보도록 하세요
+# 3. list를 ajax로 json으로 뽑아 내고, content_view 의 삭제또한 ajax를 사용하여 삭제해 보도록 하세요
 
 
 # 4. 아래를 설계하시오
