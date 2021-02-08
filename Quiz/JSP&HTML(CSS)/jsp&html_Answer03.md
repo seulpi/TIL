@@ -38,6 +38,7 @@ https://thrillfighter.tistory.com/492
 # 4. bootstrap 에 대하여 설명하시오
 ## 웹사이트를 쉽게 만들 수 있게 도와주는 HTML, CSS, JS프레임워크이다
 < 다양한 기능을 제공하여 쉽게 웹사이트를 제작, 유지, 보수할 수 있도록 도와준다>
+- 무료로 사용가능한 오픈소스
 
 ☞ bootstrap 링크 https://getbootstrap.com/
 <br>
