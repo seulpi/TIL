@@ -1,3 +1,5 @@
+# 1. restful에 대하여 설명하시오
+
 # 2. RESTful과 ajax를 이용해 delete를 구현하시오
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
