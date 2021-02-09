@@ -63,7 +63,7 @@
 	var id = $(this).data('id'); <br>
 	var url = "${pageContext.request.contextPath}/restful/board/" + id; 로 처리하면 되는지?
 	
-## ▶ *Answer*
+## ▶ *Answer* (구현안되는것같다^___^)
 ```java
 package edu.bit.ex.board.controller;
 
@@ -122,19 +122,26 @@ public class RestBoardController {
 <html>
 <head>
 <title>List</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript"></script>
+
+<script>
 
 	$(document).ready(function(){
 		
-		$(".submitDirect").click(function(event) {
+		$(".submitDirect").submit(function(event) {
+			
+	
 			var contentModify = $("#contentModify").serialize(); //serialize()는 data를 한번에 전송하게 해주는 함수
-			/* event.preventDefault(); */
+			event.preventDefault(); 
+			
+			var id = $(this).data('id');
+			var url = "${pageContext.request.contextPath}/restful/board/" + id;
 			
 			$.ajax({
 				type:'PUT',
-				url : $(this).attr('input'),
+				url : url,
 				cache :  false,
 				data : contentModify,
 				success : function(result) {
@@ -182,7 +189,7 @@ public class RestBoardController {
       </tr>
   
       <tr>
-         <td colspan="2"><input class="submitDirect" type="submit" value="수정">&nbsp; &nbsp; <a href="list">목록보기</a>
+         <td colspan="2"><input class="submitDirect" data-id="${content_view.bId}" type="submit" value="수정">&nbsp; &nbsp; <a href="list">목록보기</a>
          &nbsp; &nbsp; <a href="delete">삭제</a>&nbsp; &nbsp; <a href="reply_view?bId=${content_view.bId}">답변</a></td>
       </tr>
 		
