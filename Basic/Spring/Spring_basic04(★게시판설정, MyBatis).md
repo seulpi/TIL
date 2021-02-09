@@ -657,13 +657,17 @@ log4jdbc.dump.sql.maxlinelength=0
 ### ▶ 어떤 방법을 사용하든 **방법을 통일** 시키는 게 중요! 
 
 ### +1 
-- @Repository 는 마이바티스가 나오면서 없어진 개념인데 예전에 3종세트 DAO에서 구현할때 DAO가 @Repository! <br>
+- @Repository 는 마이바티스가 나오면서 없어진 개념인데 예전에 3종세트 DAO에서 구현할때 **DAO가 @Repository** <br>
 → Service단에서 사용이 가능 (예전에 게시판 만들때처럼)
 
 ### 1. SqlSession을 가져와 getMapper사용 
 
-- interface IBDao를  XML namespace에 매핑 <mapper namespace="edu.bit.ex.one.IBDao"> 
-- sqlSession.getMapper(IBDao.class)를 이용
+- **interface IBDao를  XML namespace에 매핑** 
+```xml
+<mapper namespace="edu.bit.ex.one.IBDao"> 
+```
+
+- **sqlSession.getMapper(IBDao.class)**를 이용
 	
 ```java
 //IBDao.java
@@ -858,15 +862,15 @@ public class BController2 {
 <property name="mapperLocations" value="classpath:/edu/bit/ex/board/mapper/*.xml" /> 
 ```
 
-- root-context.xml에서 scan을 사용해서 MyBatis 경로 지정
+- **root-context.xml**에서 **scan을 사용해서 MyBatis 경로 지정**
 ```xml
 <mybatis-spring:scan
       base-package="edu.bit.ex.board.mapper" />
 ```
-▶ 주의] 여기서 base-package="edu.bit.ex"만 주면 순환 참조가 일어나서 (edu.bit.ex로 시작하는 패키지 전부 읽어들임) Service 다형성 적용이 안 일어나는 에러가 발생!
+▶ **[주의]** 여기서 base-package="edu.bit.ex"만 주면 순환 참조가 일어나서 (edu.bit.ex로 시작하는 패키지 전부 읽어들임) Service 다형성 적용이 안 일어나는 에러가 발생!
 
 ### 4. Mapper Interface → mapper.xml(자손이 구현)하는 방식 
-- Mapper Interface에서 xml이 구현하지 않고 Interface에 @어노테이션으로 사용
+- Mapper Interface에서 xml이 구현하지 않고 **Interface에 @어노테이션으로 사용**
 - 단점: pasing같은 한 줄에 들어갈 수 없는 쿼리문은 복잡해짐(간결해지지 못함) 
 	- 따라서 간단한것만 사용 (그렇기 때문에 실무에서는 사용할 일이 별로 없음)
 - 이 방식을 사용하면 mapper scan의 경로는 필요 없음 
