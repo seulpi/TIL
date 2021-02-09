@@ -1,4 +1,4 @@
-# EXERD : DB 설계 
+# EXERD : DB 설계 툴
 ## @ 설치
 - help - insral new software -> work with : https://exerd.com/update/ 
 
