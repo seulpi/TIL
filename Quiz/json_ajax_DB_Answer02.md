@@ -145,32 +145,34 @@ public class RestBoardController {
 
 </head>
 <body>
-	 <table  width="100%" cellspacing="0" border="1">
-				<tr>
-					<td>번호</td>
-					<td>이름</td>
-					<td>제목</td>
-					<td>날짜</td>
-					<td>히트</td>
-					<td>삭제</td>
-				</tr>
-				<c:forEach items="${list}" var="dto">
+<table  width="100%" cellspacing="0" border="1">
+	<tr>
+		<td>번호</td>
+		<td>이름</td>
+		<td>제목</td>
+		<td>날짜</td>
+		<td>히트</td>
+		<td>삭제</td>
+	</tr>
+	
+	<c:forEach items="${list}" var="dto">
 
-					<tr>
-						<td>${dto.bId}</td>
-						<td>${dto.bName}</td>
-						<td><c:forEach begin="1" end="${dto.bIndent}">[re]</c:forEach>
-							<a href="${pageContext.request.contextPath}/restful/board/${dto.bId}">${dto.bTitle}</a></td>
-						<td>${dto.bDate}</td>
-						<td>${dto.bHit}</td>
-						<td id="rest_delete" data-id="${dto.bId}"><a href="${pageContext.request.contextPath}/restful/board/${dto.bId}">삭제</a></td>
-					
-					</tr>
-				</c:forEach>
-				<tr>
-					<td colspan="5"><a href="write_view.do">글작성</a></td>
-				</tr>
-			</table>
+	<tr>
+		<td>${dto.bId}</td>
+		<td>${dto.bName}</td>
+		<td><c:forEach begin="1" end="${dto.bIndent}">[re]</c:forEach>
+			<a href="${pageContext.request.contextPath}/restful/board/${dto.bId}">${dto.bTitle}</a></td>
+		<td>${dto.bDate}</td>
+		<td>${dto.bHit}</td>
+		<td id="rest_delete" data-id="${dto.bId}"><a href="${pageContext.request.contextPath}/restful/board/${dto.bId}">삭제</a></td>
+
+	</tr>
+	</c:forEach>
+
+	<tr>
+		<td colspan="5"><a href="write_view.do">글작성</a></td>
+	</tr>
+</table>
 </body>
 </html>
 ```
