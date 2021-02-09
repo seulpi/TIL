@@ -53,3 +53,159 @@
 ```java
 @Transactional
 ```
+
+# 3. ajax를 활용해 게시판 update를 구현하시오
+- 기존 게시판의 query문과 service단 함수, view단을 가져와 사용하였음
+- [의문점1] 화면이 한번 깜박이고 다시 수정해야 수정이 된다
+- [의문점2] event.preventDefault(); 사용해야 submit기능을 막고 click이벤트를 발생하는데 event.preventDefault(); 추가하면 console 400에러 존재 
+- [의문점3] id값을 url에 어떻게 넘겨줄지? $(this).attr('input') 아닌 
+	- <a class="rest_delete" data-id="${dto.bId}" href="${pageContext.request.contextPath}/restful/board/${dto.bId}"> 로 넘겨서 <br>  
+	var id = $(this).data('id'); <br>
+	var url = "${pageContext.request.contextPath}/restful/board/" + id; 로 처리하면 되는지?
+	
+## ▶ *Answer*
+```java
+package edu.bit.ex.board.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import edu.bit.ex.board.service.BServiceImpl;
+import edu.bit.ex.board.vo.BoardVO;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@AllArgsConstructor
+@RestController
+@RequestMapping("/restful/*")
+public class RestBoardController {
+
+	private BServiceImpl bSerivce;
+	
+	@GetMapping("/board")
+	public ModelAndView list(ModelAndView mav) {
+		mav.setViewName("rest_list");
+		mav.addObject("list", bSerivce.getList());
+		
+		return mav;
+		
+	}
+	
+	@GetMapping("/board/{bId}") 
+	public ModelAndView rest_content_view(BoardVO boardVO, ModelAndView mav) {
+		
+		log.info("rest_content_view");
+		mav.setViewName("content_view"); //view 물리적인 경로
+		mav.addObject("content_view", bSerivce.getBoard(boardVO.getbId()));
+		
+		return mav;
+	}
+
+	@PutMapping("/board/{bId}")
+	public ResponseEntity<String> rest_update(BoardVO boardVO, Model model) {
+
+		ResponseEntity<String> entity = null;
+
+		log.info("rest_update");
+
+		try {
+			bSerivce.modify(boardVO);
+			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+}
+```
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<html>
+<head>
+<title>List</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+	$(document).ready(function(){
+		
+		$(".submitDirect").click(function(event) {
+			var contentModify = $("#contentModify").serialize(); //serialize()는 data를 한번에 전송하게 해주는 함수
+			/* event.preventDefault(); */
+			
+			$.ajax({
+				type:'PUT',
+				url : $(this).attr('input'),
+				cache :  false,
+				data : contentModify,
+				success : function(result) {
+					
+					if (result == ("SUCCESS")) {
+						location.href = '${pageContext.request.contextPath}/restful/board'
+	
+					}
+				}
+			});
+		});
+	});
+</script>
+
+</head>
+<body>
+  
+   <table width="500" cellpadding="0" cellspacing="0" border="1">
+   
+   <form id="contentModify">
+   <input type="hidden" name="bId" value="${content_view.bId}">
+      <tr>
+         <td>번호</td>
+         <td>${content_view.bId}</td>
+      </tr>
+      
+        <tr>
+         <td>히트</td>
+         <td>${content_view.bHit}</td>
+      </tr>
+      
+      <tr>
+         <td>이름</td>
+         <td><input type="text" name="bName" value="${content_view.bName}"></td>
+      </tr>
+      
+      <tr>
+         <td>제목</td>
+         <td><input type="text" name="bTitle" value="${content_view.bTitle}"></td>
+      </tr>
+      
+      <tr>
+         <td>내용</td>
+         <td><textarea rows="10" name="bContent">${content_view.bContent}</textarea></td>
+      </tr>
+  
+      <tr>
+         <td colspan="2"><input class="submitDirect" type="submit" value="수정">&nbsp; &nbsp; <a href="list">목록보기</a>
+         &nbsp; &nbsp; <a href="delete">삭제</a>&nbsp; &nbsp; <a href="reply_view?bId=${content_view.bId}">답변</a></td>
+      </tr>
+		
+      </form>
+   </table>
+
+</body>
+</html>
+```
+
