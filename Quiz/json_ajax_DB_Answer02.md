@@ -176,3 +176,73 @@ public class RestBoardController {
 ```
 
 ## ▶ *선생님 풀이*
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Insert title here</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript"></script>
+
+<script>
+	$(document).ready(function() {
+
+		$(".rest_delete").click(function(event) {
+		/* 	질문① 왜 class로 지정해줘야하는지?
+			질문② 왜 td에 널고 var resultObj = $(this).parent();로 하면 안되는지? */
+					
+			event.preventDefault();
+			
+			var resultObj = $(this).parent().parent(); //클로저
+
+			$.ajax({
+				type : 'DELETE',
+				url : $(this).attr("href"),
+				cache : false,
+
+				success : function(result) {
+
+					if (result == ("SUCCESS")) {
+						$(resultObj).remove();
+
+					}
+				}
+			});
+		});
+	});
+</script>
+
+</head>
+<body>
+<table  width="100%" cellspacing="0" border="1">
+	<tr>
+		<td>번호</td>
+		<td>이름</td>
+		<td>제목</td>
+		<td>날짜</td>
+		<td>히트</td>
+		<td>삭제</td>
+	</tr>
+	<c:forEach items="${list}" var="dto">
+
+	<tr>
+		<td>${dto.bId}</td>
+		<td>${dto.bName}</td>
+		<td><c:forEach begin="1" end="${dto.bIndent}">[re]</c:forEach>
+			<a href="${pageContext.request.contextPath}/restful/board/${dto.bId}">${dto.bTitle}</a></td>
+		<td>${dto.bDate}</td>
+		<td>${dto.bHit}</td>
+		<td><a class="rest_delete" data-id="${dto.bId}" href="${pageContext.request.contextPath}/restful/board/${dto.bId}">삭제</a></td>				
+	</tr>
+	</c:forEach>
+	
+	<tr>
+		<td colspan="5"><a href="write_view.do">글작성</a></td>
+	</tr>
+</table>
+</body>
+</html>
+```
