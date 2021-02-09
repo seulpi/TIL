@@ -1,6 +1,7 @@
 # 1. restful에 대하여 설명하시오
 
 # 2. RESTful과 ajax를 이용해 delete를 구현하시오
+## ▶ *Answer(ajax작동은 잘되나 새로고침해야 delete가 업데이트됨)*
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -91,3 +92,5 @@
 </body>
 </html>
 ```
+
+## ▶ *선생님 풀이*
