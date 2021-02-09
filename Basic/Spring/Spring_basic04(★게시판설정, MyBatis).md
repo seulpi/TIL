@@ -530,6 +530,8 @@ public class HomeController { }
     - Controller, View Resolvers, HandelerMapping 등 
 - Root WebApplicationContext : 그 이외의 객체 생성 (자바프로그램이 들어가는 객체 담당)
     - Model, DB 등 
+    
+---
 
 # Mybatis : 3종세트를 캡슐화한 것 → xml로 구현
 - IBatis → MyBatis(ver3) 
@@ -553,7 +555,7 @@ public class HomeController { }
       </dependency>
       ```
 
-##  - 사용 방법 DAO 
+##  @ 사용 방법 DAO 
 - src/main/resource → package → Name: edu.bit.board.mapper <br> 
 → 우클릭 →  xml 파일 생성 →  BoardMapper.xml →  기본으로 생성되는거 지우고 밑에 코드 복붙  
 ```xml
@@ -648,3 +650,251 @@ log4jdbc.dump.sql.maxlinelength=0
 
 ## ▶ 설정이 다 끝나면 만들어지는 폴더들 
 ![mvc보드 폴더](https://user-images.githubusercontent.com/74290204/105835073-ab9e0280-600e-11eb-8a09-10b0dbeb8ee2.PNG)
+
+
+
+##  @ Mybatis 사용 방법 (4가지 + 1)
+### ▶ 어떤 방법을 사용하든 **방법을 통일** 시키는 게 중요! 
+
+### +1 
+- @Repository 는 마이바티스가 나오면서 없어진 개념인데 예전에 3종세트 DAO에서 구현할때 DAO가 @Repository! <br>
+→ Service단에서 사용이 가능 (예전에 게시판 만들때처럼)
+
+### 1. SqlSession을 가져와 getMapper사용 
+
+- interface IBDao를  XML namespace에 매핑 <mapper namespace="edu.bit.ex.one.IBDao"> 
+- sqlSession.getMapper(IBDao.class)를 이용
+	
+```java
+//IBDao.java
+package edu.bit.ex.board.one;
+
+import java.util.List;
+
+import edu.bit.ex.board.vo.BoardVO;
+
+public interface IBDao { //Interface Board Dao 
+	public List<BoardVO> listDao();
+}
+```
+```xml
+<!--Board1.xml-->
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.bit.ex.board.one.IBDao"> <!-- 해당 클래스,인터페이스의 위치 -->
+
+<select id="listDao" resultType="edu.bit.ex.board.BoardVO"> 
+<![CDATA[ 
+select bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent from mvc_board order by bGroup desc, bStep asc
+
+]]>
+</select>
+</mapper>
+```
+```xml
+<!--root-context.xml-->
+ <!-- 1.번 방법을 위하여 mapperLocations 을 추가 함 (객체 생성 반드시 필요) -->
+   <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource"/>
+   <property name="mapperLocations" value="classpath:/edu/bit/ex/board/mapper/*.xml" /> 
+   </bean>
+   
+   <!-- 1번 방식 사용을 위한 sqlSession -->
+   <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+      <constructor-arg index="0" ref="sqlSessionFactory" />
+   </bean>
+```
+```java
+
+// Bservice1.java
+package edu.bit.ex.board.one;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import edu.bit.ex.board.vo.BoardVO;
+
+@Service
+public class Bservice1 { 
+	// 1번 방식을 사용하는 방법
+	
+	@Autowired
+	SqlSession sqlSession; //root-context.xml에 있는 객체를 가져와 사용 
+	
+	public List<BoardVO> selectBoardList() throws Exception {
+		IBDao dao = sqlSession.getMapper(IBDao.class);
+		return dao.listDao();
+	}
+}
+```
+```java
+//BController1.java
+package edu.bit.ex.board.controller;
+
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import edu.bit.ex.board.one.Bservice1;
+import edu.bit.ex.board.service.BService;
+import edu.bit.ex.board.vo.BoardVO;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Controller
+public class BController1 {
+	
+	@Inject
+	private Bservice1 bSerivce;
+	
+	@RequestMapping("/list1") 
+	public String list(Model model) throws Exception {
+		System.out.println("log()");
+		
+		model.addAttribute("list", bSerivce.selectBoardList());
+		return "list1";
+	}
+}
+```
+
+### 2. SqlSession 안에 있는 함수 이용 
+
+- interface는 필요가 없음
+- SqlSession에서 제공하는 함수(selectList, selectOne등)을 이용함
+- **쿼리구현**을 위한 xml이 필요, **해당 xml의 namespace는 개발자가 지정**
+
+```java
+//Bservice2.java
+package edu.bit.ex.board.two;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import edu.bit.ex.board.vo.BoardVO;
+
+@Service
+public class Bservice2 { 
+	// 2번 방식을 사용하는 방법
+	
+	@Autowired
+	SqlSession sqlSession; //root-context.xml에 있는 객체를 가져와 사용 
+	
+	public List<BoardVO> selectBoardList() throws Exception {
+		return sqlSession.selectList("board.selectBoardList"); 
+		/*board.selectBoardList mapper의 경로와 id가 된다
+		 *<mapper namespace="board">
+		 *<select id="selectBoardList" resultType="edu.bit.ex.board.BoardVO">*/
+	}
+}
+```
+```xml
+//Board2.xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board"> <!-- 개발자가 직접 정의 -->
+
+<select id="selectBoardList" resultType="edu.bit.ex.board.BoardVO"> 
+<![CDATA[ 
+select bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent from mvc_board order by bGroup desc, bStep asc
+
+]]>
+</select>
+</mapper>
+```
+```java
+//BController2.java
+package edu.bit.ex.board.two;
+
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import edu.bit.ex.board.one.Bservice1;
+import edu.bit.ex.board.service.BService;
+import edu.bit.ex.board.vo.BoardVO;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Controller
+public class BController2 {
+
+	@Inject
+	private Bservice2 bSerivce;
+	
+	@RequestMapping("/list2") 
+	public String list(Model model) throws Exception {
+		System.out.println("list2()");
+		
+		model.addAttribute("list", bSerivce.selectBoardList());
+		return "list2";
+	}
+}
+```
+
+### 3. interface를 통해서 mapper를 가져와 interface를 정의하는 방법 (우리가 쓰던 것)
+
+- root-context.xml에서 mapperLocation이 필요 X
+```xml
+<property name="mapperLocations" value="classpath:/edu/bit/ex/board/mapper/*.xml" /> 
+```
+
+- root-context.xml에서 scan을 사용해서 MyBatis 경로 지정
+```xml
+<mybatis-spring:scan
+      base-package="edu.bit.ex.board.mapper" />
+```
+▶ 주의] 여기서 base-package="edu.bit.ex"만 주면 순환 참조가 일어나서 (edu.bit.ex로 시작하는 패키지 전부 읽어들임) Service 다형성 적용이 안 일어나는 에러가 발생!
+
+### 4. Mapper Interface → mapper.xml(자손이 구현)하는 방식 
+- Mapper Interface에서 xml이 구현하지 않고 Interface에 @어노테이션으로 사용
+- 단점: pasing같은 한 줄에 들어갈 수 없는 쿼리문은 복잡해짐(간결해지지 못함) 
+	- 따라서 간단한것만 사용 (그렇기 때문에 실무에서는 사용할 일이 별로 없음)
+- 이 방식을 사용하면 mapper scan의 경로는 필요 없음 
+
+```java
+package edu.bit.ex.board.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+
+import edu.bit.ex.board.vo.BoardVO;
+
+public interface BMapper {
+	
+	@Select("select * from mvc_board")
+	public List<BoardVO> list();
+
+	public BoardVO contenetView(int getbId);
+
+	public void writeBoard(BoardVO boardVo);
+
+	public void modify(BoardVO boardVo);
+
+	public void reply(BoardVO boardVo);
+
+	public void replySort(BoardVO boardVo);
+}
+```
+
+
