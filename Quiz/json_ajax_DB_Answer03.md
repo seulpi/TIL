@@ -7,8 +7,6 @@
 ### - **트랜잭션** : 프로그래밍 error와 상관없이 **DB와 관련된 용어**, 에러가 나서 **중단되는 경우 rollback과 commit을 위해 사용**한다
 - 트랜잭션 **대상** : (select를 제외한) **update, delete, insert** 
 - 하나의 코드 이상을 사용할때는 반드시 트랜잭션을 사용해야한다
-<br>
-
 ### ※ 주의 ※ 
 - checked와 unchecked Exception에서의 rollback 차이 
 
