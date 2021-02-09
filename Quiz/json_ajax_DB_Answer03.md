@@ -56,9 +56,9 @@
 
 # 3. ajax를 활용해 게시판 update를 구현하시오
 - 기존 게시판의 query문과 service단 함수, view단을 가져와 사용하였음
-- [의문점1] 화면이 한번 깜박이고 다시 수정해야 수정이 된다
-- [의문점2] event.preventDefault(); 사용해야 submit기능을 막고 click이벤트를 발생하는데 event.preventDefault(); 추가하면 console 400에러 존재 
-- [의문점3] id값을 url에 어떻게 넘겨줄지? $(this).attr('input') 아닌 
+- [의문점①] 화면이 한번 깜박이고 다시 수정해야 수정이 된다
+- [의문점②] event.preventDefault(); 사용해야 submit기능을 막고 click이벤트를 발생하는데 event.preventDefault(); 추가하면 console 400에러 존재 
+- [의문점③] id값을 url에 어떻게 넘겨줄지? $(this).attr('input') 아닌 
 	- < a class="rest_delete" data-id="${dto.bId}" href="${pageContext.request.contextPath}/restful/board/${dto.bId}" > 로 넘겨서 <br>  
 	var id = $(this).data('id'); <br>
 	var url = "${pageContext.request.contextPath}/restful/board/" + id; 로 처리하면 되는지?
