@@ -59,29 +59,13 @@
 - [의문점1] 화면이 한번 깜박이고 다시 수정해야 수정이 된다
 - [의문점2] event.preventDefault(); 사용해야 submit기능을 막고 click이벤트를 발생하는데 event.preventDefault(); 추가하면 console 400에러 존재 
 - [의문점3] id값을 url에 어떻게 넘겨줄지? $(this).attr('input') 아닌 
-	- <a class="rest_delete" data-id="${dto.bId}" href="${pageContext.request.contextPath}/restful/board/${dto.bId}"> 로 넘겨서 <br>  
+	- < a class="rest_delete" data-id="${dto.bId}" href="${pageContext.request.contextPath}/restful/board/${dto.bId}" > 로 넘겨서 <br>  
 	var id = $(this).data('id'); <br>
 	var url = "${pageContext.request.contextPath}/restful/board/" + id; 로 처리하면 되는지?
 	
 ## ▶ *Answer*
 ```java
 package edu.bit.ex.board.controller;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
-
-import edu.bit.ex.board.service.BServiceImpl;
-import edu.bit.ex.board.vo.BoardVO;
-import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j;
 
 @Log4j
 @AllArgsConstructor
