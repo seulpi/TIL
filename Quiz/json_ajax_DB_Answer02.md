@@ -193,8 +193,9 @@ public class RestBoardController {
 	$(document).ready(function() {
 
 		$(".rest_delete").click(function(event) {
-		/* 	질문① 왜 class로 지정해줘야하는지?
-			질문② 왜 td에 널고 var resultObj = $(this).parent();로 하면 안되는지? */
+		/* 질문① 왜 class로 지정해줘야하는지? : id는 한문서에 한번만 사용가능(id명은 유일무이해야함), class는 여러번 사용 가능 
+			-> 근데 for문 돌리면 클릭했을때 id가 여러개 도는거라서 id를 사용하면 event가 발생하지x 
+		질문② 왜 td에 널고 var resultObj = $(this).parent();로 하면 안되는지? */
 					
 			event.preventDefault();
 			
