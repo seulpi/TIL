@@ -2,6 +2,88 @@
 
 # 2. RESTful과 ajax를 이용해 delete를 구현하시오
 ## ▶ *Answer(ajax작동은 잘되나 새로고침해야 delete가 업데이트됨)*
+```java
+//RestBoardController
+package edu.bit.ex.board.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import edu.bit.ex.board.service.BServiceImpl;
+import edu.bit.ex.board.vo.BoardVO;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+
+
+//REST : Representational State Transfer
+//하나의 URI가 하나의 고유한 리소스를 대표하도록 설계된 개념
+
+//http://localhost/spring02/list?bno=1 ==> url+파라미터
+//http://localhost/spring02/list/1 ==> url
+//RestController은 스프링 4.0부터 지원
+//@Controller, @RestController 차이점은 메서드가 종료되면 화면전환의 유무
+
+@Log4j
+@AllArgsConstructor
+@RestController
+@RequestMapping("/restful/*")
+public class RestBoardController {
+
+	private BServiceImpl bSerivce;
+	
+	//기존 @Controller 방식으로 넘기려면 ModelAndView를 사용해 데이터와 view를 넘겨줘야함
+	// 1. list(처음 진입 화면이므로 화면이 깜박여도 상관없기 때문에 @Controller방식으로 접근 -> 꼭 json으로 넘겨야 된다 그런거아님
+	@GetMapping("/board")
+	public ModelAndView list(ModelAndView mav) {
+		mav.setViewName("rest_list");
+		mav.addObject("list", bSerivce.getList());
+		
+		return mav;
+		
+	}
+	
+	@GetMapping("/board/{bId}") 
+	//bId 처리 방식 -> 1. @PathVariable로 처리 @PathVariable("bId") String bId, Model model 2. Command객체로 처리
+	public String rest_content_view(BoardVO boardVO, Model model) {
+		
+		log.info("rest_content_view");
+		model.addAttribute("content_view", bSerivce.getBoard(boardVO.getbId()));
+		
+		return "content_view";
+	}
+
+	@DeleteMapping("/board/{bId}") 
+	//delete는 기본적으로 form 태그에서 지원하지 x(get, post만 지원) -> list에서 클릭을 하게되면 js&jquery-ajax로 처리 (submit이런거말고)
+	// 어떨 때 사용하느냐? 댓글 삭제 -> ajax
+	public ResponseEntity<String> rest_delete(BoardVO boardVO, Model model) {
+		
+		ResponseEntity<String> entity = null;
+		
+		log.info("rest_delete");
+		
+		try {
+			bSerivce.remove(boardVO.getbId());
+			//삭제가 성공하면 성공 상태 메세지 저장
+			entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+											//json (X), 그냥 SUCCESS라는 일반 문자열
+		}catch (Exception e) {
+			e.printStackTrace();
+			//삭제가 실패하면 실패 상태 메세지 저장
+			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+		//삭제처리 http 상태 메세지 리턴
+		return entity;
+	}
+}
+```
+
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
