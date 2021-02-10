@@ -222,16 +222,16 @@ public class RestBoardController {
 		$("#contentModify").submit(function(event) {
 			event.preventDefault(); 
 	
-			var name = ${"#bName"}.val();
-			var bTitle = ${"#bTitle"}.val();
-			var bContent = ${"#bContent"}.val();
-			var bId = ${"#bId"}.val();
+			var name = $("#bName").val();
+			var bTitle = $("#bTitle").val();
+			var bContent = $("#bContent").val();
+			var bId = $("#bId").val();
 			
 			var form = {
-					bId : bId,
-					bName = name,
-					bTitle = bTitle,
-					bContent = bContent
+					bId: bId,
+					bName: name,
+					bTitle: bTitle,
+					bContent: bContent
 					
 			};
 			
@@ -239,7 +239,7 @@ public class RestBoardController {
 				type: "PUT", 
 				url : $(this).attr("action"),
 				cache :  false,
-				contentType : 'application/json; charset=utf-8', //contentType 은 data 설명 put을 쓰면 json형태로 넘겨야하고 stringify은 json으로 바꿔주는것
+				contentType : 'application/json; charset=UTF-8', //contentType 은 data 설명 put을 쓰면 json형태로 넘겨야하고 stringify은 json으로 바꿔주는것
 				data : JSON.stringify(form), //마임타입? 보안문제때문에 그냥 넘기면 안되고 json으로 넘겨줘야함
 				success : function(result) {
 					
@@ -292,7 +292,7 @@ public class RestBoardController {
   
       <tr>
          <td colspan="2"><input type="submit" value="수정">&nbsp; &nbsp; <a href="list">목록보기</a>
-         &nbsp; &nbsp; <a href="delete">삭제</a>&nbsp; &nbsp; <a href="reply_view?bId=${content_view.bId}">답변</a></td>
+         &nbsp; &nbsp; <a href="delete">삭제</a>&nbsp; &nbsp; <a href="${pageContext.request.contextPath}/restful/board/reply/${content_view.bId}">답변</a></td>
       </tr>
 		
       </form>
