@@ -200,3 +200,124 @@ public class RestBoardController {
 </html>
 ```
 
+## ▶ *정답*
+>> [링크참조] https://m.blog.naver.com/PostView.nhn?blogId=moonv11&logNo=220605582547&proxyReferer=https:%2F%2Fwww.google.com%2F
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<html>
+<head>
+<title>List</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript"></script>
+
+<script>
+	$(document).ready(function(){
+		
+		$("#contentModify").submit(function(event) {
+			event.preventDefault(); 
+	
+			var name = ${"#bName"}.val();
+			var bTitle = ${"#bTitle"}.val();
+			var bContent = ${"#bContent"}.val();
+			var bId = ${"#bId"}.val();
+			
+			var form = {
+					bId : bId,
+					bName = name,
+					bTitle = bTitle,
+					bContent = bContent
+					
+			};
+			
+			$.ajax({
+				type: "PUT", 
+				url : $(this).attr("action"),
+				cache :  false,
+				contentType : 'application/json; charset=utf-8', //contentType 은 data 설명 put을 쓰면 json형태로 넘겨야하고 stringify은 json으로 바꿔주는것
+				data : JSON.stringify(form), //마임타입? 보안문제때문에 그냥 넘기면 안되고 json으로 넘겨줘야함
+				success : function(result) {
+					
+					if (result == ("SUCCESS")) {
+						/* windows.location.href = ${pageContext.request.contextPath}/restful/board */
+						$(location).attr('href', '${pageContext.request.contextPath}/restful/board/')
+						// ↑ BOM 객체 
+	
+					}
+				},
+				error : function(e) {
+					console.log(e);
+				}
+			})
+		}); //end.submit()
+	}); //end.ready()
+</script>
+
+</head>
+<body>
+  
+   <table width="500" cellpadding="0" cellspacing="0" border="1">
+   
+   <form id="contentModify" action="${pageContext.request.contextPath}/restful/board/${content_view.bId}" method="post">
+   <input type="hidden" id="bId" value="${content_view.bId}">
+      <tr>
+         <td>번호</td>
+         <td>${content_view.bId}</td>
+      </tr>
+      
+        <tr>
+         <td>히트</td>
+         <td>${content_view.bHit}</td>
+      </tr>
+      
+      <tr>
+         <td>이름</td>
+         <td><input type="text" id="bName" value="${content_view.bName}"></td>
+      </tr>
+      
+      <tr>
+         <td>제목</td>
+         <td><input type="text" id="bTitle" value="${content_view.bTitle}"></td>
+      </tr>
+      
+      <tr>
+         <td>내용</td>
+         <td><textarea rows="10" id="bContent">${content_view.bContent}</textarea></td>
+      </tr>
+  
+      <tr>
+         <td colspan="2"><input type="submit" value="수정">&nbsp; &nbsp; <a href="list">목록보기</a>
+         &nbsp; &nbsp; <a href="delete">삭제</a>&nbsp; &nbsp; <a href="reply_view?bId=${content_view.bId}">답변</a></td>
+      </tr>
+		
+      </form>
+   </table>
+
+</body>
+</html>
+```
+```java
+@PutMapping("/board/{bId}")
+public ResponseEntity<String> rest_update(@RequestBody BoardVO boardVO, ModelAndView model) {
+// @RequestBody는 body 태그로 넘어오는걸(json으로 넘어오고있음) BoardVO 객체로 바꿔주는 것
+	ResponseEntity<String> entity = null;
+
+	log.info("rest_update");
+
+	try {
+		bSerivce.modify(boardVO);
+		entity = new ResponseEntity<String>("SUCCESS", HttpStatus.OK);
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+		entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+	}
+	return entity;
+}
+```
+
