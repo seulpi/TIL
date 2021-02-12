@@ -247,6 +247,7 @@ public class RestBoardController {
 ```
 
 # 2. 부트스트랩으로 로그인 화면구현후 interceptor 적용하여 로그인한 유저에게만 게시판이 보이도록 하시오
+>> [참조사이트] https://rongscodinghistory.tistory.com/2
 ## 구현중..졸리다
 # 3. intercptor의 개념에 대하여 설명하시오
 # 4. 부트스트랩이란?
