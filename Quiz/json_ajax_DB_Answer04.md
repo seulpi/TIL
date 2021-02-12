@@ -285,4 +285,4 @@ public class RestBoardController {
 # 4. 부트스트랩이란?
 - 트위터사에서 만든 웹사이트를 쉽게 만들게 도와주는 html, css, js 프레임워크 
 - 반응형, 모바일 위주 웹개발을 위한 웹 프레임워크
->>[공식사이트] https://www.w3schools.com/bootstrap4/default.asp
+>>[공식사이트] http://bootstrapk.com/
