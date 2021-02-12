@@ -249,8 +249,294 @@ public class RestBoardController {
 
 # 2. 부트스트랩으로 로그인 화면구현후 interceptor 적용하여 로그인한 유저에게만 게시판이 보이도록 하시오
 >> [참조사이트] https://rongscodinghistory.tistory.com/2
-## 구현중..졸리다
 
+1. LoginVO
+```java
+package edu.bit.ex.vo;
+
+
+public class LoginVO {
+	private String id;
+	private String pw;
+	private char enabled;
+	
+	
+	public char getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(char enabled) {
+		this.enabled = enabled;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+	
+	public LoginVO(String id, String pw, char enabled) {
+
+		this.id = id;
+		this.pw = pw;
+		this.enabled = enabled;
+	}
+	
+	public LoginVO() {
+		
+	}	
+}
+```
+
+2. Controller
+```java
+package edu.bit.ex;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import edu.bit.ex.service.LoginService;
+import edu.bit.ex.vo.LoginVO;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
+import lombok.extern.log4j.Log4j;
+
+
+@Log4j
+@AllArgsConstructor
+@Controller
+public class LoginController {
+	
+	LoginService service;
+	
+	@GetMapping("/") //처음 들어오면 보이는 login창
+	public String loginHome() {
+		System.out.println("logingHome()실행");
+		return "loginSuccess";
+	}
+	
+	@PostMapping(value="/loginProcess")
+	public String loginProcess(HttpSession session, LoginVO dto, RedirectAttributes rttr) throws Exception {
+		
+		LoginVO user = service.login(dto);
+		
+		if(user == null) { //로그인 실패
+			session.setAttribute("user", null);
+			rttr.addFlashAttribute("msg", false);
+		
+		}else { //로그인 성공
+			session.setAttribute("user", user);
+		}
+				
+		return "redirect:/";
+	}
+	
+	@RequestMapping("logout") //로그아웃
+	public String logout(HttpSession session) throws Exception {
+		
+		log.info("logout()");
+		session.invalidate(); // 세션 전체를 날림 
+		
+		return "redirect:/";
+	}
+}
+```
+
+3. Service
+```java
+package edu.bit.ex.service;
+
+import edu.bit.ex.vo.LoginVO;
+
+public interface LoginService {
+	
+	public LoginVO login(LoginVO dto);
+
+}
+```
+
+4. ServiceImpl
+```java
+package edu.bit.ex.service;
+
+import org.springframework.stereotype.Service;
+
+import edu.bit.ex.mapper.LoginMapper;
+import edu.bit.ex.vo.LoginVO;
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class LoginServiceImpl implements LoginService {
+	
+	LoginMapper loginMapper;
+
+	@Override
+	public LoginVO login(LoginVO dto) {
+	
+		return loginMapper.loginOK(dto);
+	}	
+}
+```
+
+5. Mapper
+```javapackage edu.bit.ex.mapper;
+
+import edu.bit.ex.vo.LoginVO;
+
+public interface LoginMapper {
+
+	public LoginVO loginOK(LoginVO dto);
+
+}
+```
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.bit.ex.mapper.LoginMapper">
+
+	<select id="loginOK" resultType="edu.bit.ex.vo.LoginVO">
+
+
+<![CDATA[
+      select * from users where username=#{id} and password=#{pw}
+]]>
+	</select>
+
+</mapper>
+```
+
+6. Interceptor
+```java
+package edu.bit.ex.interceptor;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import edu.bit.ex.vo.LoginVO;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+public class LoginInterceptor extends HandlerInterceptorAdapter {
+
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		System.out.println("preHandle()");
+		
+		HttpSession session = request.getSession();
+		
+		LoginVO user = (LoginVO)session.getAttribute("user");
+		
+		if(user == null) {
+			log.info("user == null");
+			response.sendRedirect(request.getContentType());
+			//response.sendRedirect("/login");
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+			ModelAndView modelAndView) throws Exception {
+		// TODO Auto-generated method stub
+		super.postHandle(request, response, handler, modelAndView);
+		System.out.println("postHandle()");
+	}
+}
+```
+
+7. View 
+- bootstrap 활용
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html>
+<head>
+	<title>BootStrap Login</title>
+	
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+</style>
+
+<!-- https://passauer1083.tistory.com/18 : 정렬하는 법 참고사이트 -->
+<body class="text-center">
+	<div class="row justify-content-center">
+		<!-- 이게 있어야 블록이 전체를 차지안하고 상대적으로 크기가 맞춰지고 정렬된다,  row에 포함된 column이 중앙정렬 -->
+		
+		<c:if test="${user == null}">
+			<form class="form-horizontal" role="form" method="post"
+				autocomplete="off"
+				action="${pageContext.request.contextPath}/loginProcess">
+				<img class="logoimg" alt=""
+					src="${pageContext.request.contextPath}/resources/부트스트랩로고.png"
+					width="50px" height="50px">
+				<!-- 사진리소스처리 -->
+				<h1>Please sign in</h1>
+
+
+				<label for="userId" class="col-sm-2 control-label"></label> <input
+					type="text" class="form-control" id="userId" name="id"
+					placeholder="Id"> <label for="userPass"
+					class="col-sm-2 control-label"></label> <input type="password"
+					class="form-control" id="userPass" name="pw" placeholder="Password">
+
+				<div class="checkbox">
+					<label><input type="checkbox"> Remember me </label>
+				</div>
+
+				<button type="submit" class="btn btn-primary btn-block">Sign
+					in</button>
+			</form>
+		</c:if>
+		
+		<c:if test="${msg==false}">
+			<p style="color:#f00;"> 로그인에 실패했습니다. 아이디 or 패스워드를 다시 입력하세요</p>
+		</c:if>
+		
+		<c:if test="${user != null}">
+			<p>${user.id}님 환영합니다</p>
+			<a href = "${pageContext.request.contextPath}/list">게시판 리스트</a>
+			<br>
+			<a href ="${pageContext.request.contextPath}/logout">로그아웃</a>
+		</c:if>
+
+		
+		
+</body>
+</html>
+```
 <br>
 
 # 3. intercptor의 개념에 대하여 설명하시오
