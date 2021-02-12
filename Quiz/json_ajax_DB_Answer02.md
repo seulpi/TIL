@@ -1,6 +1,6 @@
 # 1. RESTful에 대하여 설명하시오
 >> [Spring_basic03 RESTful 정리 ] <br> https://github.com/seulpi/TIL/blob/main/Basic/Spring/Spring_basic03(Restful,%EC%96%B4%EB%85%B8%ED%85%8C%EC%9D%B4%EC%85%98,%20%EC%9C%A0%ED%9A%A8%EC%84%B1).md
-
+<br>
 
 # 2. RESTful과 ajax를 이용해 delete를 구현하시오
 ## ▶ *Answer(ajax작동은 잘되나 새로고침해야 delete가 업데이트됨)*
