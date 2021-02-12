@@ -259,7 +259,7 @@ public class RestBoardController {
 - interceptor를 **사용하는 이유?**
     - interceptor를 사용하지 않으면 게시물 수정, 삭제, 작성 등의 **요청을 처리할때마다** session을 통해 로그인 정보가 있는지 **계속 확인해야되는 코드를 입력해야함** → 중복 코드 발생 → interceptor를 사용하면 **코드를 줄이고 한번에 작업이 가능한 장점** 
 
-- 특징 : **HandlerInterceptorAdapter를 상속받음** → 상속받게 되면 두개의 함수를 오버라이딩함
+### @ 특징 : **HandlerInterceptorAdapter를 상속받음** → 상속받게 되면 두개의 함수를 오버라이딩함
 1. preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) : 컨트롤러보다 먼저 실행, 세션 및 로그인 체크
 2. postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) : 클라이언트에게 응답해줄 때 실행
 
