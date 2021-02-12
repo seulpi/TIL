@@ -249,5 +249,38 @@ public class RestBoardController {
 # 2. 부트스트랩으로 로그인 화면구현후 interceptor 적용하여 로그인한 유저에게만 게시판이 보이도록 하시오
 >> [참조사이트] https://rongscodinghistory.tistory.com/2
 ## 구현중..졸리다
+
+
 # 3. intercptor의 개념에 대하여 설명하시오
+## 특정 URI 요청시 Controller로 가는 요청을 가로채는 역할 
+- interceptor와 비슷한 기능 → Filter
+>> interceptor, filter의 차이 : 실행되는 시점 <br> - interceptor : Dispatcher Servlet 실행된 후 (Controller로 가기 전), Spring내에 모든 객체에 대해 접근 가능, 주로 "로그인 처리"에 이용  <br> - filter : Dispatcher Servlet 실행되기 전, 같은 웹 어플리케이션 내에서만 접근이 가능, 주로 "한글처리"에 이용
+
+- interceptor를 **사용하는 이유?**
+    - interceptor를 사용하지 않으면 게시물 수정, 삭제, 작성 등의 **요청을 처리할때마다** session을 통해 로그인 정보가 있는지 **계속 확인해야되는 코드를 입력해야함** → 중복 코드 발생 → interceptor를 사용하면 **코드를 줄이고 한번에 작업이 가능한 장점** 
+
+- 특징 : **HandlerInterceptorAdapter를 상속받음** → 상속받게 되면 두개의 함수를 오버라이딩함
+1. preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) : 컨트롤러보다 먼저 실행, 세션 및 로그인 체크
+2. postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) : 클라이언트에게 응답해줄 때 실행
+
+- interceptor 객체 생성 ▶ xml에 bean 생성 (servlet-context.xml)
+```xml
+     <!-- 인터셉터 객체 생성 -->
+   <beans:bean id="boardInterceptor" class="edu.bit.ex.board.interceptor.BoardInterceptor">
+   </beans:bean>
+   
+   <!-- Interceptor 설정 -->
+   <interceptors>
+       <interceptor>
+           <mapping path="/list"/> <!-- http://localhost:8282/ex/list , list로 치고들어오는거에 대해서는 interceptor하겠다, 전체다 오는걸 interceptor하겠다 하면 /list/** 이렇게 주고 controller와의 맵핑 경로 맞춰줘야함-->     
+           <exclude-mapping path="/resources/**"/>
+           <beans:ref bean="boardInterceptor"/>
+       </interceptor>
+   </interceptors> 
+```
+<br>
+
 # 4. 부트스트랩이란?
+- 트위터사에서 만든 웹사이트를 쉽게 만들게 도와주는 html, css, js 프레임워크 
+- 반응형, 모바일 위주 웹개발을 위한 웹 프레임워크
+>>[공식사이트] https://www.w3schools.com/bootstrap4/default.asp
