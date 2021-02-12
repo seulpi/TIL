@@ -67,7 +67,6 @@ commit;
 
 ### Q. spring에서 session 활용 어떻게 하나요(어떻게 프로그래밍하나요)?
 ### *Answer*
-- 인터셉터할때 코드를 요렇게 짰습니다
 <details><summary>인터셉터할때 코드를 요렇게 짰습니다</summary>
 
 ```java
@@ -101,6 +100,8 @@ commit;
 	}
 ```
 </details>
+
+### - 구현 로직
 
 1. VO
 ```java
