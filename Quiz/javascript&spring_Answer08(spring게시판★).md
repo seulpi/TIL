@@ -61,12 +61,9 @@ public class BoardController {
 		
 		model.addAttribute("list", boardService.getList());
 		}
-		/* void를 적게 되면 함수명으로 리턴시킴 
-		@GetMapping("/list")
-		public String list(Model model) {
-			log.info("list");
-			model.addAttributr("list", boardService.getList());
-			return "list"; 와 동일한 코드라고 보면됨*/
+		/*void로 넘길때 함수이름의 jsp로 넘기는게 아니라 url.jsp로 넘기는 것 
+		ex) 	@RequestMapping(/list) 
+			public void getList() { } -> list.jsp 리턴 */
 	
 	@GetMapping("/write_view")
 	public String write_view(Model model) {
