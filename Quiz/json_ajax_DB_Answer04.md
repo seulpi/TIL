@@ -488,7 +488,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
-</style>
 
 <!-- https://passauer1083.tistory.com/18 : 정렬하는 법 참고사이트 -->
 <body class="text-center">
@@ -520,22 +519,22 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 					in</button>
 			</form>
 		</c:if>
+	</div>
 		
-		<c:if test="${msg==false}">
-			<p style="color:#f00;"> 로그인에 실패했습니다. 아이디 or 패스워드를 다시 입력하세요</p>
-		</c:if>
+	<c:if test="${msg==false}">
+		<p style="color:#f00;"> 로그인에 실패했습니다. 아이디 or 패스워드를 다시 입력하세요</p>
+	</c:if>
 		
-		<c:if test="${user != null}">
-			<p>${user.id}님 환영합니다</p>
-			<a href = "${pageContext.request.contextPath}/list">게시판 리스트</a>
-			<br>
-			<a href ="${pageContext.request.contextPath}/logout">로그아웃</a>
-		</c:if>
-
-		
+	<c:if test="${user != null}">
+		<p>${user.id}님 환영합니다</p>
+		<a href = "${pageContext.request.contextPath}/list">게시판 리스트</a>
+		<br>
+		<a href ="${pageContext.request.contextPath}/logout">로그아웃</a>
+	</c:if>	
 		
 </body>
 </html>
+
 ```
 <br>
 
