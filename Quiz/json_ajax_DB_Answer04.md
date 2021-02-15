@@ -495,28 +495,22 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		<!-- 이게 있어야 블록이 전체를 차지안하고 상대적으로 크기가 맞춰지고 정렬된다,  row에 포함된 column이 중앙정렬 -->
 		
 		<c:if test="${user == null}">
-			<form class="form-horizontal" role="form" method="post"
-				autocomplete="off"
-				action="${pageContext.request.contextPath}/loginProcess">
-				<img class="logoimg" alt=""
-					src="${pageContext.request.contextPath}/resources/부트스트랩로고.png"
-					width="50px" height="50px">
-				<!-- 사진리소스처리 -->
+			<form class="form-horizontal" role="form" method="post" autocomplete="off" action="${pageContext.request.contextPath}/loginProcess">
+				 <!-- 사진리소스처리 -->
+				<img class="logoimg" alt="" src="${pageContext.request.contextPath}/resources/부트스트랩로고.png" width="50px" height="50px">
 				<h1>Please sign in</h1>
 
-
-				<label for="userId" class="col-sm-2 control-label"></label> <input
-					type="text" class="form-control" id="userId" name="id"
-					placeholder="Id"> <label for="userPass"
-					class="col-sm-2 control-label"></label> <input type="password"
-					class="form-control" id="userPass" name="pw" placeholder="Password">
+				<label for="userId" class="col-sm-2 control-label"></label> 
+				<input type="text" class="form-control" id="userId" name="id" placeholder="Id"> 
+				
+				<label for="userPass" class="col-sm-2 control-label"></label> 
+				<input type="password" class="form-control" id="userPass" name="pw" placeholder="Password">
 
 				<div class="checkbox">
 					<label><input type="checkbox"> Remember me </label>
 				</div>
 
-				<button type="submit" class="btn btn-primary btn-block">Sign
-					in</button>
+				<button type="submit" class="btn btn-primary btn-block">Sign in</button>
 			</form>
 		</c:if>
 	</div>
@@ -534,8 +528,24 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		
 </body>
 </html>
-
 ```
+### @ 몰랐던 태그 기능
+#### 1. autocomplete : 자동 완성 기능
+- off : 브라우저가 자동으로 값 넣는거 금지
+- on : 자동완성 허용 
+>> input, select, textarea에 따로 지정 해주지 않는다면 조상 즉 form의 특성의 값을 따름
+
+#### 2. label : form 양식에 이름을 붙이는 태그
+- label의 for의 값과 양식의 id값이 같으면 연결!
+- input 등 양식을 label로 감싸면 id와 for 없이도 같은 결과를 얻을 수 있음
+```html
+<p>
+  <label>Input - Text
+  <input type="text">
+  </label>
+</p>
+```
+![캡처](https://user-images.githubusercontent.com/74290204/107895775-daf1c080-6f77-11eb-87a5-23d741efa868.PNG)
 <br>
 
 # 3. intercptor의 개념에 대하여 설명하시오
