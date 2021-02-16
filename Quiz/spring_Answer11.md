@@ -170,6 +170,7 @@ public interface EmpMapper {
 ```
 
 ## - Mapper.xml
+- 1:N관계에서 1에 해당하는 클래스(dept)에 N에 해당하는(empno) VO객체를 ArrayList형태로 추가해준다
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
