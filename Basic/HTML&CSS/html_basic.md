@@ -11,6 +11,7 @@
 - CSS(Cascading Style Sheets) : HTML문서를 **디자인적으로 예쁘게 만들어 정보 전달**을 하기 위해 만들어진 문서 
 - 태그(Tag) : <>안에 있는것으로 태그에는 이름과 속성(property)이 있음
     - html은 태그를 사용하지만 출력되는 화면에서는 출력X (태그를 해서 속성을 적용할 뿐 → **해석해서 출력하는 주체: 톰캣X 웹브라우저O**)
+>> [html_Answer01용어 참조] https://github.com/seulpi/TIL/blob/main/Quiz/JSP%26HTML(CSS)/jsp%26html_Answer01.md
 
 ```html
 <!DOCTYPE html> <!-- !DOCTYPE: html ver.5이란 표시/ version-->
