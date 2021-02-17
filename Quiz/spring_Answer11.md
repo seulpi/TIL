@@ -831,7 +831,7 @@ public interface EmpMapper {
 ```
 
 ### 5. view
-- 이미지랜덤 돌리는 것 → "~product" + Math~ + ".jag" 다이렉트로 url 때려버림(어차피 사진뒤에 숫자만 바뀌면 되니까! 놀랍..나는 왜 생각못했지..배열 사용하는 거보다 훨씬 간단하고 쉽다)
+- 이미지랜덤 돌리는 것 → "~ product" + Math ~ + ".jag" 다이렉트로 url 때려버림(어차피 사진뒤에 숫자만 바뀌면 되니까! 놀랍..나는 왜 생각못했지..배열 사용하는 거보다 훨씬 간단하고 쉽다)
 
 ```jsp
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
