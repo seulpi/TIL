@@ -791,7 +791,7 @@ public DeptEmpVO selectEmpDeptName(int deptno) {
 
 ### 3. Mapper
 - 부모쪽에서 자식쪽을 List로 받아낸다
->> [다중쿼리 정리 참조]
+>> [1:N관계에서의 sql 처리 정리 참조] https://github.com/seulpi/TIL/blob/main/Basic/DB/DB_basic03(Join).md
 
 ```java
 public interface EmpMapper {
@@ -831,7 +831,7 @@ public interface EmpMapper {
 ```
 
 ### 5. view
-- 이미지랜덤 돌리는 것 → 다이렉트로 url 때려버림(어차피 사진뒤에 숫자만 바뀌면 되니까! 놀랍..나는 왜 생각못했지..배열 사용하는 거보다 훨씬 간단하고 쉽다)
+- 이미지랜덤 돌리는 것 → "~product" + Math~ + ".jag" 다이렉트로 url 때려버림(어차피 사진뒤에 숫자만 바뀌면 되니까! 놀랍..나는 왜 생각못했지..배열 사용하는 거보다 훨씬 간단하고 쉽다)
 
 ```jsp
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
