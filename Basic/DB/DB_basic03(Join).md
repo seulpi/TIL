@@ -47,3 +47,72 @@ select e.ename || '의 매니저는 ' || m.dname || '입니다.'
 from emp e, emp m where e.mgr = m.empno(+);
 ```
 
+## @ 1:N 관계 쿼리 처리 방법 → join
+
+### 1.  조인문을 자바객체로 옮기는 방법
+- vo에 join하면 나오는 컬럼을 다 묶어서 변수로 선언 (컬럼마다 맵핑시키는 방법) →  쿼리문 사용해서 하나의 리스트로 받아오기 
+```java
+public class EmpVO {
+	
+	private int empno;
+	private String ename;
+	private String job;
+	private int mgr;
+	private Date hiredate;
+	private int sal;
+	private int comm;
+	private int deptno;
+
+             private String dname;
+	private String loc;
+}
+```
+```sql
+select * from emp e, dept d where e.deptno = d.deptno;
+```
+
+### 2. Mybrtis는 1:N을 공식적으로 제공함 
+- reultMap, collection 사용 < result column="DB컬럼명" property="자바VO변수명" >
+- 부모쪽은 변수명 다 적어주고 자식은 List로 받아오기 
+
+```java
+//vo
+public class DeptVO {
+	
+	private int deptno;
+	private String dname;
+	private String loc;
+	
+	private List<EmpVO> empList;
+}
+```
+```java
+// mapper
+DeptVO selectEmpDepnName(int num)
+```
+```xml
+<!-- mapper.xml --> 
+<mapper namespace="edu.bit.emp.mapper.EmpMapper">
+
+	<resultMap id="Emp" type="edu.bit.emp.vo.EmpVO">
+	    <id property="empno" column="empno"/>
+	    <result property="ename" column="ename"/>
+	    <result property="job" column="job"/>
+	</resultMap>
+	
+	<resultMap id="DeptEmpResult" type="edu.bit.emp.vo.DeptEmpVO" >
+		<id property="deptno" column="deptno" />
+		<result property="dname" column="dname"/>
+		<result property="loc" column="loc" />
+		<collection property="empList" javaType="java.util.ArrayList" resultMap="Emp" />
+	</resultMap>
+	
+	<select id="selectEmpDeptName" parameterType="int" resultMap="DeptEmpResult">
+	<![CDATA[
+		select  * from emp e ,dept d where e.deptno = d.deptno and d.deptno = #{deptno}	
+  	]]>
+	</select>
+
+</mapper>
+```
+
