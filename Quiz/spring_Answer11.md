@@ -762,3 +762,128 @@ select e.empno, e.ename, e.job, e.mgr, e.hiredate, e.sal, e.comm, e.deptno, d.dn
 ### ▶ 출력 
 ![empshopper1](https://user-images.githubusercontent.com/74290204/108077381-cf091a00-70af-11eb-9f79-b10cabba975a.png)
 ![화면 캡처 2021-02-16 225748](https://user-images.githubusercontent.com/74290204/108077391-d16b7400-70af-11eb-81a0-cab311a0c9ce.png)
+
+## *선생님 정답*
+### 1. Controller
+- deptno를 따로 나눠서 맵핑하지 않음!
+- 
+```java
+@GetMapping("/list2/{deptNo}")
+	public String list2Emp(@PathVariable("deptNo") int deptno, Model model) {
+
+		// 10���μ�
+		DeptEmpVO deptEmp = empService.selectEmpDeptName(deptno);
+		System.out.println(deptEmp);		
+		//model.addAttribute("emps", deptEmp.getEmpList());
+		
+		model.addAttribute("deptEmps", deptEmp);
+
+		return "emp2";
+	}
+```
+
+### 2. Service
+```java
+public DeptEmpVO selectEmpDeptName(int deptno) {
+		return empMapper.selectEmpDeptName(deptno);
+	}
+```
+
+### 3. Mapper
+- 부모쪽에서 자식쪽을 List로 받아낸다
+>> [다중쿼리 정리 참조]
+
+```java
+public interface EmpMapper {
+
+	DeptEmpVO selectEmpDeptName(int deptno);
+}
+```
+
+### 4. Mapeer.xml
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.bit.emp.mapper.EmpMapper">
+
+	<resultMap id="Emp" type="edu.bit.emp.vo.EmpVO">
+	    <id property="empno" column="empno"/>
+	    <result property="ename" column="ename"/>
+	    <result property="job" column="job"/>
+	</resultMap>
+	
+	<resultMap id="DeptEmpResult" type="edu.bit.emp.vo.DeptEmpVO" >
+		<id property="deptno" column="deptno" />
+		<result property="dname" column="dname"/>
+		<result property="loc" column="loc" />
+		<collection property="empList" javaType="java.util.ArrayList" resultMap="Emp" />
+	</resultMap>
+	
+	<select id="selectEmpDeptName" parameterType="int" resultMap="DeptEmpResult">
+	<![CDATA[
+		select  * from emp e ,dept d where e.deptno = d.deptno and d.deptno = #{deptno}	
+  	]]>
+	</select>
+
+</mapper>
+```
+
+### 5. view
+- 이미지랜덤 돌리는 것 → 다이렉트로 url 때려버림(어차피 사진뒤에 숫자만 바뀌면 되니까! 놀랍..나는 왜 생각못했지..배열 사용하는 거보다 훨씬 간단하고 쉽다)
+
+```jsp
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.features_img').each(function (index, item) {	        	
+	        	var imgUrl = '${pageContext.request.contextPath}/resources/images/home/product' + Math.floor((Math.random() * 6) + 1) + '.jpg';
+	        	console.log(imgUrl);
+	        	console.log($(item).attr("src"));
+	        	$(item).attr("src", imgUrl);
+	        });
+
+	});
+</script>
+
+<body>
+	<div class="col-sm-9 padding-right">
+		<div class="features_items"><!--features_items-->
+			<h2 class="title text-center">Features Items</h2>
+			<!-- ================================================= -->
+			<div class="features_items"><!--features_items-->
+			<c:set var="deptEmps" value="${deptEmps}" />
+						
+			<c:forEach var="emp" items="${deptEmps.empList}" varStatus="status">
+				<div class="col-sm-4">
+					<div class="product-image-wrapper">
+						<div class="single-products">
+							<div class="productinfo text-center">
+								<img class="features_img" src="${pageContext.request.contextPath}/resources/images/home/product6.jpg" alt="" />
+								<h2>${deptEmps.dname}</h2>
+								<p>${emp.ename}</p>
+								<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+							</div>
+											
+							<div class="product-overlay" id="poverlay">
+								<div class="overlay-content">
+								<h2><fmt:setLocale value="ko_KR"/><fmt:formatNumber type="currency" value="${emp.sal}" /></h2>
+								<p>${emp.ename}</p>
+								<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+								</div>
+							</div>											
+						</div>
+						
+						<div class="choose">
+							<ul class="nav nav-pills nav-justified">
+								<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+								<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				</c:forEach>						
+			</div><!--features_items-->
+</body>
+
