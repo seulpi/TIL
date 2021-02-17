@@ -766,12 +766,12 @@ select e.empno, e.ename, e.job, e.mgr, e.hiredate, e.sal, e.comm, e.deptno, d.dn
 ## *선생님 정답*
 ### 1. Controller
 - deptno를 따로 나눠서 맵핑하지 않음!
-- 
+
 ```java
 @GetMapping("/list2/{deptNo}")
 	public String list2Emp(@PathVariable("deptNo") int deptno, Model model) {
 
-		// 10���μ�
+		// 10 20 30...
 		DeptEmpVO deptEmp = empService.selectEmpDeptName(deptno);
 		System.out.println(deptEmp);		
 		//model.addAttribute("emps", deptEmp.getEmpList());
