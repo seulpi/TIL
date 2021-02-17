@@ -198,6 +198,18 @@ public class LogAop {
 	}	
 }
 ```
+#### 가장 대표적인 around 예제
+- 함수 실행될 때 걸리는 시간 체크하기
+- ▼ java 시간체크하는 대표적인 코드 → aop를 사용하지 않으면 이 코드를 실행할때마다 넣어줘야함
+```java
+long beforeTime = System.currentTimeMillis(); //코드 실행 전에 시간 받아오기
+      
+//실험할 코드 추가  
+     
+long afterTime = System.currentTimeMillis(); // 코드 실행 후에 시간 받아오기
+long secDiffTime = (afterTime - beforeTime)/1000; //두 시간에 차 계산
+System.out.println("시간차이(m) : "+secDiffTime);
+```
 
 ### 2. annotation 활용
 - 사용하기 위해 servlet-context.xml 에 < aop:aspectj-autoproxy >< /aop:aspectj-autoproxy > 필요
