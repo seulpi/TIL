@@ -96,7 +96,8 @@ desc empo1;
 ```sql
 -- job 컬럼 추가 
 alter table emp01 add(job varchar2(9));
-alter table emp add VARCHAR(50);
+alter table emp add enabled VARCHAR(50);
+alter table emp add authority VARCHAR(50) NOT NULL; -- authority 컬럼에 null을 허용하지않음
 ```
 
 ### - ALTER MODIFY : table의 수정
