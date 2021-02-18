@@ -1,5 +1,5 @@
 # DML : 데이터에 관한 명령어 
-## - DEPT : 복사 
+## - DEPT : 데이터 복사 
 ```sql
 create table dept02 as select * from dept where 1=0;
 -- dept의 테이블 구조를 dept02라는 이름으로 1개 복사
@@ -11,7 +11,7 @@ create table emp01 as select * from emp;
 ```
 
 
-## - INSERT : 추가
+## - INSERT : 데이터 추가
 ```sql
 insert into dept02(deptno, dname, loc) values(10, 'ACCOUNTING', 'NEW YORK');
 commit;
@@ -22,7 +22,7 @@ insert into dept02 values(20, 'RESEARCH', 'DALLAS');
 -- 순서를 정해주지 않으면 적은 순대로 입력되서 저장
 ```
 
-## - UPDATE : 수정
+## - UPDATE : 데이터 수정
 >> update set 
 ```sql
 -- 모든 사원의 부서번호를 30으로 수정하는 쿼리문
@@ -48,13 +48,7 @@ update emp01 set hiredate=sysdate where substr(hiredate, 1, 2) = '82';
 update emp01 set deptno=20, job='MANAGER' where ename='SMITH';
 ```
 
-## - DROP : TABLE 삭제
-```sql
-drop table emp01;
-commit;
-```
-
-## - DELETE : DATA 삭제
+## - DELETE : 데이터 삭제
 ```sql
 delete from dept01;
 
@@ -97,11 +91,12 @@ desc empo1;
 -- 제대로 생성했는지 확인하는 방법 
 ```
 
-### - ALTER : table의 update (추가)
+### - ALTER : table의 update (컬럼추가) 
 >> alter table add
 ```sql
 -- job 컬럼 추가 
 alter table emp01 add(job varchar2(9));
+alter table emp add VARCHAR(50);
 ```
 
 ### - ALTER MODIFY : table의 수정
