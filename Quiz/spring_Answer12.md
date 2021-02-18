@@ -1,6 +1,9 @@
 # Q. DB에 있는 EMP테이블로 스프링시큐리티 로그인을 구현하시오
 - ename(사원명)을 ID로 empno(사원번호)를 비밀번호로 설정할 것 
 - mgr인 사람은 admin관리자로 사원인 사람들은 그냥 user로 권한 설정해서 리소스접근을 다르게 할 것
+<br>
+
+
 
 ## *Answer* 
 + DB 컬럼추가, xml설정 수정만 내가 하고 나머지는 수업시간에 한걸로 진행함
@@ -25,7 +28,6 @@ commit;
 --테이블 잘 들어갔는지 확인
 select * from emp;
 ```
-
 ![화면 캡처 2021-02-18 175449](https://user-images.githubusercontent.com/74290204/108331755-6c7c5f00-7212-11eb-92a0-9b7cf423c07e.png)
 
 ## 2. security-db-context.xml에서 쿼리 수정
