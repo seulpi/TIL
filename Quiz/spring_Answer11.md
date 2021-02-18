@@ -765,7 +765,7 @@ select e.empno, e.ename, e.job, e.mgr, e.hiredate, e.sal, e.comm, e.deptno, d.dn
 
 ## *선생님 정답*
 ### 1. Controller
-- deptno를 따로 나눠서 맵핑하지 않음!
+- deptno를 따로 나눠서 맵핑하지 않음! 단, list를 받아내는 함수가 따로 있었음 
 
 ```java
 @GetMapping("/list2/{deptNo}")
@@ -832,7 +832,7 @@ public interface EmpMapper {
 
 ### 5. view
 - 이미지랜덤 돌리는 것 → "~ product" + Math ~ + ".jag" 다이렉트로 url 때려버림(어차피 사진뒤에 숫자만 바뀌면 되니까! 놀랍..나는 왜 생각못했지..배열 사용하는 거보다 훨씬 간단하고 쉽다)
-
+- < c:set var="deptEmps" value="${deptEmps}" /> 없어도됨 어차피 cotroller에서 deptEmps이걸로 넘겨주니까 deptEmps.dname해도 상관없어서
 ```jsp
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
