@@ -8,8 +8,9 @@
 
 <details><summary>Mapven Dependencies 캡처</summary>
 	
-	![화면 캡처 2021-02-18 185143](https://user-images.githubusercontent.com/74290204/108339292-99347480-721a-11eb-9777-279f1a531385.png)
-	![화면 캡처 2021-02-18 185158](https://user-images.githubusercontent.com/74290204/108339303-9c2f6500-721a-11eb-83c9-d4832544e941.png)
+![화면 캡처 2021-02-18 185143](https://user-images.githubusercontent.com/74290204/108339292-99347480-721a-11eb-9777-279f1a531385.png)
+	
+![화면 캡처 2021-02-18 185158](https://user-images.githubusercontent.com/74290204/108339303-9c2f6500-721a-11eb-83c9-d4832544e941.png)
 </details>
 
 ### ▶ jar 한개 한개가 다 조립품이기 때문에 설정이 다 다름  → Log4j, 스프링시큐리티도 설정이 다 다름 → 다 다르게 세팅해야된다는 소리
@@ -49,9 +50,9 @@
 - https://mvnrepository.com/
 <details><summary>maven repository캡처</summary>
 	
-	![화면 캡처 2021-02-18 190547](https://user-images.githubusercontent.com/74290204/108340966-8458e080-721c-11eb-8479-5c330edf2561.png)
+![화면 캡처 2021-02-18 190547](https://user-images.githubusercontent.com/74290204/108340966-8458e080-721c-11eb-8479-5c330edf2561.png)
 	
-	![화면 캡처 2021-02-18 190656](https://user-images.githubusercontent.com/74290204/108340969-858a0d80-721c-11eb-9cfe-e6590b6bc004.png)
+![화면 캡처 2021-02-18 190656](https://user-images.githubusercontent.com/74290204/108340969-858a0d80-721c-11eb-9cfe-e6590b6bc004.png)
 </details>
   
 
@@ -61,7 +62,7 @@
 
 <details><summary>pom.xml</summary>
 	
-	```xml
+```xml
 	<!-- Spring Security -->
 	<dependency>
 		<groupId>org.springframework.security</groupId>
@@ -86,14 +87,14 @@
 		<artifactId>spring-security-taglibs</artifactId>
 		<version>${org.security-version}</version>
 	</dependency>
-	```
+```
 </details>
 
 #### *- web.xml* → filter 설정
 - filter name도 바뀌서는 안됨(그냥 내비두기) / 위치 : 한글 필터 밑
 <details><summary>web.xml</summary>
 	
-	```xml
+```xml
 	 <!-- Spring Security Filter spring 12개의 필터 객체가 생성된다-->
 	<filter>
 	    <filter-name>springSecurityFilterChain</filter-name>
@@ -104,13 +105,13 @@
 	    <filter-name>springSecurityFilterChain</filter-name>
 	    <url-pattern>/*</url-pattern>
 	</filter-mapping>
-	```
+```
 </details>
 
 #### *- security-context.xml* → root-context.xml를 복붙(※같은자리에 붙여넣기)
 <details><summary>security-context.xml</summary>
 	
-	```xml
+```xml
 	<?xml version="1.0" encoding="UTF-8"?>
 	<beans:beans xmlns="http://www.springframework.org/schema/security"
 	    xmlns:beans="http://www.springframework.org/schema/beans"
@@ -137,7 +138,7 @@
 		<param-value>/WEB-INF/spring/root-context.xml
 			/WEB-INF/spring/security-context.xml</param-value>
 	</context-param>
-	```
+```
 </details>
 
 ---
@@ -148,9 +149,9 @@
 
 #### why] form을 만들어 주지도 않았는데 어떻게 이런 form형태의 페이지가 출력되는지?
 - 내가 만들어 준 페이지가 아닌데 누군가 응답해서 페이지를 출력 <br> → login이라는 경로를 누가 받아줌, interceptor처럼 누군가가 낚아채가는 중! <br>(내가 controller에서 경로 처리 안해줬는데 페이지가 구현중이니까)
-- 
+
 - **★ 응답 해주는 주체 : 스프링 시큐리티** <br> → 스프링 시큐리티 필터에서 낚아챔(필터니까 Controller가기 전에 낚아채기 가능)
-- 
+
 - 페이지는 어디서 구현되는가? Maven 라이브러리
 <br>
 
@@ -174,7 +175,7 @@
 
 <details><summary>security-context.xml에 interceptor 추가된 코드</summary>
 	
-	```xml
+```xml
 	<?xml version="1.0" encoding="UTF-8"?>
 	<beans:beans
 		xmlns="http://www.springframework.org/schema/security"
@@ -195,7 +196,7 @@
 		</authentication-manager>
 
 	</beans:beans>
-	```
+```
 </details>
 
 
@@ -304,7 +305,7 @@ public class SecurityController {
 ```
 <details><summary> 'user-service' 추가된 코드 </summary>
 	
-	```xml
+```xml
 	<?xml version="1.0" encoding="UTF-8"?>
 	<beans:beans
 		xmlns="http://www.springframework.org/schema/security"
@@ -330,7 +331,7 @@ public class SecurityController {
 		</authentication-manager>
 
 	</beans:beans>
-	```
+```
 </details>
 
 ▶ 화면 출력 
@@ -346,13 +347,13 @@ noop을 붙이지 않으면 다른 인코딩으로 암호화를 해줘야함
 
 <details><summary>< user-service > {noop} 사용안했을 때 에러 </summary>
 
-	![화면 캡처 2021-02-17 121849](https://user-images.githubusercontent.com/74290204/108151555-555a4600-711a-11eb-80c3-47bb62561a7e.png)
+![화면 캡처 2021-02-17 121849](https://user-images.githubusercontent.com/74290204/108151555-555a4600-711a-11eb-80c3-47bb62561a7e.png)
 </details>
 
 ### Q. manager로 로그인하는것을 스프링시큐리티를 적용하세요
 <details><summary> 정답! </summary>
 	
-	+ 기존 소스코드에 user하나만 추가함 
++ 기존 소스코드에 user하나만 추가함 
 	```xml
 	<authentication-manager>
 		<authentication-provider>
@@ -470,7 +471,7 @@ user 정보를 메모리에 올리는데 기본적으로 세션안에 시큐리�
 
 <details><summary>화면 출력 </summary>
 
-	![화면 캡처 2021-02-17 142355](https://user-images.githubusercontent.com/74290204/108160142-da019000-712b-11eb-8979-5604ef478778.png)
+![화면 캡처 2021-02-17 142355](https://user-images.githubusercontent.com/74290204/108160142-da019000-712b-11eb-8979-5604ef478778.png)
 </details>
 
 
@@ -530,11 +531,11 @@ public void accessError(Authentication auth, Model model) {
 ```
 <details><summary> 화면 출력 </summary>
 
-	![화면 캡처 2021-02-18 111143](https://user-images.githubusercontent.com/74290204/108295295-bfd2bb00-71da-11eb-914b-638425314999.png)
+![화면 캡처 2021-02-18 111143](https://user-images.githubusercontent.com/74290204/108295295-bfd2bb00-71da-11eb-914b-638425314999.png)
 
-	![화면 캡처 2021-02-18 110531](https://user-images.githubusercontent.com/74290204/108295298-c103e800-71da-11eb-85d3-0848197bd2c0.png)
+![화면 캡처 2021-02-18 110531](https://user-images.githubusercontent.com/74290204/108295298-c103e800-71da-11eb-85d3-0848197bd2c0.png)
 
-	- member는 admin에 대한 권한이 없는데 admin으로 접근 → 403에러 발생 → 시큐리티 Controller로 넘김 → Controller에서 개발자가 맵핑해준 페이지로 이동
+- member는 admin에 대한 권한이 없는데 admin으로 접근 → 403에러 발생 → 시큐리티 Controller로 넘김 → Controller에서 개발자가 맵핑해준 페이지로 이동
 </details>
 <br>
 
@@ -620,7 +621,7 @@ public String loginForm() {
 ```
 <details><summary> 화면 출력 </summary>
 
-	![화면 캡처 2021-02-18 120336](https://user-images.githubusercontent.com/74290204/108299460-d03a6400-71e1-11eb-875e-9e0086e12b49.png)
+![화면 캡처 2021-02-18 120336](https://user-images.githubusercontent.com/74290204/108299460-d03a6400-71e1-11eb-875e-9e0086e12b49.png)
 </details>
 
 ```jsp
@@ -678,7 +679,7 @@ public String loginForm() {
 ```
 <details><summary> 화면 출력 </summary>
 
-	![화면 캡처 2021-02-18 120000](https://user-images.githubusercontent.com/74290204/108299462-d16b9100-71e1-11eb-8c9b-041edaa77368.png)
+![화면 캡처 2021-02-18 120000](https://user-images.githubusercontent.com/74290204/108299462-d16b9100-71e1-11eb-8c9b-041edaa77368.png)
 </details>
 <br>
 
@@ -719,19 +720,19 @@ public String loginForm() {
 - [x] 실행시키기 위해 web.xml에서 context설정 체크
 <details><summary> web.xml </summary>
 	
-	```xml
+```xml
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/spring/root-context.xml
 		/WEB-INF/spring/security-db-context.xml</param-value>
 	</context-param>
-	```
+```
 </details>
 	
 - [x]  root-context.xml 에 커넥션풀 확인(DB데이터 가져올거니까 DB연결되어있는지 확인하는 것)
 <details><summary>root-context.xml</summary>
 
-	```xml
+```xml
 	<?xml version="1.0" encoding="UTF-8"?>
 	<beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -779,7 +780,7 @@ public String loginForm() {
 		
 		<tx:annotation-driven transaction-manager="transactionManager" />    
 	</beans>
-	```
+```
 </details>
 
 - [x]  spring5 부터는 **패스워드 인코딩 처리(암호화) 반드시 해줘야함**
@@ -787,43 +788,43 @@ public String loginForm() {
 	- for 암호화: CustomNoOpPasswordEncoder.java
 	<details><summary>CustomNoOpPasswordEncoder.java 코드</summary>
 
-		```java
-		package edu.bit.ex.security;
+	```java
+	package edu.bit.ex.security;
 
-		import org.springframework.security.crypto.password.PasswordEncoder;
+	import org.springframework.security.crypto.password.PasswordEncoder;
 
-		import lombok.extern.log4j.Log4j;
+	import lombok.extern.log4j.Log4j;
 
-		@Log4j
-		public class CustomNoOpPasswordEncoder implements PasswordEncoder {
+	@Log4j
+	public class CustomNoOpPasswordEncoder implements PasswordEncoder {
 
-		   @Override
+		@Override //굉장히 간단한 암호화
 		public String encode(CharSequence rawPassword) {
-			   //굉장히 간단한 암호화
-		      log.warn("before encode :" + rawPassword);
 
-		      return rawPassword.toString();
-		   }
+			log.warn("before encode :" + rawPassword);
 
-		   @Override
+			return rawPassword.toString();
+		}
+
+		@Override
 		public boolean matches(CharSequence rawPassword, String encodedPassword) {
 
-		      log.warn("matches: " + rawPassword + ":" + encodedPassword);
+			log.warn("matches: " + rawPassword + ":" + encodedPassword);
 
-		      return rawPassword.toString().equals(encodedPassword);
-		   }
+			return rawPassword.toString().equals(encodedPassword);
 		}
-		```
+	}
+	```
 	</details>
 	<details><summary>security-db-context.xml 암호화 추가 부분</summary>
 	
-		![화면 캡처 2021-02-18 130939](https://user-images.githubusercontent.com/74290204/108304159-bf422080-71ea-11eb-9ca3-f1285e52f4a7.png
+	![화면 캡처 2021-02-18 130939](https://user-images.githubusercontent.com/74290204/108304159-bf422080-71ea-11eb-9ca3-f1285e52f4a7.png
 	</details>
 	
 	- test진행 : security/admin → DB에 admin만 권한 조건이 맞기 때문에 admin으로 test
 	- <details><summary>화면 출력</summary>
 	
-		![화면 캡처 2021-02-18 130801](https://user-images.githubusercontent.com/74290204/108510540-0111ba80-7302-11eb-990b-a6fe74995ce6.png)
+	![화면 캡처 2021-02-18 130801](https://user-images.githubusercontent.com/74290204/108510540-0111ba80-7302-11eb-990b-a6fe74995ce6.png)
 	</details>
 
 
@@ -931,7 +932,7 @@ public class HomeController {
 ```
 <details><summary>화면 출력</summary>
 
-	![화면 캡처 2021-02-18 151459](https://user-images.githubusercontent.com/74290204/108313686-16042600-71fc-11eb-8940-6f59c944556c.png)
+![화면 캡처 2021-02-18 151459](https://user-images.githubusercontent.com/74290204/108313686-16042600-71fc-11eb-8940-6f59c944556c.png)
 </details>
 
 ```jsp
