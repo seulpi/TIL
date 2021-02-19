@@ -6,9 +6,11 @@
     - Q. **스프링시큐리티**가 뭔가요?  스프링 시큐리티란 **인증과 권한에 대한 프레임워크**
 >> core?  Mapven Dependencies  - spring-core-5.0.7RELEASE-jar 이 부분 → 이 안에 IOC 컨테이너가 다 존재 
 
-![화면 캡처 2021-02-18 185143](https://user-images.githubusercontent.com/74290204/108339292-99347480-721a-11eb-9777-279f1a531385.png)
-
-![화면 캡처 2021-02-18 185158](https://user-images.githubusercontent.com/74290204/108339303-9c2f6500-721a-11eb-83c9-d4832544e941.png)
+<details><summary>Mapven Dependencies 캡처</summary>
+	
+	![화면 캡처 2021-02-18 185143](https://user-images.githubusercontent.com/74290204/108339292-99347480-721a-11eb-9777-279f1a531385.png)
+	![화면 캡처 2021-02-18 185158](https://user-images.githubusercontent.com/74290204/108339303-9c2f6500-721a-11eb-83c9-d4832544e941.png)
+</details>
 
 ### ▶ jar 한개 한개가 다 조립품이기 때문에 설정이 다 다름  → Log4j, 스프링시큐리티도 설정이 다 다름 → 다 다르게 세팅해야된다는 소리
 - 주입 → 소스 상에서 .xmld에 bean 객체생성해서 만드는 부분
@@ -42,104 +44,122 @@
      <org.springframework-version>5.0.7.RELEASE</org.springframework-version>
      <org.security-version>5.0.6.RELEASE</org.security-version>
      ```
-    #### ※ maven repository에서 spring core version과 호환 확인!!
-    - 밎춰도 에러가 날때 있음(오픈소스이다보니까)
-    - https://mvnrepository.com/
+#### ※ maven repository에서 spring core version과 호환 확인!!
+- 맞춰도 에러가 날때 있음(오픈소스이다보니까)
+- https://mvnrepository.com/
+<details><summary>maven repository캡처</summary>
+	
+	![화면 캡처 2021-02-18 190547](https://user-images.githubusercontent.com/74290204/108340966-8458e080-721c-11eb-8479-5c330edf2561.png)
+	
+	![화면 캡처 2021-02-18 190656](https://user-images.githubusercontent.com/74290204/108340969-858a0d80-721c-11eb-9cfe-e6590b6bc004.png)
+</details>
   
-    ![화면 캡처 2021-02-18 190547](https://user-images.githubusercontent.com/74290204/108340966-8458e080-721c-11eb-8479-5c330edf2561.png)
-    ![화면 캡처 2021-02-18 190656](https://user-images.githubusercontent.com/74290204/108340969-858a0d80-721c-11eb-9cfe-e6590b6bc004.png)
 
 ### 1. xml 설정
-
-#### *- pom.xml*
-```xml
-<!-- Spring Security -->
-<dependency>
-	<groupId>org.springframework.security</groupId>
-	<artifactId>spring-security-core</artifactId>
-	<version>${org.security-version}</version>
-</dependency>
-
-<dependency>
-	<groupId>org.springframework.security</groupId>
-	<artifactId>spring-security-web</artifactId>
-	<version>${org.security-version}</version>
-</dependency>
-
-<dependency>
-	<groupId>org.springframework.security</groupId>
-	<artifactId>spring-security-config</artifactId>
-	<version>${org.security-version}</version>
-</dependency>
-
-<dependency>
-	<groupId>org.springframework.security</groupId>
-	<artifactId>spring-security-taglibs</artifactId>
-	<version>${org.security-version}</version>
-</dependency>
-```
-#### ▶ 이 라이브러리를 **왜 다운로드** 받는가? **인증과 권한을 컨트롤**하기 위함! 
+#### *- pom.xml* → 이 라이브러리를 **왜 다운로드** 받는가? **인증과 권한을 컨트롤**하기 위함! 
 >> 소셜로그안할때 핵심개념 = ★ 인증과권한 (시큐리티의 기본)
+
+<details><summary>pom.xml</summary>
+	
+	```xml
+	<!-- Spring Security -->
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-core</artifactId>
+		<version>${org.security-version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-web</artifactId>
+		<version>${org.security-version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-config</artifactId>
+		<version>${org.security-version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-taglibs</artifactId>
+		<version>${org.security-version}</version>
+	</dependency>
+	```
+</details>
 
 #### *- web.xml* → filter 설정
 - filter name도 바뀌서는 안됨(그냥 내비두기) / 위치 : 한글 필터 밑
+<details><summary>web.xml</summary>
+	
+	```xml
+	 <!-- Spring Security Filter spring 12개의 필터 객체가 생성된다-->
+	<filter>
+	    <filter-name>springSecurityFilterChain</filter-name>
+	    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
 
-```xml
- <!-- Spring Security Filter spring 12개의 필터 객체가 생성된다-->
-<filter>
-    <filter-name>springSecurityFilterChain</filter-name>
-    <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-</filter>
- 
- <filter-mapping>
-    <filter-name>springSecurityFilterChain</filter-name>
-    <url-pattern>/*</url-pattern>
-</filter-mapping>
-```
+	 <filter-mapping>
+	    <filter-name>springSecurityFilterChain</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	```
+</details>
 
 #### *- security-context.xml* → root-context.xml를 복붙(※같은자리에 붙여넣기)
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns="http://www.springframework.org/schema/security"
-    xmlns:beans="http://www.springframework.org/schema/beans"
-   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-   xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
-      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">   
+<details><summary>security-context.xml</summary>
+	
+	```xml
+	<?xml version="1.0" encoding="UTF-8"?>
+	<beans:beans xmlns="http://www.springframework.org/schema/security"
+	    xmlns:beans="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+	      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">   
 
-<!-- http와 auth~는 시큐리티의 기본적인 설정 -->
-	<http>
-		<form-login />
-	</http>
+	<!-- http와 auth~는 시큐리티의 기본적인 설정 -->
+		<http>
+			<form-login />
+		</http>
 
-	<!-- provider -->
-	<authentication-manager>
+		<!-- provider -->
+		<authentication-manager>
 
-	</authentication-manager>
-    
-</beans:beans>
+		</authentication-manager>
 
-- web.xml -> /WEB-INF/spring/security-context.xml 추가 
+	</beans:beans>
 
-<context-param>
-	<param-name>contextConfigLocation</param-name>
-	<param-value>/WEB-INF/spring/root-context.xml
-		/WEB-INF/spring/security-context.xml</param-value>
-</context-param>
-```
+	- web.xml -> /WEB-INF/spring/security-context.xml 추가 
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml
+			/WEB-INF/spring/security-context.xml</param-value>
+	</context-param>
+	```
+</details>
+
+---
 
 ### ▶ 여기까지 설정하고 "context명"/login하면 화면 출력
+
 ![화면 캡처 2021-02-16 121256](https://user-images.githubusercontent.com/74290204/108015218-0f867a80-7053-11eb-82e0-d4da638a8ccd.png)
 
 #### why] form을 만들어 주지도 않았는데 어떻게 이런 form형태의 페이지가 출력되는지?
 - 내가 만들어 준 페이지가 아닌데 누군가 응답해서 페이지를 출력 <br> → login이라는 경로를 누가 받아줌, interceptor처럼 누군가가 낚아채가는 중! <br>(내가 controller에서 경로 처리 안해줬는데 페이지가 구현중이니까)
+- 
 - **★ 응답 해주는 주체 : 스프링 시큐리티** <br> → 스프링 시큐리티 필터에서 낚아챔(필터니까 Controller가기 전에 낚아채기 가능)
+- 
 - 페이지는 어디서 구현되는가? Maven 라이브러리
+<br>
 
 ## @ 시큐리티 실행되는 위치
 - 로그인을 어디서 낚아채는가? Dispather Servlet 가기전에!
     - why? - 해킹 때문에 filter에서 작동
 
 ![security](https://user-images.githubusercontent.com/74290204/108144440-fe01a900-710c-11eb-97bd-b4278a67237b.png)
+<br>
 
 
 ## @ 시큐리티 사용 
@@ -147,33 +167,37 @@
 - form-login처럼 디폴트로 생성해주지않기 때문에 직접 controller, view등을 세팅해줘야함
 
 1. *security-context.xml*
-
 ```xml
 <intercept-url pattern="/security/all" access="permitAll" />
 <intercept-url pattern="/security/member" access="hasRole('ROLE_MEMBER')" /> 
 ```
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans:beans
-	xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
-      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<http>
-		<intercept-url pattern="/security/all" access="permitAll" /> <!-- 모두 접근 허용 -->
-		<intercept-url pattern="/security/member" access="hasRole('ROLE_MEMBER')" /> <!-- ROLE_MEMBER 권한을 가진 사람만 접근 허용 -->
-		<form-login />
-	</http>
+<details><summary>security-context.xml에 interceptor 추가된 코드</summary>
+	
+	```xml
+	<?xml version="1.0" encoding="UTF-8"?>
+	<beans:beans
+		xmlns="http://www.springframework.org/schema/security"
+		xmlns:beans="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+	      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<!-- provider -->
-	<authentication-manager>
+		<http>
+			<intercept-url pattern="/security/all" access="permitAll" /> <!-- 모두 접근 허용 -->
+			<intercept-url pattern="/security/member" access="hasRole('ROLE_MEMBER')" /> <!-- ROLE_MEMBER 권한을 가진 사람만 접근 허용 -->
+			<form-login />
+		</http>
 
-	</authentication-manager>
+		<!-- provider -->
+		<authentication-manager>
 
-</beans:beans>
-```
+		</authentication-manager>
+
+	</beans:beans>
+	```
+</details>
+
 
 2. *controller*
 
@@ -253,10 +277,11 @@ public class SecurityController {
 </body>
 </html>
 ```
+<details><summary>화면 출력</summary>
+	
+	![화면 캡처 2021-02-17 112009](https://user-images.githubusercontent.com/74290204/108149013-52a92200-7115-11eb-9c96-7a1a2936d50c.png)
+</details>
 
-▶ 화면 출력
-
-![화면 캡처 2021-02-17 112009](https://user-images.githubusercontent.com/74290204/108149013-52a92200-7115-11eb-9c96-7a1a2936d50c.png)
 
 #### *★시큐리티 내부 동작*
 - 체크가 안되는 권한에 대해서는 내부적으로 인증을 하기 위한 로그인을 다시하라고 되돌려 보냄 <br> (ROLE_MEMBER권한을 가지고 있는지)
@@ -277,34 +302,36 @@ public class SecurityController {
     </authentication-provider>
 </authentication-manager>
 ```
+<details><summary> 'user-service' 추가된 코드 </summary>
+	
+	```xml
+	<?xml version="1.0" encoding="UTF-8"?>
+	<beans:beans
+		xmlns="http://www.springframework.org/schema/security"
+		xmlns:beans="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+	      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans:beans
-	xmlns="http://www.springframework.org/schema/security"
-	xmlns:beans="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
-      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+		<http>
+			<intercept-url pattern="/security/all" access="permitAll" /> <!-- 모두 접근 허용 -->
+			<intercept-url pattern="/security/member" access="hasRole('ROLE_MEMBER')" /> <!-- ROLE_MEMBER 권한을 가진 사람만 접근 허용 -->
+			<form-login />
+		</http>
 
-	<http>
-		<intercept-url pattern="/security/all" access="permitAll" /> <!-- 모두 접근 허용 -->
-		<intercept-url pattern="/security/member" access="hasRole('ROLE_MEMBER')" /> <!-- ROLE_MEMBER 권한을 가진 사람만 접근 허용 -->
-		<form-login />
-	</http>
+		<!-- provider -->
+		<authentication-manager>
+			<authentication-provider>
+				<user-service>
+					<user name="member" password="{noop}member"
+						authorities="ROLE_MEMBER" />
+				</user-service>
+			</authentication-provider>
+		</authentication-manager>
 
-	<!-- provider -->
-	<authentication-manager>
-		<authentication-provider>
-			<user-service>
-				<user name="member" password="{noop}member"
-					authorities="ROLE_MEMBER" />
-			</user-service>
-		</authentication-provider>
-	</authentication-manager>
-
-</beans:beans>
-```
+	</beans:beans>
+	```
+</details>
 
 ▶ 화면 출력 
 
@@ -313,24 +340,31 @@ public class SecurityController {
 - {noop} 5.0부터는 패스워드를 인코딩하게 되어있어서(패스워트 암호화) 이걸 줘야 에러 안나고 패스워드를 읽어들임
 - noop는 Spring Security에서 텍스트 그대로 비밀번호로 인식하게 해줌<br>
 noop을 붙이지 않으면 다른 인코딩으로 암호화를 해줘야함 
+
 >> [spring security 공식블로그 설명 참조]https://spring.io/blog/2017/11/01/spring-security-5-0-0-rc1-released#password-encoding 
 <br>
-▶ {noop} 사용안했을 때 에러 
 
-![화면 캡처 2021-02-17 121849](https://user-images.githubusercontent.com/74290204/108151555-555a4600-711a-11eb-80c3-47bb62561a7e.png)
+<details><summary>< user-service > {noop} 사용안했을 때 에러 </summary>
+
+	![화면 캡처 2021-02-17 121849](https://user-images.githubusercontent.com/74290204/108151555-555a4600-711a-11eb-80c3-47bb62561a7e.png)
+</details>
 
 ### Q. manager로 로그인하는것을 스프링시큐리티를 적용하세요
-+ 기존 소스코드에 user하나만 추가함 
-```xml
-<authentication-manager>
-	<authentication-provider>
-		<user-service>
-			<user name="member" password="{noop}member" authorities="ROLE_MEMBER" />
-			<user name="manager" password="{noop}manager" authorities="ROLE_MEMBER" />
-		</user-service>
-	</authentication-provider>
-</authentication-manager>
-```
+<details><summary> 정답! </summary>
+	
+	+ 기존 소스코드에 user하나만 추가함 
+	```xml
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="member" password="{noop}member" authorities="ROLE_MEMBER" />
+				<user name="manager" password="{noop}manager" authorities="ROLE_MEMBER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+	```
+</details>
+
 
 ### ④ principal : jsp에서 써먹기 위한 용도 
 
@@ -434,9 +468,10 @@ user 정보를 메모리에 올리는데 기본적으로 세션안에 시큐리�
 ```
 <br>
 
-▶ 화면 출력
+<details><summary>화면 출력 </summary>
 
-![화면 캡처 2021-02-17 142355](https://user-images.githubusercontent.com/74290204/108160142-da019000-712b-11eb-8979-5604ef478778.png)
+	![화면 캡처 2021-02-17 142355](https://user-images.githubusercontent.com/74290204/108160142-da019000-712b-11eb-8979-5604ef478778.png)
+</details>
 
 
 #### ★ - 전에는 DB안에서 Model안에 넣어서 jsp로 넘김 → 근데 스프링시큐리티를 쓰면 그럴 필요가 없음!!!!
@@ -444,11 +479,12 @@ user 정보를 메모리에 올리는데 기본적으로 세션안에 시큐리�
 
 - 설정만으로 알아서 스프링시큐리티가 세션안에 우리가 써먹을 수 있는 몇가지 객체를 만들어놓고 관리
     - 그 중 하나가 principal: jsp페이지에서 사용 가능  
-
+<br>
 
 ### ④ 에러 처리
 - 객체 생성해서 처리
 - 권한 에러 처리 = 403 에러 처리(권한이 없는데 페이지 접속을 해서 나는 에러)
+
 ```xml
 <!-- 403에러처리, 에러가 나면 /security/accessError로 이동  -->
 <access-denied-handler error page="/security/accessError"/>
@@ -492,14 +528,15 @@ public void accessError(Authentication auth, Model model) {
 
 <h2><c:out value="${msg}"/></h2>
 ```
-▶ 화면 출력 
+<details><summary> 화면 출력 </summary>
 
-![화면 캡처 2021-02-18 111143](https://user-images.githubusercontent.com/74290204/108295295-bfd2bb00-71da-11eb-914b-638425314999.png)
+	![화면 캡처 2021-02-18 111143](https://user-images.githubusercontent.com/74290204/108295295-bfd2bb00-71da-11eb-914b-638425314999.png)
 
-![화면 캡처 2021-02-18 110531](https://user-images.githubusercontent.com/74290204/108295298-c103e800-71da-11eb-85d3-0848197bd2c0.png)
+	![화면 캡처 2021-02-18 110531](https://user-images.githubusercontent.com/74290204/108295298-c103e800-71da-11eb-85d3-0848197bd2c0.png)
 
-- member는 admin에 대한 권한이 없는데 admin으로 접근 → 403에러 발생 → 시큐리티 Controller로 넘김 → Controller에서 개발자가 맵핑해준 페이지로 이동
-
+	- member는 admin에 대한 권한이 없는데 admin으로 접근 → 403에러 발생 → 시큐리티 Controller로 넘김 → Controller에서 개발자가 맵핑해준 페이지로 이동
+</details>
+<br>
 
 ### ⑤ logout : 시큐리티 내부적으로 Session을 알아서 날림
 
@@ -510,7 +547,7 @@ public void accessError(Authentication auth, Model model) {
 ```
 
 >> **url = "logout" 이렇게 반드시 맞춰줘야함** 안에 함수가 **디폴트로** 그렇게 **정의**되어있기 때문에! 
-
+<br>
 
 ### ⑥ < form-login /> → customizing 하는 방법
 
@@ -581,10 +618,10 @@ public String loginForm() {
     <button type="submit" class="btn">로그인</button>
 </form:form>
 ```
-▶ 화면 출력
+<details><summary> 화면 출력 </summary>
 
-![화면 캡처 2021-02-18 120336](https://user-images.githubusercontent.com/74290204/108299460-d03a6400-71e1-11eb-875e-9e0086e12b49.png)
-
+	![화면 캡처 2021-02-18 120336](https://user-images.githubusercontent.com/74290204/108299460-d03a6400-71e1-11eb-875e-9e0086e12b49.png)
+</details>
 
 ```jsp
 <!-- loginForm2.jsp (부트스트랩 적용) -->
@@ -639,10 +676,11 @@ public String loginForm() {
 </body>
 </html>
 ```
-▶ 화면 출력
+<details><summary> 화면 출력 </summary>
 
-![화면 캡처 2021-02-18 120000](https://user-images.githubusercontent.com/74290204/108299462-d16b9100-71e1-11eb-8c9b-041edaa77368.png)
-
+	![화면 캡처 2021-02-18 120000](https://user-images.githubusercontent.com/74290204/108299462-d16b9100-71e1-11eb-8c9b-041edaa77368.png)
+</details>
+<br>
 
 ### ③ 시큐리티 활용해 DB에 있는 데이터 가져와서 권한 설정3
 - 미리 생성해 둔 AUTHORITIES, USERS 테이블 이용
@@ -670,6 +708,7 @@ public String loginForm() {
     </authentication-provider>
 </authentication-manager>
 ```
+
 - **JdbcDaoImpl을 참조해** users-by-username-query="select username, password, enabled from users where username = ?" 를 **쿼리를 맵핑시킴** → UserDatailService를 호출 
 	- **맵핑안하면** JdbcDaoImpl 안에 **정의된 디폴트 쿼리 실행**
 	```xml
@@ -678,6 +717,8 @@ public String loginForm() {
 	```
 
 - [x] 실행시키기 위해 web.xml에서 context설정 체크
+<details><summary> web.xml </summary>
+	
 	```xml
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -685,8 +726,10 @@ public String loginForm() {
 		/WEB-INF/spring/security-db-context.xml</param-value>
 	</context-param>
 	```
+</details>
+	
 - [x]  root-context.xml 에 커넥션풀 확인(DB데이터 가져올거니까 DB연결되어있는지 확인하는 것)
-	<details><summary>root-context.xml</summary>
+<details><summary>root-context.xml</summary>
 
 	```xml
 	<?xml version="1.0" encoding="UTF-8"?>
@@ -737,55 +780,59 @@ public String loginForm() {
 		<tx:annotation-driven transaction-manager="transactionManager" />    
 	</beans>
 	```
-	</details>
+</details>
 
 - [x]  spring5 부터는 **패스워드 인코딩 처리(암호화) 반드시 해줘야함**
 	- 학원에서 암호화 설명 전이라 일단 테스트용 이렇게 설정 (실무에서는 이렇게 사용x) 
+	- for 암호화: CustomNoOpPasswordEncoder.java
+	<details><summary>CustomNoOpPasswordEncoder.java 코드</summary>
 
-- for 암호화: CustomNoOpPasswordEncoder.java
-```java
-package edu.bit.ex.security;
+		```java
+		package edu.bit.ex.security;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
+		import org.springframework.security.crypto.password.PasswordEncoder;
 
-import lombok.extern.log4j.Log4j;
+		import lombok.extern.log4j.Log4j;
 
-@Log4j
-public class CustomNoOpPasswordEncoder implements PasswordEncoder {
+		@Log4j
+		public class CustomNoOpPasswordEncoder implements PasswordEncoder {
 
-   @Override
-public String encode(CharSequence rawPassword) {
-	   //굉장히 간단한 암호화
-      log.warn("before encode :" + rawPassword);
+		   @Override
+		public String encode(CharSequence rawPassword) {
+			   //굉장히 간단한 암호화
+		      log.warn("before encode :" + rawPassword);
 
-      return rawPassword.toString();
-   }
+		      return rawPassword.toString();
+		   }
 
-   @Override
-public boolean matches(CharSequence rawPassword, String encodedPassword) {
+		   @Override
+		public boolean matches(CharSequence rawPassword, String encodedPassword) {
 
-      log.warn("matches: " + rawPassword + ":" + encodedPassword);
+		      log.warn("matches: " + rawPassword + ":" + encodedPassword);
 
-      return rawPassword.toString().equals(encodedPassword);
-   }
-}
-```
+		      return rawPassword.toString().equals(encodedPassword);
+		   }
+		}
+		```
+	</details>
+	<details><summary>security-db-context.xml 암호화 추가 부분</summary>
+	
+		![화면 캡처 2021-02-18 130939](https://user-images.githubusercontent.com/74290204/108304159-bf422080-71ea-11eb-9ca3-f1285e52f4a7.png
+	</details>
+	
+	- test진행 : security/admin → DB에 admin만 권한 조건이 맞기 때문에 admin으로 test
+	- <details><summary>화면 출력</summary>
+	
+		![화면 캡처 2021-02-18 130801](https://user-images.githubusercontent.com/74290204/108510540-0111ba80-7302-11eb-990b-a6fe74995ce6.png)
+	</details>
 
-☞ security-db-context.xml 암호화 추가 부분
-![화면 캡처 2021-02-18 130939](https://user-images.githubusercontent.com/74290204/108304159-bf422080-71ea-11eb-9ca3-f1285e52f4a7.png)
-<br>
-☞ test진행 : security/admin → DB에 admin만 권한 조건이 맞기 때문에 admin으로 test
-<br>
-▶ 화면 출력
 
-![화면 캡처 2021-02-18 130801](https://user-images.githubusercontent.com/74290204/108510540-0111ba80-7302-11eb-990b-a6fe74995ce6.png)
-
-```xml
-role-prefix=""
-               users-by-username-query="select username, password, enabled from users where username = ?"
-               authorities-by-username-query="select username, authority from authorities where username = ?
-<!--이 코드가 없어도 돌아감 why? JdbcDaoIml 객체 안에 디폴트 쿼리가 실행되기 때문 -->
-```
+	```xml
+	role-prefix=""
+		       users-by-username-query="select username, password, enabled from users where username = ?"
+		       authorities-by-username-query="select username, authority from authorities where username = ?
+	<!--이 코드가 없어도 돌아감 why? JdbcDaoIml 객체 안에 디폴트 쿼리가 실행되기 때문 -->
+	```
 
 
 #### ex2]
@@ -882,9 +929,10 @@ public class HomeController {
 </body>
 </html>
 ```
-▶ 화면 출력
+<details><summary>화면 출력</summary>
 
-![화면 캡처 2021-02-18 151459](https://user-images.githubusercontent.com/74290204/108313686-16042600-71fc-11eb-8940-6f59c944556c.png)
+	![화면 캡처 2021-02-18 151459](https://user-images.githubusercontent.com/74290204/108313686-16042600-71fc-11eb-8940-6f59c944556c.png)
+</details>
 
 ```jsp
 <!-- userHome -->
