@@ -816,15 +816,17 @@ public String loginForm() {
 	}
 	```
 	</details>
+	
 	<details><summary>security-db-context.xml 암호화 추가 부분</summary>
 	
-	![화면 캡처 2021-02-18 130939](https://user-images.githubusercontent.com/74290204/108304159-bf422080-71ea-11eb-9ca3-f1285e52f4a7.png
+	![화면 캡처 2021-02-18 130939](https://user-images.githubusercontent.com/74290204/108517446-c7917d00-730a-11eb-9119-a9a4200bd5fc.png)
 	</details>
 	
 	- test진행 : security/admin → DB에 admin만 권한 조건이 맞기 때문에 admin으로 test
-	- <details><summary>화면 출력</summary>
 	
-	![화면 캡처 2021-02-18 130801](https://user-images.githubusercontent.com/74290204/108510540-0111ba80-7302-11eb-990b-a6fe74995ce6.png)
+	<details><summary>화면 출력</summary>
+	
+	![화면 캡처 2021-02-18 130801](https://user-images.githubusercontent.com/74290204/108510540-0111ba80-7302-11eb-990b-a6fe74995ce6.png)		
 	</details>
 
 
