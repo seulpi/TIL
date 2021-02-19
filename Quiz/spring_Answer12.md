@@ -3,45 +3,6 @@
 - mgr인 사람은 admin관리자로 사원인 사람들은 그냥 user로 권한 설정해서 리소스접근을 다르게 할 것
 <br>
 
-
-## *수업 후 추가*
-- 쿼리문 순서대로 갖다 때리면 됨 → 다이렉트로 쿼리문을 줘서 컬럼을 만들어냄
-```xml
-<users-by-username-query= "select ename, empno, 1 from emp where ename=?"
-authorities-by-username-query= "select ename, case when job= 'manager' then 'ROLE_ADMIN' else 'ROLE_USER' end authority from emop where ename=? "
-```
-- 객체를 통해서  <jdbc-user-service /> 를 매칭시킴 그래서 DB안에 쿼리문을 사용할 수 있는 것임 
-```xml
-<beans:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
-        <beans:property name="dataSource" ref="dataSource"/>
-</beans:bean>
-
-→ 쿼리문을 날려주는 주체는? (개발자가 직접 쿼리를 수정한걸 읽어서 처리해주는 주체, DB를 한번 갖다오고 return해주는 주체) 'UserDetails'
-```
-![화면 캡처 2021-02-19 101135](https://user-images.githubusercontent.com/74290204/108442814-0a1b7100-729b-11eb-9902-566e249565fb.png)
-
-- xml을 시작될때  읽어들이니까 쿼리 읽는 시점은 서버가 시작되기전에  읽어 들임(JdbcDaoImpl 객체 생성을 하면서 세팅이 된다) 
-```java
-// set함수 세팅
-public void setUsersByUsernameQuery(String usersByUsernameQueryString) { 
-		this.usersByUsernameQuery = usersByUsernameQueryString;
-} 
-
-//로그인 하면서 함수 실행 (내부적으로는 ★UserDetails을 호출)
-protected List<UserDetails> loadUsersByUsername(String username) { return getJdbcTemplate().query(this.usersByUsernameQuery, new String[] { username }, new RowMapper<UserDetails>() {
-	@Override
-	public UserDetails mapRow(ResultSet rs, int rowNum) throws SQLException {
-		String username = rs.getString(1);
-		String password = rs.getString(2);
-		boolean enabled = rs.getBoolean(3);
-		
-		return new User(username, password, enabled, true, true, true, AuthorityUtils.NO_AUTHORITIES);
-		}
-
-	});
-}
-```
-
 ## *Answer* 
 + DB 컬럼추가, xml설정 수정만 내가 하고 나머지는 수업시간에 한걸로 진행함
 
@@ -242,3 +203,45 @@ public class HomeController {
 ![화면 캡처 2021-02-18 172826](https://user-images.githubusercontent.com/74290204/108331016-aef16c00-7211-11eb-85f8-0afff2e3098a.png)
 
 ![화면 캡처 2021-02-18 172849](https://user-images.githubusercontent.com/74290204/108331040-b44eb680-7211-11eb-9a19-02b5c6b96e66.png)
+
+<br>
+
+## *▶ 수업 후 추가*
+- 쿼리문 순서대로 갖다 때리면 됨 → 다이렉트로 쿼리문을 줘서 컬럼을 만들어냄
+```xml
+<users-by-username-query= "select ename, empno, 1 from emp where ename=?"
+authorities-by-username-query= "select ename, case when job= 'manager' then 'ROLE_ADMIN' else 'ROLE_USER' end authority from emop where ename=? "
+```
+- 객체를 통해서  <jdbc-user-service /> 를 매칭시킴 그래서 DB안에 쿼리문을 사용할 수 있는 것임 
+```xml
+<beans:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+        <beans:property name="dataSource" ref="dataSource"/>
+</beans:bean>
+
+→ 쿼리문을 날려주는 주체는? (개발자가 직접 쿼리를 수정한걸 읽어서 처리해주는 주체, DB를 한번 갖다오고 return해주는 주체) 'UserDetails'
+```
+![화면 캡처 2021-02-19 101135](https://user-images.githubusercontent.com/74290204/108442814-0a1b7100-729b-11eb-9902-566e249565fb.png)
+
+- xml을 시작될때  읽어들이니까 쿼리 읽는 시점은 서버가 시작되기전에  읽어 들임(JdbcDaoImpl 객체 생성을 하면서 세팅이 된다) 
+```java
+// set함수 세팅
+public void setUsersByUsernameQuery(String usersByUsernameQueryString) { 
+		this.usersByUsernameQuery = usersByUsernameQueryString;
+} 
+
+//로그인 하면서 함수 실행 (내부적으로는 ★UserDetails을 호출)
+protected List<UserDetails> loadUsersByUsername(String username) { return getJdbcTemplate().query(this.usersByUsernameQuery, new String[] { username }, new RowMapper<UserDetails>() {
+	@Override
+	public UserDetails mapRow(ResultSet rs, int rowNum) throws SQLException {
+		String username = rs.getString(1);
+		String password = rs.getString(2);
+		boolean enabled = rs.getBoolean(3);
+		
+		return new User(username, password, enabled, true, true, true, AuthorityUtils.NO_AUTHORITIES);
+		}
+
+	});
+}
+```
+
+
