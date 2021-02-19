@@ -35,7 +35,8 @@ public class EmpVO {
 ```
 
 ### *+ EmpUser*
-- 학원실습예제는 1:N이어서 List로 담은 값을 for문을 사용해 가져왔는데 List형식으로 저장한게 없기 때문에 그냥 add를 한줄로 처리해도된다(요 케이스에 한해)
+- 학원실습예제는 1:N이어서 List로 담은 값을 for문을 사용해 add해줬는데 List형식으로 저장한게 없기 때문에 그냥 add를 한줄로 처리해도된다(요 케이스에 한해)
+- return null;로 해서 에러남 당연히 값을 저장했으면 그 값을 돌려줘야함! (return 확인 잘 할것)
 ```java
 package edu.bit.ex.vo;
 
@@ -67,12 +68,13 @@ public class EmpUser extends User {
 		this.emp = empVO;
 		
 	}
-
+	
+// 권한이 두개 이상일때 적용하려고 만드는 함수(현재 만들어놓은 emp authority에는 한개씩만 넣어서 상관없지만 위에 함수 오버라이딩하는게 Collection으로 들어가야하기 때문에 정의해줘야함)
 	private static Collection<? extends GrantedAuthority> getAuth(EmpVO empVO) {
-		// 권한이 두개 이상일때 적용하려고 만드는 함수(현재 만들어놓은 emp authority에는 한개씩만 넣어서 상관없지만 위에 함수 오버라이딩하는게 Collection으로 들어가야하기 때문에 정의해줘야함)
+
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		
-	    authorities.add(new SimpleGrantedAuthority(empVO.getAuthority()));
+	
+		authorities.add(new SimpleGrantedAuthority(empVO.getAuthority()));
 	     
 		return authorities;
 	}
