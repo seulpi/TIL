@@ -133,8 +133,9 @@ public interface EmpMapper {
 }
 ```
 
-### *+ EmpMapper.xml
+### *+ EmpMapper.xml*
 - 역시 마찬가지로 1:N 관계 아니기 때문에 resultMap해줄 이유가 없음
+- 변수명 잘못써서 에러 한번 났다 → empname으로 씀 변수명 ename으로 주고 컬럼명도 ename인데..ㅎ
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
