@@ -4,13 +4,50 @@
 <br>
 
 
+## *수업 후 추가*
+- 쿼리문 순서대로 갖다 때리면 됨 → 다이렉트로 쿼리문을 줘서 컬럼을 만들어냄
+```xml
+<users-by-username-query= "select ename, empno, 1 from emp where ename=?"
+authorities-by-username-query= "select ename, case when job= 'manager' then 'ROLE_ADMIN' else 'ROLE_USER' end authority from emop where ename=? "
+```
+- 객체를 통해서  <jdbc-user-service /> 를 매칭시킴 그래서 DB안에 쿼리문을 사용할 수 있는 것임 
+```xml
+<beans:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+        <beans:property name="dataSource" ref="dataSource"/>
+</beans:bean>
+
+→ 쿼리문을 날려주는 주체는? (개발자가 직접 쿼리를 수정한걸 읽어서 처리해주는 주체, DB를 한번 갖다오고 return해주는 주체) 'UserDetails'
+```
+![화면 캡처 2021-02-19 101135](https://user-images.githubusercontent.com/74290204/108442814-0a1b7100-729b-11eb-9902-566e249565fb.png)
+
+- xml을 시작될때  읽어들이니까 쿼리 읽는 시점은 서버가 시작되기전에  읽어 들임(JdbcDaoImpl 객체 생성을 하면서 세팅이 된다) 
+```java
+// set함수 세팅
+public void setUsersByUsernameQuery(String usersByUsernameQueryString) { 
+		this.usersByUsernameQuery = usersByUsernameQueryString;
+} 
+
+//로그인 하면서 함수 실행 (내부적으로는 ★UserDetails을 호출)
+protected List<UserDetails> loadUsersByUsername(String username) { return getJdbcTemplate().query(this.usersByUsernameQuery, new String[] { username }, new RowMapper<UserDetails>() {
+	@Override
+	public UserDetails mapRow(ResultSet rs, int rowNum) throws SQLException {
+		String username = rs.getString(1);
+		String password = rs.getString(2);
+		boolean enabled = rs.getBoolean(3);
+		
+		return new User(username, password, enabled, true, true, true, AuthorityUtils.NO_AUTHORITIES);
+		}
+
+	});
+}
+```
 
 ## *Answer* 
 + DB 컬럼추가, xml설정 수정만 내가 하고 나머지는 수업시간에 한걸로 진행함
 
 ## 1. 일단 DB EMP 테이블에 Autority, Enabled 컬럼 추가 
 - 처음에 Enabled 컬럼 추가없이 했더니 로그인이 안되었다<br>
- → **Enabled**가 계정에 대한 **활성, 비활성 여부(0-비활성화 1-활성화)**이기 때문에 컬럼을 추가해서 체크해줘야한다 <br> **users-by-username-query에서 username, password, enabled는 필수이기 때문에 DB에 이 컬럼들이 반드시 있어야함**
+ → **Enabled**가 계정에 대한 **활성, 비활성 여부(0-비활성화,계정 휴면 상태 / 1-활성화)**이기 때문에 컬럼을 추가해서 체크해줘야한다 <br> **users-by-username-query에서 username, password, enabled는 필수이기 때문에 DB에 이 컬럼들이 반드시 있어야함**
 
 ```sql
 --컬럼추가
