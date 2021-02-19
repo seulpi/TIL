@@ -280,7 +280,7 @@ public class SecurityController {
 ```
 <details><summary>화면 출력</summary>
 	
-	![화면 캡처 2021-02-17 112009](https://user-images.githubusercontent.com/74290204/108149013-52a92200-7115-11eb-9c96-7a1a2936d50c.png)
+![화면 캡처 2021-02-17 112009](https://user-images.githubusercontent.com/74290204/108149013-52a92200-7115-11eb-9c96-7a1a2936d50c.png)
 </details>
 
 
