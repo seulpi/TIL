@@ -33,6 +33,8 @@ public class EmpVO {
 
 }
 ```
+![화면 캡처 2021-02-19 175613](https://user-images.githubusercontent.com/74290204/108481634-c7c65400-72db-11eb-99e1-9c568656546f.png)
+
 
 ### *+ EmpUser*
 - 학원실습예제는 1:N이어서 List로 담은 값을 for문을 사용해 add해줬는데 List형식으로 저장한게 없기 때문에 그냥 add를 한줄로 처리해도된다(요 케이스에 한해)
