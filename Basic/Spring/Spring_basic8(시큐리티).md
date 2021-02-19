@@ -621,7 +621,7 @@ public String loginForm() {
 ```
 <details><summary> 화면 출력 </summary>
 
-![화면 캡처 2021-02-18 120336](https://user-images.githubusercontent.com/74290204/108299460-d03a6400-71e1-11eb-875e-9e0086e12b49.png)
+![화면 캡처 2021-02-18 120000](https://user-images.githubusercontent.com/74290204/108299462-d16b9100-71e1-11eb-8c9b-041edaa77368.png)
 </details>
 
 ```jsp
@@ -679,7 +679,7 @@ public String loginForm() {
 ```
 <details><summary> 화면 출력 </summary>
 
-![화면 캡처 2021-02-18 120000](https://user-images.githubusercontent.com/74290204/108299462-d16b9100-71e1-11eb-8c9b-041edaa77368.png)
+![화면 캡처 2021-02-18 120336](https://user-images.githubusercontent.com/74290204/108299460-d03a6400-71e1-11eb-875e-9e0086e12b49.png)
 </details>
 <br>
 
