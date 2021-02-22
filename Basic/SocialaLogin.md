@@ -395,7 +395,8 @@ public class LoginController {
 ![11111111111](https://user-images.githubusercontent.com/74290204/106881792-50ac8f80-6721-11eb-9e57-9b4c5a6f625d.PNG)
 
 
-# GOOGLE LOGIN
+
+# Google LOGIN
 
 ## 1. pom.xml - dependency 추가
 ```xml
