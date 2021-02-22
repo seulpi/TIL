@@ -397,6 +397,7 @@ public class LoginController {
 
 
 # Google LOGIN
+>>[참조 링크] https://m.blog.naver.com/PostView.nhn?blogId=sam_sist&logNo=220969414214&proxyReferer=https:%2F%2Fwww.google.com%2F
 
 ## 1. pom.xml - dependency 추가
 ```xml
