@@ -393,3 +393,134 @@ public class LoginController {
 
 ## ▶ 출력 
 ![11111111111](https://user-images.githubusercontent.com/74290204/106881792-50ac8f80-6721-11eb-9e57-9b4c5a6f625d.PNG)
+
+
+# GOOGLE LOGIN
+
+## 1. pom.xml - dependency 추가
+```xml
+   <!-- google -->
+	<dependency>
+	    <groupId>org.springframework.social</groupId>
+	    <artifactId>spring-social-google</artifactId>
+            <version>1.0.0.RELEASE</version>
+    </dependency>
+```
+
+## 2. servlet-context.xml에 url, id, secret 객체 생성
+```xml
+<!-- google Class Bean설정 추가 -->
+	<!-- 클라이언트ID와 보안비밀 세팅 -->
+	<beans:bean id="googleConnectionFactory"
+		class="org.springframework.social.google.connect.GoogleConnectionFactory">
+		<beans:constructor-arg 
+			value="YOUR_CLIENT_ID" /> 
+		<beans:constructor-arg
+			value="YOUR_CLIENT_SECRET" />
+	</beans:bean>
+	
+	<!-- 승인된 자바스크립트 원본과 승인된 리디렉션 URI -->
+	<beans:bean id="googleOAuth2Parameters"
+		class="org.springframework.social.oauth2.OAuth2Parameters">
+		<beans:property name="scope"
+			value="https://www.googleapis.com/auth/plus.login" />
+		<beans:property name="redirectUri"
+			value="http://localhost:8282/ex/oauth2callback" />
+	</beans:bean>
+```
+
+## 3. Cotroller
+```java
+package edu.bit.ex.controller;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.google.connect.GoogleConnectionFactory;
+import org.springframework.social.oauth2.GrantType;
+import org.springframework.social.oauth2.OAuth2Operations;
+import org.springframework.social.oauth2.OAuth2Parameters;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+@Controller
+public class GoogleLoginController {
+	
+	
+	/* GoogleLogin */
+	@Autowired
+	private GoogleConnectionFactory googleConnectionFactory;
+	
+	@Autowired
+	private OAuth2Parameters googleOauth2Parameters;
+	
+	//로그인 첫 화면 요청
+	@RequestMapping("/google")
+	public String login(Model model, HttpSession session) {
+		
+		//구글 code 발행
+		OAuth2Operations oAuth2Operations = googleConnectionFactory.getOAuthOperations();
+		String url = oAuth2Operations.buildAuthenticateUrl(GrantType.AUTHORIZATION_CODE, googleOauth2Parameters);
+		System.out.println("구글 url:" +url);
+		
+		model.addAttribute("google_url", url);
+		
+		return "googleLogin";
+	}
+	
+	//구글 callback 호출
+	@RequestMapping("/oauth2callback")
+	public String googleCallback(Model model, @RequestParam String code) throws IOException {
+		System.out.println("callback 실행");
+		
+		return "googleSuccess";
+	}
+}
+```
+
+## 4. View
+### -*googleLogin*
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="java.net.URLEncoder" %>
+<%@page import="java.security.SecureRandom" %>
+<%@page import="java.math.BigInteger" %>
+<%@page contentType="text/html; charset=UTF-8" language="java" %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구글 로그인</title>
+
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <style type="text/css">
+	  html, div, body,h3{
+	  	margin: 0;
+	  	padding: 0;
+	  }
+	  h3{
+	  	display: inline-block;
+	  	padding: 0.6em;
+	  }
+	  </style>
+</head>
+<body>
+<div style="background-color:#15a181; width: 100%; height: 50px;text-align: center; color: white; "><h3>SIST Login</h3></div>
+<br>
+<!-- 구글 로그인 화면으로 이동 시키는 URL -->
+<!-- 구글 로그인 화면에서 ID, PW를 올바르게 입력하면 oauth2callback 메소드 실행 요청-->
+<div id="google_id_login" style="text-align:center">
+<a href="${google_url}"><img width="230" src="https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/5rH/image/aFrEyVpANu07FvoBZQbIB4aF_uc"/></a></div>
+
+</body>
+</html>
+```
+
+
