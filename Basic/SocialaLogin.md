@@ -1,3 +1,21 @@
+# 소셜로그인 
+```
+# 배경
+예전에는 로그인을 각 회사마다 담당 → 대형 포털회사가 생김(facebook, google 등) : 최고의 엔지니어들이 최고의 보안을 보장한다는 믿음
+→ 인증과 권한에 대한 것을 포털회사에게 맡기기 시작 → Open Oauth(open인증)라는 개념이 생김
+```
+- google, facebook(글로벌기업) : Spring에서 라이브러리가 존재(라이브러리 지원O)
+- naver, kakao : Spring에서 라이브러리 제공X , 직접 구현해야함
+	- json 객체는 자바객체로 바꿔줘야하기 때문에 json으로 받는 데이터들을 하나의 클래스 객체로 만들어준다
+	- POJO(Plain Old Java Object)
+	>> [자바객체로 바꿔주는 사이트] http://www.jsonschema2pojo.org/  
+	<details><summary>사용예시</summary>
+	
+	![pojo](https://user-images.githubusercontent.com/74290204/108668974-7ad2bf80-751f-11eb-92a8-337189347fe2.PNG)
+	![pojo2](https://user-images.githubusercontent.com/74290204/108668978-7c03ec80-751f-11eb-9a3b-fc0ff6ccf84c.PNG)
+	</details>
+
+
 # KAKAO LOGIN
 >> [참조링크] https://daddyprogrammer.org/post/1012/springboot2-rest-api-social-login-kakao/
 
