@@ -1,4 +1,4 @@
-# 시큐리티 정보 확장
+# 시큐리티 정보 확장 (Customizing)
 - 기본적으로 로그인 처리할때 **시큐리티는 username, password, enabled만 디폴트로 가져올 수 있음** → 다른 컬럼 정보들 못 가져옴(**시큐리티 인증과 권한까지만 처리를 해줌**) 
     - 시큐리티는 로그인을 시키면 로그인 정보를 session 메모리에 올려서 jsp에서 principal로 사용(전에는 EL사용했었음)
     - ★ contextholder, principal, authorfication → 세션 메모리에 있는 객체 암기
