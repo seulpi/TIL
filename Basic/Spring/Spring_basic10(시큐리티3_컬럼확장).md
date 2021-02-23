@@ -268,3 +268,148 @@ public interface MemberMapper {
 </beans:beans>
 ```
 ▶ 실행 전에 web.xml에 실행할 xml 설정되어있는지 반드시 확인
+
+# - UserDetails
+- **loadUserByUsername을 누군가 호출! = 'Security'**
+- 유저가 로그인할 때 시큐리티가 수많은 함수들을 호출하는데 'loadUserByUsername'도 호출 → 유저 ID만 주면 UserDetails에 맞춰 return을 해줘야함 
+```java
+return vo == null ? null : new MemberUser(vo);
+```
+
+## @  리턴하는 방법
+### 1. UserDetails를 'implements'하는 방법(다이렉트로 상속받는 것)
+### 2. User → UserDetails를 상속받아서 정의해놓은 클래스를 'implements'하는 방법
+- ※ 주의] 객체생성은 반드시 getter&setter 만들어줘야함
+```java
+private MemcberVO member;
+```
+
+## @ UserDetails와 principal
+```jsp
+<p>principal: <sec:authentication property="principal.member.username"/>
+```
+▶  principal과 UserDetails의 관계과 뭐길래 jsp에서 principal로 UserDetails 사용이 가능한가? → principal.member는 getMember() 호출 <br>
+- 시큐리티는 로그인 정보들을 session에 저장 → 저장하면 전역에 사용 가능 → session에 어떤걸 올렸는지 알아야 사용이 가능(시큐리티가 메모리에 올릴때 이름 : key를 알아야 사용이 가능) 
+#### ★ UserDetails의 key가 Principal!! ☞ principal로 UserDetails 꺼내온다
+- UserDetails-value의 세션 메모리 이름 
+
+### [ 증명하는 방법: 세션을 어떻게 관리하는가 ]
+>> (한번 읽어보기) https://velog.io/@sa833591/Spring-Security-4-Authentication-SecurityContextHolder%EC%9D%98-%EC%9D%B4%ED%95%B4
+
+- pincipal=UserDetails
+```java
+//Controller
+
+package edu.bit.ex;
+
+import java.security.Principal;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import edu.bit.ex.service.UserService;
+import edu.bit.ex.vo.MemberUser;
+import edu.bit.ex.vo.UserVO;
+import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+@Controller
+@AllArgsConstructor
+public class UserController {
+	
+	private UserService userService;
+	
+	@GetMapping("/user/userForm")
+	public String userHome() {
+		log.info("welcome userForm!");
+		return "user/userForm";
+	}
+	
+	@PostMapping("/user/addUser")
+	public String addUser(UserVO userVO) {
+		log.info("post register");
+		
+		userService.addUser(userVO);
+		
+		return "redirect:/";
+	}
+	
+	@GetMapping("/loginInfo")
+	   public String loginInfo(Principal principal) {
+	      
+	    // 1.Controller를 통하여 Pincipal객체로 가져오는 방법
+	    String user_id = principal.getName();
+	    System.out.println("유저 아이디:" + user_id);
+
+	    // 2.SpringContextHolder를 통하여 가져오는 방법(일반적인 빈에서 사용 할수있음 )
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    user_id = auth.getName();
+	    System.out.println("유저 아이디:" + user_id);
+
+	    // 3.
+	    UserDetails userDetails = (UserDetails) auth.getPrincipal();
+	    System.out.println(userDetails.getUsername());
+
+	    //4. ****polymortism 적용 MemberVO - User - UserDetails
+	    MemberUser memberUser = (MemberUser) auth.getPrincipal();
+	    System.out.println(memberUser.getPassword());
+
+	      
+	    // 4.User 클래스로 변환 하여 가져오는 방법
+	    User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    user_id = user.getUsername();
+	    System.out.println("유저 아이디:" + user_id);
+
+	    return "home";
+
+	}
+	
+}
+```
+```jsp
+<!--jsp에서 사용 방법-->
+
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <title>메이페이지</title>
+</head>
+
+<body>
+
+<h1>메인페이지</h1>
+
+<!-- 로그인 하지 않은 모든 사용자(로그인 중인 사용자에게는 보이지 않음) -->
+<sec:authorize access="isAnonymous()">
+   <p><a href="<c:url value="/login/loginForm" />">로그인</a></p>
+</sec:authorize>
+
+<!-- 로그인 중인 사용자  -->
+<sec:authorize access="isAuthenticated()">
+   <form:form action="${pageContext.request.contextPath}/logout" method="POST">
+       <input type="submit" value="로그아웃" />
+   </form:form>
+   <p><a href="<c:url value="/loginInfo" />">로그인 정보 확인 방법3 가지</a></p>
+</sec:authorize>
+
+<sec:authorize access="hasRole('admin')" > 관리자 페이지 </sec:authorize>
+
+<h3>
+    [<a href="<c:url value="/user/userForm" />">회원가입</a>]
+    <!--  c:url 절대 경로 만들어줌 <c:url value="/user/userForm" /> = ${pageContext.request.contextPath}/user/userForm -->
+    [<a href="<c:url value="/user/userHome" />">유저 홈</a>]
+    [<a href="<c:url value="/admin/adminHome" />">관리자 홈</a>]
+</h3>
+</body>
+</html>
+```
