@@ -292,6 +292,8 @@ private MemcberVO member;
 - 시큐리티는 로그인 정보들을 session에 저장 → 저장하면 전역에 사용 가능 → session에 어떤걸 올렸는지 알아야 사용이 가능(시큐리티가 메모리에 올릴때 이름 : key를 알아야 사용이 가능) 
 #### ★ UserDetails의 key가 Principal!! ☞ principal로 UserDetails 꺼내온다
 - UserDetails-value의 세션 메모리 이름 
+- session 객체 
+ 	- ![security](https://user-images.githubusercontent.com/74290204/108800840-900b2500-75d7-11eb-99c9-0458c46c05b6.PNG)
 
 ### [ 증명하는 방법: 세션을 어떻게 관리하는가 ]
 >> (한번 읽어보기) https://velog.io/@sa833591/Spring-Security-4-Authentication-SecurityContextHolder%EC%9D%98-%EC%9D%B4%ED%95%B4
