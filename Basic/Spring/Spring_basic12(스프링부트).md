@@ -19,9 +19,9 @@
     - 나중에 dependency 추가도 가능!
     >> 우클릭 → Spring → Add starters
 
-![spring_boot_설정1](https://user-images.githubusercontent.com/74290204/108806617-88527d00-75e5-11eb-854d-f59874ba091d.PNG)
+	![spring_boot_설정1](https://user-images.githubusercontent.com/74290204/108806617-88527d00-75e5-11eb-854d-f59874ba091d.PNG)
 
-![spring_boot_설정2](https://user-images.githubusercontent.com/74290204/108806620-8983aa00-75e5-11eb-9755-bf83ea2271f4.PNG)
+	![spring_boot_설정2](https://user-images.githubusercontent.com/74290204/108806620-8983aa00-75e5-11eb-9755-bf83ea2271f4.PNG)
 <br>
 
 ## @ 특징
