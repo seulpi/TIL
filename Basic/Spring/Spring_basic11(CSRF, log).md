@@ -109,3 +109,75 @@ name="${_csrf.parameterName}" value="${_csrf.token}"
 # XSS
 # 동일 출처원칙
 # Sql injection($, #)
+
+---
+
+# 로그(log)
+## @ 설정 
+- 로깅 레벨 설정을 *'info'* 로 했을 경우 *'TRACE'* , *'DEBUG'* 레벨은 무시한다
+```xml
+<logger name="edu.bit.ex">
+		<level value="info" />
+	</logger>
+```
+1. jdbc를 통해 해당 로그 받기 
+2. root-context.xml
+```xml
+<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
+```
+3. properties 설정 (log4jdbc.log4j2.properties)
+```properties
+log4jdbc.spylogdelegator.name=net.sf.log4jdbc.log.slf4j.Slf4jSpyLogDelegator
+log4jdbc.dump.sql.maxlinelength=0
+```
+4. 로그 레벨 조절, log4j.xml (↓ 코드 Root Logger 위에 복붙)
+```xml
+ <!-- 예를 들어 로깅 레벨 설정을 "INFO"로 하였을 경우 "TRACE", "DEBUG" 레벨은 무시한다. -->
+
+   <!-- 출력되는 로그의 양 순서 : ERROR < WARN < INFO < DEBUG < TRACE -->
+   <!-- com.freedy.sample 하위 패키지에서 로그설정 -->
+   <!-- additivity가 false인 경우 상위로거의 설정값을 상속받지 않는다. -->
+   
+   <!--  
+    - jdbc.sqlonly : SQL문만을 로그로 남기며, PreparedStatement일 경우 관련된 argument 값으로 대체된 SQL문이 보여진다. 
+    - jdbc.sqltiming : SQL문과 해당 SQL을 실행시키는데 수행된 시간 정보(milliseconds)를 포함한다. 
+    - jdbc.audit : ResultSet을 제외한 모든 JDBC 호출 정보를 로그로 남긴다. 
+    - jdbc.resultset : ResultSet을 포함한 모든 JDBC 호출 정보를 로그로 남긴다.
+    - jdbc.resultsettable : SQL 결과 조회된 데이터의 table을 로그로 남긴다. 
+    -->
+   
+      <!-- SQL Logger -->
+
+   <logger name="jdbc.sqltiming" additivity="false">
+      <level value="warn" />
+      <appender-ref ref="console" />
+   </logger>
+
+   <logger name="jdbc.sqlonly" additivity="false">
+      <level value="info" />
+      <appender-ref ref="console" />
+   </logger>
+
+   <logger name="jdbc.audit" additivity="false">
+      <level value="warn" />
+      <appender-ref ref="console" />
+   </logger>
+
+   <logger name="jdbc.resultset" additivity="false">
+      <level value="warn" />
+      <appender-ref ref="console" />
+   </logger>
+
+   <logger name="jdbc.resultsettable" additivity="false">
+      <level value="info" />
+      <appender-ref ref="console" />
+   </logger>
+```
+   - 로그 적용 안시키려면 <appender-ref ref="fileLogger"/> 만 주석 처리
+   ```xml
+   <root>
+      <priority value="info" />
+      <appender-ref ref="console" />
+      <appender-ref ref="fileLogger"/> <!-- 주석처리-->
+   </root>
+    ```
