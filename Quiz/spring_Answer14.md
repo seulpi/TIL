@@ -226,7 +226,7 @@ public interface BoardMapper {
 ③ application.properties에 mapper-location 추가
 - mapper.xml 파일의 경로를 설정
 ```
-mybatis.mapper-locations: classpath: mapper/**/*.xml 
+mybatis.mapper-locations = classpath:mappers/**/*.xml
 →  mapper폴더 만들고 mapper안에있는 모든xml (mapper폴더에 위치는 src/main/resources)
 ```
 
