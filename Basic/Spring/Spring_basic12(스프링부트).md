@@ -26,46 +26,46 @@
 
 ## @ 특징
 1. **단독으로 실행이 가능**한 스프링 애플리케이션을 생성
-- @SpringBootApplication : 자기 설정을 읽어들이는 어노테이션 
-![스프링부트3](https://user-images.githubusercontent.com/74290204/108807436-c2bd1980-75e7-11eb-8657-7fc0b0ad3f64.PNG)
+	- @SpringBootApplication : 자기 설정을 읽어들이는 어노테이션 
+	![스프링부트3](https://user-images.githubusercontent.com/74290204/108807436-c2bd1980-75e7-11eb-8657-7fc0b0ad3f64.PNG)
 
 
 2. **톰캣 내장** (새로 다운로드 받을 필요가X)
-- 서버를 돌릴 때 legacy는 context명이 충돌될까봐 하나씩 돌렸는데 톰캣이 각 프로젝트마다 내장 되어있기 때문에 context명이 의미가 없어짐
-    - legacy도 컨텍스트명이 다르면 몇개를 돌려도 상관없음
+	- 서버를 돌릴 때 legacy는 context명이 충돌될까봐 하나씩 돌렸는데 톰캣이 각 프로젝트마다 내장 되어있기 때문에 context명이 의미가 없어짐
+   		- legacy도 컨텍스트명이 다르면 몇개를 돌려도 상관없음
 
 
 3. 기본 설정되어있는 starter 컴포넌트를 제공 
 4. 설정을 위한 xml 코드를 요구하지X → 단, xml으로 설정했던 설정들을 자바코드로 만들어줘야함 
-- web.xml도 없어짐 
+	- web.xml도 없어짐 
 
-![스프링부트1](https://user-images.githubusercontent.com/74290204/108807226-2abf3000-75e7-11eb-9cf2-ee89a4e04b45.PNG)
+	![스프링부트1](https://user-images.githubusercontent.com/74290204/108807226-2abf3000-75e7-11eb-9cf2-ee89a4e04b45.PNG)
 
-![스프링부트2](https://user-images.githubusercontent.com/74290204/108807325-7376e900-75e7-11eb-9c57-1beabebead7d.PNG)
+	![스프링부트2](https://user-images.githubusercontent.com/74290204/108807325-7376e900-75e7-11eb-9c57-1beabebead7d.PNG)
 
 5. 스프링부트는 jsp를 권장하지X , tymeleaf를 추천함 
-- tymeleaf 사용
-    - ① html 추가 
-    ```xml
-    <html lang="ko" xmlns:th="http://www.thymeleaf.org">은 html문서언어는 한글이며 타임리프를 사용하겠다는 말
-    ```
-    - ② dependency 추가 
-    ```xml
-    <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-thymeleaf</artifactId>
-    </dependency>
-    ``` 
-    - 타임리프엔진에서는 th를 사용, th:text는 텍스트를 출력한다는 속성으로서 th:text="${변수이름}을 입력하면 해당 변수의 값이 text로 출력이 된다
-    
-    ```html
-    <p th:text="${test}"></p>
-    ```
+	- tymeleaf 사용
+	    - ① html 추가 
+	    ```xml
+	    <html lang="ko" xmlns:th="http://www.thymeleaf.org">은 html문서언어는 한글이며 타임리프를 사용하겠다는 말
+	    ```
+	    - ② dependency 추가 
+	    ```xml
+	    <dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-thymeleaf</artifactId>
+	    </dependency>
+	    ``` 
+	    - 타임리프엔진에서는 th를 사용, th:text는 텍스트를 출력한다는 속성으로서 th:text="${변수이름}을 입력하면 해당 변수의 값이 text로 출력이 된다
+
+	    ```html
+	    <p th:text="${test}"></p>
+	    ```
 
 6. 폴더 경로
-- static : 이미지같은 리소스 (resources) 파일 
-- templete : timeleaf(앞에 th붙은 것) 파일 
-![static,templete](https://user-images.githubusercontent.com/74290204/108811027-cb195280-75ef-11eb-95f6-32364db54612.PNG)
+	- static : 이미지같은 리소스 (resources) 파일 
+	- templete : timeleaf(앞에 th붙은 것) 파일 
+	![static,templete](https://user-images.githubusercontent.com/74290204/108811027-cb195280-75ef-11eb-95f6-32364db54612.PNG)
 
 ## @ 스프링부트에서 tymeleaf말고 jsp 사용
 - jsp, jstl(지원x) 사용하려면 라이브러리 다운 받아야함 / pom.xml 에 추가 
