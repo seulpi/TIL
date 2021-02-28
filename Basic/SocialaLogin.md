@@ -41,6 +41,7 @@
 ```
 
 ## 2. Controller
+- Bearer 오타가 나서 당연히 access token을 넘겨주지 못하기 때문에 401에러가 떠서 nickname을 가져오지 못했음 
 ```java
 package edu.bit.ex;
 
