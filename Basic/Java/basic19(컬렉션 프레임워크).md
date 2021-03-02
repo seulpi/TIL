@@ -21,7 +21,7 @@ import java.util.List;
 public class class_1221 {
 	public static void main(String[] args) {
 		List<String> list = new ArrayList<>(); 
-		// ArrayLis를 LinkedList로 바꿔도 밑에 코드가 돌아간다 (구현내용은 전혀 다른데 함수자체는 똑같아서:오버라이딩)
+		// ArrayList를 LinkedList로 바꿔도 밑에 코드가 돌아간다 (구현내용은 전혀 다른데 함수자체는 똑같아서:오버라이딩)
 		
 		list.add("Toy");
 		list.add("Box");
@@ -46,11 +46,11 @@ Box	Robot
 
 ### - 장단점
 1. ArrayList 
-- 장점: 저장된 인스턴스의 참조가 빠르다 (연속된 공간이라서)
+- 장점: 저장된 인스턴스의 참조가 빠르다 (연속된 공간이라서), **검색에 용이**
 - 단점 : 배열은 기본적으로 Immutable이기 때문에 저장 공간을 늘리는 과정에서 시간이 많이 걸리고 <br> 인스턴스 삭제 과정에서 많은 연산이 필요하다 (기존에 있던것에서 붙이는 게 안되는 Immutable: 새로 생성해서 저장한다)
 
 2. LinkedList 
-- 장점: 저장 공간을 늘리는 과정이 간단하고 인스턴스 삭제 과정이 단순하다
+- 장점: 저장 공간을 늘리는 과정이 간단하고 인스턴스 삭제 과정이 단순하다, **추가&삭제가 용이**
 - 단점: 저장된 인스턴스의 참조하는 과정이 복잡하다(연속된 공간이 아니기 때문에 참조 → 참조하는 과정 반복)
 
 ☞ 인스턴스의 삭제나 데이터 삽입 多 : LinkedList / 검색 多 = ArrayList
