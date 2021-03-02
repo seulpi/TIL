@@ -116,7 +116,7 @@ Toy	Robot
 →	List<String> list = Arrays.asList("Toy", "Box", "Robot", "Box");
 		list = new LinkedList<>(list);
 
-▶ 이게 가능한 이유는 같은 Collection의 List를 상속받고 있기 때문 ???
+▶ 이게 가능한 이유는 같은 Collection의 List를 상속받고 있기 때문
 ```
 - 컬렉션 프레임워크는 기본적으로 '제네릭'으로 구현되어있기 때문에 기본형 타입 선언X 
 ```java
