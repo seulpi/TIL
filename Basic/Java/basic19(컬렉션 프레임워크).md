@@ -5,7 +5,6 @@
  
 ![collection](https://user-images.githubusercontent.com/74290204/109606060-7040a780-7b69-11eb-98d5-3757a88acbb8.png)
 
-## ★ stack은 반드시 구현할 줄 알아야함!
 
 ## 1. List < E > : 객체에 대한 연결
 ### - 구조 (내가그린걸로 교체할것) : 기차와 같은 연결 구조
@@ -73,6 +72,7 @@ public static void main(String[] args) {
 
 ----
 #### Q. 배열 시험 : 글자 리벌스해서 출력해봐라 
+## ★ stack은 반드시 구현할 줄 알아야함!
 ----
 
 ### - Iterator : List안에 있는 객체, 반복자
