@@ -367,6 +367,8 @@ hashCode를 오버라이딩을 안하게되면 주소값을 리턴하게 되는�
 : Set은 순서가 없는데 정렬이 필요하다보니 생김 
 - 정렬 상태가 유지되면서 인스턴스가 저장된다 (중복 X)
 - Tree모양으로 정리하면서 정렬을 만들어서 출력한다 
+- Set은 값 삽입 시 **순서가 없기 때문에 (하나의 집합)** 배열(Array)이나 List 처럼 **.get(인덱스)로 값을 가져올 수 없고 Iterator를 통해 가져와야한다**
+	- set.iterator()로 set 값을 iterator에 담은 후 .next를 통해 하나씩 뽑아내는 식
 
 ▶ 구조와 내용 참고 https://doublesprogramming.tistory.com/185
 ```java
