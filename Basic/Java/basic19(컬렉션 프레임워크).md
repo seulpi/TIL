@@ -639,7 +639,7 @@ public static void main(String[] args) {
 ```
 <br>
 
-### - TreeMap<K, V> : 순서 유지 (Key값을 순서대로 접근 )
+### - TreeMap<K, V> : 순서 유지 (Key값을 순서대로 접근)
 ```java
 위 코드에서 
 HashMap<Integer, String> map = new HashMap<>(); → TreeMap<Integer, String> map = new TreeMap<>();
