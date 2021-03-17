@@ -76,7 +76,7 @@ select ename, sal from emp where mgr = (select empno from emp where ename='KING'
 ### 1. NOT NULL : NULL을 허용하지 않음
 - Null값 입력금지, 해당 컬럼의 값 입력 필수
 
-### 2. UNIQUE : 중복된 값을 허용하지 않고 항상 유일한 값을 갖도록함
+### 2. UNIQUE : 중복된 값을 허용하지 않고 항상 유일한 값을 갖도록 함
 - Map의 key같은 존재 
 
 ### 3. PRIMARY KEY : NULL을 허용하지 않고 중복된값도 허용하지않음   
@@ -87,7 +87,7 @@ select ename, sal from emp where mgr = (select empno from emp where ename='KING'
 ### 4. ★Foreign Key : 참조되는 테이블의 컬럼의 값이 존재하면 허용 
 - 테이블 관계를 정의
 - 다른쪽 테이블에 있는 컬럼을 갖고 오는 것(각각 다른 테이블을 서로 연결하는 데 사용되는 키)
-- Key를 갖고오게 되면 테이블이 관계를 갖게됨(=Relation이 생기면 부모자식간의 관계가 형성) 
+- Key를 갖고오게 되면 테이블이 관계를 갖게 됨(=Relation이 생기면 부모자식간의 관계가 형성) 
 >> 자식: 부모에 있는 Key를 가지고 오는 쪽 <br>
 부모: Key를 갖고있는 쪽, 어디서 Key를 가지고 오지 않는다
 ```sql
