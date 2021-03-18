@@ -1,5 +1,5 @@
 # Interceptor
-: 특정 url에 대해 controller 가기 이전에 가로채는 역할을 한다법(서버로 보내기전 가로채기)
+: 특정 url에 대해 controller 가기 전에 가로채는 역할을 한다(서버로 보내기전 가로채기)
 
 ![interceptor](https://user-images.githubusercontent.com/74290204/107745016-fd58c380-6d56-11eb-9344-bb6b98d09c8a.png)
 
