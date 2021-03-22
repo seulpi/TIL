@@ -231,6 +231,7 @@ mybatis.mapper-locations = classpath:mapper/**/*.xml
 ```
 
 <details><summary>Mapper.xml</summary>
+	
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
