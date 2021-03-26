@@ -148,8 +148,9 @@
 </body>
 </html>
 ```
-### ▶ <form action="#" method="get">  
+### ▶ < form action="#" method="get" >  
 : get 방식이니까 ?key=value형태로 넘어오게 됨
+	
 ```
 예를들어, 
 http://localhost:8282/servlet_hello3/tag_ex.html?uname=a&uid=bcd&upw=1234&uphone1=010&uphone2=1234&uphone3=56789&upic%2F=&gender=w&lan=kor#
