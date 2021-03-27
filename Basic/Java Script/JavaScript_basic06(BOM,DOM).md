@@ -63,7 +63,7 @@ window.onload = function() {
 - < script>로 묶어서 쓰면 모두 다 출력할수 있음 
 
 ### 2. Screen : 화면과 연결된 객체 
-- screen.width, screen.height : 화면상의 해상도 (1920*1080)
+- screen.width / screen.height : 화면상의 해상도 (1920*1080)
 ```javascript
  function openWin(url, width, height) {
          
