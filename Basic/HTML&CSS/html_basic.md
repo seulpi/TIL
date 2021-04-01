@@ -171,7 +171,7 @@ uname=a (uname이 key / a(:user가 입력한) 가 vaule
 ```
 
 <details>
-<summary> ▶ 태그 종류 참조 </summary>
+<summary> 태그 종류 참조 </summary>
 - https://calmdawnstudio.tistory.com/51
 - https://potionstory.tistory.com/11
 - https://stajun.tistory.com/entry/HTML-%ED%83%9C%EA%B7%B8-%EC%A0%95%EB%A6%AC
