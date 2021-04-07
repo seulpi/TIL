@@ -22,8 +22,7 @@ insert into dept02 values(20, 'RESEARCH', 'DALLAS');
 -- 순서를 정해주지 않으면 적은 순대로 입력되서 저장
 ```
 
-## - UPDATE : 데이터 수정
->> update set 
+## - UPDATE : 데이터 수정 'update set' 
 ```sql
 -- 모든 사원의 부서번호를 30으로 수정하는 쿼리문
 update emp01 set deptno=30;
