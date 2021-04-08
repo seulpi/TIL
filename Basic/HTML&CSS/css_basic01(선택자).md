@@ -170,7 +170,7 @@ div > h1 : 큰 쪽이 부모 div 바로 밑에 h1을 말한다 (자식만가능)
 </html>
 ```
 
-<details><summary>▶ 출력</summary>
+<details><summary>출력</summary>
 	
 ![속성 선택자02](https://user-images.githubusercontent.com/74290204/103324235-f9fcc780-4a89-11eb-88c9-de972fcb599b.PNG)
 </details>
