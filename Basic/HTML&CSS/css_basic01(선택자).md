@@ -32,7 +32,7 @@
 </body>
 </html>
 ```
-<details><summary>▶ 출력</summary>
+<details><summary>출력</summary>
 	
 ![css01](https://user-images.githubusercontent.com/74290204/103255065-2dc4e800-49cb-11eb-94e4-c43c4873fd0c.PNG)
 </details>
