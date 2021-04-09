@@ -15,7 +15,9 @@ create table emp01 as select * from emp;
 ```sql
 insert into dept02(deptno, dname, loc) values(10, 'ACCOUNTING', 'NEW YORK');
 commit;
+
 ▶ 변경된 내용을 모두 영구 저장한다(커밋하기전에는 메모리에 있다가 commit을 하게 되면 그때 파일로 저장한다)
+
 select * from dept02;
 
 insert into dept02 values(20, 'RESEARCH', 'DALLAS');
