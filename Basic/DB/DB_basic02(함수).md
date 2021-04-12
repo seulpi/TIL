@@ -1,6 +1,7 @@
 # [용어] table에서 하나의 행을 recode 또는 row라고도 함 
 
 # 문자 관련 함수 
+
 ### 1. upper : 전부 대문자로 바꿔주는 함수 
 ```sql
 select 'welcome to oracle' "적용 전", upper('welcome to oracle') 'upper적용 후" from dual;
