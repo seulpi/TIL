@@ -3,7 +3,6 @@
  - 비밀번호는 잊어버리지 않는 것으로 설정(학원에선 1234로 통일함)
 
  ![DBsqldeveloper](https://user-images.githubusercontent.com/74290204/103732648-2933ab80-502b-11eb-95e5-4416614ece57.PNG)
-
  ![jdk_설치경로](https://user-images.githubusercontent.com/74290204/103732651-2a64d880-502b-11eb-92be-12c7cd302886.PNG)
 
 # SqleDeveloper 설치
