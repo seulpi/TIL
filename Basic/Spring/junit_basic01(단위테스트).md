@@ -1,7 +1,6 @@
 # JUit이란
 ## Java Testing Framework : 자바프로그래밍 언어용 유닛 테스트 프레임워크
-- 창시자 : Erich Gamma (eclips 창시자)
->> [공식 사이트] https://junit.org/junit5/
+>> [공식 사이트] https://junit.org/junit5/ <br> [창시자] : Erich Gamma (eclips 창시자)
 
 # TDD (Test-Driven Development) 
 ## : 테스트 주도, 테스트를 바로 하는 것
