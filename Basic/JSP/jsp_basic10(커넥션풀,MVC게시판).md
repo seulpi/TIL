@@ -1,7 +1,7 @@
 # 커넥션풀(Connection Pool)
 
 ## @ 배경 
-다수의 request → 서버 과부하 → **서버 다운** when? 오라클에 접속할 때 'connetion = DriverManager.getConnection(url, uid, upw);' <br> (요청받을때 다운되는 게 아님) → **해결방안으로 커넥션 풀 이용** 
+- 다수의 request → 서버 과부하 → **서버 다운** when? 오라클에 접속할 때 'connetion = DriverManager.getConnection(url, uid, upw);' <br> (요청받을때 다운되는 게 아님) → **해결방안으로 커넥션 풀 이용** 
 
 ## @ 동작 원리 
 1. 서버 쪽에 Connection 객체를 **미리 여러개 만들어서** Pool이라는 저장공간에 저장한다 <br>
