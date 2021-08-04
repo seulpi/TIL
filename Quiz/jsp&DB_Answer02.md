@@ -25,7 +25,7 @@ SELECT DEPTNO, SUM(SAL), AVG(SAL) FROM EMP GROUP BY DEPTNO;
     3. TO_CHAR : 숫자나 날짜형을 문자형으로 변환하는 함수(문자로~)
 
 # 4. decode 함수에 대하여 설명하시오
-: 여러가지 조건에 대해서 선택할 수 있도록 하는 기능을 제공한다. 즉, **선택을 위한 함수(java에서 swutch-case문과 같은 역할)**
+: 여러가지 조건에 대해서 선택할 수 있도록 하는 기능을 제공한다. 즉, **선택을 위한 함수(java에서 switch-case문과 같은 역할)**
 
 # 5. CASE 함수에 대하여 설명하시오
 : 조건에 따라 서로 다른 처리가 가능한 함수, decode와 동일한 기능을 한다
