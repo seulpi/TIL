@@ -1,5 +1,5 @@
 # Restful : 실무에서의 RESTful은 URI 설계
-- Rest란 HTTP URI를 통해 자원(Resource)를 명시하고 HTTP Method(POST, GET, PUTM DELETE)를 통해 해당 자원에 대한 CRUD Operation을 적용하는 것
+- Rest란 HTTP URI를 통해 자원(Resource)를 명시하고 HTTP Method(POST, GET, PUT, DELETE)를 통해 해당 자원에 대한 CRUD Operation을 적용하는 것
 - Restful이란 Rest원리를 따르는 시스템
 - Spring을 위한 개념이 아니라 하나의 통합적인 개념
 
