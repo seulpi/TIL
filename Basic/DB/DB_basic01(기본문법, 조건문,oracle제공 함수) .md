@@ -112,7 +112,7 @@ select * from emp where ename like '__A%';
 ```
 
 ### 5. NULL 
-: Oracle 에서는 Columnd에 null 값이 저장되는 것을 허용한다 
+: Oracle 에서는 Column에 null 값이 저장되는 것을 허용한다 
 >> Column : 관계형 데이터베이스 테이블에서 특정한 단순 자료형의 일련의 데이터값과 테이블에서의 각 열을 말한다
 - sql에서의 null은 **값을 저장하지 않는 것**을 말한다 (공백)
 
