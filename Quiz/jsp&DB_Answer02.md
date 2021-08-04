@@ -4,7 +4,7 @@ SELECT DEPTNO, SUM(SAL), AVG(SAL) FROM EMP GROUP BY DEPTNO;
 ```
 
 # 2. 그룹 함수의 종류는?
-; 그룹함수란 하나의 로우를 그룹으로 묶어 연산해서 하나의 결과를 나타내느 함수
+; 그룹함수란 하나의 로우를 그룹으로 묶어 연산해서 하나의 결과를 나타내는 함수
 - sum : 합계를 내는 함수
 - count : 조건에 맞는 로우의 갯수를 반환하는 함수 , count함수는 null값의 갯수를 count하지 않는다
 - avg : 평균을 내는 함수 
