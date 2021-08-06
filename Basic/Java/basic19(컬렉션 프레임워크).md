@@ -108,7 +108,7 @@ Toy	Robot
 단, 위 코드가 초기화 한 방법처럼 List<String> list = Arrays.asList("Toy", "Box", "Robot", "Box")의 형태처럼은 가능 <br>
 (배열로 만들어서 list객체로 쓰는 방법 , 실무보단 교육용임)
 
-- ArrayListt를 LinkedList로 바꾸고 싶다면?
+- ArrayList를 LinkedList로 바꾸고 싶다면?
 ```
 	List<String> list = Arrays.asList("Toy", "Box", "Robot", "Box"); 
 		list = new ArrayList<>(list);
