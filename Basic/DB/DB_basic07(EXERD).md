@@ -34,7 +34,7 @@
 
 ## @ 식별&비식별 
 
-- 점선 표시선 : 비식병
+- 점선 표시선 : 비식별
 - 점선 X : 식별
 
 ![점선](https://user-images.githubusercontent.com/74290204/107323304-63401380-6ae9-11eb-8bad-64578bc5ecb9.PNG)
