@@ -74,10 +74,8 @@ public class Static {
 class SuperCLS {
 
 	static int count = 0; /* 다른 주소를 가진 객체지만 static은 공유하는 변수이기 때문에 값이 변하는 것
-
-							자식에서 그대로 받아서 써먹을수 있고 그렇다고해서 static의 성질이 변하는게 아님
-
-							private을 넣으면 아무리 static이어도 공유안됨*/
+				자식에서 그대로 받아서 써먹을수 있고 그렇다고해서 static의 성질이 변하는게 아님
+				private을 넣으면 아무리 static이어도 공유안됨*/
 
 	public SuperCLS() { // 다른 생성자가 없는 상태에서 자식에서 부모를 호출하면 디폴트 생성자를 호출하게 됨
 		count++;
