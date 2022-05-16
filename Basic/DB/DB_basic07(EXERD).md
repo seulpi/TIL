@@ -1,6 +1,6 @@
 # EXERD : DB 설계 툴
 ## @ 설치
-- help - insral new software -> work with : https://exerd.com/update/ 
+- help - install new software -> work with : https://exerd.com/update/ 
 
 ![exerd설치](https://user-images.githubusercontent.com/74290204/107177762-f60f7e00-6a15-11eb-8c8b-9db3a5ece153.PNG)
 
