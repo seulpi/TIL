@@ -1,8 +1,18 @@
 # Properties 
 ### : HashMap의 구버전이 HashTable을 상속받아 구현한 것으로 HashTable보다 단순화해 구현한 컬렉션 클래스 <br>
--> HashTable(Object, Object) - Properties(String, String)
--> 주로 환경설정과 관련된 속성을 저장하는데 사용<br>
--> 데이터를 파일로부터 읽고 쓰는 편리한 기능을 제공(간단한 입출력에서 사용하면 코드를 간결하게 사용이 가능)
+-> HashTable(Object, Object) - Properties(String, String) / Map의 특성 상 순서 유지 X
+-> 주로 환경설정과 관련된 속성을 저장하는데 사용 <br> 
+-> 데이터를 파일로부터 읽고 쓰는 편리한 기능을 제공(간단한 입출력에서 사용하면 코드를 간결하게 사용이 가능) <br>
+-> ***구버전을 상속받아 구현한 것으로 Iterator를 사용하는것이 아닌 Enumeration을 사용*** <br>
+-> 한글을 입려받으려면 인코딩 문제로 한글을 받을 수 있게 코드를 작성해줘야함
+```java
+Properties prop = new Properties();
+String name = prop.getProperty("name");
+try {
+  name = new String(name.getProperty("8859_1"), "EUC_KR");  // 8859_1 = 라틴문자 집합
+} catch (Exception e) { } 
+```
+
 ### @함수
 - Preoperties() : Properties 객체 생성
 - getProperty(String key) : 지정된 key의 값(value)을 반환
