@@ -73,6 +73,16 @@ public static void main(String[] args) {
 ----
 #### Q. 배열 시험 : 글자 리벌스해서 출력해봐라 
 ----
+### Enumeration : Iterator의 구 버전 (Enumeration 보단 Iterator 사용을 권장)
+- hasMoreElements() : 현재 커서 이후에 요소들이 있는지 여부 체크 / return boolean ( 요소 O -> true , X -> false ) 
+- nextElements() : 커서를 다음 요소로 이동 시키고 가리키고 있는 요소 객체를 꺼내 반환 / return E ( E=Enumeration; 객체를 생성할 때 쓰는 타입과 동일하게 지정 )
+```java
+Enumeration<String> attEnum = session.getAttributeNames();
+
+while( attEnum.hasMoreElements() ) {
+	String key = (String)attEnm.nextElement();
+}
+```
 
 ### - Iterator : List안에 있는 객체, 반복자
 - Iterator 객체 안에는 hasNext() / next() / remove() 가 존재
@@ -137,7 +147,19 @@ public static void main(String[] args) {
 ▶ 10  20  30	
 ```
 
-### - 양방향 : 양방향~set까지 수업 다시 듣기
+### ListIterator : Iterator의 기능을 향상 시킨 Interface 
+- ***양방향 조회 기능 추가 (List를 구현한 경우만 사용 가능) / Iterator는 단방향만 가능***
+- 함수 
+	1. **add** : 컬렉션의 새로운 객체 **추가**
+	2. **hasNaxt** : 읽어 올 **다음 요소**가 남아있는지 확인 ( O -> true / X -> false )
+	3. **hasPrevious** : 읽어 올 **이전 요소**가 남아있는지 확인 ( O -> true / X -> fasle )
+	4. **next** : 다음 요소를 읽어 옴 **(next를 하기 전 haseNext를 하는 게 안전)**
+	5. **previous** : 이전 요소를 읽어 옴 **(previous 하기 전 hasPrevious를 하는 게 안전)**
+	6. **nextIndex** : 다음 요소의 index 반환
+	7. **previousIndex** : 이전 요소의 index 반환
+	8. **remove** : 읽어온 요소 삭제 **(반드시 next나 previous를 호출 한 다음 호출)**
+	-> 호출하지 않고 사용할 경우 IllegalStateException 발생 (읽어온 값이 있어여 호출이 가능하기 때문 -1 = 읽어온 값 X)
+	9. **set** : 읽어 온 요소 변경 **(반드시 next나 previous를 호출 한 다음 호출)**
 ```java
 class ListIteratorCollection {
     public static void main(String[] args) {
