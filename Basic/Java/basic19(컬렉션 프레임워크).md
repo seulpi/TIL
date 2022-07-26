@@ -158,7 +158,7 @@ public static void main(String[] args) {
 	- **nextIndex** : 다음 요소의 index 반환
 	- **previousIndex** : 이전 요소의 index 반환
 	- **remove** : 읽어온 요소 삭제 **(반드시 next나 previous를 호출 한 다음 호출)**
-	-> 호출하지 않고 사용할 경우 IllegalStateException 발생 (읽어온 값이 있어여 호출이 가능하기 때문 -1 = 읽어온 값 X)
+	<br> -> 호출하지 않고 사용할 경우 IllegalStateException 발생 (읽어온 값이 있어여 호출이 가능하기 때문 -1 = 읽어온 값 X)
 	- **set** : 읽어 온 요소 변경 **(반드시 next나 previous를 호출 한 다음 호출)**
 ```java
 class ListIteratorCollection {
