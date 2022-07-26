@@ -150,16 +150,16 @@ public static void main(String[] args) {
 ### ListIterator : Iterator의 기능을 향상 시킨 Interface 
 - ***양방향 조회 기능 추가 (List를 구현한 경우만 사용 가능) / Iterator는 단방향만 가능***
 - 함수 
-	1. **add** : 컬렉션의 새로운 객체 **추가**
-	2. **hasNaxt** : 읽어 올 **다음 요소**가 남아있는지 확인 ( O -> true / X -> false )
-	3. **hasPrevious** : 읽어 올 **이전 요소**가 남아있는지 확인 ( O -> true / X -> fasle )
-	4. **next** : 다음 요소를 읽어 옴 **(next를 하기 전 haseNext를 하는 게 안전)**
-	5. **previous** : 이전 요소를 읽어 옴 **(previous 하기 전 hasPrevious를 하는 게 안전)**
-	6. **nextIndex** : 다음 요소의 index 반환
-	7. **previousIndex** : 이전 요소의 index 반환
-	8. **remove** : 읽어온 요소 삭제 **(반드시 next나 previous를 호출 한 다음 호출)**
+	- **add** : 컬렉션의 새로운 객체 **추가**
+	- **hasNaxt** : 읽어 올 **다음 요소**가 남아있는지 확인 ( O -> true / X -> false )
+	- **hasPrevious** : 읽어 올 **이전 요소**가 남아있는지 확인 ( O -> true / X -> fasle )
+	- **next** : 다음 요소를 읽어 옴 **(next를 하기 전 haseNext를 하는 게 안전)**
+	- **previous** : 이전 요소를 읽어 옴 **(previous 하기 전 hasPrevious를 하는 게 안전)**
+	- **nextIndex** : 다음 요소의 index 반환
+	- **previousIndex** : 이전 요소의 index 반환
+	- **remove** : 읽어온 요소 삭제 **(반드시 next나 previous를 호출 한 다음 호출)**
 	-> 호출하지 않고 사용할 경우 IllegalStateException 발생 (읽어온 값이 있어여 호출이 가능하기 때문 -1 = 읽어온 값 X)
-	9. **set** : 읽어 온 요소 변경 **(반드시 next나 previous를 호출 한 다음 호출)**
+	- **set** : 읽어 온 요소 변경 **(반드시 next나 previous를 호출 한 다음 호출)**
 ```java
 class ListIteratorCollection {
     public static void main(String[] args) {
