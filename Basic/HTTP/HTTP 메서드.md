@@ -36,3 +36,7 @@
   - GET, PUT, DELETE <br> (▶ WHY? PUT은 기존것을 날리고 덮어쓰는거기 때문에 최종 결과가 동일하기 때문 | DELETE는 같은 요청을 해도 삭제된 결과는 동일)
 ## 캐시가능(Cacheable) : 웹브라우저가 내 리소스를 가지고 있을 수 있냐 없냐
   - GET, HEAD, POST, POST, PATCH (실제로는 GET, HEAD정도만 캐시로 사용 | POST, PATCH는 본문 내용까지 캐시 키로 고여해야하는데 구현이 쉽지 X) 
+-------
+## HTTP API 설계
+### PUT VS POST
+-  
