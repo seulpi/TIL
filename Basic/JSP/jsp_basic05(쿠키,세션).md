@@ -137,6 +137,43 @@ response.addCookie(cookie); // response 객체의 쿠키 저장
 </html>
 ```
 
+6. 검증헤더 : 캐시가 만료된 후에도 서버에서 데이터를 변경X -> 저장해 두었던 캐시 사용이 더 효율적 -> 이 과정에서 **클라이언트 데이터와 서버의 데이터가 같다는것을 확인할 방법이 필요 -> 검증헤더를 이용하자!** <br>
+- ① Last-Modified : 데이터가 최종적으로 마지막에 수정된 시간
+	>> if-modified-since : 웹브라우저가 서버로부터 마지막으로 최종 업데이트라고 받은 최종 시간 (이후에 데이터가 수정되었는지 물어보는 것)
+	```text
+		HTTP/1.1 200 OK
+		Content-Type: image/jpeg
+		cache-control: max-age=60
+		Last-Modified: Monday, Jan 09 2023 11:28:39
+		Content-Length: 34012
+		
+		HTTP Body...
+		-------------------------
+		[지정된 캐시 유효시간 만료후 요청]
+		GET /star.jpg
+		if-midified-since: Monday, Jan 09 2023 11:28:39
+		
+		-> if-modified-since로 수정여부 체크가 가능 
+		-------------------------
+		[수정이 안된 경우 서버 -> 웹브라우저]
+		HTTP/1.1 304 Not Modified	// 304: 실패, 200: 성공(수정되었는지 물어본건데 아니니까 304를 보내고 수정되었다면 200을 보냄)
+		Content-Type: image/jpeg
+		cache-control: max-age=60
+		Last-Modified: Monday, Jan 09 2023 11:28:39
+		Content-Length: 64012
+		
+		-> HTTP Body X -> ★수정된게 없기 때문에 바디를 빼고 헤더만 만들어서 전송★ -> 			네트 워크 부하 ↓
+	```
+	- 1초 미만 단위로 캐시 조정 X
+	- 날짜 기반의 로직 사용 <br> ( a-> b -> a  수정 => 결국 데이터 수정 X , 단 날짜는 변경되었음 => 실제 파일의 변경 날짜는 달라졌지만 데이터 변경은 없음 이 경우 날짜가 변경되었기 때문에 수정되었다고 인식되어 다시 다운로드 받게 되는 현상이 일어남 )
+
+- ② ETag(Entity Tag) : Last-Modified의 단점을 보완
+	>> if-none-match 
+	- 캐시용 데이터에 날짜가 아닌 임의의 고유한 버전 이름 사용 O
+		```text
+			Etag:"v1.0", Etag:"a2jiodskj3"
+		```
+
 
 # - 세션(Session) : 내장 객체
 - 웹브라우저와 서버를 연결시키기 위한 하나의 수단 
