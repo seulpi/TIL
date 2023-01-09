@@ -139,7 +139,7 @@ response.addCookie(cookie); // response 객체의 쿠키 저장
 
 6. 검증헤더 : 캐시가 만료된 후에도 서버에서 데이터를 변경X -> 저장해 두었던 캐시 사용이 더 효율적 -> 이 과정에서 **클라이언트 데이터와 서버의 데이터가 같다는것을 확인할 방법이 필요 -> 검증헤더를 이용하자!** <br>
 - ① Last-Modified : 데이터가 최종적으로 마지막에 수정된 시간
-	>> if-modified-since : 웹브라우저가 서버로부터 마지막으로 최종 업데이트라고 받은 최종 시간 (이후에 데이터가 수정되었는지 물어보는 것)
+	>> If-Modified-Since : 웹브라우저가 서버로부터 마지막으로 최종 업데이트라고 받은 최종 시간 (이후에 데이터가 수정되었는지 물어보는 것) <br>If-Unmodified-Since
 	```text
 		HTTP/1.1 200 OK
 		Content-Type: image/jpeg
@@ -168,11 +168,39 @@ response.addCookie(cookie); // response 객체의 쿠키 저장
 	- 날짜 기반의 로직 사용 <br> ( a-> b -> a  수정 => 결국 데이터 수정 X , 단 날짜는 변경되었음 => 실제 파일의 변경 날짜는 달라졌지만 데이터 변경은 없음 이 경우 날짜가 변경되었기 때문에 수정되었다고 인식되어 다시 다운로드 받게 되는 현상이 일어남 )
 
 - ② ETag(Entity Tag) : Last-Modified의 단점을 보완
-	>> if-none-match 
+	>> If-None-Match , If-Match
+	```text
+		HTTP/1.1 200 OK
+		Content-Type: image/jpeg
+		cache-control: max-age=60
+		ETag: "aaaa"
+		Content-Length: 34012
+		
+		HTTP Body...
+		-------------------------
+		[캐시 시간 초과]
+		GET /star.jpg
+		If-None-Math: "aaaa"	
+	```
 	- 캐시용 데이터에 날짜가 아닌 임의의 고유한 버전 이름 사용 O
 		```text
+			[EX]
 			Etag:"v1.0", Etag:"a2jiodskj3"
 		```
+	- 데이터가 변경되면 이 이름을 바꾸어서 변경함 (Hash를 다시 생성)
+		>> Hash 라이브러리는 파일을 넣었을때 동일한 컨텐츠면 똑같은 Hah값이 나옴, 파일의 컨텐츠가 조금이라도 다르면 완전 다른 Hash값이 나옴
+		```text
+			[EX]
+			Etag: "aaaaa" -> Etsg:"bbbbb"
+		```
+7. 프록시 캐시 
+8. 캐시 무효화 (확실한 캐시 무효화 응답 = 아래 하위 4가지를 다 사용하는것)
+	>> Cache-contrl: no-cache, no-store, must-revalidate <br> Pragma: no-cache
+	- Cache-Control: no-cache -> 데이터는 캐시가능, **단, 항상 원서버에 검증하고사용**
+	- Cache-Control: no-store -> 데이터에 민감한 정보는 저장하면 안되기때문에 메모리에 사용하고 최대한 빨리 삭제
+	- Cache-Control: must-revalidate -> 캐시 만료 후 최초 조회 원서버에 검증해야함, 원서버 접근 실패 시 반드시 오류발생(504: Gateway Timeout) 
+	- Pragma: no-cache -> HTTP 1.0하위 호환
+
 
 
 # - 세션(Session) : 내장 객체
