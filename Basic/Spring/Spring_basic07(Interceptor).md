@@ -263,7 +263,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j // 컨트롤러가 아니기 때문에 @Controller가 필요X
 public class BoardInterceptor extends HandlerInterceptorAdapter { // 규칙1. HandlerInterceptorAdapter상속을 해줘야함 2. 상속을 하면
 	// 규칙2. 상속받으면 2개의 함수를 오버라이딩 함 preHandle, postHandle
-	
+	// Spring 5.3 ver이상부턴 HandlerInterceptor로 변경 -> HandlerInterceptorAdapter deprecated
 	
 	// preHandle() : 컨트롤러보다 먼저 수행되는 메서드
 	@Override
