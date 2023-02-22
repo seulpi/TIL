@@ -63,6 +63,8 @@ commit;
 ```
 
 ## @ 구현 : vo → controller(uri설계) → service → mapper → interceptor설정 → view 
+>> spring legacy, spring boot랑 구현 자체가 다르기 때문에 해당 밑에 예제를 보면 좀 다름 -> 팀프로젝트에선 boot였기 때문에 WevMvcConfig만들어서 사용함
+	- [참조] https://congsong.tistory.com/24 
 >> 쿠키 & ★ 세션 개념 다시 보고 이해하고 암기 
 
 ### Q. spring에서 session 활용 어떻게 하나요(어떻게 프로그래밍하나요)?
